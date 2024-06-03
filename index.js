@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_HEALTH = 5;
+const MAX_HEALTH = 4;
 let items, groups, health = MAX_HEALTH;
 let itemsAlreadyPicked = [], labels = [], groupsSolved = [], attempt = [];
 let groupAlreadyPicked = [], currentAttempt = 0, mapItemAndGroup = new Map();
@@ -133,13 +133,11 @@ function createCard(item, index) {
     return `<label class="card-module" data-id="${item.id}">
                 <input id="card-${index}" type="checkbox" class="visually-hidden">
                 <img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}">
-                ${item.alias}
             </label>`;
 }
 
 function setupEventListeners() {
     document.querySelector('button[data-id="shuffle"]').addEventListener('click', shuffleCards);
-    document.querySelector('button[data-id="deselect"]').addEventListener('click', deselectAllCards);
     document.querySelector('button[data-id="submit"]').addEventListener('click', handleSubmit);
 }
 
@@ -148,6 +146,22 @@ function shuffleCards() {
     const labels = Array.from(document.querySelectorAll('.card-module'));
     container.innerHTML = '';
     shuffleArray(labels).forEach(label => container.appendChild(label));
+    applyBorderRadius();
+}
+
+function applyBorderRadius() {
+    const labels = document.querySelectorAll('.card-module');
+    labels.forEach((label, index) => {
+        label.classList.remove('rounded-tl-3xl');
+        label.classList.remove('rounded-tr-3xl');
+        label.classList.remove('rounded-bl-3xl');
+        label.classList.remove('rounded-br-3xl');
+        if (index === 0) label.classList.add('rounded-tl-3xl');
+        if (index === 3) label.classList.add('rounded-tr-3xl');
+        if (index === labels.length - 4) label.classList.add('rounded-bl-3xl');
+        if (index === labels.length - 1) label.classList.add('rounded-br-3xl');
+    });
+
 }
 
 function deselectAllCards() {
@@ -155,6 +169,9 @@ function deselectAllCards() {
         label.classList.remove('card-module--selected', 'card-module--disabled');
         label.querySelector('input[type="checkbox"]').disabled = false;
     });
+
+    document.querySelector('button[data-id="submit"]').classList.add('button--disabled');
+    document.querySelector('button[data-id="submit"]').disabled = true;
 }
 
 function handleSubmit() {
@@ -243,6 +260,7 @@ function solveGroup(group) {
     if (!groupsSolved.includes(group.name)) groupsSolved.push(group.name);
     Cookies.set('groupsSolved', groupsSolved);
     deselectAllCards();
+    applyBorderRadius();
 }
 
 function gameOver() {
@@ -316,6 +334,7 @@ function init() {
         itemsAlreadyPicked = shuffleArray(itemsAlreadyPicked);
         const container = document.getElementById("cards-module");
         itemsAlreadyPicked.forEach((item, index) => container.innerHTML += createCard(item, index));
+        applyBorderRadius();
 
         setupEventListeners();
         addEventCheckBox();
@@ -401,15 +420,6 @@ function addEventCheckBox()
                 
                 document.querySelector('button[data-id="submit"]').classList.add('button--disabled');
                 document.querySelector('button[data-id="submit"]').disabled = true;
-            }
-
-            if (numberOfSelected > 0) {
-                document.querySelector('button[data-id="deselect"]').classList.remove('button--disabled');
-                document.querySelector('button[data-id="deselect"]').disabled = false;
-            }
-            else {
-                document.querySelector('button[data-id="deselect"]').classList.add('button--disabled');
-                document.querySelector('button[data-id="deselect"]').disabled = true;
             }
         });
     });
