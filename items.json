@@ -1,0 +1,2886 @@
+[
+    {
+        "alias": "G-Fuel",
+        "id": -1
+    },
+    {
+        "alias": "The Sad Onion",
+        "id": 1
+    },
+    {
+        "alias": "The Inner Eye",
+        "id": 2
+    },
+    {
+        "alias": "Spoon Bender",
+        "id": 3
+    },
+    {
+        "alias": "Cricket's Head",
+        "id": 4
+    },
+    {
+        "alias": "My Reflection",
+        "id": 5
+    },
+    {
+        "alias": "Number One",
+        "id": 6
+    },
+    {
+        "alias": "Blood of the Martyr",
+        "id": 7
+    },
+    {
+        "alias": "Brother Bobby",
+        "id": 8
+    },
+    {
+        "alias": "Skatole",
+        "id": 9
+    },
+    {
+        "alias": "Halo of Flies",
+        "id": 10
+    },
+    {
+        "alias": "1up!",
+        "id": 11
+    },
+    {
+        "alias": "Magic Mushroom",
+        "id": 12
+    },
+    {
+        "alias": "The Virus",
+        "id": 13
+    },
+    {
+        "alias": "Roid Rage",
+        "id": 14
+    },
+    {
+        "alias": "&lt;3",
+        "id": 15
+    },
+    {
+        "alias": "Raw Liver",
+        "id": 16
+    },
+    {
+        "alias": "Skeleton Key",
+        "id": 17
+    },
+    {
+        "alias": "A Dollar",
+        "id": 18
+    },
+    {
+        "alias": "Boom!",
+        "id": 19
+    },
+    {
+        "alias": "Transcendence",
+        "id": 20
+    },
+    {
+        "alias": "The Compass",
+        "id": 21
+    },
+    {
+        "alias": "Lunch",
+        "id": 22
+    },
+    {
+        "alias": "Dinner",
+        "id": 23
+    },
+    {
+        "alias": "Dessert",
+        "id": 24
+    },
+    {
+        "alias": "Breakfast",
+        "id": 25
+    },
+    {
+        "alias": "Rotten Meat",
+        "id": 26
+    },
+    {
+        "alias": "Wooden Spoon",
+        "id": 27
+    },
+    {
+        "alias": "The Belt",
+        "id": 28
+    },
+    {
+        "alias": "Mom's Underwear",
+        "id": 29
+    },
+    {
+        "alias": "Mom's Heels",
+        "id": 30
+    },
+    {
+        "alias": "Mom's Lipstick",
+        "id": 31
+    },
+    {
+        "alias": "Wire Coat Hanger",
+        "id": 32
+    },
+    {
+        "alias": "The Bible",
+        "id": 33
+    },
+    {
+        "alias": "The Book of Belial",
+        "id": 34
+    },
+    {
+        "alias": "The Necronomicon",
+        "id": 35
+    },
+    {
+        "alias": "The Poop",
+        "id": 36
+    },
+    {
+        "alias": "Mr. Boom",
+        "id": 37
+    },
+    {
+        "alias": "Tammy's Head",
+        "id": 38
+    },
+    {
+        "alias": "Mom's Bra",
+        "id": 39
+    },
+    {
+        "alias": "Kamikaze!",
+        "id": 40
+    },
+    {
+        "alias": "Mom's Pad",
+        "id": 41
+    },
+    {
+        "alias": "Bob's Rotten Head",
+        "id": 42
+    },
+    {
+        "alias": "Teleport!",
+        "id": 44
+    },
+    {
+        "alias": "Yum Heart",
+        "id": 45
+    },
+    {
+        "alias": "Lucky Foot",
+        "id": 46
+    },
+    {
+        "alias": "Doctor's Remote",
+        "id": 47
+    },
+    {
+        "alias": "Cupid's Arrow",
+        "id": 48
+    },
+    {
+        "alias": "Shoop da Whoop!",
+        "id": 49
+    },
+    {
+        "alias": "Steven",
+        "id": 50
+    },
+    {
+        "alias": "Pentagram",
+        "id": 51
+    },
+    {
+        "alias": "Dr. Fetus",
+        "id": 52
+    },
+    {
+        "alias": "Magneto",
+        "id": 53
+    },
+    {
+        "alias": "Treasure Map",
+        "id": 54
+    },
+    {
+        "alias": "Mom's Eye",
+        "id": 55
+    },
+    {
+        "alias": "Lemon Mishap",
+        "id": 56
+    },
+    {
+        "alias": "Distant Admiration",
+        "id": 57
+    },
+    {
+        "alias": "Book of Shadows",
+        "id": 58
+    },
+    {
+        "alias": "The Ladder",
+        "id": 60
+    },
+    {
+        "alias": "Charm of the Vampire",
+        "id": 62
+    },
+    {
+        "alias": "The Battery",
+        "id": 63
+    },
+    {
+        "alias": "Steam Sale",
+        "id": 64
+    },
+    {
+        "alias": "Anarchist Cookbook",
+        "id": 65
+    },
+    {
+        "alias": "The Hourglass",
+        "id": 66
+    },
+    {
+        "alias": "Sister Maggy",
+        "id": 67
+    },
+    {
+        "alias": "Technology",
+        "id": 68
+    },
+    {
+        "alias": "Chocolate Milk",
+        "id": 69
+    },
+    {
+        "alias": "Growth Hormones",
+        "id": 70
+    },
+    {
+        "alias": "Mini Mush",
+        "id": 71
+    },
+    {
+        "alias": "Rosary",
+        "id": 72
+    },
+    {
+        "alias": "Cube of Meat",
+        "id": 73
+    },
+    {
+        "alias": "A Quarter",
+        "id": 74
+    },
+    {
+        "alias": "PHD",
+        "id": 75
+    },
+    {
+        "alias": "X-Ray Vision",
+        "id": 76
+    },
+    {
+        "alias": "My Little Unicorn",
+        "id": 77
+    },
+    {
+        "alias": "Book of Revelations",
+        "id": 78
+    },
+    {
+        "alias": "The Mark",
+        "id": 79
+    },
+    {
+        "alias": "The Pact",
+        "id": 80
+    },
+    {
+        "alias": "Dead Cat",
+        "id": 81
+    },
+    {
+        "alias": "Lord of the Pit",
+        "id": 82
+    },
+    {
+        "alias": "The Nail",
+        "id": 83
+    },
+    {
+        "alias": "We Need To Go Deeper!",
+        "id": 84
+    },
+    {
+        "alias": "Deck of Cards",
+        "id": 85
+    },
+    {
+        "alias": "Monstro's Tooth",
+        "id": 86
+    },
+    {
+        "alias": "Loki's Horns",
+        "id": 87
+    },
+    {
+        "alias": "Little Chubby",
+        "id": 88
+    },
+    {
+        "alias": "Spider Bite",
+        "id": 89
+    },
+    {
+        "alias": "The Small Rock",
+        "id": 90
+    },
+    {
+        "alias": "Spelunker Hat",
+        "id": 91
+    },
+    {
+        "alias": "Super Bandage",
+        "id": 92
+    },
+    {
+        "alias": "The Gamekid",
+        "id": 93
+    },
+    {
+        "alias": "Sack of Pennies",
+        "id": 94
+    },
+    {
+        "alias": "Robo-Baby",
+        "id": 95
+    },
+    {
+        "alias": "Little C.H.A.D.",
+        "id": 96
+    },
+    {
+        "alias": "The Book of Sin",
+        "id": 97
+    },
+    {
+        "alias": "The Relic",
+        "id": 98
+    },
+    {
+        "alias": "Little Gish",
+        "id": 99
+    },
+    {
+        "alias": "Little Steven",
+        "id": 100
+    },
+    {
+        "alias": "The Halo",
+        "id": 101
+    },
+    {
+        "alias": "Mom's Bottle of Pills",
+        "id": 102
+    },
+    {
+        "alias": "The Common Cold",
+        "id": 103
+    },
+    {
+        "alias": "The Parasite",
+        "id": 104
+    },
+    {
+        "alias": "The D6",
+        "id": 105
+    },
+    {
+        "alias": "Mr. Mega",
+        "id": 106
+    },
+    {
+        "alias": "The Pinking Shears",
+        "id": 107
+    },
+    {
+        "alias": "The Wafer",
+        "id": 108
+    },
+    {
+        "alias": "Money = Power",
+        "id": 109
+    },
+    {
+        "alias": "Mom's Contacts",
+        "id": 110
+    },
+    {
+        "alias": "The Bean",
+        "id": 111
+    },
+    {
+        "alias": "Guardian Angel",
+        "id": 112
+    },
+    {
+        "alias": "Demon Baby",
+        "id": 113
+    },
+    {
+        "alias": "Mom's Knife",
+        "id": 114
+    },
+    {
+        "alias": "Ouija Board",
+        "id": 115
+    },
+    {
+        "alias": "9 Volt",
+        "id": 116
+    },
+    {
+        "alias": "Dead Bird",
+        "id": 117
+    },
+    {
+        "alias": "Brimstone",
+        "id": 118
+    },
+    {
+        "alias": "Blood Bag",
+        "id": 119
+    },
+    {
+        "alias": "Odd Mushroom (Thin)",
+        "id": 120
+    },
+    {
+        "alias": "Odd Mushroom (Large)",
+        "id": 121
+    },
+    {
+        "alias": "Whore of Babylon",
+        "id": 122
+    },
+    {
+        "alias": "Monster Manual",
+        "id": 123
+    },
+    {
+        "alias": "Dead Sea Scrolls",
+        "id": 124
+    },
+    {
+        "alias": "Bobby-Bomb",
+        "id": 125
+    },
+    {
+        "alias": "Razor Blade",
+        "id": 126
+    },
+    {
+        "alias": "Forget Me Now",
+        "id": 127
+    },
+    {
+        "alias": "Forever alone",
+        "id": 128
+    },
+    {
+        "alias": "Bucket of Lard",
+        "id": 129
+    },
+    {
+        "alias": "A Pony",
+        "id": 130
+    },
+    {
+        "alias": "Bomb Bag",
+        "id": 131
+    },
+    {
+        "alias": "A Lump of Coal",
+        "id": 132
+    },
+    {
+        "alias": "Guppy's Paw",
+        "id": 133
+    },
+    {
+        "alias": "Guppy's Tail",
+        "id": 134
+    },
+    {
+        "alias": "IV Bag",
+        "id": 135
+    },
+    {
+        "alias": "Best Friend",
+        "id": 136
+    },
+    {
+        "alias": "Remote Detonator",
+        "id": 137
+    },
+    {
+        "alias": "Stigmata",
+        "id": 138
+    },
+    {
+        "alias": "Mom's Purse",
+        "id": 139
+    },
+    {
+        "alias": "Bob's Curse",
+        "id": 140
+    },
+    {
+        "alias": "Pageant Boy",
+        "id": 141
+    },
+    {
+        "alias": "Scapular",
+        "id": 142
+    },
+    {
+        "alias": "Speed Ball",
+        "id": 143
+    },
+    {
+        "alias": "Bum Friend",
+        "id": 144
+    },
+    {
+        "alias": "Guppy's Head",
+        "id": 145
+    },
+    {
+        "alias": "Prayer Card",
+        "id": 146
+    },
+    {
+        "alias": "Notched Axe",
+        "id": 147
+    },
+    {
+        "alias": "Infestation",
+        "id": 148
+    },
+    {
+        "alias": "Ipecac",
+        "id": 149
+    },
+    {
+        "alias": "Tough Love",
+        "id": 150
+    },
+    {
+        "alias": "The Mulligan",
+        "id": 151
+    },
+    {
+        "alias": "Technology 2",
+        "id": 152
+    },
+    {
+        "alias": "Mutant Spider",
+        "id": 153
+    },
+    {
+        "alias": "Chemical Peel",
+        "id": 154
+    },
+    {
+        "alias": "The Peeper",
+        "id": 155
+    },
+    {
+        "alias": "Habit",
+        "id": 156
+    },
+    {
+        "alias": "Bloody Lust",
+        "id": 157
+    },
+    {
+        "alias": "Crystal Ball",
+        "id": 158
+    },
+    {
+        "alias": "Spirit of the Night",
+        "id": 159
+    },
+    {
+        "alias": "Crack the Sky",
+        "id": 160
+    },
+    {
+        "alias": "Ankh",
+        "id": 161
+    },
+    {
+        "alias": "Celtic Cross",
+        "id": 162
+    },
+    {
+        "alias": "Ghost Baby",
+        "id": 163
+    },
+    {
+        "alias": "The Candle",
+        "id": 164
+    },
+    {
+        "alias": "Cat-o-nine-tails",
+        "id": 165
+    },
+    {
+        "alias": "D20",
+        "id": 166
+    },
+    {
+        "alias": "Harlequin Baby",
+        "id": 167
+    },
+    {
+        "alias": "Epic Fetus",
+        "id": 168
+    },
+    {
+        "alias": "Polyphemus",
+        "id": 169
+    },
+    {
+        "alias": "Daddy Longlegs",
+        "id": 170
+    },
+    {
+        "alias": "Spider Butt",
+        "id": 171
+    },
+    {
+        "alias": "Sacrificial Dagger",
+        "id": 172
+    },
+    {
+        "alias": "Mitre",
+        "id": 173
+    },
+    {
+        "alias": "Rainbow Baby",
+        "id": 174
+    },
+    {
+        "alias": "Dad's Key",
+        "id": 175
+    },
+    {
+        "alias": "Stem Cells",
+        "id": 176
+    },
+    {
+        "alias": "Portable Slot",
+        "id": 177
+    },
+    {
+        "alias": "Holy Water",
+        "id": 178
+    },
+    {
+        "alias": "Fate",
+        "id": 179
+    },
+    {
+        "alias": "The Black Bean",
+        "id": 180
+    },
+    {
+        "alias": "White Pony",
+        "id": 181
+    },
+    {
+        "alias": "Sacred Heart",
+        "id": 182
+    },
+    {
+        "alias": "Tooth Picks",
+        "id": 183
+    },
+    {
+        "alias": "Holy Grail",
+        "id": 184
+    },
+    {
+        "alias": "Dead Dove",
+        "id": 185
+    },
+    {
+        "alias": "Blood Rights",
+        "id": 186
+    },
+    {
+        "alias": "Guppy's Hairball",
+        "id": 187
+    },
+    {
+        "alias": "Abel",
+        "id": 188
+    },
+    {
+        "alias": "SMB Super Fan",
+        "id": 189
+    },
+    {
+        "alias": "Pyro",
+        "id": 190
+    },
+    {
+        "alias": "3 Dollar Bill",
+        "id": 191
+    },
+    {
+        "alias": "Telepathy For Dummies",
+        "id": 192
+    },
+    {
+        "alias": "MEAT!",
+        "id": 193
+    },
+    {
+        "alias": "Magic 8 Ball",
+        "id": 194
+    },
+    {
+        "alias": "Mom's Coin Purse",
+        "id": 195
+    },
+    {
+        "alias": "Squeezy",
+        "id": 196
+    },
+    {
+        "alias": "Jesus Juice",
+        "id": 197
+    },
+    {
+        "alias": "Box",
+        "id": 198
+    },
+    {
+        "alias": "Mom's Key",
+        "id": 199
+    },
+    {
+        "alias": "Mom's Eyeshadow",
+        "id": 200
+    },
+    {
+        "alias": "Iron Bar",
+        "id": 201
+    },
+    {
+        "alias": "Midas' Touch",
+        "id": 202
+    },
+    {
+        "alias": "Humbleing Bundle",
+        "id": 203
+    },
+    {
+        "alias": "Fanny Pack",
+        "id": 204
+    },
+    {
+        "alias": "Sharp Plug",
+        "id": 205
+    },
+    {
+        "alias": "Guillotine",
+        "id": 206
+    },
+    {
+        "alias": "Ball of Bandages",
+        "id": 207
+    },
+    {
+        "alias": "Champion Belt",
+        "id": 208
+    },
+    {
+        "alias": "Butt Bombs",
+        "id": 209
+    },
+    {
+        "alias": "Gnawed Leaf",
+        "id": 210
+    },
+    {
+        "alias": "Spiderbaby",
+        "id": 211
+    },
+    {
+        "alias": "Guppy's Collar",
+        "id": 212
+    },
+    {
+        "alias": "Lost Contact",
+        "id": 213
+    },
+    {
+        "alias": "Anemic",
+        "id": 214
+    },
+    {
+        "alias": "Goat Head",
+        "id": 215
+    },
+    {
+        "alias": "Ceremonial Robes",
+        "id": 216
+    },
+    {
+        "alias": "Mom's Wig",
+        "id": 217
+    },
+    {
+        "alias": "Placenta",
+        "id": 218
+    },
+    {
+        "alias": "Old Bandage",
+        "id": 219
+    },
+    {
+        "alias": "Sad Bombs",
+        "id": 220
+    },
+    {
+        "alias": "Rubber Cement",
+        "id": 221
+    },
+    {
+        "alias": "Anti-Gravity",
+        "id": 222
+    },
+    {
+        "alias": "Pyromaniac",
+        "id": 223
+    },
+    {
+        "alias": "Cricket's Body",
+        "id": 224
+    },
+    {
+        "alias": "Gimpy",
+        "id": 225
+    },
+    {
+        "alias": "Black Lotus",
+        "id": 226
+    },
+    {
+        "alias": "Piggy Bank",
+        "id": 227
+    },
+    {
+        "alias": "Mom's Perfume",
+        "id": 228
+    },
+    {
+        "alias": "Monstro's Lung",
+        "id": 229
+    },
+    {
+        "alias": "Abaddon",
+        "id": 230
+    },
+    {
+        "alias": "Ball of Tar",
+        "id": 231
+    },
+    {
+        "alias": "Stop Watch",
+        "id": 232
+    },
+    {
+        "alias": "Tiny Planet",
+        "id": 233
+    },
+    {
+        "alias": "Infestation 2",
+        "id": 234
+    },
+    {
+        "alias": "E. Coli",
+        "id": 236
+    },
+    {
+        "alias": "Death's Touch",
+        "id": 237
+    },
+    {
+        "alias": "Key Piece 1",
+        "id": 238
+    },
+    {
+        "alias": "Key Piece 2",
+        "id": 239
+    },
+    {
+        "alias": "Experimental Treatment",
+        "id": 240
+    },
+    {
+        "alias": "Contract From Below",
+        "id": 241
+    },
+    {
+        "alias": "Infamy",
+        "id": 242
+    },
+    {
+        "alias": "Trinity Shield",
+        "id": 243
+    },
+    {
+        "alias": "Tech.5",
+        "id": 244
+    },
+    {
+        "alias": "20\/20",
+        "id": 245
+    },
+    {
+        "alias": "Blue Map",
+        "id": 246
+    },
+    {
+        "alias": "BFFS!",
+        "id": 247
+    },
+    {
+        "alias": "Hive Mind",
+        "id": 248
+    },
+    {
+        "alias": "There's Options",
+        "id": 249
+    },
+    {
+        "alias": "BOGO Bombs",
+        "id": 250
+    },
+    {
+        "alias": "Starter Deck",
+        "id": 251
+    },
+    {
+        "alias": "Little Baggy",
+        "id": 252
+    },
+    {
+        "alias": "Magic Scab",
+        "id": 253
+    },
+    {
+        "alias": "Blood Clot",
+        "id": 254
+    },
+    {
+        "alias": "Screw",
+        "id": 255
+    },
+    {
+        "alias": "Hot Bombs",
+        "id": 256
+    },
+    {
+        "alias": "Fire Mind",
+        "id": 257
+    },
+    {
+        "alias": "Missing No.",
+        "id": 258
+    },
+    {
+        "alias": "Dark Matter",
+        "id": 259
+    },
+    {
+        "alias": "Black Candle",
+        "id": 260
+    },
+    {
+        "alias": "Proptosis",
+        "id": 261
+    },
+    {
+        "alias": "Missing Page 2",
+        "id": 262
+    },
+    {
+        "alias": "Clear Rune",
+        "id": 263
+    },
+    {
+        "alias": "Smart Fly",
+        "id": 264
+    },
+    {
+        "alias": "Dry Baby",
+        "id": 265
+    },
+    {
+        "alias": "Juicy Sack",
+        "id": 266
+    },
+    {
+        "alias": "Robo-Baby 2.0",
+        "id": 267
+    },
+    {
+        "alias": "Rotten Baby",
+        "id": 268
+    },
+    {
+        "alias": "Headless Baby",
+        "id": 269
+    },
+    {
+        "alias": "Leech",
+        "id": 270
+    },
+    {
+        "alias": "Mystery Sack",
+        "id": 271
+    },
+    {
+        "alias": "BBF",
+        "id": 272
+    },
+    {
+        "alias": "Bob's Brain",
+        "id": 273
+    },
+    {
+        "alias": "Best Bud",
+        "id": 274
+    },
+    {
+        "alias": "Lil Brimstone",
+        "id": 275
+    },
+    {
+        "alias": "Isaac's Heart",
+        "id": 276
+    },
+    {
+        "alias": "Lil Haunt",
+        "id": 277
+    },
+    {
+        "alias": "Dark Bum",
+        "id": 278
+    },
+    {
+        "alias": "Big Fan",
+        "id": 279
+    },
+    {
+        "alias": "Sissy Longlegs",
+        "id": 280
+    },
+    {
+        "alias": "Punching Bag",
+        "id": 281
+    },
+    {
+        "alias": "How to Jump",
+        "id": 282
+    },
+    {
+        "alias": "D100",
+        "id": 283
+    },
+    {
+        "alias": "D4",
+        "id": 284
+    },
+    {
+        "alias": "D10",
+        "id": 285
+    },
+    {
+        "alias": "Blank Card",
+        "id": 286
+    },
+    {
+        "alias": "Book of Secrets",
+        "id": 287
+    },
+    {
+        "alias": "Box of Spiders",
+        "id": 288
+    },
+    {
+        "alias": "Red Candle",
+        "id": 289
+    },
+    {
+        "alias": "The Jar",
+        "id": 290
+    },
+    {
+        "alias": "Flush!",
+        "id": 291
+    },
+    {
+        "alias": "Satanic Bible",
+        "id": 292
+    },
+    {
+        "alias": "Head of Krampus",
+        "id": 293
+    },
+    {
+        "alias": "Butter Bean",
+        "id": 294
+    },
+    {
+        "alias": "Magic Fingers",
+        "id": 295
+    },
+    {
+        "alias": "Converter",
+        "id": 296
+    },
+    {
+        "alias": "Pandora's Box",
+        "id": 297
+    },
+    {
+        "alias": "Unicorn Stump",
+        "id": 298
+    },
+    {
+        "alias": "Taurus",
+        "id": 299
+    },
+    {
+        "alias": "Aries",
+        "id": 300
+    },
+    {
+        "alias": "Cancer",
+        "id": 301
+    },
+    {
+        "alias": "Leo",
+        "id": 302
+    },
+    {
+        "alias": "Virgo",
+        "id": 303
+    },
+    {
+        "alias": "Libra",
+        "id": 304
+    },
+    {
+        "alias": "Scorpio",
+        "id": 305
+    },
+    {
+        "alias": "Sagittarius",
+        "id": 306
+    },
+    {
+        "alias": "Capricorn",
+        "id": 307
+    },
+    {
+        "alias": "Aquarius",
+        "id": 308
+    },
+    {
+        "alias": "Pisces",
+        "id": 309
+    },
+    {
+        "alias": "Eve's Mascara",
+        "id": 310
+    },
+    {
+        "alias": "Judas' Shadow",
+        "id": 311
+    },
+    {
+        "alias": "Maggy's Bow",
+        "id": 312
+    },
+    {
+        "alias": "Holy Mantle",
+        "id": 313
+    },
+    {
+        "alias": "Thunder Thighs",
+        "id": 314
+    },
+    {
+        "alias": "Strange Attractor",
+        "id": 315
+    },
+    {
+        "alias": "Cursed Eye",
+        "id": 316
+    },
+    {
+        "alias": "Mysterious Liquid",
+        "id": 317
+    },
+    {
+        "alias": "Gemini",
+        "id": 318
+    },
+    {
+        "alias": "Cain's Other Eye",
+        "id": 319
+    },
+    {
+        "alias": "???'s Only Friend",
+        "id": 320
+    },
+    {
+        "alias": "Samson's Chains",
+        "id": 321
+    },
+    {
+        "alias": "Mongo Baby",
+        "id": 322
+    },
+    {
+        "alias": "Isaac's Tears",
+        "id": 323
+    },
+    {
+        "alias": "Undefined",
+        "id": 324
+    },
+    {
+        "alias": "Scissors",
+        "id": 325
+    },
+    {
+        "alias": "Breath of Life",
+        "id": 326
+    },
+    {
+        "alias": "The Polaroid",
+        "id": 327
+    },
+    {
+        "alias": "The Negative",
+        "id": 328
+    },
+    {
+        "alias": "The Ludovico Technique",
+        "id": 329
+    },
+    {
+        "alias": "Soy Milk",
+        "id": 330
+    },
+    {
+        "alias": "Godhead",
+        "id": 331
+    },
+    {
+        "alias": "Lazarus' Rags",
+        "id": 332
+    },
+    {
+        "alias": "The Mind",
+        "id": 333
+    },
+    {
+        "alias": "The Body",
+        "id": 334
+    },
+    {
+        "alias": "The Soul",
+        "id": 335
+    },
+    {
+        "alias": "Dead Onion",
+        "id": 336
+    },
+    {
+        "alias": "Broken Watch",
+        "id": 337
+    },
+    {
+        "alias": "The Boomerang",
+        "id": 338
+    },
+    {
+        "alias": "Safety Pin",
+        "id": 339
+    },
+    {
+        "alias": "Caffeine Pill",
+        "id": 340
+    },
+    {
+        "alias": "Torn Photo",
+        "id": 341
+    },
+    {
+        "alias": "Blue Cap",
+        "id": 342
+    },
+    {
+        "alias": "Latch Key",
+        "id": 343
+    },
+    {
+        "alias": "Match Book",
+        "id": 344
+    },
+    {
+        "alias": "Synthoil",
+        "id": 345
+    },
+    {
+        "alias": "A Snack",
+        "id": 346
+    },
+    {
+        "alias": "Diplopia",
+        "id": 347
+    },
+    {
+        "alias": "Placebo",
+        "id": 348
+    },
+    {
+        "alias": "Wooden Nickel",
+        "id": 349
+    },
+    {
+        "alias": "Toxic Shock",
+        "id": 350
+    },
+    {
+        "alias": "Mega Bean",
+        "id": 351
+    },
+    {
+        "alias": "Glass Cannon",
+        "id": 352
+    },
+    {
+        "alias": "Bomber Boy",
+        "id": 353
+    },
+    {
+        "alias": "Crack Jacks",
+        "id": 354
+    },
+    {
+        "alias": "Mom's Pearls",
+        "id": 355
+    },
+    {
+        "alias": "Car Battery",
+        "id": 356
+    },
+    {
+        "alias": "Box of Friends",
+        "id": 357
+    },
+    {
+        "alias": "The Wiz",
+        "id": 358
+    },
+    {
+        "alias": "8 Inch Nails",
+        "id": 359
+    },
+    {
+        "alias": "Incubus",
+        "id": 360
+    },
+    {
+        "alias": "Fate's Reward",
+        "id": 361
+    },
+    {
+        "alias": "Lil Chest",
+        "id": 362
+    },
+    {
+        "alias": "Sworn Protector",
+        "id": 363
+    },
+    {
+        "alias": "Friend Zone",
+        "id": 364
+    },
+    {
+        "alias": "Lost Fly",
+        "id": 365
+    },
+    {
+        "alias": "Scatter Bombs",
+        "id": 366
+    },
+    {
+        "alias": "Sticky Bombs",
+        "id": 367
+    },
+    {
+        "alias": "Epiphora",
+        "id": 368
+    },
+    {
+        "alias": "Continuum",
+        "id": 369
+    },
+    {
+        "alias": "Mr. Dolly",
+        "id": 370
+    },
+    {
+        "alias": "Curse of the Tower",
+        "id": 371
+    },
+    {
+        "alias": "Charged Baby",
+        "id": 372
+    },
+    {
+        "alias": "Dead Eye",
+        "id": 373
+    },
+    {
+        "alias": "Holy Light",
+        "id": 374
+    },
+    {
+        "alias": "Host Hat",
+        "id": 375
+    },
+    {
+        "alias": "Restock",
+        "id": 376
+    },
+    {
+        "alias": "Bursting Sack",
+        "id": 377
+    },
+    {
+        "alias": "Number Two",
+        "id": 378
+    },
+    {
+        "alias": "Pupula Duplex",
+        "id": 379
+    },
+    {
+        "alias": "Pay To Play",
+        "id": 380
+    },
+    {
+        "alias": "Eden's Blessing",
+        "id": 381
+    },
+    {
+        "alias": "Friendly Ball",
+        "id": 382
+    },
+    {
+        "alias": "Tear Detonator",
+        "id": 383
+    },
+    {
+        "alias": "Lil Gurdy",
+        "id": 384
+    },
+    {
+        "alias": "Bumbo",
+        "id": 385
+    },
+    {
+        "alias": "D12",
+        "id": 386
+    },
+    {
+        "alias": "Censer",
+        "id": 387
+    },
+    {
+        "alias": "Key Bum",
+        "id": 388
+    },
+    {
+        "alias": "Rune Bag",
+        "id": 389
+    },
+    {
+        "alias": "Seraphim",
+        "id": 390
+    },
+    {
+        "alias": "Betrayal",
+        "id": 391
+    },
+    {
+        "alias": "Zodiac",
+        "id": 392
+    },
+    {
+        "alias": "Serpent's Kiss",
+        "id": 393
+    },
+    {
+        "alias": "Marked",
+        "id": 394
+    },
+    {
+        "alias": "Tech X",
+        "id": 395
+    },
+    {
+        "alias": "Ventricle Razor",
+        "id": 396
+    },
+    {
+        "alias": "Tractor Beam",
+        "id": 397
+    },
+    {
+        "alias": "God's Flesh",
+        "id": 398
+    },
+    {
+        "alias": "Maw Of The Void",
+        "id": 399
+    },
+    {
+        "alias": "Spear Of Destiny",
+        "id": 400
+    },
+    {
+        "alias": "Explosivo",
+        "id": 401
+    },
+    {
+        "alias": "Chaos",
+        "id": 402
+    },
+    {
+        "alias": "Spider Mod",
+        "id": 403
+    },
+    {
+        "alias": "Farting Baby",
+        "id": 404
+    },
+    {
+        "alias": "GB Bug",
+        "id": 405
+    },
+    {
+        "alias": "D8",
+        "id": 406
+    },
+    {
+        "alias": "Purity",
+        "id": 407
+    },
+    {
+        "alias": "Athame",
+        "id": 408
+    },
+    {
+        "alias": "Empty Vessel",
+        "id": 409
+    },
+    {
+        "alias": "Evil Eye",
+        "id": 410
+    },
+    {
+        "alias": "Lusty Blood",
+        "id": 411
+    },
+    {
+        "alias": "Cambion Conception",
+        "id": 412
+    },
+    {
+        "alias": "Immaculate Conception",
+        "id": 413
+    },
+    {
+        "alias": "More Options",
+        "id": 414
+    },
+    {
+        "alias": "Crown Of Light",
+        "id": 415
+    },
+    {
+        "alias": "Deep Pockets",
+        "id": 416
+    },
+    {
+        "alias": "Succubus",
+        "id": 417
+    },
+    {
+        "alias": "Fruit Cake",
+        "id": 418
+    },
+    {
+        "alias": "Teleport 2.0",
+        "id": 419
+    },
+    {
+        "alias": "Black Powder",
+        "id": 420
+    },
+    {
+        "alias": "Kidney Bean",
+        "id": 421
+    },
+    {
+        "alias": "Glowing Hourglass",
+        "id": 422
+    },
+    {
+        "alias": "Circle of Protection",
+        "id": 423
+    },
+    {
+        "alias": "Sack Head",
+        "id": 424
+    },
+    {
+        "alias": "Night Light",
+        "id": 425
+    },
+    {
+        "alias": "Obsessed Fan",
+        "id": 426
+    },
+    {
+        "alias": "Mine Crafter",
+        "id": 427
+    },
+    {
+        "alias": "PJs",
+        "id": 428
+    },
+    {
+        "alias": "Head of the Keeper",
+        "id": 429
+    },
+    {
+        "alias": "Papa Fly",
+        "id": 430
+    },
+    {
+        "alias": "Multidimensional Baby",
+        "id": 431
+    },
+    {
+        "alias": "Glitter Bombs",
+        "id": 432
+    },
+    {
+        "alias": "My Shadow",
+        "id": 433
+    },
+    {
+        "alias": "Jar of Flies",
+        "id": 434
+    },
+    {
+        "alias": "Lil Loki",
+        "id": 435
+    },
+    {
+        "alias": "Milk!",
+        "id": 436
+    },
+    {
+        "alias": "D7",
+        "id": 437
+    },
+    {
+        "alias": "Binky",
+        "id": 438
+    },
+    {
+        "alias": "Mom's Box",
+        "id": 439
+    },
+    {
+        "alias": "Kidney Stone",
+        "id": 440
+    },
+    {
+        "alias": "Mega Blast",
+        "id": 441
+    },
+    {
+        "alias": "Dark Prince's Crown",
+        "id": 442
+    },
+    {
+        "alias": "Apple!",
+        "id": 443
+    },
+    {
+        "alias": "Lead Pencil",
+        "id": 444
+    },
+    {
+        "alias": "Dog Tooth",
+        "id": 445
+    },
+    {
+        "alias": "Dead Tooth",
+        "id": 446
+    },
+    {
+        "alias": "Linger Bean",
+        "id": 447
+    },
+    {
+        "alias": "Shard of Glass",
+        "id": 448
+    },
+    {
+        "alias": "Metal Plate",
+        "id": 449
+    },
+    {
+        "alias": "Eye of Greed",
+        "id": 450
+    },
+    {
+        "alias": "Tarot Cloth",
+        "id": 451
+    },
+    {
+        "alias": "Varicose Veins",
+        "id": 452
+    },
+    {
+        "alias": "Compound Fracture",
+        "id": 453
+    },
+    {
+        "alias": "Polydactyly",
+        "id": 454
+    },
+    {
+        "alias": "Dad's Lost Coin",
+        "id": 455
+    },
+    {
+        "alias": "Midnight Snack",
+        "id": 456
+    },
+    {
+        "alias": "Cone Head",
+        "id": 457
+    },
+    {
+        "alias": "Belly Button",
+        "id": 458
+    },
+    {
+        "alias": "Sinus Infection",
+        "id": 459
+    },
+    {
+        "alias": "Glaucoma",
+        "id": 460
+    },
+    {
+        "alias": "Parasitoid",
+        "id": 461
+    },
+    {
+        "alias": "Eye of Belial",
+        "id": 462
+    },
+    {
+        "alias": "Sulfuric Acid",
+        "id": 463
+    },
+    {
+        "alias": "Glyph of Balance",
+        "id": 464
+    },
+    {
+        "alias": "Analog Stick",
+        "id": 465
+    },
+    {
+        "alias": "Contagion",
+        "id": 466
+    },
+    {
+        "alias": "Finger!",
+        "id": 467
+    },
+    {
+        "alias": "Shade",
+        "id": 468
+    },
+    {
+        "alias": "Depression",
+        "id": 469
+    },
+    {
+        "alias": "Hushy",
+        "id": 470
+    },
+    {
+        "alias": "Lil Monstro",
+        "id": 471
+    },
+    {
+        "alias": "King Baby",
+        "id": 472
+    },
+    {
+        "alias": "Big Chubby",
+        "id": 473
+    },
+    {
+        "alias": "Tonsil",
+        "id": 474
+    },
+    {
+        "alias": "Broken Glass Cannon",
+        "id": 474
+    },
+    {
+        "alias": "Plan C",
+        "id": 475
+    },
+    {
+        "alias": "D1",
+        "id": 476
+    },
+    {
+        "alias": "Void",
+        "id": 477
+    },
+    {
+        "alias": "Pause",
+        "id": 478
+    },
+    {
+        "alias": "Smelter",
+        "id": 479
+    },
+    {
+        "alias": "Compost",
+        "id": 480
+    },
+    {
+        "alias": "Dataminer",
+        "id": 481
+    },
+    {
+        "alias": "Clicker",
+        "id": 482
+    },
+    {
+        "alias": "Mama Mega!",
+        "id": 483
+    },
+    {
+        "alias": "Wait What?",
+        "id": 484
+    },
+    {
+        "alias": "Crooked Penny",
+        "id": 485
+    },
+    {
+        "alias": "Dull Razor",
+        "id": 486
+    },
+    {
+        "alias": "Potato Peeler",
+        "id": 487
+    },
+    {
+        "alias": "Metronome",
+        "id": 488
+    },
+    {
+        "alias": "D infinity",
+        "id": 489
+    },
+    {
+        "alias": "Eden's Soul",
+        "id": 490
+    },
+    {
+        "alias": "Acid Baby",
+        "id": 491
+    },
+    {
+        "alias": "YO LISTEN!",
+        "id": 492
+    },
+    {
+        "alias": "Adrenaline",
+        "id": 493
+    },
+    {
+        "alias": "Jacob's Ladder",
+        "id": 494
+    },
+    {
+        "alias": "Ghost Pepper",
+        "id": 495
+    },
+    {
+        "alias": "Euthanasia",
+        "id": 496
+    },
+    {
+        "alias": "Camo Undies",
+        "id": 497
+    },
+    {
+        "alias": "Duality",
+        "id": 498
+    },
+    {
+        "alias": "Eucharist",
+        "id": 499
+    },
+    {
+        "alias": "Sack of Sacks",
+        "id": 500
+    },
+    {
+        "alias": "Greed's Gullet",
+        "id": 501
+    },
+    {
+        "alias": "Large Zit",
+        "id": 502
+    },
+    {
+        "alias": "Little Horn",
+        "id": 503
+    },
+    {
+        "alias": "Brown Nugget",
+        "id": 504
+    },
+    {
+        "alias": "Poke Go",
+        "id": 505
+    },
+    {
+        "alias": "Backstabber",
+        "id": 506
+    },
+    {
+        "alias": "Sharp Straw",
+        "id": 507
+    },
+    {
+        "alias": "Mom's Razor",
+        "id": 508
+    },
+    {
+        "alias": "Bloodshot Eye",
+        "id": 509
+    },
+    {
+        "alias": "Delirious",
+        "id": 510
+    },
+    {
+        "alias": "Angry Fly",
+        "id": 511
+    },
+    {
+        "alias": "Black Hole",
+        "id": 512
+    },
+    {
+        "alias": "Bozo",
+        "id": 513
+    },
+    {
+        "alias": "Broken Modem",
+        "id": 514
+    },
+    {
+        "alias": "Mystery Gift",
+        "id": 515
+    },
+    {
+        "alias": "Sprinkler",
+        "id": 516
+    },
+    {
+        "alias": "Fast Bombs",
+        "id": 517
+    },
+    {
+        "alias": "Buddy in a Box",
+        "id": 518
+    },
+    {
+        "alias": "Lil Delirium",
+        "id": 519
+    },
+    {
+        "alias": "Jumper Cables",
+        "id": 520
+    },
+    {
+        "alias": "Coupon",
+        "id": 521
+    },
+    {
+        "alias": "Telekinesis",
+        "id": 522
+    },
+    {
+        "alias": "Moving Box",
+        "id": 523
+    },
+    {
+        "alias": "Technology Zero",
+        "id": 524
+    },
+    {
+        "alias": "Leprosy",
+        "id": 525
+    },
+    {
+        "alias": "7 Seals",
+        "id": 526
+    },
+    {
+        "alias": "Mr. ME!",
+        "id": 527
+    },
+    {
+        "alias": "Angelic Prism",
+        "id": 528
+    },
+    {
+        "alias": "Pop!",
+        "id": 529
+    },
+    {
+        "alias": "Death's List",
+        "id": 530
+    },
+    {
+        "alias": "Haemolacria",
+        "id": 531
+    },
+    {
+        "alias": "Lachryphagy",
+        "id": 532
+    },
+    {
+        "alias": "Trisagion",
+        "id": 533
+    },
+    {
+        "alias": "Schoolbag",
+        "id": 534
+    },
+    {
+        "alias": "Blanket",
+        "id": 535
+    },
+    {
+        "alias": "Sacrificial Altar",
+        "id": 536
+    },
+    {
+        "alias": "Lil Spewer",
+        "id": 537
+    },
+    {
+        "alias": "Marbles",
+        "id": 538
+    },
+    {
+        "alias": "Mystery Egg",
+        "id": 539
+    },
+    {
+        "alias": "Flat Stone",
+        "id": 540
+    },
+    {
+        "alias": "Marrow",
+        "id": 541
+    },
+    {
+        "alias": "Slipped Rib",
+        "id": 542
+    },
+    {
+        "alias": "Hallowed Ground",
+        "id": 543
+    },
+    {
+        "alias": "Pointy Rib",
+        "id": 544
+    },
+    {
+        "alias": "Book of the Dead",
+        "id": 545
+    },
+    {
+        "alias": "Dad's Ring",
+        "id": 546
+    },
+    {
+        "alias": "Divorce Papers",
+        "id": 547
+    },
+    {
+        "alias": "Jaw Bone",
+        "id": 548
+    },
+    {
+        "alias": "Brittle Bones",
+        "id": 549
+    },
+    {
+        "alias": "Broken Shovel 1",
+        "id": 550
+    },
+    {
+        "alias": "Broken Shovel 2",
+        "id": 551
+    },
+    {
+        "alias": "Mom's Shovel",
+        "id": 552
+    },
+    {
+        "alias": "Mucormycosis",
+        "id": 553
+    },
+    {
+        "alias": "2Spooky",
+        "id": 554
+    },
+    {
+        "alias": "Golden Razor",
+        "id": 555
+    },
+    {
+        "alias": "Sulfur",
+        "id": 556
+    },
+    {
+        "alias": "Fortune Cookie",
+        "id": 557
+    },
+    {
+        "alias": "Eye Sore",
+        "id": 558
+    },
+    {
+        "alias": "120 Volt",
+        "id": 559
+    },
+    {
+        "alias": "It Hurts",
+        "id": 560
+    },
+    {
+        "alias": "Almond Milk",
+        "id": 561
+    },
+    {
+        "alias": "Rock Bottom",
+        "id": 562
+    },
+    {
+        "alias": "Nancy Bombs",
+        "id": 563
+    },
+    {
+        "alias": "A Bar of Soap",
+        "id": 564
+    },
+    {
+        "alias": "Blood Puppy",
+        "id": 565
+    },
+    {
+        "alias": "Dream Catcher",
+        "id": 566
+    },
+    {
+        "alias": "Paschal Candle",
+        "id": 567
+    },
+    {
+        "alias": "Divine Intervention",
+        "id": 568
+    },
+    {
+        "alias": "Blood Oath",
+        "id": 569
+    },
+    {
+        "alias": "Playdough Cookie",
+        "id": 570
+    },
+    {
+        "alias": "Orphan Socks",
+        "id": 571
+    },
+    {
+        "alias": "Eye of the Occult",
+        "id": 572
+    },
+    {
+        "alias": "Immaculate Heart",
+        "id": 573
+    },
+    {
+        "alias": "Monstrance",
+        "id": 574
+    },
+    {
+        "alias": "The Intruder",
+        "id": 575
+    },
+    {
+        "alias": "Dirty Mind",
+        "id": 576
+    },
+    {
+        "alias": "Damocles",
+        "id": 577
+    },
+    {
+        "alias": "Free Lemonade",
+        "id": 578
+    },
+    {
+        "alias": "Spirit Sword",
+        "id": 579
+    },
+    {
+        "alias": "Red Key",
+        "id": 580
+    },
+    {
+        "alias": "Psy Fly",
+        "id": 581
+    },
+    {
+        "alias": "Wavy Cap",
+        "id": 582
+    },
+    {
+        "alias": "Rocket in a Jar",
+        "id": 583
+    },
+    {
+        "alias": "Book of Virtues",
+        "id": 584
+    },
+    {
+        "alias": "Alabaster Box",
+        "id": 585
+    },
+    {
+        "alias": "The Stairway",
+        "id": 586
+    },
+    {
+        "alias": "Sol",
+        "id": 588
+    },
+    {
+        "alias": "Luna",
+        "id": 589
+    },
+    {
+        "alias": "Mercurius",
+        "id": 590
+    },
+    {
+        "alias": "Venus",
+        "id": 591
+    },
+    {
+        "alias": "Terra",
+        "id": 592
+    },
+    {
+        "alias": "Mars",
+        "id": 593
+    },
+    {
+        "alias": "Jupiter",
+        "id": 594
+    },
+    {
+        "alias": "Saturnus",
+        "id": 595
+    },
+    {
+        "alias": "Uranus",
+        "id": 596
+    },
+    {
+        "alias": "Neptunus",
+        "id": 597
+    },
+    {
+        "alias": "Pluto",
+        "id": 598
+    },
+    {
+        "alias": "Voodoo Head",
+        "id": 599
+    },
+    {
+        "alias": "Eye Drops",
+        "id": 600
+    },
+    {
+        "alias": "Act of Contrition",
+        "id": 601
+    },
+    {
+        "alias": "Member Card",
+        "id": 602
+    },
+    {
+        "alias": "Battery Pack",
+        "id": 603
+    },
+    {
+        "alias": "Mom's Bracelet",
+        "id": 604
+    },
+    {
+        "alias": "The Scooper",
+        "id": 605
+    },
+    {
+        "alias": "Ocular Rift",
+        "id": 606
+    },
+    {
+        "alias": "Boiled Baby",
+        "id": 607
+    },
+    {
+        "alias": "Freezer Baby",
+        "id": 608
+    },
+    {
+        "alias": "Eternal D6",
+        "id": 609
+    },
+    {
+        "alias": "Bird Cage",
+        "id": 610
+    },
+    {
+        "alias": "Larynx",
+        "id": 611
+    },
+    {
+        "alias": "Lost Soul",
+        "id": 612
+    },
+    {
+        "alias": "Blood Bombs",
+        "id": 614
+    },
+    {
+        "alias": "Lil Dumpy",
+        "id": 615
+    },
+    {
+        "alias": "Bird's Eye",
+        "id": 616
+    },
+    {
+        "alias": "Lodestone",
+        "id": 617
+    },
+    {
+        "alias": "Rotten Tomato",
+        "id": 618
+    },
+    {
+        "alias": "Birthright",
+        "id": 619
+    },
+    {
+        "alias": "Red Stew",
+        "id": 621
+    },
+    {
+        "alias": "Genesis",
+        "id": 622
+    },
+    {
+        "alias": "Sharp Key",
+        "id": 623
+    },
+    {
+        "alias": "Booster Pack",
+        "id": 624
+    },
+    {
+        "alias": "Mega Mush",
+        "id": 625
+    },
+    {
+        "alias": "Knife Piece 1",
+        "id": 626
+    },
+    {
+        "alias": "Knife Piece 2",
+        "id": 627
+    },
+    {
+        "alias": "Death Certificate",
+        "id": 628
+    },
+    {
+        "alias": "Bot Fly",
+        "id": 629
+    },
+    {
+        "alias": "Meat Cleaver",
+        "id": 631
+    },
+    {
+        "alias": "Evil Charm",
+        "id": 632
+    },
+    {
+        "alias": "Dogma",
+        "id": 633
+    },
+    {
+        "alias": "Purgatory",
+        "id": 634
+    },
+    {
+        "alias": "Stitches",
+        "id": 635
+    },
+    {
+        "alias": "R Key",
+        "id": 636
+    },
+    {
+        "alias": "Knockout Drops",
+        "id": 637
+    },
+    {
+        "alias": "Eraser",
+        "id": 638
+    },
+    {
+        "alias": "Yuck Heart",
+        "id": 639
+    },
+    {
+        "alias": "Urn of Souls",
+        "id": 640
+    },
+    {
+        "alias": "Akeldama",
+        "id": 641
+    },
+    {
+        "alias": "Magic Skin",
+        "id": 642
+    },
+    {
+        "alias": "Revelation",
+        "id": 643
+    },
+    {
+        "alias": "Consolation Prize",
+        "id": 644
+    },
+    {
+        "alias": "Tinytoma",
+        "id": 645
+    },
+    {
+        "alias": "Brimstone Bombs",
+        "id": 646
+    },
+    {
+        "alias": "4.5 Volt",
+        "id": 647
+    },
+    {
+        "alias": "Fruity Plum",
+        "id": 649
+    },
+    {
+        "alias": "Plum Flute",
+        "id": 650
+    },
+    {
+        "alias": "Star of Bethlehem",
+        "id": 651
+    },
+    {
+        "alias": "Cube Baby",
+        "id": 652
+    },
+    {
+        "alias": "Vade Retro",
+        "id": 653
+    },
+    {
+        "alias": "False PHD",
+        "id": 654
+    },
+    {
+        "alias": "Spin to Win",
+        "id": 655
+    },
+    {
+        "alias": "Vasculitis",
+        "id": 657
+    },
+    {
+        "alias": "Giant Cell",
+        "id": 658
+    },
+    {
+        "alias": "Tropicamide",
+        "id": 659
+    },
+    {
+        "alias": "Card Reading",
+        "id": 660
+    },
+    {
+        "alias": "Quints",
+        "id": 661
+    },
+    {
+        "alias": "Tooth and Nail",
+        "id": 663
+    },
+    {
+        "alias": "Binge Eater",
+        "id": 664
+    },
+    {
+        "alias": "Guppy's Eye",
+        "id": 665
+    },
+    {
+        "alias": "Strawman",
+        "id": 667
+    },
+    {
+        "alias": "Dad's Note",
+        "id": 668
+    },
+    {
+        "alias": "Sausage",
+        "id": 669
+    },
+    {
+        "alias": "Options?",
+        "id": 670
+    },
+    {
+        "alias": "Candy Heart",
+        "id": 671
+    },
+    {
+        "alias": "A Pound of Flesh",
+        "id": 672
+    },
+    {
+        "alias": "Redemption",
+        "id": 673
+    },
+    {
+        "alias": "Spirit Shackles",
+        "id": 674
+    },
+    {
+        "alias": "Cracked Orb",
+        "id": 675
+    },
+    {
+        "alias": "Empty Heart",
+        "id": 676
+    },
+    {
+        "alias": "Astral Projection",
+        "id": 677
+    },
+    {
+        "alias": "C Section",
+        "id": 678
+    },
+    {
+        "alias": "Lil Abaddon",
+        "id": 679
+    },
+    {
+        "alias": "Montezuma's Revenge",
+        "id": 680
+    },
+    {
+        "alias": "Lil Portal",
+        "id": 681
+    },
+    {
+        "alias": "Worm Friend",
+        "id": 682
+    },
+    {
+        "alias": "Bone Spurs",
+        "id": 683
+    },
+    {
+        "alias": "Hungry Soul",
+        "id": 684
+    },
+    {
+        "alias": "Jar of Wisps",
+        "id": 685
+    },
+    {
+        "alias": "Soul Locket",
+        "id": 686
+    },
+    {
+        "alias": "Friend Finder",
+        "id": 687
+    },
+    {
+        "alias": "Inner Child",
+        "id": 688
+    },
+    {
+        "alias": "Glitched Crown",
+        "id": 689
+    },
+    {
+        "alias": "Belly Jelly",
+        "id": 690
+    },
+    {
+        "alias": "Sacred Orb",
+        "id": 691
+    },
+    {
+        "alias": "Sanguine Bond",
+        "id": 692
+    },
+    {
+        "alias": "The Swarm",
+        "id": 693
+    },
+    {
+        "alias": "Heartbreak",
+        "id": 694
+    },
+    {
+        "alias": "Bloody Gust",
+        "id": 695
+    },
+    {
+        "alias": "Salvation",
+        "id": 696
+    },
+    {
+        "alias": "Vanishing Twin",
+        "id": 697
+    },
+    {
+        "alias": "Twisted Pair",
+        "id": 698
+    },
+    {
+        "alias": "Azazel's Rage",
+        "id": 699
+    },
+    {
+        "alias": "Echo Chamber",
+        "id": 700
+    },
+    {
+        "alias": "Isaac's Tomb",
+        "id": 701
+    },
+    {
+        "alias": "Vengeful Spirit",
+        "id": 702
+    },
+    {
+        "alias": "Esau Jr.",
+        "id": 703
+    },
+    {
+        "alias": "Berserk!",
+        "id": 704
+    },
+    {
+        "alias": "Dark Arts",
+        "id": 705
+    },
+    {
+        "alias": "Abyss",
+        "id": 706
+    },
+    {
+        "alias": "Supper",
+        "id": 707
+    },
+    {
+        "alias": "Stapler",
+        "id": 708
+    },
+    {
+        "alias": "Suplex!",
+        "id": 709
+    },
+    {
+        "alias": "Bag of Crafting",
+        "id": 710
+    },
+    {
+        "alias": "Flip",
+        "id": 711
+    },
+    {
+        "alias": "Lemegeton",
+        "id": 712
+    },
+    {
+        "alias": "Sumptorium",
+        "id": 713
+    },
+    {
+        "alias": "Recall",
+        "id": 714
+    },
+    {
+        "alias": "Hold",
+        "id": 715
+    },
+    {
+        "alias": "Keeper's Sack",
+        "id": 716
+    },
+    {
+        "alias": "Keeper's Kin",
+        "id": 717
+    },
+    {
+        "alias": "Keeper's Box",
+        "id": 719
+    },
+    {
+        "alias": "Everything Jar",
+        "id": 720
+    },
+    {
+        "alias": "TMTRAINER",
+        "id": 721
+    },
+    {
+        "alias": "Anima Sola",
+        "id": 722
+    },
+    {
+        "alias": "Spindown Dice",
+        "id": 723
+    },
+    {
+        "alias": "Hypercoagulation",
+        "id": 724
+    },
+    {
+        "alias": "IBS",
+        "id": 725
+    },
+    {
+        "alias": "Hemoptysis",
+        "id": 726
+    },
+    {
+        "alias": "Ghost Bombs",
+        "id": 727
+    },
+    {
+        "alias": "Gello",
+        "id": 728
+    },
+    {
+        "alias": "Decap Attack",
+        "id": 729
+    },
+    {
+        "alias": "Glass Eye",
+        "id": 730
+    },
+    {
+        "alias": "Stye",
+        "id": 731
+    },
+    {
+        "alias": "Mom's Ring",
+        "id": 732
+    }
+]

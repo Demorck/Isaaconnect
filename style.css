@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'Upheaval';
+    src: url("/assets/fonts/upheavtt.ttf");
+}
+
+@font-face {
+    font-family: 'team-meat';
+    src: url("/assets/fonts/IsaacGame.ttf");
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    padding: 10px;
+    height: 100vh;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+ol, ul {
+    list-style: none;
+    padding: 0;
+}
+
+#background {
+    transition: background .2s ease-in;
+}
+
+.upheaval {
+    font-family: 'Upheaval';
+}
+
+.team-meat {
+    font-family: 'team-meat';
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 620px;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal--show {
+    display: flex;
+}
+
+.close {
+    color: #000;
+    float: right;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.streak {
+    --streak-width: 100%;
+    --streak-height: 45px;
+    image-rendering: pixelated;
+    background-image: url(/assets/effect_streak.png);
+    background-repeat: no-repeat;
+    background-size: var(--streak-width) var(--streak-height);
+    width: var(--streak-width);
+    height: var(--streak-height);
+    line-height: 55px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2.2em;
+    transition: width 0.3s ease;
+    text-wrap: nowrap;
+    background-position: center;
+}
+
+.background-preview {
+    --background-preview-width: 131px;
+    --background-preview-height: 74px;
+    position: relative;
+    text-align: center;
+    width: var(--background-preview-width);
+    height: var(--background-preview-height);
+    background-image: var(--bgimage);
+    background-size: cover;
+    font-size: 1em;
+    mask-image: url(/assets/paper.png);
+    --webkit-mask-image: url(/assets/paper.png);
+    mask-size: var(--background-preview-width) var(--background-preview-height);
+    --webkit-mask-size: var(--background-preview-width) var(--background-preview-height);
+    transition: .3s ease;
+}
+
+.background-preview:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.bg-paper {
+    border-image: url("/assets/paper.png") 30 fill round;
+}
+
+.svg-option {
+    font-size: 2em;
+    height: 1em;
+}
+
+.wrapper-countdown {
+    background-color: beige;
+    width: 150px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    font-size: 2rem;
+
+}
+
+.card-module {
+    background-color: #E5E7EB;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-module--selected {
+    background-color: #7e7e7e;
+}
+
+.card-module--disabled {
+    cursor: default;
+}
+
+.card-module--shake {
+    animation: shake 0.5s;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.solved-group {
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.solved-group--title {
+    font-size: x-large;
+}
+
+.solved-group--card {
+    margin: 0 5px;
+}
+
+.solved-group--cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.solved-group--card {
+    display: flex;
+    align-items: center;
+}
+
+.button--disabled {
+    background-color: #7e7e7e !important;
+    color: #fff;
+    cursor: default;
+}
+
+/* Keyframes */
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
