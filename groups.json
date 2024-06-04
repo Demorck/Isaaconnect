@@ -573,5 +573,29 @@
         "name": "Items that grant access to exclusive rooms",
         "items": [628, 622, 602, 586],
         "difficulty": 2
+    },
+
+        {
+        "name": "Items that have 'Evil up' in their description",
+        "items": [654, 344, 230, 262, 339, 260],
+        "difficulty": 2
+    },
+    
+        {
+        "name": "Items that can directly damage Isaac",
+        "items": [713, 326, 40, 186, 126, 135],
+        "difficulty": 2
+    },
+
+        {
+        "name": "Items that affect devil/angel chances",
+        "items": [51, 669, 260, 78, 34, 215, 499, 584],
+        "difficulty": 2
+    },
+
+        {
+        "name": "Items with a question mark",
+        "items": [670, 287, 249, 414],
+        "difficulty": 2
     }
 ]
