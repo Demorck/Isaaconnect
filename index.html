@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Guess 4 groups of 4 items in Isaac. Changes everyday !">
+    <link rel="icon" href="/assets/isaaconnect.ico" type="image/x-icon">
     <title>Isaaconnect</title>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -26,7 +27,7 @@
     </style>
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="theme purple-theme">
+<body class="theme">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJ5LN7PH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -57,39 +58,39 @@
                     
                 </div>
 
-                <section class="buttons flex justify-evenly mt-4">
-                    <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
-                        Submit
-                    </button>
-                    <section class="health flex justify-between upheaval">
+                <section class="buttons flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
+                    <div class="flex justify-evenly">
+                        <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--shuffle block md:hidden">
+                            Shuffle
+                        </button>
+                        <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
+                            Submit
+                        </button>
+                    </div>
+                    <section class="health flex justify-center md:justify-between upheaval">
                         <span class="flex ml-2 items-between hearts">
                         </span>
                     </section>
                 </section>
             </div>
 
-            <div class="flex flex-col gap-4 items-center">
+            <div class="flex-col gap-4 items-center hidden md:flex">
                 <button type="button" data-id="shuffle" class="shadow-theme text-white font-bold p-3 rounded-full">
                     <span class="material-symbols-outlined align-bottom">
                         shuffle
                         </span>
-                </button>
-                <button type="button" data-id="shuffle" onclick="background();" class="shadow-theme text-white font-bold p-3">
-                    <span class="material-symbols-outlined symbol-fill align-bottom">
-                        home
-                    </span>
                 </button>
             </div>
         </div>
 
         
         <div class="flex flex-col relative">
-            <div id="tooltip-wrapper"></div>
-            <div class="flex flex-row bottom align-bottom text-white  symbol-fill gap-2">
+            <div id="tooltip-wrapper" class="max-w-sm md:max-w-md xl:max-w-lg"></div>
+            <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
                 <span class="material-symbols-rounded md:text-4xl">
                     bar_chart
                 </span>
-                <span class="material-symbols-rounded md:text-4xl">
+                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="schedule">
                     schedule
                 </span>
                 <span class="material-symbols-rounded md:text-4xl">
@@ -107,7 +108,6 @@
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js"></script>
-<script type="module" src="/modals.js"></script>
 <script type="module" src="/index.js"></script>
 <script>
     function numberWithLeadingZeros(number, length = 3)
@@ -120,15 +120,32 @@
         return number;
     }
 
-    function background()
+    function changeBackground(element)
     {
         let body = document.querySelector('body');
-        let theme = body.classList[1];
-        let themes = ['purple-theme', 'brown-theme'];
-        let index = themes.indexOf(theme);
-        index = (index + 1) % themes.length;
-        body.classList.remove(theme);
-        body.classList.add(themes[index]);
+        const regex = new RegExp('(.*-theme)', 'g');
+        if (body.className.match(regex))
+        {
+            body.className = body.className.replace(regex, '');
+        }
+        localStorage.setItem('theme', element.value);
+        body.classList.add(element.value);
+    }
+
+    function changeAutocompletion(element)
+    {
+        let autocomplete = localStorage.getItem('autocomplete');
+        let checkbox = document.querySelector('#autocomplete');
+        if (autocomplete === 'true')
+        {
+            localStorage.setItem('autocomplete', 'false');
+            checkbox.parentNode.classList.remove('tgl-checked');
+        }
+        else
+        {
+            localStorage.setItem('autocomplete', 'true');
+            checkbox.parentNode.classList.add('tgl-checked');
+        }
     }
 
     function removeLocalStorage()
@@ -238,6 +255,7 @@
             if (event.keyCode === sequence[position]) {
                 position++;
                 if (position === sequence.length) {
+                    localStorage.clear();
                     document.body.classList.add('blackout');
                     setTimeout(() => {
                         prompt("Vous avez appuyé sur la séquence correcte !");
@@ -280,24 +298,88 @@
         element.classList.add('shadow-theme');
         element.classList.remove('tooltip-inactive');
 
-        wrapper.innerHTML = `
-            <div class="tooltip shadow-theme" data-id"${type}">
+        switch (type)
+        {
+            case 'help':
+                wrapper.innerHTML = helpHtml();
+                break;
+            case 'settings':
+                wrapper.innerHTML = settingsHtml();
+                let theme = localStorage.getItem('theme');
+                document.querySelectorAll('option').forEach(option => { option.selected = false; });
+                document.querySelector('option[value="' + theme + '"]').selected = true;
+                let autocomplete = localStorage.getItem('autocomplete');
+                if (autocomplete == 'true')
+                {
+                    let checkbox = document.querySelector('#autocomplete');
+                    checkbox.checked = true;
+                    checkbox.parentNode.classList.add('tgl-checked');
+                }
+                break;
+            case 'schedule':
+                wrapper.innerHTML = scheduleHtml();
+                break;
+            default:
+                break;
+        }
+    }
+
+    function settingsHtml()
+    {
+        return `
+            <div class="rounded-2xl tooltip shadow-theme" data-id="settings">
                 <div class="tooltip-content">
-                    <h1 class="text-2xl">Quoicoubeh</h1>
-                    <p>Change the theme of the website</p>
-                    <p>Change the background of the website</p>
-                    <p>Copy the results</p>
-                    <p>Share the results</p>
-                    <p>Remove the local storage</p>
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-2xl">Settings</h1>
+                        <p>Here you can choose some settings for the website, like the theme, autocomplete the fourth group, etc.</p>
+                        
+                        <div class="flex flex-col theme-selection">
+                            <h1 class="text-xl">Theme</h1>
+                            <label>
+                                <select onchange="changeBackground(this);" class="rounded-3xl font-semibold">
+                                    <option value="brown-theme">Basement</option>
+                                    <option value="purple-theme">Mausoleum</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="flex flex-row-reverse gap-4 justify-center">
+                            <h1 class="text-xl">Autocomplete</h1>
+                            <div class="checkbox-wrapper rounded-3xl">
+                                <input onchange="changeAutocompletion(this)" class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
+                                <label class="tgl-btn" for="autocomplete">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
     }
 
-    function hideTooltip()
+    function helpHtml()
     {
-        let tooltip = document.querySelector('.tooltip');
-        tooltip.remove();
+        return `
+            <div class="tooltip shadow-theme" data-id="help">
+                <div class="tooltip-content text-justify">
+                    <h1 class="text-3xl text-center">Create <b>4 groups</b> of <b>4 items !</b></h1><br>
+                    <p>In Isaaconnect, you have to form groups of items that have something in common. There are four groups, some are easier that others.</p>
+                    <p>Don't make too many mistakes !</p>
+                    <br>
+                    <p>Made with love by Démorck. Inspired by <b>Only Connect</b> and <b>NYT Connections.</b> Website design by Biobak.</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function scheduleHtml()
+    {
+        return `
+            <div class="tooltip shadow-theme" data-id="schedule">
+                <div class="tooltip-content px-5 py-4">
+                    <h1 class="text-2xl">Next Isaaconnect in</h1>
+                    <p class="upheaval countdown text-6xl">00 : 00 : 00</p>
+                </div>
+            </div>
+        `;
     }
 </script>
 </html>

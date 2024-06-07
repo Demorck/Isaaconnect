@@ -137,7 +137,7 @@ function createCard(item, index) {
 }
 
 function setupEventListeners() {
-    document.querySelector('button[data-id="shuffle"]').addEventListener('click', shuffleCards);
+    document.querySelectorAll('button[data-id="shuffle"]').forEach(element => element.addEventListener('click', shuffleCards));
     document.querySelector('button[data-id="submit"]').addEventListener('click', handleSubmit);
 }
 
@@ -213,7 +213,8 @@ function handleSubmit() {
     if (win) solveGroup(currentGroup);
     else wrongAnswer(selectedItems);
 
-    if (groupsSolved.length >= 3) {
+    let autocomplete = localStorage.getItem('autocomplete');
+    if (groupsSolved.length >= 3 && autocomplete == 'true') {
         let lastGroup;
         mapItemAndGroup.forEach((key, value) => {
             if (!groupsSolved.includes(key.name))
@@ -276,8 +277,8 @@ function solveGroup(group) {
     });
 
     content += `</div></div>
-            <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title">${group.name}</h3>
-                <p class="solved-group--description">`;
+            <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title text-lg md:text-xl">${group.name}</h3>
+                <p class="solved-group--description text-xs md:text-lg">`;
 
     i = 0;
     mapItemAndGroup.forEach((key, value) => {
@@ -371,6 +372,7 @@ function init() {
         itemsAlreadyPicked.forEach((item, index) => container.innerHTML += createCard(item, index));
         applyBorderRadius();
 
+        initDefaultLocalStorage();
         setupEventListeners();
         addEventCheckBox();
         let lastIsaaconnect = localStorage.getItem('lastIsaaconnect');
@@ -386,6 +388,7 @@ function init() {
         }
         
         localStorage.setItem('lastIsaaconnect', getDaysSince());
+        
     });
 }
 
@@ -424,6 +427,38 @@ function assignLocalStorageToVariables() {
         }, []);
         currentAttempt = attempt.length;
     }
+
+    let theme = localStorage.getItem('theme');
+    if (theme != null) {
+        document.querySelector('body').classList.add(theme);
+    }
+    else {
+        localStorage.setItem('theme', 'brown-theme');
+        document.querySelector('body').classList.add('brown-theme');
+    }
+
+    let autocomplete = localStorage.getItem('autocomplete');
+    if (autocomplete != null) {
+        document.querySelector('input[type="checkbox"]').checked = autocomplete == 'true';
+        if (autocomplete == 'true') {
+            localStorage.setItem('autocomplete', true);
+        }
+    }
+    else {
+        localStorage.setItem('autocomplete', false);
+    }
+}
+
+function initDefaultLocalStorage() {
+    if (localStorage.getItem('theme') == null)
+    {
+        localStorage.setItem('theme', 'brown-theme');
+        document.querySelector('body').classList.add('brown-theme');
+    }
+    
+
+    if (localStorage.getItem('autocomplete') == null)
+        localStorage.setItem('autocomplete', false);
 }
 
 function addEventCheckBox()
