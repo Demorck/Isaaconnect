@@ -32,7 +32,8 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <div id="modal-wrapper" class="modal"></div>
+    <div id="modal-background" class="modal"></div>
+    
 
     <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap">
         <div class="flex flex-col">
@@ -51,11 +52,13 @@
                     <div id="cards-module" class="cards-module grid grid-cols-4 gap-4">
                     </div>
                 </div>
+                
+                <div id="modal-wrapper"></div>
 
             </div>
 
             <section class="buttons flex justify-evenly mt-4">
-                <button type="button" data-id="submit" class="shadow-theme bg-yellow-500 hover:bg-yellow-700 text-dark font-bold py-2 px-4 rounded-xl button--disabled" disabled>
+                <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
                     Submit
                 </button>
                 <section class="health flex justify-between upheaval">

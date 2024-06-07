@@ -162,6 +162,25 @@ function applyBorderRadius() {
         if (index === labels.length - 1) label.classList.add('rounded-br-3xl');
     });
 
+    const solved = document.querySelectorAll('.solved-group');
+    solved.forEach((group, index) => {
+        group.classList.remove('rounded-tl-3xl');
+        group.classList.remove('rounded-tr-3xl');
+        group.classList.remove('rounded-bl-3xl');
+        group.classList.remove('rounded-br-3xl');
+        if (index === 0)
+        {
+            group.classList.add('rounded-tl-3xl');
+            group.classList.add('rounded-tr-3xl');
+        }
+
+        if (index === solved.length - 1)
+        {
+            group.classList.add('rounded-bl-3xl');
+            group.classList.add('rounded-br-3xl');
+        }
+    });
+
 }
 
 function deselectAllCards() {
@@ -239,23 +258,39 @@ function wrongAnswer(selectedItems) {
 function solveGroup(group) {
     const container = document.querySelector(".solved-groups");
     let index = groupAlreadyPicked.indexOf(group.name);
-    console.log(group);
-    console.log(groupAlreadyPicked);
-    console.log(index);
-    let content = `<section class="solved-group bg-${colors[index]}">
-                    <h3 class="solved-group--title">${group.name}</h3>
-                    <ol class="solved-group--cards">`;
+    let content = `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${colors[index]}">
+                    <div class="solved-group--cards flex flex-col mr-5">
+                        <div class="flex flex-row">`;
+
+    let i = 0;
 
     mapItemAndGroup.forEach((key, value) => {
         if (key === group) {
             const item = findItemById(value.id);
-            content += `<li class="solved-group--card"><img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}">
-                        ${item.alias}</li>`;
+            if (i == 2) content += `</div><div class="flex flex-row">`;
+            content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
             document.querySelector(`label[data-id="${item.id}"]`).remove();
+            i++;
         }
     });
 
-    content += `</ol></section>`;
+    content += `</div></div>
+            <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title">${group.name}</h3>
+                <p class="solved-group--description">`;
+
+    i = 0;
+    mapItemAndGroup.forEach((key, value) => {
+        if (key === group) {
+            const item = findItemById(value.id);
+            content += `${item.alias}`;
+            if (i != 3) content += `, `;
+            i++;
+        }
+    });
+
+    content += `</p></div>`;
+
+    content += `</div></section>`;
     container.innerHTML += content;
     if (!groupsSolved.includes(group.name)) groupsSolved.push(group.name);
     Cookies.set('groupsSolved', groupsSolved);
@@ -274,12 +309,13 @@ function gameOver() {
 
 function displayModal(modalPath) {
     const modalWrapper = document.getElementById('modal-wrapper');
+    const modalBackground = document.getElementById('modal-background');
     fetch(modalPath)
         .then(response => response.text())
         .then(content => {
             modalWrapper.innerHTML = content;
             document.querySelector('.close').addEventListener('click', () => {
-                modalWrapper.style.display = 'none';
+                modalBackground.style.display = 'none';
             });
             document.querySelector('[data-id="results-wrapper"]').innerHTML = convertAttemptToSquareMatrix(attempt);
             document.querySelector('[data-id="results--title"]').innerHTML = `Isaaconnect #${getDaysSince()}`;
@@ -288,7 +324,7 @@ function displayModal(modalPath) {
             console.error('Erreur lors du chargement du contenu de la modal:', error);
         });
 
-    modalWrapper.style.display = 'flex';
+        modalBackground.style.display = 'flex';
 }
 
 function convertAttemptToSquareMatrix(attempt) {
@@ -327,9 +363,6 @@ function init() {
             });
 
         }
-
-        console.log(mapItemAndGroup);
-
 
         itemsAlreadyPicked = shuffleArray(itemsAlreadyPicked);
         const container = document.getElementById("cards-module");

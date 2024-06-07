@@ -1,13 +1,20 @@
 :root {
     --main-theme-color: #42291A;
     --main-theme-color--secondary: #71472D;
+    --main-theme-color--secondary-hover: #503220;
     --main-theme-color--shadows: #281910;
     --main-theme-color--title: #FF5B5B;
+    --main-theme-color--submit: #FFC000;
+    --main-theme-color--submit-hover: #ad8200;
+
 
     --purple-theme-color: #2F1D2E;
     --purple-theme-color--secondary: #5F3B5D;
+    --purple-theme-color--secondary-hover: #422a40;
     --purple-theme-color--title: #C301FF;
     --purple-theme-color--shadows: #1C111C;
+    --purple-theme-color--submit: #C301FF;
+    --purple-theme-color--submit-hover: #9601c3;
 }
 
 @font-face {
@@ -66,6 +73,10 @@ body.main-theme {
     background-color: var(--main-theme-color--secondary);
 }
 
+.main-theme button:hover {
+    background-color: var(--main-theme-color--secondary-hover);
+}
+
 .main-theme .shadow-theme {
     -webkit-filter: drop-shadow(0px 7px 0  var(--main-theme-color--shadows));
     -moz-filter: drop-shadow(0px 7px 0 var(--main-theme-color--shadows));
@@ -74,6 +85,14 @@ body.main-theme {
 
 .main-theme h1 > span {
     color: var(--main-theme-color--title);
+}
+
+.main-theme .button--submit {
+    background-color: var(--main-theme-color--submit);
+}
+
+.main-theme .button--submit:hover {
+    background-color: var(--main-theme-color--submit-hover);
 }
 
 /* Purple Theme */
@@ -86,6 +105,10 @@ body.purple-theme {
     background-color: var(--purple-theme-color--secondary);
 }
 
+.purple-theme button:hover {
+    background-color: var(--purple-theme-color--secondary-hover);
+}
+
 .purple-theme h1 > span {
     color: var(--purple-theme-color--title);
 }
@@ -94,6 +117,14 @@ body.purple-theme {
     -webkit-filter: drop-shadow(0px 7px 0  var(--purple-theme-color--shadows));
     -moz-filter: drop-shadow(0px 7px 0 var(--purple-theme-color--shadows));
     filter: drop-shadow(0px 7px 0 var(--purple-theme-color--shadows));
+}
+
+.purple-theme .button--submit {
+    background-color: var(--purple-theme-color--submit);
+}
+
+.purple-theme .button--submit:hover {
+    background-color: var(--purple-theme-color--submit-hover);
 }
 
 .modal {
@@ -174,7 +205,7 @@ body.purple-theme {
 }
 
 .bg-paper {
-    background-color: #f1f2f6;
+    background-color: #fff;
 }
 
 .svg-option {
@@ -205,7 +236,7 @@ body.purple-theme {
 }
 
 .card-module {
-    background-color: #E9DADF;
+    background-color: #F3E7E1;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 0.5em;
