@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_HEALTH = 4;
+const MAX_HEALTH = 5;
 let items, groups, health = MAX_HEALTH;
 let itemsAlreadyPicked = [], labels = [], groupsSolved = [], attempt = [];
 let groupAlreadyPicked = [], currentAttempt = 0, mapItemAndGroup = new Map();
@@ -112,7 +112,7 @@ function getRandomItems(group, bannedItem) {
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(getSeed(i) * (i + 1));
+        const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
@@ -239,8 +239,8 @@ function handleSubmit() {
     }
 
     
-    Cookies.set('attempt', attempt);
-    Cookies.set('currentAttempt', currentAttempt);
+    localStorage.setItem('attempt', attempt);
+    localStorage.setItem('currentAttempt', currentAttempt);
 
     if (groupsSolved.length >= 4) gameOver();
 }
@@ -252,7 +252,8 @@ function wrongAnswer(selectedItems) {
         item.classList.add('card-module--shake');
         setTimeout(() => item.classList.remove('card-module--shake'), 1000);
     });
-    Cookies.set('health', health);
+    
+    localStorage.setItem('health', health);
 }
 
 function solveGroup(group) {
@@ -293,7 +294,7 @@ function solveGroup(group) {
     content += `</div></section>`;
     container.innerHTML += content;
     if (!groupsSolved.includes(group.name)) groupsSolved.push(group.name);
-    Cookies.set('groupsSolved', groupsSolved);
+    localStorage.setItem('groupsSolved', groupsSolved);
     deselectAllCards();
     applyBorderRadius();
 }
@@ -309,31 +310,32 @@ function gameOver() {
 
 function displayModal(modalPath) {
     const modalWrapper = document.getElementById('modal-wrapper');
-    const modalBackground = document.getElementById('modal-background');
     fetch(modalPath)
         .then(response => response.text())
         .then(content => {
             modalWrapper.innerHTML = content;
-            document.querySelector('.close').addEventListener('click', () => {
-                modalBackground.style.display = 'none';
+            document.querySelector('.close-button').addEventListener('click', () => {
+                modalWrapper.style.display = 'none';
+                modalWrapper.innerHTML = '';
             });
             document.querySelector('[data-id="results-wrapper"]').innerHTML = convertAttemptToSquareMatrix(attempt);
-            document.querySelector('[data-id="results--title"]').innerHTML = `Isaaconnect #${getDaysSince()}`;
+            // document.querySelector('[data-id="results--title"]').innerHTML = `Isaaconnect #${getDaysSince()}`;
         })
         .catch(error => {
             console.error('Erreur lors du chargement du contenu de la modal:', error);
         });
 
-        modalBackground.style.display = 'flex';
+        modalWrapper.style.display = 'flex';
 }
 
 function convertAttemptToSquareMatrix(attempt) {
-    let content = `<div data-id="results" class="flex flex-col gap-4">`;
+    let content = `<div data-id="results" class="flex flex-col">`;
     attempt.forEach((group, index_attempt) => {
         content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
         group.forEach((item, index_group) => {
             const index = groupAlreadyPicked.indexOf(item);
-            content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${colors[index]} rounded-md w-10 h-10"></span>`;
+            let rounded = index_group % 4 == 0 ? "rounded-l-lg" : index_group % 4 == 3 ? "rounded-r-lg" : "";
+            content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${colors[index]} ${rounded} w-10 h-10"></span>`;
         });
         content += `</div>`;
     });
@@ -371,35 +373,36 @@ function init() {
 
         setupEventListeners();
         addEventCheckBox();
-        let lastIsaaconnect = Cookies.get('lastIsaaconnect');
+        let lastIsaaconnect = localStorage.getItem('lastIsaaconnect');
         if (lastIsaaconnect != null) {
             if (lastIsaaconnect != getDaysSince()) {
                 health = MAX_HEALTH;
                 groupsSolved = [];
-                Cookies.set('health', health);
-                Cookies.set('groupsSolved', groupsSolved);
+                localStorage.setItem('health', health);
+                localStorage.setItem('groupsSolved', groupsSolved);
             } else {
-                assignCookiesToVariables();
+                assignLocalStorageToVariables();
             }
         }
         
-        Cookies.set('lastIsaaconnect', getDaysSince());
+        localStorage.setItem('lastIsaaconnect', getDaysSince());
     });
 }
 
-function assignCookiesToVariables() {
-    const cookies = Cookies.get();
-
-    if (cookies.health != null) {
-        health = parseInt(cookies.health);
+function assignLocalStorageToVariables() {
+    let localHealth = localStorage.getItem('health');
+    
+    if (localHealth != null) {
+        health = parseInt(localHealth);
         updateHealthDisplay();
     }
     else {
-        Cookies.set('health', health);
+        localStorage.setItem('health', health);
     }
 
-    if (cookies.groupsSolved != null) {
-        groupsSolved = cookies.groupsSolved.split(',');
+    let localGroupSolved = localStorage.getItem('groupsSolved');
+    if (localGroupSolved != null) {
+        groupsSolved = localGroupSolved.split(',');
         groupsSolved.forEach(groupName => {
             const group = groups.find(g => g.name === groupName);
             solveGroup(group);
@@ -411,8 +414,9 @@ function assignCookiesToVariables() {
         if (groupsSolved.length >= 3) gameOver();
     }
 
-    if (cookies.attempt != null) {
-        attempt = cookies.attempt.split(',').reduce((acc, item, index) => {
+    let localAttempt = localStorage.getItem('attempt');
+    if (localAttempt != null) {
+        attempt = localAttempt.split(',').reduce((acc, item, index) => {
             const groupIndex = Math.floor(index / 4);
             if (!acc[groupIndex]) acc[groupIndex] = [];
             acc[groupIndex].push(item);

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Guess 4 groups of 4 items in Isaac. Changes everyday !">
+    <title>Isaaconnect</title>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -24,7 +25,6 @@
         }
     </style>
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body class="theme purple-theme">
     <!-- Google Tag Manager (noscript) -->
@@ -32,60 +32,81 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <div id="modal-background" class="modal"></div>
-    
+    <div class="flex flex-col h-full">
+        <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1">
 
-    <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap">
-        <div class="flex flex-col">
+            <div class="flex flex-col">
 
-            <div class="flex self-center">
-                <h1 class="upheaval text-5xl md:text-6xl shadow-theme text-white flex">ISAA<span class="">CONNECT</span></h1>
-            </div>
-
-            <div class="flex flex-row">
-                <div  class="shadow-theme flex flex-col justify-center items-center p-4 m-4 mb-0 border-4 text-center bg-paper rounded-3xl" id="cards-game">
-                    <div id="cards-win">
-                        <ol class="solved-groups">
-                            
-                        </ol>
-                    </div>
-                    <div id="cards-module" class="cards-module grid grid-cols-4 gap-4">
-                    </div>
+                <div class="flex self-center">
+                    <h1 class="upheaval text-5xl md:text-6xl shadow-theme text-white flex">ISAA<span>CONNECT</span></h1>
                 </div>
-                
-                <div id="modal-wrapper"></div>
 
+                <div class="flex flex-row justify-center">
+                    <div  class="shadow-theme flex flex-col justify-center items-center p-4 m-4 mb-0 text-center bg-paper rounded-3xl" id="cards-game">
+                        <div id="cards-win">
+                            <ol class="solved-groups">
+                                
+                            </ol>
+                        </div>
+                        <div id="cards-module" class="cards-module grid grid-cols-4 gap-4">
+                        </div>
+                        <div id="modal-wrapper" style="display: none;" class="z-10">
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <section class="buttons flex justify-evenly mt-4">
+                    <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
+                        Submit
+                    </button>
+                    <section class="health flex justify-between upheaval">
+                        <span class="flex ml-2 items-between hearts">
+                        </span>
+                    </section>
+                </section>
             </div>
 
-            <section class="buttons flex justify-evenly mt-4">
-                <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
-                    Submit
+            <div class="flex flex-col gap-4 items-center">
+                <button type="button" data-id="shuffle" class="shadow-theme text-white font-bold p-3 rounded-full">
+                    <span class="material-symbols-outlined align-bottom">
+                        shuffle
+                        </span>
                 </button>
-                <section class="health flex justify-between upheaval">
-                    <span class="flex ml-2 items-between hearts">
+                <button type="button" data-id="shuffle" onclick="background();" class="shadow-theme text-white font-bold p-3">
+                    <span class="material-symbols-outlined symbol-fill align-bottom">
+                        home
                     </span>
-                </section>
-            </section>
+                </button>
+            </div>
         </div>
 
-        <div class="flex flex-col gap-4 items-center">
-            <button type="button" data-id="shuffle" class="shadow-theme text-white font-bold p-3 rounded-full">
-                <span class="material-symbols-outlined align-bottom">
-                    shuffle
-                    </span>
-            </button>
-            <button type="button" data-id="shuffle" onclick="background();" class="shadow-theme text-white font-bold p-3">
-                <span class="material-symbols-outlined align-bottom">
-                    shuffle
-                    </span>
-            </button>
+        
+        <div class="flex flex-col relative">
+            <div id="tooltip-wrapper"></div>
+            <div class="flex flex-row bottom align-bottom text-white  symbol-fill gap-2">
+                <span class="material-symbols-rounded md:text-4xl">
+                    bar_chart
+                </span>
+                <span class="material-symbols-rounded md:text-4xl">
+                    schedule
+                </span>
+                <span class="material-symbols-rounded md:text-4xl">
+                    diversity_1
+                </span>
+                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="help">
+                    help
+                </span>
+                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="settings">
+                    settings
+                </span>
+            </div>
         </div>
-
     </div>
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 <script type="module" src="/modals.js"></script>
 <script type="module" src="/index.js"></script>
 <script>
@@ -103,58 +124,74 @@
     {
         let body = document.querySelector('body');
         let theme = body.classList[1];
-        let themes = ['purple-theme', 'main-theme'];
+        let themes = ['purple-theme', 'brown-theme'];
         let index = themes.indexOf(theme);
         index = (index + 1) % themes.length;
         body.classList.remove(theme);
         body.classList.add(themes[index]);
     }
 
-    function removeCookies()
+    function removeLocalStorage()
     {
-        Object.keys(Cookies.get()).forEach(function(cookieName) {
-            Cookies.remove(cookieName);
-        });
+        localStorage.clear();
     }
 
-    function copyResult()
+    function copyResult(element)
     {
         const title = document.querySelector('[data-id="results--title"]');
-        const result = document.querySelector('[data-id="results"]');
-
-        let textToCopy = title.textContent + "\n";
-
-        let health = Cookies.get("health");
-        if (health === undefined)
+        const results = document.querySelector('[data-id="results"]');
+        try
         {
-            health = document.querySelectorAll('[data-type="health"]').length;
-        }
-        textToCopy += `❤️: ${health} 💔: ${5 - health}\n`;
-        
-        result.childNodes.forEach((node, index) => {
-            items = document.querySelectorAll(`[data-id^="results-attempt${index}-"]`);
-            items.forEach(item => {
-                let indexGroup = + item.getAttribute('data-id').split('-group')[1];
-                switch (indexGroup)
-                {
-                    case 0:
-                        textToCopy += "🟥";
-                        break;
-                    case 1:
-                        textToCopy += "🟦";
-                        break;
-                    case 2:
-                        textToCopy += "🟩";
-                        break;
-                    case 3:
-                        textToCopy += "🟪";
-                        break;
-                }
-            });
-            textToCopy += "\n";
-        });
+            let textToCopy = "";
+            // textToCopy = title.textContent + "\n";
 
-        navigator.clipboard.writeText(textToCopy);
+            let health = localStorage.getItem('health');
+            if (health === undefined)
+            {
+                health = document.querySelectorAll('[data-type="health"]').length;
+            }
+            textToCopy += `❤️: ${health} 💔: ${5 - health}\n`;
+            
+            for (let i = 0; i < 5; i++)
+            {
+                let items = document.querySelectorAll(`[data-id^="results-attempt${i}-"]`);
+                items.forEach(item => {
+                    let indexGroup = + item.getAttribute('data-id').split('-group')[1];
+                    switch (indexGroup)
+                    {
+                        case 0:
+                            textToCopy += "🟥";
+                            break;
+                        case 1:
+                            textToCopy += "🟦";
+                            break;
+                        case 2:
+                            textToCopy += "🟩";
+                            break;
+                        case 3:
+                            textToCopy += "🟪";
+                            break;
+                    }
+                });
+                textToCopy += "\n";
+            }
+            let moreRows = results.length - 4;
+            if (moreRows > 0)
+            {
+                textToCopy += `... and ${moreRows} more rows\n`;
+            }
+
+            navigator.clipboard.writeText(textToCopy);
+            element.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
+            setTimeout(() => {
+                element.innerHTML = `<span class="material-symbols-outlined align-bottom">content_copy</span>Copy`;
+            }, 2500);
+        }
+        catch (error)
+        {
+            alert("Failed to copy to clipboard");
+        }
+        
     }
 </script>
 <script>
@@ -193,45 +230,6 @@
     const countdownInterval = setInterval(updateCountdown, 1000);
 </script>
 <script>
-    "use strict";
-    let cookie = Cookies.get("background");
-    if (!cookie) {
-        Cookies.set("background", "basement");
-    }
-    else {
-        let background = document.getElementById("background");
-        background.src = `/assets/background/${cookie}.jpg`;
-    }
-
-    function previewBackground(element) {
-        let id = element.getAttribute("data-id");
-        let background = document.getElementById("background");
-        background.src = `/assets/background/${id}.jpg`;
-    }
-
-    function resetBackground(element) {
-        let background = document.getElementById("background");
-        background.src = `/assets/background/${Cookies.get("background")}.jpg`;
-    }
-
-    function applyBackground(element) {
-        let id = element.getAttribute("data-id");
-        let background = document.getElementById("background");
-        background.src = `/assets/background/${id}.jpg`;
-        Cookies.set("background", id);
-        changeText(id);
-    }
-
-    function changeText(background) {
-        let texts = document.querySelectorAll(".text-green-500");
-        texts.forEach(text => {
-            text.classList.remove("text-green-500", "font-semibold", "underline");
-        });
-        let text = document.querySelector(`[data-id="${background}"]`);
-        text.classList.add("text-green-500", "font-semibold", "underline");
-    }
-</script>
-<script>
     (function() {
         const sequence = [52, 56, 49, 53, 49, 54, 50, 51, 52, 50]; // Codes des touches 4, 8, 15, 16, 23, 42
         let position = 0;
@@ -250,5 +248,56 @@
             }
         });
     })();
+</script>
+<script>
+    function displayTooltip(element)
+    {
+        let wrapper = document.querySelector('#tooltip-wrapper');
+        let type = element.getAttribute('data-id');
+        wrapper.style.display = 'none';
+        let isAlreadyActive = document.querySelector('.tooltip-active');
+        if (wrapper.innerHTML !== '')
+        {
+            wrapper.innerHTML = '';
+            document.querySelectorAll('.tooltip-active').forEach(element => {
+                element.classList.remove('tooltip-active');
+                element.classList.add('tooltip-inactive');
+                element.classList.remove('shadow-theme');
+            });
+        }
+        
+        if (isAlreadyActive != null && isAlreadyActive.getAttribute('data-id') === type)
+        {
+            isAlreadyActive.classList.remove('tooltip-active');
+            isAlreadyActive.classList.add('tooltip-inactive');
+            isAlreadyActive.classList.remove('shadow-theme');
+            return;
+        }
+
+        wrapper.style.display = 'block';
+
+        element.classList.add('tooltip-active');
+        element.classList.add('shadow-theme');
+        element.classList.remove('tooltip-inactive');
+
+        wrapper.innerHTML = `
+            <div class="tooltip shadow-theme" data-id"${type}">
+                <div class="tooltip-content">
+                    <h1 class="text-2xl">Quoicoubeh</h1>
+                    <p>Change the theme of the website</p>
+                    <p>Change the background of the website</p>
+                    <p>Copy the results</p>
+                    <p>Share the results</p>
+                    <p>Remove the local storage</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function hideTooltip()
+    {
+        let tooltip = document.querySelector('.tooltip');
+        tooltip.remove();
+    }
 </script>
 </html>
