@@ -651,12 +651,5 @@
         "name": "Bumbino set drops",
         "items": [15, 209, 56, 86, 6, 103, 36, 45, 453, 446, 459, 683],
         "difficulty": 3
-    },
-
-    {
-        "name": "Items that feature one or more bones in their sprite",
-        "items": [26, 133, 265, 453, 467, 541, 542, 544, 548, 549, 683, 704, 714],
-        "difficulty": 4
     }
-    
 ]
