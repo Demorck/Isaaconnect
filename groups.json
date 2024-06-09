@@ -336,7 +336,7 @@
     },
 
     {
-        "name": "Items that teleport Isaac",
+        "name": "Items that teleports Isaac",
         "items": [681, 635, 316, 324, 44, 419],
         "difficulty": 2
     },
@@ -523,13 +523,13 @@
 
     {
         "name": "Items with multiple sprites",
-        "items": [711, 685, 720, 489],
+        "items": [711, 685, 720, 489, 483, 479, 523, 640],
         "difficulty": 3
     },
 
     {
         "name": "Guppy items",
-        "items": [133, 134, 145, 187, 212, 665],
+        "items": [133, 134, 145, 187, 212, 665, 81],
         "difficulty": 0
     },
 
@@ -575,76 +575,82 @@
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items that have 'Evil up' in their description",
-        "items": [654, 344, 230, 262, 339, 260],
+        "items": [654, 344, 230, 262, 339, 260, 216],
         "difficulty": 2
     },
     
-        {
+    {
         "name": "Items that can directly damage Isaac",
         "items": [713, 326, 40, 186, 126, 135],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items that affect devil/angel chances",
         "items": [51, 669, 260, 78, 34, 215, 499, 584],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items with a question mark",
         "items": [670, 287, 249, 414],
         "difficulty": 1
     },
 
-        {
+    {
         "name": "Characters' starting items",
         "items": [105, 45, 46, 34, 36, 126, 117, 122, 156, 214, 609, 360, 412, 357, 349, 477, 584, 710, 705, 715, 713, 711, 706, 712, 722],
         "difficulty": 1
     },
 
-        {
+    {
         "name": "Items with crosses",
         "items": [82, 98, 138, 142, 161, 162, 173, 313, 499, 567, 568, 569, 584, 601, 633, 673, 691],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items that can summon beams of light",
         "items": [160, 326, 374, 181],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Milk items",
         "items": [25, 69, 330, 436, 561],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Bag items",
         "items": [710, 271, 139, 135, 119, 252, 94, 195, 204, 131, 389, 424, 420, 500, 501, 534, 538],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items triggered by a double tap",
         "items": [405, 568, 593, 726],
         "difficulty": 2
     },
 
-        {
+    {
         "name": "Items named after diseases or conditions",
         "items": [531, 726, 103, 167, 236, 254, 261, 350, 368, 379, 440, 460, 459, 454, 453, 452, 469, 466, 509, 525, 549, 553, 558, 657, 683, 680, 694, 697, 725, 724, 731],
         "difficulty": 3
     },
 
-        {
+    {
         "name": "Teeth-related items",
         "items": [86, 150, 183, 445, 446, 663],
         "difficulty": 2
+    },
+
+    {
+        "name": "Bumbino set drops",
+        "items": [15, 209, 56, 86, 6, 103, 36, 45, 453, 446, 459, 683],
+        "difficulty": 3
     }
     
 ]
