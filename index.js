@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_HEALTH = 5;
+const MAX_HEALTH = 4;
 let items, groups, health = MAX_HEALTH;
 let itemsAlreadyPicked = [], labels = [], groupsSolved = [], attempt = [];
 let winStreak = 0, longestStreak = 0, totalWin = 0, totalLose = 0;
@@ -201,6 +201,7 @@ function handleSubmit() {
     let firstGroup, currentGroup, win = true, i = 0;
 
     attempt[currentAttempt] = [];
+    let numberOfGroups = 0;
     selectedItems.forEach(item => {
         const id = item.getAttribute('data-id');
         const currentItem = findItemById(parseInt(id));
@@ -208,10 +209,16 @@ function handleSubmit() {
         if (!firstGroup) firstGroup = currentGroup;
         else if (firstGroup !== currentGroup) win = false;
 
+        if (firstGroup === currentGroup) numberOfGroups += 1;
+
         attempt[currentAttempt][i++] = currentGroup.name;
     });
 
     currentAttempt++;
+    if (numberOfGroups == 3)
+    {
+        showMessage("Almost...");
+    }
 
     if (win) solveGroup(currentGroup);
     else wrongAnswer(selectedItems);
@@ -537,6 +544,16 @@ function addEventCheckBox()
             }
         });
     });
+}
+
+function showMessage(message) {
+    const container = document.querySelector('.message');
+    container.innerHTML = message;
+    container.classList.toggle('hidden');
+    setTimeout(() => {
+        container.innerHTML = '';
+        container.classList.toggle('hidden');
+    }, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", init);

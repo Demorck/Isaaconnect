@@ -93,6 +93,7 @@ ol, ul {
 
 
 /******* Modaux *******/
+
 #modal-wrapper {
     display: flex;
     justify-content: center;
@@ -141,6 +142,9 @@ ol, ul {
     font-variation-settings: 'GRAD' -25;
     transition: all 0.5 ease;
 }
+
+
+/******* LE JEU ********/
 
 .hearts img {
     image-rendering: pixelated;
@@ -223,6 +227,14 @@ ol, ul {
 .button--disabled:active {
     transform: scale(1);
 }
+
+.message {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: 800;
+}
+
+/***** TOOLTIPS *********/
 
 #tooltip-wrapper
 {
@@ -351,7 +363,8 @@ ol, ul {
     text-align: left;
 }
 
-/* Keyframes */
+
+/******** KEY FRAMES ********/
 
 @keyframes shake {
     0% {
@@ -449,6 +462,14 @@ ol, ul {
               filter:hue-rotate(360deg);
       }
   }
+
+/**************************/
+/*** TROUVE SUR LE NET ***/
+/************************/
+
+
+
+/****** TOGGLE BUTTON ********/
 
 .checkbox-wrapper .tgl {
     display: none;
