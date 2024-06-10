@@ -1,10 +1,5 @@
 /************ TODO **************/
-// TODO: Mettre du sang pour le mode hard
+// TODO: Faire les thèmes
 
-
-// TODO: Changer le titre du document et le favicon
-// TODO: Streaking (journalier, total, max)
-
-
-/************ BUGS **************/
-// BUG : On ne peut pas fermer le modal options sur mobile 
+// TODO: Prendre en compte la difficulté.
+// TODO: Rajouter un mode hard où les objets sont grayscale & rotation ? 

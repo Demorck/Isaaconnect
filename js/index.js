@@ -12,8 +12,8 @@ const colors = ["red-300", "blue-300", "green-300", "purple-300"];
 async function fetchData() {
     try {
         const [itemsResponse, groupsResponse] = await Promise.all([
-            fetch('/items.json'),
-            fetch('/groups.json')
+            fetch('/json/items.json'),
+            fetch('/json/groups.json')
         ]);
 
         items = await itemsResponse.json();
@@ -334,9 +334,12 @@ function gameOver() {
     localStorage.setItem('wins', totalWin);
     localStorage.setItem('losses', totalLose);
 
+    const shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
+    shufflesButton.forrEach(button => button.remove());
+
     displayModal(modalPath);
     const buttons = document.querySelector('.buttons');
-    buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Voir les résultats</button>';
+    buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">See results</button>';
     document.querySelector('button[data-id="results"]').addEventListener('click', () => displayModal(modalPath));
 }
 
@@ -463,10 +466,6 @@ function assignLocalStorageToVariables() {
     if (theme != null) {
         document.querySelector('body').classList.add(theme);
     }
-    else {
-        localStorage.setItem('theme', 'brown-theme');
-        document.querySelector('body').classList.add('brown-theme');
-    }
 
     let autocomplete = localStorage.getItem('autocomplete');
     if (autocomplete != null) {
@@ -486,8 +485,8 @@ function initDefaultLocalStorage() {
 
     if (localStorage.getItem('theme') == null)
     {
-        localStorage.setItem('theme', 'brown-theme');
-        document.querySelector('body').classList.add('brown-theme');
+        localStorage.setItem('theme', 'main-theme');
+        document.querySelector('body').classList.add('main-theme');
     }
     
 
@@ -508,6 +507,17 @@ function initDefaultLocalStorage() {
 
     if (localStorage.getItem('losses') == null)
         localStorage.setItem('losses', 0)
+
+    if (localStorage.getItem('theme') != null && localStorage.getItem('theme') == 'void-theme') {
+        let themes = ["main-theme", "purple-theme", "blue-theme", "green-theme", "brown-theme", "ph-theme", "gray-theme", "downpour-theme", "red-theme", "womb-theme", "classic-theme", "dave-theme", "corpse-theme", "cathedral-theme", "sheol-theme", "chest-theme", "dark-room-theme"];
+        let index = Math.floor(Math.random() * themes.length);
+        document.querySelector('body').classList.remove('void-theme');
+        document.querySelector('body').classList.add(themes[index]);
+    }
+    else {
+        localStorage.setItem('theme', 'brown-theme');
+        document.querySelector('body').classList.add('brown-theme');
+    }
 }
 
 function addEventCheckBox()
