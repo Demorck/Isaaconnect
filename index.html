@@ -61,7 +61,7 @@
 
                 <section class="buttons flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
                     <div class="flex justify-evenly">
-                        <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--shuffle block md:hidden">
+                        <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle block md:hidden">
                             Shuffle
                         </button>
                         <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
@@ -88,7 +88,7 @@
         <div class="flex flex-col relative md:fixed">
             <div id="tooltip-wrapper" class="bottom-20 md:top-20 max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
             <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
-                <span class="material-symbols-rounded md:text-4xl">
+                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="stats">
                     bar_chart
                 </span>
                 <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="schedule">
@@ -146,6 +146,30 @@
         {
             localStorage.setItem('autocomplete', 'true');
             checkbox.parentNode.classList.add('tgl-checked');
+        }
+    }
+
+    function changeDifficulty(element)
+    {
+        let difficulty = localStorage.getItem('difficulty');
+        let checkbox = document.querySelector('#difficulty');
+        let cards = document.querySelectorAll('.card-module--content');
+        if (difficulty === 'easy')
+        {
+            localStorage.setItem('difficulty', 'normal');
+            checkbox.parentNode.classList.remove('tgl-checked');
+
+            cards.forEach(card => {
+                card.classList.add('hidden');
+            });
+        }
+        else
+        {
+            localStorage.setItem('difficulty', 'easy');
+            checkbox.parentNode.classList.add('tgl-checked');
+            cards.forEach(card => {
+                card.classList.remove('hidden');
+            });
         }
     }
 
@@ -301,6 +325,9 @@
 
         switch (type)
         {
+            case 'stats':
+                wrapper.innerHTML = statsHtml();
+                break;
             case 'help':
                 wrapper.innerHTML = helpHtml();
                 break;
@@ -313,6 +340,14 @@
                 if (autocomplete == 'true')
                 {
                     let checkbox = document.querySelector('#autocomplete');
+                    checkbox.checked = true;
+                    checkbox.parentNode.classList.add('tgl-checked');
+                }
+
+                let difficulty = localStorage.getItem('difficulty');
+                if (difficulty == 'easy')
+                {
+                    let checkbox = document.querySelector('#difficulty');
                     checkbox.checked = true;
                     checkbox.parentNode.classList.add('tgl-checked');
                 }
@@ -329,6 +364,7 @@
 
     function settingsHtml()
     {
+        let attempt = localStorage.getItem('currentAttempt');
         return `
             <div class="rounded-2xl tooltip shadow-theme" data-id="settings">
                 <div class="tooltip-content">
@@ -352,6 +388,12 @@
                                 <label class="tgl-btn" for="autocomplete">
                             </div>
                         </div>
+                        ${attempt == null ? `<div class="flex flex-row-reverse gap-4 justify-center" data-id="difficulty">
+                            <h1 class="text-xl">Easy mode</h1>
+                            <div class="checkbox-wrapper rounded-3xl">
+                                <input onchange="changeDifficulty(this)" class="tgl tgl-theme" id="difficulty" type="checkbox"/>
+                                <label class="tgl-btn" for="difficulty">
+                            </div>` : ''}
                     </div>
                 </div>
             </div>
@@ -380,6 +422,23 @@
                 <div class="tooltip-content px-5 py-4">
                     <h1 class="text-2xl">Next Isaaconnect in</h1>
                     <p class="upheaval countdown text-6xl">00 : 00 : 00</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function statsHtml()
+    {
+        return `
+            <div class="tooltip shadow-theme rounded-2xl min-w-xs maw-w-xs" data-id="schedule">
+                <div class="tooltip-content px-5 py-4">
+                    <h1 class="text-2xl font-bold">Isaaconnect #${localStorage.getItem("lastIsaaconnect")}</h1>
+                    <div class="flex flex-col">
+                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Win Streak</span><span class="text-4xl upheaval flex">${localStorage.getItem("winStreak")}</span></div>
+                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Longest Streak</span><span class="text-4xl upheaval flex">${localStorage.getItem("longestStreak")}</span></div>
+                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Total Wins</span><span class="text-4xl upheaval flex">${localStorage.getItem("wins")}</span></div>
+                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Total losses</span><span class="text-4xl upheaval flex">${localStorage.getItem("losses")}</span></div>
+                    </div>
                 </div>
             </div>
         `;

@@ -257,26 +257,30 @@ ol, ul {
     transition: transform 0.5s ease;
 }
 
-#tooltip-wrapper::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    margin-left: -17px;
-    border-width: 17px;
-    border-style: solid;
-    -webkit-animation-fill-mode: forwards; 
-    -moz-animation-fill-mode: forwards;    
-    -o-animation-fill-mode: forwards;      
-    -ms-animation-fill-mode: forwards;     
-    animation-fill-mode: forwards;
-}
-
 @media (min-width: 768px) { 
+    #tooltip-wrapper::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        margin-left: -17px;
+        border-width: 17px;
+        border-style: solid;
+        -webkit-animation-fill-mode: forwards; 
+        -moz-animation-fill-mode: forwards;    
+        -o-animation-fill-mode: forwards;      
+        -ms-animation-fill-mode: forwards;     
+        animation-fill-mode: forwards;
+    }
+
     #tooltip-wrapper::after {
         top: -30px;
         animation: tooltip-show 0.5s ease;
         transition: all 0.5s ease;
         bottom: unset;
+    }
+
+    #tooltip-wrapper[data-id="stats"]::after {
+        left: 9%;
     }
 
     #tooltip-wrapper[data-id="schedule"]::after {
@@ -294,9 +298,11 @@ ol, ul {
 
  @media (max-width: 768px) {
     .tooltip-active::after {
+        content: "";
+        position: absolute;
         animation: tooltip-show 0.5s ease, invisible 0.5s ease;
         bottom: 50px;
-        margin-left: -17px;
+        margin-left: -28px;
         border-width: 17px;
         border-style: solid;
         -webkit-animation-fill-mode: forwards; 

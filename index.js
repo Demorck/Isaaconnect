@@ -3,6 +3,7 @@
 const MAX_HEALTH = 5;
 let items, groups, health = MAX_HEALTH;
 let itemsAlreadyPicked = [], labels = [], groupsSolved = [], attempt = [];
+let winStreak = 0, longestStreak = 0, totalWin = 0, totalLose = 0;
 let groupAlreadyPicked = [], currentAttempt = 0, mapItemAndGroup = new Map();
 let bannedGroup = [], bannedItem = [];
 let currentGroup = 0, currentItem = 0;
@@ -130,9 +131,11 @@ function updateHealthDisplay() {
 }
 
 function createCard(item, index) {
-    return `<label class="card-module" data-id="${item.id}">
+    let difficulty = localStorage.getItem('difficulty');
+    return `<label class="card-module flex-col" data-id="${item.id}">
                 <input id="card-${index}" type="checkbox" class="visually-hidden">
                 <img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}">
+                <span class="card-module--content text-xs sm:text-sm ${difficulty == "normal" ? "hidden" : ""}">${item.alias}</span>
             </label>`;
 }
 
@@ -212,6 +215,12 @@ function handleSubmit() {
 
     if (win) solveGroup(currentGroup);
     else wrongAnswer(selectedItems);
+
+    let difficultyWrapper = document.querySelector('[data-id="difficulty"]');
+    if (difficultyWrapper != null)
+    {
+        difficultyWrapper.classList.add('hidden');
+    }
 
     let autocomplete = localStorage.getItem('autocomplete');
     if (groupsSolved.length >= 3 && autocomplete == 'true') {
@@ -303,6 +312,21 @@ function solveGroup(group) {
 function gameOver() {
     const win = health > 0;
     const modalPath = win ? '/modals/win.html' : '/modals/lose.html';
+    if (win) {
+        winStreak++;
+        totalWin++;
+        if (winStreak > longestStreak) longestStreak = winStreak;
+    }
+    else {
+        winStreak = 0;
+        totalLose++;
+    }
+
+    localStorage.setItem('winStreak', winStreak);
+    localStorage.setItem('longestStreak', longestStreak);
+    localStorage.setItem('wins', totalWin);
+    localStorage.setItem('losses', totalLose);
+
     displayModal(modalPath);
     const buttons = document.querySelector('.buttons');
     buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Voir les résultats</button>';
@@ -353,6 +377,7 @@ function getDaysSince(startDate = new Date(2024, 4, 24)) {
 
 function init() {
     fetchData().then(() => {
+        initDefaultLocalStorage();
         updateHealthDisplay();
         for (let i = 0; i < 4; i++) { 
             currentGroup = getRandomGroup(groupAlreadyPicked, bannedGroup);
@@ -372,7 +397,6 @@ function init() {
         itemsAlreadyPicked.forEach((item, index) => container.innerHTML += createCard(item, index));
         applyBorderRadius();
 
-        initDefaultLocalStorage();
         setupEventListeners();
         addEventCheckBox();
         let lastIsaaconnect = localStorage.getItem('lastIsaaconnect');
@@ -449,6 +473,10 @@ function assignLocalStorageToVariables() {
 }
 
 function initDefaultLocalStorage() {
+
+    if (document.cookie != null)
+        document.cookie = "";
+
     if (localStorage.getItem('theme') == null)
     {
         localStorage.setItem('theme', 'brown-theme');
@@ -458,6 +486,21 @@ function initDefaultLocalStorage() {
 
     if (localStorage.getItem('autocomplete') == null)
         localStorage.setItem('autocomplete', false);
+
+    if (localStorage.getItem('difficulty') == null)
+        localStorage.setItem('difficulty', 'normal');
+
+    if (localStorage.getItem('winStreak') == null)
+        localStorage.setItem('winStreak', 0);
+
+    if (localStorage.getItem('longestStreak') == null)
+        localStorage.setItem('longestStreak', 0)
+
+    if (localStorage.getItem('wins') == null)
+        localStorage.setItem('wins', 0)
+
+    if (localStorage.getItem('losses') == null)
+        localStorage.setItem('losses', 0)
 }
 
 function addEventCheckBox()
