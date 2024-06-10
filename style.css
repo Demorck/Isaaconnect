@@ -20,6 +20,10 @@
          url("/assets/fonts/MaterialSymbolsRounded.ttf");
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url("/assets/fonts/Montserrat.ttf");
+}
 html, body {
     margin: 0;
     padding: 0;
