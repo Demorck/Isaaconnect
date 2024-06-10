@@ -26,6 +26,7 @@
         }
     </style>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/themes.css">
 </head>
 <body class="theme">
     <!-- Google Tag Manager (noscript) -->
@@ -75,7 +76,7 @@
             </div>
 
             <div class="flex-col gap-4 items-center hidden md:flex">
-                <button type="button" data-id="shuffle" class="shadow-theme text-white font-bold p-3 rounded-full">
+                <button type="button" data-id="shuffle" class="shadow-theme themed text-white font-bold p-3 rounded-full">
                     <span class="material-symbols-outlined align-bottom">
                         shuffle
                         </span>
@@ -84,8 +85,8 @@
         </div>
 
         
-        <div class="flex flex-col relative">
-            <div id="tooltip-wrapper" class="max-w-sm md:max-w-md xl:max-w-lg"></div>
+        <div class="flex flex-col relative md:fixed">
+            <div id="tooltip-wrapper" class="bottom-20 md:top-20 max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
             <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
                 <span class="material-symbols-rounded md:text-4xl">
                     bar_chart
@@ -322,6 +323,8 @@
             default:
                 break;
         }
+
+        wrapper.setAttribute('data-id', type);
     }
 
     function settingsHtml()
@@ -358,7 +361,7 @@
     function helpHtml()
     {
         return `
-            <div class="tooltip shadow-theme" data-id="help">
+            <div class="tooltip shadow-theme rounded-2xl" data-id="help">
                 <div class="tooltip-content text-justify">
                     <h1 class="text-3xl text-center">Create <b>4 groups</b> of <b>4 items !</b></h1><br>
                     <p>In Isaaconnect, you have to form groups of items that have something in common. There are four groups, some are easier that others.</p>
@@ -373,7 +376,7 @@
     function scheduleHtml()
     {
         return `
-            <div class="tooltip shadow-theme" data-id="schedule">
+            <div class="tooltip shadow-theme rounded-2xl min-w-xs maw-w-xs" data-id="schedule">
                 <div class="tooltip-content px-5 py-4">
                     <h1 class="text-2xl">Next Isaaconnect in</h1>
                     <p class="upheaval countdown text-6xl">00 : 00 : 00</p>

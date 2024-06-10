@@ -1,0 +1,223 @@
+:root {
+    --main-theme-background: #fff;
+    --main-theme-background-card: #F3E7E1;
+    
+    --modal-border-color: #404040;
+
+    --brown-theme-color: #42291A;
+    --brown-theme-color--secondary: #71472D;
+    --brown-theme-color--secondary-hover: #503220;
+    --brown-theme-color--shadows: #281910;
+    --brown-theme-color--title: #FF5B5B;
+    --brown-theme-color--submit: #FFC000;
+    --brown-theme-color--submit-hover: #ad8200;
+    --brown-theme-color--toggle: #C08560;
+
+
+    --purple-theme-color: #2F1D2E;
+    --purple-theme-color--secondary: #5F3B5D;
+    --purple-theme-color--secondary-hover: #422a40;
+    --purple-theme-color--title: #C301FF;
+    --purple-theme-color--shadows: #1C111C;
+    --purple-theme-color--submit: #C301FF;
+    --purple-theme-color--submit-hover: #9601c3;
+    --purple-theme-color--toggle: #9a6cb1;
+}
+
+/*************************/
+/***** MAIN THEME *******/
+/***********************/
+
+/******* MODAUX *******/
+.modal-content {
+    background-color: var(--main-theme-background);
+    border-color: var(--modal-border-color);
+    box-shadow: 0 0 50px 35px rgba(255, 255, 255, 1);
+}
+
+.modal-content button {
+    border-color: var(--modal-border-color);
+}
+
+.modal-content button:hover {
+    background-color: var(--modal-border-color);
+    color: var(--main-theme-background);
+}
+
+/******* CARDS *******/
+#cards-game {
+    background-color: var(--main-theme-background);
+
+}
+
+.card-module {
+    background-color: var(--main-theme-background-card);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-module--selected {
+    background-color: #7e7e7e;
+}
+
+.card-module--disabled img {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.button--disabled {
+    background-color: #7e7e7e !important;
+    color: #cecece !important;
+    cursor: default;
+}
+
+/****** TOOLTIPS ******/
+.tooltip {
+    color: #fff;
+}
+
+.theme-selection label:after {
+    color: #fff;
+}
+
+.checkbox-wrapper .tgl:checked + .tgl-btn:after {
+    background-color: #fff;
+}
+
+.tgl:checked {
+    border-color: #fff !important;
+}
+
+.tgl-checked {
+    border-color: #fff !important;
+}
+
+
+/*******************/
+/***** BROWN ******/
+/*****************/
+
+body.brown-theme {
+    background-color: var(--brown-theme-color);
+}
+
+.brown-theme button.themed {
+    background-color: var(--brown-theme-color--secondary);
+}
+
+.brown-theme button.themed:hover {
+    background-color: var(--brown-theme-color--secondary-hover);
+}
+
+.brown-theme .shadow-theme {
+    -webkit-filter: drop-shadow(0px 7px 0  var(--brown-theme-color--shadows));
+    -moz-filter: drop-shadow(0px 7px 0 var(--brown-theme-color--shadows));
+    filter: drop-shadow(0px 7px 0 var(--brown-theme-color--shadows));
+}
+
+.brown-theme h1 > span {
+    color: var(--brown-theme-color--title);
+}
+
+.brown-theme .button--submit {
+    background-color: var(--brown-theme-color--submit);
+}
+
+.brown-theme .button--submit:hover {
+    background-color: var(--brown-theme-color--submit-hover);
+}
+
+.brown-theme .tooltip {
+    background-color: var(--brown-theme-color--secondary);
+}
+
+.brown-theme .tooltip-active::after {
+    border-color: var(--brown-theme-color--secondary) transparent transparent transparent;
+}
+
+.brown-theme select {
+    background-color: var(--brown-theme-color);
+}
+
+.brown-theme .checkbox-wrapper {
+    border: 3px solid var(--brown-theme-color--toggle);
+    background: var(--brown-theme-color);
+}
+
+.brown-theme .tgl-theme {
+    border: 1px solid var(--brown-theme-color--toggle);
+}
+
+.brown-theme .tgl-theme + .tgl-btn:after {
+    background: var(--brown-theme-color--toggle);
+}
+
+@media (min-width: 768px) {
+    .brown-theme #tooltip-wrapper::after {
+        border-color: transparent transparent var(--brown-theme-color--secondary) transparent;
+    }
+}
+
+/*********************/
+/****** PURPLE ******/
+/*******************/
+
+body.purple-theme {
+    background-color: var(--purple-theme-color);
+}
+
+.purple-theme button.themed {
+    background-color: var(--purple-theme-color--secondary);
+}
+
+.purple-theme button.themed:hover {
+    background-color: var(--purple-theme-color--secondary-hover);
+}
+
+.purple-theme h1 > span {
+    color: var(--purple-theme-color--title);
+}
+
+.purple-theme .shadow-theme {
+    -webkit-filter: drop-shadow(0px 7px 0  var(--purple-theme-color--shadows));
+    -moz-filter: drop-shadow(0px 7px 0 var(--purple-theme-color--shadows));
+    filter: drop-shadow(0px 7px 0 var(--purple-theme-color--shadows));
+}
+
+.purple-theme .button--submit {
+    background-color: var(--purple-theme-color--submit);
+}
+
+.purple-theme .button--submit:hover {
+    background-color: var(--purple-theme-color--submit-hover);
+}
+
+.purple-theme .tooltip {
+    background-color: var(--purple-theme-color--secondary);
+}
+
+.purple-theme .tooltip-active::after {
+    border-color: var(--purple-theme-color--secondary) transparent transparent transparent;
+}
+
+.purple-theme select {
+    background-color: var(--purple-theme-color);
+}
+
+.purple-theme .checkbox-wrapper {
+    border: 3px solid var(--purple-theme-color--toggle);
+    background: var(--purple-theme-color);
+}
+
+.purple-theme .tgl-theme {
+    border: 1px solid var(--purple-theme-color--toggle);
+}
+
+.purple-theme .tgl-theme + .tgl-btn:after {
+    background: var(--purple-theme-color--toggle);
+}
+
+@media (min-width: 768px) {
+    .purple-theme #tooltip-wrapper::after {
+        border-color: transparent transparent var(--purple-theme-color--secondary) transparent;
+    }
+}

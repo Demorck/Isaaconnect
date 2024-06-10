@@ -439,7 +439,6 @@ function assignLocalStorageToVariables() {
 
     let autocomplete = localStorage.getItem('autocomplete');
     if (autocomplete != null) {
-        document.querySelector('input[type="checkbox"]').checked = autocomplete == 'true';
         if (autocomplete == 'true') {
             localStorage.setItem('autocomplete', true);
         }
