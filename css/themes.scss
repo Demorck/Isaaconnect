@@ -1,0 +1,476 @@
+@use "sass:color";
+
+$background: #fff;
+
+$default-background-card: #F3E7E1;
+$default-background-card--selected: #7e7e7e;
+
+$modal-border-color: #404040;
+
+$basement-theme: (
+    primary: #42291A,
+    secondary: #71472D,
+    secondary-hover: #503220,
+    shadows: #281910,
+    title: #FF5B5B,
+    submit: #FFC000,
+    submit-hover: #ad8200,
+    toggle: #C08560
+);
+
+$mausoleum-theme: (
+    primary: #2F1D2E,
+    secondary: #5F3B5D,
+    secondary-hover: #422a40,
+    title: #C301FF,
+    shadows: #1C111C,
+    submit: #C301FF,
+    submit-hover: #9601c3,
+    toggle: #9a6cb1,
+    card: #E5DDEB,
+);
+
+$flooded-caves-theme: (
+    primary: #1D2A4F,
+    secondary: #385094,
+    secondary-hover: #73B1F5,
+    title: #73B1F5,
+    shadows: #17223F,
+    submit: #73B1F5,
+    submit-hover: #385094,
+    toggle: #73B1F5,
+    card: #E3E8F9,
+    card-selected: #73B1F5,
+);
+
+$green-theme: (
+    primary: #242A0C,
+    secondary: #465117,
+    secondary-hover: #6A7B23,
+    title: #A6D60C,
+    shadows: #1D220A,
+    submit: #A6D60C,
+    submit-hover: #6A7B23,
+    toggle: #A6D60C,
+    card: #E9F0CC,
+    card-selected: #A6D60C,
+);
+
+$catacombs-theme: (
+    primary: #2D1E19,
+    secondary: #5B3D33,
+    secondary-hover: #B78C69,
+    title: #B78C69,
+    shadows: #241814,
+    submit: #B78C69,
+    submit-hover: #9e795a,
+    toggle: #B78C69,
+    card: #F0E7E0,
+    card-selected: #a8a19b,
+);
+
+$ph-theme: (
+    primary: #DED4C8,
+    secondary: #000000,
+    secondary-hover: #FF7621,
+    title: #FF7621,
+    shadows: #B2AAA0,
+    submit: #FF7621,
+    submit-hover: #cf5d16,
+    toggle: #FF7621,
+    card: #FFEFE5,
+    card-selected: #a8a19b,
+);
+
+$depths-theme: (
+    primary: #262626,
+    secondary: #595959,
+    secondary-hover: #767171,
+    title: #AFABAB,
+    shadows: #1E1E1E,
+    submit: #AFABAB,
+    submit-hover: #595959,
+    toggle: #AFABAB,
+    card: #E7E6E6,
+    card-selected: #cacaca,
+);
+
+$dank-depths-theme: (
+    primary: #17171B,
+    secondary: #363640,
+    secondary-hover: #525262,
+    title: #959ABD,
+    shadows: #121216,
+    submit: #959ABD,
+    toggle: #959ABD,
+    card: #8489B2,
+    card-background: #959ABD,
+);
+
+$gehenna-theme: (
+    primary: #280E0E,
+    secondary: #873535,
+    secondary-hover: #D43838,
+    shadows: #200B0B,
+    title: #EB2121,
+    submit: #EB2121,
+    toggle: #EB2121,
+    card: #FCE0E0,
+);
+
+$womb-theme: (
+    primary: #540000,
+    secondary: #A40000,
+    secondary-hover: #FA0000,
+    shadows: #430000,
+    title: #FA0000,
+    submit: #FA0000,
+    toggle: #EB2121,
+    card: #D20000,
+    card-background: #FA0000,
+);
+
+$scarred-womb-theme: (
+    primary: #A37F61,
+    secondary: #873535,
+    secondary-hover: #D43838,
+    shadows: #82664E,
+    title: #C00000,
+    submit: #D20000,
+    toggle: #D20000,
+    card: #E8DFD8,
+);
+
+$dave-theme: (
+    primary: #5371A3,
+    secondary: #2A3A54,
+    secondary-hover: #3B5175,
+    shadows: #425A82,
+    title: #FFC000,
+    submit: #2A3A54,
+    toggle: #FFC000,
+    card: #3B5175,
+    card-background: #2A3A54,
+);
+
+$corpse-theme: (
+    primary: #323D2F,
+    secondary: #556F51,
+    secondary-hover: #71936B,
+    shadows: #283126,
+    title: #70835F,
+    submit: #FFFFFF,
+    toggle: #70835F,
+    card: #70835F,
+    card-background: #5F6F51,
+);
+
+$cathedral-theme: (
+    primary: #20475A,
+    secondary: #4A7FA0,
+    secondary-hover: #79A6C1,
+    shadows: #1A3948,
+    title: #A9C5D7,
+    submit: #FF8C2D,
+    toggle: #A9C5D7,
+    card: #8CB2CA,
+    card-background: #A9C5D7,
+);
+
+$sheol-theme: (
+    primary: #0D0D0D,
+    secondary: #262626,
+    secondary-hover: #404040,
+    shadows: #0D0D0D,
+    title: #7F7F7F,
+    submit: #262626,
+    toggle: #404040,
+    card: #4B4B4B,
+    card-background: #2E2E2E,
+);
+
+$chest-theme: (
+    primary: #3B2819,
+    secondary: #805738,
+    secondary-hover: #B9865F,
+    shadows: #2F2014,
+    title: #FFC000,
+    submit: #FFC000,
+    toggle: #AC6414,
+    card: #FFF0C1,
+    card-background: #AC6414,
+);
+
+$dark-room-theme: (
+    primary: #261036,
+    secondary: #402C5A,
+    secondary-hover: #665272,
+    shadows: #261036,
+    title: #665272,
+    submit: #665272,
+    toggle: #665272,
+    card: #4B4B4B,
+    card-background: #000000,
+);
+
+
+
+$themes: (
+    basement-theme: $basement-theme,
+    mausoleum-theme: $mausoleum-theme,
+    flooded-caves-theme: $flooded-caves-theme,
+    green-theme: $green-theme,
+    catacombs-theme: $catacombs-theme,
+    ph-theme: $ph-theme,
+    depths-theme: $depths-theme,
+    dank-depths-theme: $dank-depths-theme,
+    gehenna-theme: $gehenna-theme,
+    womb-theme: $womb-theme,
+    scarred-womb-theme: $scarred-womb-theme,
+    dave-theme: $dave-theme,
+    corpse-theme: $corpse-theme,
+    cathedral-theme: $cathedral-theme,
+    sheol-theme: $sheol-theme,
+    chest-theme: $chest-theme,
+    dark-room-theme: $dark-room-theme
+);
+
+$lights: (
+    ph-theme
+);
+
+$white-submit: (
+    scarred-womb-theme,
+    dave-theme,
+    sheol-theme
+);
+
+/*************************/
+/***** MAIN THEME *******/
+/***********************/
+
+/******* MODAUX *******/
+
+@mixin modalTheme($theme) {
+    .#{$theme} .modal-content {
+        background-color: map-get($map: $theme, $key: primary);
+        border-color: $modal-border-color;
+        box-shadow: 0 0 50px 35px rgba(255, 255, 255, 1);
+        
+        button {
+            border-color: $modal-border-color;
+
+            &:hover {
+                background-color: $modal-border-color;
+                color: map-get($map: $theme, $key: primary);
+            }
+        }
+    }
+}
+
+.modal-content {
+    background-color: $background;
+    border-color: $modal-border-color;
+    box-shadow: 0 0 50px 35px rgba(255, 255, 255, 1);
+}
+
+.modal-content button {
+    border-color: $modal-border-color;
+}
+
+.modal-content button:hover {
+    background-color: $modal-border-color;
+    color: $background;
+}
+
+/******* CARDS *******/
+#cards-game {
+    background-color: $background;
+
+}
+
+.card-module {
+    background-color: var(--main-theme-background-card);
+}
+
+.card-module--disabled img {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.button--disabled {
+    background-color: #7e7e7e !important;
+    color: #cecece !important;
+    cursor: default;
+}
+
+/****** TOOLTIPS ******/
+.tooltip {
+    color: #fff;
+}
+
+.theme-selection label:after {
+    color: #fff;
+}
+
+.checkbox-wrapper .tgl:checked + .tgl-btn:after {
+    background-color: #fff;
+}
+
+.tgl:checked {
+    border-color: #fff !important;
+}
+
+.tgl-checked {
+    border-color: #fff !important;
+}
+
+
+@mixin applyTheme($theme) {
+    $theme-map: map-get($themes, $theme);
+
+    .#{$theme} {
+        background-color: map-get($map: $theme-map, $key: primary);
+        
+        button.themed {
+            background-color: map-get($map: $theme-map, $key: secondary);
+
+            &:hover {
+                background-color: map-get($map: $theme-map, $key: secondary-hover);
+            }
+        }
+
+        h1 > span {
+            color: map-get($map: $theme-map, $key: title)
+        }
+
+        .shadow-theme {
+            -webkit-filter: drop-shadow(0px 7px 0  map-get($map: $theme-map, $key: shadows));
+            -moz-filter: drop-shadow(0px 7px 0 map-get($map: $theme-map, $key: shadows));
+            filter: drop-shadow(0px 7px 0 map-get($map: $theme-map, $key: shadows));
+        }
+
+        @if (map-get($map: $theme-map, $key: card))
+        {
+            .card-module {
+            background-color: map-get($map: $theme-map, $key: card);
+            }
+    
+            @if (map-get($map: $theme-map, $key: card-selected))
+            {
+                .card-module--selected {
+                    background-color: map-get($map: $theme-map, $key: card-selected);
+                }
+            }
+            @else
+            {
+                .card-module--selected {
+                    background-color: color.adjust(map-get($map: $theme-map, $key: card), $lightness: -30%);
+                }
+            }
+        }
+        @else
+        {
+            .card-module {
+                background-color: $default-background-card;
+            }
+
+            .card-module--selected {
+                background-color: $default-background-card--selected;
+            }
+        }
+
+        @if (map-get($map: $theme-map, $key: card-background))
+        {
+            #cards-game {
+            background-color: map-get($map: $theme-map, $key: card-background);
+            }
+        }
+        @else
+        {
+            #cards-game {
+                background-color: $background;
+            }
+        }
+
+        .button--submit {
+            background-color: map-get($map: $theme-map, $key: submit);
+
+            &:hover {
+                @if (map-get($map: $theme-map, $key: submit-hover)) {
+                    background-color: map-get($map: $theme-map, $key: submit-hover);
+                }
+                @else {
+                    background-color: color.adjust(map-get($map: $theme-map, $key: submit), $lightness: -30%);
+                }
+            }
+        }
+    
+        .tooltip {
+            background-color: map-get($map: $theme-map, $key: secondary);
+        }
+
+        .tooltip-active::after {
+            border-color: map-get($map: $theme-map, $key: secondary) transparent transparent transparent;
+        }
+
+        select {
+            background-color: map-get($map: $theme-map, $key: primary);
+        }
+    
+        .checkbox-wrapper {
+            border: 3px solid map-get($map: $theme-map, $key: toggle);
+            background: map-get($map: $theme-map, $key: primary);
+        }
+    
+        .tgl-theme {
+            border: 1px solid map-get($map: $theme-map, $key: toggle);
+
+            + .tgl-btn:after {
+                background: map-get($map: $theme-map, $key: toggle);
+            }
+        }
+
+        @media (min-width: 768px) {
+            #tooltip-wrapper::after {
+                border-color: transparent transparent map-get($map: $theme-map, $key: secondary) transparent;
+            }
+        }
+    }
+}
+
+@mixin applyWhiteSubmit($theme) {
+    .#{$theme} {
+        .button--submit {
+            color: #fff;
+        }
+    }
+}
+
+@mixin applyLightThemes($theme) {
+    .#{$theme} {
+        #title h1 {
+            color: #000;
+        }
+
+        select, option, label::after {
+            color: #000;
+        }
+
+        #tooltip-icons {
+            color: #000;
+        }
+    }
+}
+
+@each $theme, $theme-map in $themes {
+    @include applyTheme($theme);
+}
+
+@each $theme in $lights {
+    @include applyLightThemes($theme);
+}
+
+@each $theme in $white-submit {
+    @include applyWhiteSubmit($theme);
+}

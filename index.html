@@ -25,8 +25,8 @@
             margin: 0;
         }
     </style>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/themes.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/themes.css">
 </head>
 <body class="theme">
     <!-- Google Tag Manager (noscript) -->
@@ -39,7 +39,7 @@
 
             <div class="flex flex-col">
 
-                <div class="flex self-center">
+                <div id="title" class="flex self-center">
                     <h1 class="upheaval text-5xl md:text-6xl shadow-theme text-white flex">ISAA<span>CONNECT</span></h1>
                 </div>
 
@@ -111,7 +111,7 @@
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js"></script>
-<script type="module" src="/index.js"></script>
+<script type="module" src="/js/index.js"></script>
 <script>
     function numberWithLeadingZeros(number, length = 3)
     {
@@ -131,8 +131,22 @@
         {
             body.className = body.className.replace(regex, '');
         }
+
+        let theme = element.value;
+
+        if (element.value === 'void-theme')
+        {
+            let selectElement = document.querySelector('[name=background]');
+            let optionValues = [...selectElement.options].map(o => o.value)
+            let randomValue = optionValues[Math.floor(Math.random() * optionValues.length)];
+            theme = randomValue;
+            element.selected = false;
+            let randomElement = document.querySelector(`option[value="${randomValue}"]`);
+            randomElement.checked = true;
+        }
+
         localStorage.setItem('theme', element.value);
-        body.classList.add(element.value);
+        body.classList.add(theme);
     }
 
     function changeAutocompletion(element)
@@ -194,7 +208,7 @@
             {
                 health = document.querySelectorAll('[data-type="health"]').length;
             }
-            textToCopy += `❤️: ${health} 💔: ${5 - health}\n`;
+            textToCopy += `❤️: ${health} 💔: ${4 - health}\n`;
             
             for (let i = 0; i < 5; i++)
             {
@@ -377,9 +391,25 @@
                         <div class="flex flex-col theme-selection">
                             <h1 class="text-xl">Theme</h1>
                             <label>
-                                <select onchange="changeBackground(this);" class="rounded-3xl font-semibold">
-                                    <option value="brown-theme">Basement</option>
-                                    <option value="purple-theme">Mausoleum</option>
+                                <select name="background" onchange="changeBackground(this);" class="rounded-3xl font-semibold">
+                                    <option value="basement-theme">Basement</option>
+                                    <option value="flooded-caves-theme">Flooded Caves</option>
+                                    <option value="green-theme">Dross</option>
+                                    <option value="catacombs-theme">Catacombs</option>
+                                    <option value="ph-theme">Ashpit</option>
+                                    <option value="depths-theme">Depths</option>
+                                    <option value="dank-depths-theme">Dank Depths</option>
+                                    <option value="mausoleum-theme">Mausoleum</option>
+                                    <option value="gehenna-theme">Gehenna</option>
+                                    <option value="womb-theme">Womb</option>
+                                    <option value="scarred-womb-theme">Scarred Womb</option>
+                                    <option value="dave-theme">???</option>
+                                    <option value="corpse-theme">Corpse</option>
+                                    <option value="cathedral-theme">Cathedral</option>
+                                    <option value="sheol-theme">Sheol</option>
+                                    <option value="chest-theme">Chest</option>
+                                    <option value="dark-room-theme">Dark Room</option>
+                                    <option value="void-theme">The Void</option>
                                 </select>
                             </label>
                         </div>
