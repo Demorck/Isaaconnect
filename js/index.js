@@ -416,6 +416,7 @@ function init() {
                 groupsSolved = [];
                 localStorage.setItem('health', health);
                 localStorage.setItem('groupsSolved', groupsSolved);
+                localStorage.setItem('attempt', '');
             } else {
                 assignLocalStorageToVariables();
             }
@@ -438,7 +439,7 @@ function assignLocalStorageToVariables() {
     }
 
     let localGroupSolved = localStorage.getItem('groupsSolved');
-    if (localGroupSolved != null) {
+    if (localGroupSolved != null && localGroupSolved !== "") {
         groupsSolved = localGroupSolved.split(',');
         groupsSolved.forEach(groupName => {
             const group = groups.find(g => g.name === groupName);
@@ -485,8 +486,8 @@ function initDefaultLocalStorage() {
 
     if (localStorage.getItem('theme') == null)
     {
-        localStorage.setItem('theme', 'main-theme');
-        document.querySelector('body').classList.add('main-theme');
+        localStorage.setItem('theme', 'basement-theme');
+        document.querySelector('body').classList.add('basement-theme');
     }
     
 
