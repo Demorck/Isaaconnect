@@ -3,3 +3,8 @@
 
 // TODO: Prendre en compte la difficulté.
 // TODO: Rajouter un mode hard où les objets sont grayscale & rotation ? 
+
+
+/************* BUGS *************/
+
+// BUG: Bouton shuffle sur mobile avec le thème Ashpit.
