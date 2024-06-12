@@ -511,7 +511,7 @@
 
     {
         "name": "Items with no black pixels",
-        "items": [464, 326, 696, 405, 402],
+        "items": [464, 326, 696, 405, 402, 431],
         "difficulty": 2
     },
 
@@ -651,5 +651,125 @@
         "name": "Bumbino set drops",
         "items": [15, 209, 56, 86, 6, 103, 36, 45, 453, 446, 459, 683],
         "difficulty": 3
+    },
+
+     {
+        "name": "Items with a unique pick-up sound effect",
+        "items": [11, 12, 71, 92, 625],
+        "difficulty": 2
+    },
+    
+     {
+        "name": "Items that create circles around Isaac",
+        "items": [423, 546, 696, 399, 595],
+        "difficulty": 2
+    },
+
+     {
+        "name": "Items that grant AOE auras",
+        "items": [651, 574, 336, 387, 417, 522, 446, 543, 331],
+        "difficulty": 2
+    },
+
+     {
+        "name": "Items that cut off Isaac's head",
+        "items": [729, 206, 325, 107],
+        "difficulty": 2
+    },
+
+     {
+        "name": "Items that got a major sprite change in Repentance",
+        "items": [317, 326, 421, 427, 482, 483, 489, 518, 519],
+        "difficulty": 3
+    },
+
+    {
+        "name": "Items with fire",
+        "items": [223, 256, 257, 182],
+        "difficulty": 1
+    },
+
+    {
+        "name": "10¢ shop items",
+        "items": [338, 290, 295, 102, 177, 357, 348, 383, 396, 349, 480, 486, 604],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items that can poison enemies",
+        "items": [13, 42, 103, 111, 140, 149, 180, 305, 317, 350, 351, 446, 466, 553, 594],
+        "difficulty": 0
+    },
+
+    {
+        "name": "Items that can slow down enemies",
+        "items": [66, 89, 171, 232, 337, 387],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items that decrease Isaac's damage stat",
+        "items": [245, 120, 330, 152, 561],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items with variable charge bars",
+        "items": [263, 489, 348, 286],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items with 12 charges",
+        "items": [441, 510, 490, 585, 720, 685, 611, 625],
+        "difficulty": 1
+    },
+
+    {
+        "name": "One-time use active items",
+        "items": [636, 622, 628, 577, 536, 475, 483, 347, 297, 127],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items unavailable in the Death Certificate area",
+        "items": [-1, 668, 714, 715, 628],
+        "difficulty": 3
+    },
+
+    {
+        "name": "Items with no recharge time",
+        "items": [186, 133, 282, 135, 40, 295, 147, 177, 126, 137, 290, 422, 434, 396, 487, 710, 555, 715, 623, 640, 653],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Timed recharge items",
+        "items": [582, 709, 713, 635, 655, 326, 294, 289, 338, 164, 352, 383, 504, 507, 522, 484, 722, 704, 705, 729, 604, 714],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items both in the Devil and Angel room pool",
+        "items": [477, 526, 519, 498, 634],
+        "difficulty": 2
+    },
+
+    {
+        "name": "'Mr.' items",
+        "items": [37, 106, 370, 527],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items with a version number in their name",
+        "items": [267, 419, 244, 647],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items that use a crosshair",
+        "items": [709, 168, 47, 394, 527],
+        "difficulty": 2
     }
 ]
