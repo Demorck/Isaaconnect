@@ -510,16 +510,20 @@ function initDefaultLocalStorage() {
         localStorage.setItem('losses', 0)
 
     if (localStorage.getItem('theme') != null) {
+        let themes = ["basement-theme", "mausoleum-theme", "flooded-caves-theme", "green-theme", "catacombs-theme", "ph-theme", "depths-theme", "dank-depths-theme", "gehenna-theme", "womb-theme", "scarred-womb-theme", "dave-theme", "corpse-theme", "cathedral-theme", "sheol-theme", "chest-theme", "dark-room-theme"];
         if (localStorage.getItem('theme') === 'void-theme') {
-            let themes = ["basement-theme", "mausoleum-theme", "flooded-caves-theme", "green-theme", "catacombs-theme", "ph-theme", "depths-theme", "dank-depths-theme", "gehenna-theme", "womb-theme", "scarred-womb-theme", "dave-theme", "corpse-theme", "cathedral-theme", "sheol-theme", "chest-theme", "dark-room-theme"];
             let index = Math.floor(Math.random() * themes.length);
             document.querySelector('body').classList.remove('void-theme');
             document.querySelector('body').classList.add(themes[index]);
         }
+
+        if (themes.indexOf(localStorage.getItem('theme')) === -1) {
+            document.querySelector('body').classList.add('basement-theme');
+        }
     }
     else {
-        localStorage.setItem('theme', 'brown-theme');
-        document.querySelector('body').classList.add('brown-theme');
+        localStorage.setItem('theme', 'basement-theme');
+        document.querySelector('body').classList.add('basement-theme');
     }
 }
 

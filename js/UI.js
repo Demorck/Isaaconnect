@@ -1,4 +1,7 @@
-import { Constants } from "./Constants";
+import { Constants } from "./Helpers/Constants.js";
+import { StorageManager } from "./Helpers/StorageManager.js";
+import { Utils } from "./Helpers/Utils.js";
+import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
 
 /**
  * @file UI.js
@@ -7,9 +10,9 @@ import { Constants } from "./Constants";
  * @typedef {UI}
  */
 export class UI {
-    constructor(game) {
-        this.colors = ["red-300", "blue-300", "green-300", "yellow-300"];
+    constructor(game, debug = false) {
         this.game = game;
+        this.debug = debug;
     }
 
     /**
@@ -35,13 +38,13 @@ export class UI {
      * @param {Array} items
      */
     displayItems(items) {
-        let difficulty = StorageManager.getItem('difficulty');
+        let difficulty = StorageManager.difficulty;
         const container = document.getElementById("cards-module");
         items.forEach((item, index) => {
             container.innerHTML += `
                 <label class="card-module flex-col" data-id="${item.id}">
                     <input id="card-${index}" type="checkbox" class="visually-hidden">
-                    <img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}">
+                    <img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}">
                     <span class="card-module--content text-xs sm:text-sm ${difficulty == "normal" ? "hidden" : ""}">${item.alias}</span>
                 </label>
             `;
@@ -92,18 +95,18 @@ export class UI {
      * @description Setup event listeners for the cards
      */
     setupEventListeners() {
-        document.querySelectorAll('button[data-id="shuffle"]').forEach(element => element.addEventListener('click', shuffleCards));
-        document.querySelector('button[data-id="submit"]').addEventListener('click', game.handleSubmit);
+        document.querySelectorAll('button[data-id="shuffle"]').forEach(element => element.addEventListener('click', this.shuffleCards));
+        document.querySelector('button[data-id="submit"]').addEventListener('click', this.game.handleSubmit);
     }
 
     /**
      * @description Shuffle the cards on the screen
      */
-    shuffleCards() {
+    shuffleCards = () => {
         const container = document.getElementById("cards-module");
         const labels = Array.from(document.querySelectorAll('.card-module'));
         container.innerHTML = '';
-        shuffleArray(labels).forEach(label => container.appendChild(label));
+        Utils.shuffleArray(labels).forEach(label => container.appendChild(label));
         this.applyBorderRadius();
     }
 
@@ -152,8 +155,8 @@ export class UI {
         });
     }
 
-    getSelectedItems() {
-        return Array.from(document.querySelectorAll('.card-module--selected')).map(selected => parseInt(select.getAttribute('data-id')));
+    getSelectedItems = () => {
+        return Array.from(document.querySelectorAll('.card-module--selected')).map(selected => parseInt(selected.getAttribute('data-id')));
     }
 
     removeDifficulty() {
@@ -164,19 +167,19 @@ export class UI {
         }
     }
 
-    solveGroup(group) {
+    solveGroup = (group) => {
         const container = document.querySelector('.solved-groups');
-        let index = this.game.groupAlreadyPicked.indexOf(group.name);
-        let content =   `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${colors[index]}">
+        let index = this.game.getIndexOfGroup(group);
+        let content =   `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${Constants.COLORS[index]}">
                             <div class="solved-group--cards flex flex-col mr-5">
                                 <div class="flex flex-row">`;
 
         let i = 0;
         this.game.mapItemAndGroup.forEach((key, value) => {
-            if (key === group) {
+            if (key.name === group.name) {
                 const item = this.game.findItemById(value.id);
                 if (i == 2) content += `</div><div class="flex flex-row">`;
-                content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
+                content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
                 document.querySelector(`label[data-id="${item.id}"]`).remove();
                 i++;
             }
@@ -188,7 +191,7 @@ export class UI {
 
         i = 0;
         this.game.mapItemAndGroup.forEach((key, value) => {
-            if (key === group) {
+            if (key.name === group.name) {
                 const item = this.game.findItemById(value.id);
                 content += `${item.alias}`;
                 if (i != 3) content += `, `;
@@ -206,29 +209,33 @@ export class UI {
     }
 
     loose() {
-        const modalPath = "/modals/loose.html";
+        const modalPath = "/include/modals/lose.html";
 
         this.gameOver(modalPath);
         this.displayModal(modalPath);
     }
 
     win() {
-        const modalPath = "/modals/win.html";
+        const modalPath = "/include/modals/win.html";
 
         this.gameOver(modalPath);
         this.displayModal(modalPath);
     }
 
     gameOver(modalPath) {
+        if (!StorageManager.finished)
+            StorageManager.finished = true;
+        
         const shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
         shufflesButton.forEach(button => button.remove());
 
         const buttons = document.querySelector('.buttons');
         buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">See results</button>';
-        document.querySelector('button[data-id="results"]').addEventListener('click', () => displayModal(modalPath));
+        document.querySelector('button[data-id="results"]').addEventListener('click', () => this.displayModal(modalPath));
+        document.querySelector('#cards-game').classList.remove('h-min', 'md:w-min', 'md:h-min');
     }
 
-    displayModal(modalPath) {
+    displayModal = (modalPath) => {
         const modalWrapper = document.getElementById('modal-wrapper');
         fetch(modalPath)
             .then(response => response.text())
@@ -239,23 +246,26 @@ export class UI {
                     modalWrapper.innerHTML = '';
                 });
                 document.querySelector('[data-id="results-wrapper"]').innerHTML = this.convertAttemptToSquareMatrix();
+
+                let copyButton = document.getElementById('copy');
+                copyButton.addEventListener('click', () => this.copyResults(copyButton));
             })
             .catch(error => {
                 console.error('Erreur lors du chargement du contenu de la modal:', error);
             });
-    
-            modalWrapper.style.display = 'flex';
+            
+        modalWrapper.style.display = 'flex';
     }
 
     convertAttemptToSquareMatrix() {
-        const attempt = this.game.attempt;
+        const attempt = this.game.attempts;
         let content = `<div data-id="results" class="flex flex-col">`;
         attempt.forEach((group, index_attempt) => {
             content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
-            group.forEach((item, index_group) => {
-                const index = groupAlreadyPicked.indexOf(item);
+            group.forEach((currentGroup, index_group) => {
+                const index = this.game.getIndexOfGroup(currentGroup);
                 let rounded = index_group % 4 == 0 ? "rounded-l-lg" : index_group % 4 == 3 ? "rounded-r-lg" : "";
-                content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${colors[index]} ${rounded} w-10 h-10"></span>`;
+                content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
             });
             content += `</div>`;
         });
@@ -263,4 +273,78 @@ export class UI {
         return content;
     }
 
+    shakeItems = () => {
+        const items = document.querySelectorAll('.card-module--selected');
+        items.forEach(item => item.classList.add('card-module--shake'));
+        setTimeout(() => {
+            document.querySelectorAll('.card-module--shake').forEach(item => item.classList.remove('card-module--shake'));
+        }, 1000);
+    }
+
+    addDebugMenu() {
+        if (this.debug) {
+            document.getElementById('tooltip-icons').innerHTML += `<span class="material-symbols-rounded md:text-4xl"  data-id="debug">
+                    adb
+                </span>`;
+        }
+    }
+
+    addTooltipListeners() {
+        initializeTooltipListener();
+    }
+
+    copyResults(element) {
+        let title = "Isaaconnect #" + StorageManager.lastIsaaconnect;
+        try
+        {
+            let textToCopy = "";
+            textToCopy = title + "\n";
+
+            let health = StorageManager.health;
+            
+            if (typeof health != "number")
+            {
+                this.showMessage("Impossible to copy the results");
+                return;
+            }
+
+            textToCopy += `❤️: ${health} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            let attempts = StorageManager.attempts;
+
+            attempts.forEach((attempt, index) => {
+                attempt.forEach((group, index_group) => {
+                    let index = this.game.getIndexOfGroup(group);
+                    switch (index)
+                    {
+                        case 0:
+                            textToCopy += "🟥";
+                            break;
+                        case 1:
+                            textToCopy += "🟦";
+                            break;
+                        case 2:
+                            textToCopy += "🟩";
+                            break;
+                        case 3:
+                            textToCopy += "🟨";
+                            break;
+                    }
+                });
+                textToCopy += "\n";
+            });
+
+            navigator.clipboard.writeText(textToCopy);
+            element.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
+            setTimeout(() => {
+                element.innerHTML = `<span class="material-symbols-outlined align-bottom">content_copy</span>Copy`;
+            }, 2500);
+            this.showMessage("Results copied to clipboard");
+        }
+        catch (error)
+        {
+            this.showMessage("Impossible to copy the results");
+        }
+    }
+
 }
+

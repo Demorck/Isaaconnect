@@ -169,7 +169,14 @@ ol, ul {
 .card-module img {
     width: 6em;
     image-rendering: pixelated;
+}
 
+@media (max-width: 768px) {
+    .card-module span {
+        font-size: 0.5rem;
+        font-weight: 800;
+    }
+    
 }
 
 .card-module--disabled {
@@ -310,6 +317,14 @@ ol, ul {
     #tooltip-wrapper[data-id="settings"]::after {
         left: 38%;
     }
+
+    #tooltip-wrapper[data-id="accessibility"]::after {
+        left: 74%;
+    }
+
+    #tooltip-wrapper[data-id="debug"]::after {
+        left: 74%;
+    }
  }
 
  @media (max-width: 768px) {
@@ -372,37 +387,37 @@ ol, ul {
 
 @keyframes shake {
     0% {
-        transform: translateY(0);
+        transform: rotate(0deg);
     }
     10% {
-        transform: translateY(-5px);
+        transform: rotate(10deg);
     }
     20% {
-        transform: translateY(5px);
+        transform: rotate(-10deg);
     }
     30% {
-        transform: translateY(-5px);
+        transform: rotate(10deg);
     }
     40% {
-        transform: translateY(5px);
+        transform: rotate(-10deg);
     }
     50% {
-        transform: translateY(-5px);
+        transform: rotate(10deg);
     }
     60% {
-        transform: translateY(5px);
+        transform: rotate(-10deg);
     }
     70% {
-        transform: translateY(-5px);
+        transform: rotate(10deg);
     }
     80% {
-        transform: translateY(5px);
+        transform: rotate(-10deg);
     }
     90% {
-        transform: translateY(-5px);
+        transform: rotate(10deg);
     }
     100% {
-        transform: translateY(0);
+        transform: rotate(0deg);
     }
 }
 

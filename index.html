@@ -49,13 +49,13 @@
                 </div>
 
                 <div class="flex flex-row justify-center">
-                    <div  class="shadow-theme flex flex-col justify-center items-center p-4 m-4 mb-0 text-center bg-paper rounded-3xl" id="cards-game">
+                    <div class="shadow-theme flex flex-col justify-center items-center p-4 m-4 mb-0 text-center bg-paper rounded-3xl h-min md:w-min md:h-min" id="cards-game">
                         <div id="cards-win">
                             <ol class="solved-groups">
                                 
                             </ol>
                         </div>
-                        <div id="cards-module" class="cards-module grid grid-cols-4 gap-4">
+                        <div id="cards-module" class="h-max md:w-max md:h-max cards-module grid grid-cols-4 gap-4">
                         </div>
                         <div id="modal-wrapper" style="display: none;" class="z-10">
 
@@ -95,21 +95,24 @@
         <div class="flex flex-col relative md:fixed">
             <div id="tooltip-wrapper" class="bottom-20 md:top-20 max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
             <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
-                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="stats">
+                <span class="material-symbols-rounded md:text-4xl" data-id="stats">
                     bar_chart
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="schedule">
+                <span class="material-symbols-rounded md:text-4xl" data-id="schedule">
                     schedule
                 </span>
                 <span class="material-symbols-rounded md:text-4xl">
                     diversity_1
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="help">
+                <span class="material-symbols-rounded md:text-4xl" data-id="help">
                     help
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" onclick="displayTooltip(this);" data-id="settings">
+                <span class="material-symbols-rounded md:text-4xl"  data-id="settings">
                     settings
                 </span>
+                <!--<span class="material-symbols-rounded md:text-4xl"  data-id="accessibility">
+                    settings_accessibility
+                </span>-->
             </div>
         </div>
     </div>
@@ -117,368 +120,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js"></script>
 <script type="module" src="/js/Game.js"></script>
-<script>
-    function numberWithLeadingZeros(number, length = 3)
-    {
-        while (number.toString().length < length)
-        {
-            number = '0' + number;
-        }
-
-        return number;
-    }
-
-    function changeBackground(element)
-    {
-        let body = document.querySelector('body');
-        const regex = new RegExp('(.*-theme)', 'g');
-        if (body.className.match(regex))
-        {
-            body.className = body.className.replace(regex, '');
-        }
-
-        let theme = element.value;
-
-        if (element.value === 'void-theme')
-        {
-            let selectElement = document.querySelector('[name=background]');
-            let optionValues = [...selectElement.options].map(o => o.value)
-            let randomValue = optionValues[Math.floor(Math.random() * optionValues.length)];
-            theme = randomValue;
-            element.selected = false;
-            let randomElement = document.querySelector(`option[value="${randomValue}"]`);
-            randomElement.checked = true;
-        }
-
-        localStorage.setItem('theme', element.value);
-        body.classList.add(theme);
-    }
-
-    function changeAutocompletion(element)
-    {
-        let autocomplete = localStorage.getItem('autocomplete');
-        let checkbox = document.querySelector('#autocomplete');
-        if (autocomplete === 'true')
-        {
-            localStorage.setItem('autocomplete', 'false');
-            checkbox.parentNode.classList.remove('tgl-checked');
-        }
-        else
-        {
-            localStorage.setItem('autocomplete', 'true');
-            checkbox.parentNode.classList.add('tgl-checked');
-        }
-    }
-
-    function changeDifficulty(element)
-    {
-        let difficulty = localStorage.getItem('difficulty');
-        let checkbox = document.querySelector('#difficulty');
-        let cards = document.querySelectorAll('.card-module--content');
-        if (difficulty === 'easy')
-        {
-            localStorage.setItem('difficulty', 'normal');
-            checkbox.parentNode.classList.remove('tgl-checked');
-
-            cards.forEach(card => {
-                card.classList.add('hidden');
-            });
-        }
-        else
-        {
-            localStorage.setItem('difficulty', 'easy');
-            checkbox.parentNode.classList.add('tgl-checked');
-            cards.forEach(card => {
-                card.classList.remove('hidden');
-            });
-        }
-    }
-
-    function removeLocalStorage()
-    {
-        localStorage.clear();
-    }
-
-    function copyResult(element)
-    {
-        const title = document.querySelector('[data-id="results--title"]');
-        const results = document.querySelector('[data-id="results"]');
-        try
-        {
-            let textToCopy = "";
-            // textToCopy = title.textContent + "\n";
-
-            let health = localStorage.getItem('health');
-            if (health === undefined)
-            {
-                health = document.querySelectorAll('[data-type="health"]').length;
-            }
-            textToCopy += `❤️: ${health} 💔: ${4 - health}\n`;
-            
-            for (let i = 0; i < 5; i++)
-            {
-                let items = document.querySelectorAll(`[data-id^="results-attempt${i}-"]`);
-                items.forEach(item => {
-                    let indexGroup = + item.getAttribute('data-id').split('-group')[1];
-                    switch (indexGroup)
-                    {
-                        case 0:
-                            textToCopy += "🟥";
-                            break;
-                        case 1:
-                            textToCopy += "🟦";
-                            break;
-                        case 2:
-                            textToCopy += "🟩";
-                            break;
-                        case 3:
-                            textToCopy += "🟪";
-                            break;
-                    }
-                });
-                textToCopy += "\n";
-            }
-            let moreRows = results.length - 4;
-            if (moreRows > 0)
-            {
-                textToCopy += `... and ${moreRows} more rows\n`;
-            }
-
-            navigator.clipboard.writeText(textToCopy);
-            element.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
-            setTimeout(() => {
-                element.innerHTML = `<span class="material-symbols-outlined align-bottom">content_copy</span>Copy`;
-            }, 2500);
-        }
-        catch (error)
-        {
-            alert("Failed to copy to clipboard");
-        }
-        
-    }
-</script>
-<script>
-    function getTimeRemaining() {
-        const now = new Date();
-        const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 8, 0, 0, 0);
-        const timeRemaining = target - now;
-        
-        const seconds = Math.floor((timeRemaining / 1000) % 60);
-        const minutes = Math.floor((timeRemaining / 1000 / 60) % 60);
-        const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-        
-        return {
-            total: timeRemaining,
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds
-        };
-    }
-    
-    function updateCountdown() {
-        const countdownElement = document.querySelectorAll('.countdown');
-        
-        const timeRemaining = getTimeRemaining();
-        
-        countdownElement.forEach(element => {
-            element.textContent = `${numberWithLeadingZeros(timeRemaining.hours, 2)} : ${numberWithLeadingZeros(timeRemaining.minutes, 2)} : ${numberWithLeadingZeros(timeRemaining.seconds, 2)}`;
-        });
-        
-        if (timeRemaining.total <= 0) {
-            clearInterval(countdownInterval);
-            location.reload();
-        }
-    }
-    
-    const countdownInterval = setInterval(updateCountdown, 1000);
-</script>
-<script>
-    (function() {
-        const sequence = [52, 56, 49, 53, 49, 54, 50, 51, 52, 50]; // Codes des touches 4, 8, 15, 16, 23, 42
-        let position = 0;
-
-        document.addEventListener('keydown', (event) => {
-            if (event.keyCode === sequence[position]) {
-                position++;
-                if (position === sequence.length) {
-                    localStorage.clear();
-                    document.body.classList.add('blackout');
-                    setTimeout(() => {
-                        prompt("Vous avez appuyé sur la séquence correcte !");
-                    }, 500);
-                }
-            } else {
-                position = 0;
-            }
-        });
-    })();
-</script>
-<script>
-    function displayTooltip(element)
-    {
-        let wrapper = document.querySelector('#tooltip-wrapper');
-        let type = element.getAttribute('data-id');
-        wrapper.style.display = 'none';
-        let isAlreadyActive = document.querySelector('.tooltip-active');
-        if (wrapper.innerHTML !== '')
-        {
-            wrapper.innerHTML = '';
-            document.querySelectorAll('.tooltip-active').forEach(element => {
-                element.classList.remove('tooltip-active');
-                element.classList.add('tooltip-inactive');
-                element.classList.remove('shadow-theme');
-            });
-        }
-        
-        if (isAlreadyActive != null && isAlreadyActive.getAttribute('data-id') === type)
-        {
-            isAlreadyActive.classList.remove('tooltip-active');
-            isAlreadyActive.classList.add('tooltip-inactive');
-            isAlreadyActive.classList.remove('shadow-theme');
-            return;
-        }
-
-        wrapper.style.display = 'block';
-
-        element.classList.add('tooltip-active');
-        element.classList.add('shadow-theme');
-        element.classList.remove('tooltip-inactive');
-
-        switch (type)
-        {
-            case 'stats':
-                wrapper.innerHTML = statsHtml();
-                break;
-            case 'help':
-                wrapper.innerHTML = helpHtml();
-                break;
-            case 'settings':
-                wrapper.innerHTML = settingsHtml();
-                let theme = localStorage.getItem('theme');
-                document.querySelectorAll('option').forEach(option => { option.selected = false; });
-                document.querySelector('option[value="' + theme + '"]').selected = true;
-                let autocomplete = localStorage.getItem('autocomplete');
-                if (autocomplete == 'true')
-                {
-                    let checkbox = document.querySelector('#autocomplete');
-                    checkbox.checked = true;
-                    checkbox.parentNode.classList.add('tgl-checked');
-                }
-
-                let difficulty = localStorage.getItem('difficulty');
-                if (difficulty == 'easy')
-                {
-                    let checkbox = document.querySelector('#difficulty');
-                    checkbox.checked = true;
-                    checkbox.parentNode.classList.add('tgl-checked');
-                }
-                break;
-            case 'schedule':
-                wrapper.innerHTML = scheduleHtml();
-                break;
-            default:
-                break;
-        }
-
-        wrapper.setAttribute('data-id', type);
-    }
-
-    function settingsHtml()
-    {
-        let attempt = localStorage.getItem('currentAttempt');
-        return `
-            <div class="rounded-2xl tooltip shadow-theme" data-id="settings">
-                <div class="tooltip-content">
-                    <div class="flex flex-col gap-4">
-                        <h1 class="text-2xl">Settings</h1>
-                        <p>Here you can choose some settings for the website, like the theme, autocomplete the fourth group, etc.</p>
-                        
-                        <div class="flex flex-col theme-selection">
-                            <h1 class="text-xl">Theme</h1>
-                            <label>
-                                <select name="background" onchange="changeBackground(this);" class="rounded-3xl font-semibold">
-                                    <option value="basement-theme">Basement</option>
-                                    <option value="flooded-caves-theme">Flooded Caves</option>
-                                    <option value="green-theme">Dross</option>
-                                    <option value="catacombs-theme">Catacombs</option>
-                                    <option value="ph-theme">Ashpit</option>
-                                    <option value="depths-theme">Depths</option>
-                                    <option value="dank-depths-theme">Dank Depths</option>
-                                    <option value="mausoleum-theme">Mausoleum</option>
-                                    <option value="gehenna-theme">Gehenna</option>
-                                    <option value="womb-theme">Womb</option>
-                                    <option value="scarred-womb-theme">Scarred Womb</option>
-                                    <option value="dave-theme">???</option>
-                                    <option value="corpse-theme">Corpse</option>
-                                    <option value="cathedral-theme">Cathedral</option>
-                                    <option value="sheol-theme">Sheol</option>
-                                    <option value="chest-theme">Chest</option>
-                                    <option value="dark-room-theme">Dark Room</option>
-                                    <option value="void-theme">The Void</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="flex flex-row-reverse gap-4 justify-center">
-                            <h1 class="text-xl">Autocomplete</h1>
-                            <div class="checkbox-wrapper rounded-3xl">
-                                <input onchange="changeAutocompletion(this)" class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
-                                <label class="tgl-btn" for="autocomplete">
-                            </div>
-                        </div>
-                        ${attempt == null ? `<div class="flex flex-row-reverse gap-4 justify-center" data-id="difficulty">
-                            <h1 class="text-xl">Easy mode</h1>
-                            <div class="checkbox-wrapper rounded-3xl">
-                                <input onchange="changeDifficulty(this)" class="tgl tgl-theme" id="difficulty" type="checkbox"/>
-                                <label class="tgl-btn" for="difficulty">
-                            </div>` : ''}
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    function helpHtml()
-    {
-        return `
-            <div class="tooltip shadow-theme rounded-2xl" data-id="help">
-                <div class="tooltip-content text-justify">
-                    <h1 class="text-3xl text-center">Create <b>4 groups</b> of <b>4 items !</b></h1><br>
-                    <p>In Isaaconnect, you have to form groups of items that have something in common. There are four groups, some are easier that others.</p>
-                    <p>Don't make too many mistakes !</p>
-                    <br>
-                    <p>Made with love by Démorck. Inspired by <b>Only Connect</b> and <b>NYT Connections.</b> Website design by Biobak.</p>
-                </div>
-            </div>
-        `;
-    }
-
-    function scheduleHtml()
-    {
-        return `
-            <div class="tooltip shadow-theme rounded-2xl min-w-xs maw-w-xs" data-id="schedule">
-                <div class="tooltip-content px-5 py-4">
-                    <h1 class="text-2xl">Next Isaaconnect in</h1>
-                    <p class="upheaval countdown text-6xl">00 : 00 : 00</p>
-                </div>
-            </div>
-        `;
-    }
-
-    function statsHtml()
-    {
-        return `
-            <div class="tooltip shadow-theme rounded-2xl min-w-xs maw-w-xs" data-id="schedule">
-                <div class="tooltip-content px-5 py-4">
-                    <h1 class="text-2xl font-bold">Isaaconnect #${localStorage.getItem("lastIsaaconnect")}</h1>
-                    <div class="flex flex-col">
-                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Win Streak</span><span class="text-4xl upheaval flex">${localStorage.getItem("winStreak")}</span></div>
-                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Longest Streak</span><span class="text-4xl upheaval flex">${localStorage.getItem("longestStreak")}</span></div>
-                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Total Wins</span><span class="text-4xl upheaval flex">${localStorage.getItem("wins")}</span></div>
-                        <div class="flex flex-row gap-4 font-medium"><span class="text-3xl flex self-end">Total losses</span><span class="text-4xl upheaval flex">${localStorage.getItem("losses")}</span></div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
+<script type="module">
+function S(){const V=['4660azwosf','8ROHVqA','229396jJslOQ','cNTJS','search','krQpU','debug','keyCode','5093fQSouZ','cXEbq','477020WpfxAI','250058yUKEdy','90HBZtxp','jZBgv','7231gktwFl','toString','9noCwWa','198950ZiQgWU','QrtXB','1875051ZUImIN','length'];S=function(){return V;};return S();}function f(n,j){const p=S();return f=function(G,O){G=G-(0x1*0x1225+-0xce+-0x109a);let b=p[G];return b;},f(n,j);}(function(n,j){const X={n:0xc6,j:0xd1,p:0xce,G:0xd0},K=f,p=n();while(!![]){try{const G=-parseInt(K(0xbd))/(0x184c*0x1+0x17*0xd5+-0x2b6e)+parseInt(K(X.n))/(0x1*0xa2d+0x43e*-0x7+0x1387)*(parseInt(K(0xcb))/(0x7*0x42d+-0x690*0x4+-0x2f8))+parseInt(K(0xc5))/(0x103*0x25+-0xa*0x12e+-0x199f)+-parseInt(K(0xcc))/(-0x1147*-0x1+-0xd*0x9+-0x10cd)+parseInt(K(0xc7))/(0x1fd8+-0xab4+-0x3*0x70a)*(-parseInt(K(0xc9))/(-0x7a9+-0x1dd+0x3*0x32f))+parseInt(K(X.j))/(-0x1c69+0x234b*-0x1+-0x2*-0x1fde)*(parseInt(K(X.p))/(0x32*-0x19+0x97a*-0x1+-0xe65*-0x1))+-parseInt(K(X.G))/(-0x2*0x60a+-0x864*-0x1+0x3ba)*(parseInt(K(0xc3))/(0x168a*0x1+0x3*-0x85a+0x5*0x83));if(G===j)break;else p['push'](p['shift']());}catch(O){p['push'](p['shift']());}}}(S,0x1dd42*-0x1+0xa2e6+0x4505e));import{StorageManager}from'/js/Helpers/StorageManager.js';(function(){const W={n:0xbe},J={n:0xc1},B={n:0xbf},F={n:0xc4},P=f,p={'jZBgv':function(o,m){return o===m;},'cXEbq':P(0xc0),'TWhrX':P(W.n),'vRJKt':'(((.+)+)+)'+'+$','vDBzX':function(o,m){return o===m;},'cSHNJ':'iNKgK','Ailsw':'oigMf','lScPd':function(o,m,l){return o(m,l);},'YEerc':'keydown'},G=(function(){const M=P,o={};o['hHcTb']='yWYMq';const m=o;if(p[M(0xc8)](p[M(F.n)],p['TWhrX']))G=0x49*0xd+-0x17b9*0x1+0x1404;else{let U=!![];return function(Q,d){const x={n:0xcd,j:0xca},v=U?function(){const A=f;if(m['hHcTb']===A(x.n))return p['toString']()['search']('(((.+)+)+)'+'+$')[A(x.j)]()['constructo'+'r'](G)[A(0xbf)]('(((.+)+)+)'+'+$');else{if(d){const t=d['apply'](Q,arguments);return d=null,t;}}}:function(){};return U=![],v;};}}()),O=p['lScPd'](G,this,function(){const I=P;return O[I(0xca)]()[I(B.n)](p['vRJKt'])['toString']()['constructo'+'r'](O)['search']('(((.+)+)+)'+'+$');});O();const b=[-0x1c4b+-0x21*0xcf+0x372e,-0x52a+0x1a0a+0x4*-0x52a,0x7a*0x1+0x158*0x10+0x8f*-0x27,0x20*0xa7+-0x34*-0xb+-0x16e7,-0x1dd1*-0x1+0x9*0x25+-0x179*0x15,0x1a86+-0x1*-0x1fb5+-0x3a05,0x26ae+0x166f+-0x1*0x3ceb,-0x1730+0x229b+-0x2ce*0x4,0x6ed+0xf*-0xca+0x51d,0x122d+-0x5*0x6cc+0x1001];let e=-0x180c+-0x233d*0x1+0x3b49;document['addEventLi'+'stener'](p['YEerc'],o=>{const i=P;p['cSHNJ']===p['Ailsw']?p['vDBzX'](U['keyCode'],Q[d])?(q++,Y===u['length']&&(z[i(J.n)]=!h['debug'],C['reload']())):w=0x1c57+0x265d+-0x42b4:o[i(0xc2)]===b[e]?(e++,p['jZBgv'](e,b[i(0xcf)])&&(StorageManager[i(J.n)]=!StorageManager['debug'],location['reload']())):e=0x53e*0x5+0x119*-0x18+0x1*0x22;});}());
 </script>
 </html>

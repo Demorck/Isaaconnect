@@ -1,0 +1,42 @@
+<div class="rounded-2xl tooltip shadow-theme" data-id="settings">
+    <div class="tooltip-content">
+        <div class="flex flex-col gap-4">
+            <h1 class="text-2xl">Settings</h1>
+            <p>Here you can choose some settings for the website, like the theme, autocomplete the fourth group, etc.</p>
+            
+            <div class="flex flex-col theme-selection">
+                <h1 class="text-xl">Theme</h1>
+                <label>
+                    <select name="background" class="rounded-3xl font-semibold">
+                        <option value="basement-theme">Basement</option>
+                        <option value="flooded-caves-theme">Flooded Caves</option>
+                        <option value="green-theme">Dross</option>
+                        <option value="catacombs-theme">Catacombs</option>
+                        <option value="ph-theme">Ashpit</option>
+                        <option value="depths-theme">Depths</option>
+                        <option value="dank-depths-theme">Dank Depths</option>
+                        <option value="mausoleum-theme">Mausoleum</option>
+                        <option value="gehenna-theme">Gehenna</option>
+                        <option value="womb-theme">Womb</option>
+                        <option value="scarred-womb-theme">Scarred Womb</option>
+                        <option value="dave-theme">???</option>
+                        <option value="corpse-theme">Corpse</option>
+                        <option value="cathedral-theme">Cathedral</option>
+                        <option value="sheol-theme">Sheol</option>
+                        <option value="chest-theme">Chest</option>
+                        <option value="dark-room-theme">Dark Room</option>
+                        <option value="void-theme">The Void</option>
+                    </select>
+                </label>
+            </div>
+            <div class="flex flex-row-reverse gap-4 justify-center">
+                <h1 class="text-xl">Autocomplete</h1>
+                <div class="checkbox-wrapper rounded-3xl">
+                    <input class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
+                    <label class="tgl-btn" for="autocomplete">
+                </div>
+            </div>
+            {{ attempt }}
+        </div>
+    </div>
+</div>

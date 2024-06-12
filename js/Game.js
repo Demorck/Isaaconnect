@@ -1,25 +1,28 @@
 "use strict";
-import { Constants } from "./Constants.js";
+import { Constants } from "./Helpers/Constants.js";
 import { DataFetcher } from "./DataFetcher.js";
-import { StorageManager } from "./StorageManager.js";
+import { StorageManager } from "./Helpers/StorageManager.js";
 import { UI } from "./UI.js";
-import { Utils } from "./Utils.js";
+import { Utils } from "./Helpers/Utils.js";
 
 class Game {
-    constructor() {
+    constructor(debug = false) {
+        Utils.resetIfNewVersion();
+        this.debug = StorageManager.debug || debug;
         this.items = []; 
         this.groups = [];
-        this.health = StorageManager.health;
+        this.health = Constants.MAX_HEALTH;
         this.itemsAlreadyPicked = [];
         this.groupAlreadyPicked = [];
-        this.groupsSolved = StorageManager.groupsSolved;
-        this.attempts = StorageManager.attempts;
-        this.currentAttempt = this.attempts.length;
+        this.groupsSolved = [];
+        this.attempts = [];
+        this.currentAttempt = 0;
         this.mapItemAndGroup = new Map();
         this.bannedGroup = [];
         this.bannedItem = [];
-        this.UI = new UI(this);
+        this.UI = new UI(this, this.debug);
         this.init();
+        StorageManager.version = Constants.VERSION;
     }
 
     async init() {
@@ -31,14 +34,15 @@ class Game {
 
     setupGame() {
         StorageManager.initDefaultLocalStorage();
+                
         this.UI.updateHealth(this.health);
 
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
             let currentGroup = this.getRandomGroup();
-            this.getRandomItems(this.currentGroup);
+            this.getRandomItems(currentGroup);
 
             currentGroup.items.forEach(item => {
-                if (bannedItem.indexOf(item) === -1) {
+                if (this.bannedItem.indexOf(item) === -1) {
                     this.bannedItem.push(item);
                 }
 
@@ -50,20 +54,25 @@ class Game {
             });
         }
 
-        this.itemsAlreadyPicked = shuffleArray(this.itemsAlreadyPicked);
+        StorageManager.mapItemAndGroup = this.mapItemAndGroup;
+
+        this.itemsAlreadyPicked = Utils.shuffleArray(this.itemsAlreadyPicked);
         this.UI.displayItems(this.itemsAlreadyPicked);
         this.UI.applyBorderRadius();
         this.UI.setupEventListeners();
         this.UI.addEventCheckboxes();
 
-        const lastIsaaconnect = StorageManager.getItem('lastIsaaconnect');
+        const lastIsaaconnect = StorageManager.lastIsaaconnect;
         if (lastIsaaconnect !== Utils.getDaysSince()) {
             StorageManager.newIsaaconnect();
+            console.log("New isaaconnect");
         } else {
             this.assignLocalStorageToVariables();
         }
 
-        StorageManager.setItem('lastIsaaconnect', Utils.getDaysSince());
+        StorageManager.lastIsaaconnect = Utils.getDaysSince();
+        this.UI.addDebugMenu();
+        this.UI.addTooltipListeners();
     }
 
     getRandomGroup() {
@@ -129,21 +138,24 @@ class Game {
         const localHealth = StorageManager.health;
         if (localHealth !== null) {
             this.health = parseInt(localHealth);
-            this.UI.updateHealthDisplay(this.health);
+            this.UI.updateHealth(this.health);
         }
 
         const localGroupSolved = StorageManager.groupsSolved;
         if (localGroupSolved.length > 0) {
-            this.groupsSolved = localGroupSolved;
-            this.groupsSolved.forEach(groupName => {
-                const group = this.groups.find(g => g.name === groupName);
-                this.solveGroup(group);
+            localGroupSolved.forEach(currentGroup => {
+                this.solveGroup(currentGroup);
                 this.mapItemAndGroup.forEach((key, value) => {
-                    if (groupName === key.name) this.mapItemAndGroup.delete(value);
+                    if (currentGroup === key) this.mapItemAndGroup.delete(key);
                 });
             });
 
-            if (this.groupsSolved.length >= 3) this.gameOver();
+            if (this.groupsSolved.length >= 4)
+            {
+                console.log(this.health);
+                if (this.health > 0) this.win();
+                else this.loose();
+            }
         }
 
         const localAttempt = StorageManager.attempts;
@@ -151,37 +163,27 @@ class Game {
             this.attempts = localAttempt;
             this.currentAttempt = this.attempts.length;
         }
-
-        const theme = StorageManager.getItem('theme');
-        document.body.classList.add(theme);
-
-        const autocomplete = StorageManager.getItem('autocomplete', false);
-        if (autocomplete) {
-            StorageManager.setItem('autocomplete', true);
-        } else {
-            StorageManager.setItem('autocomplete', false);
-        }
     }
 
     /**
      * Handle when the user click on the submit button.
      */
-    handleSubmit() {
+    handleSubmit = () => {
         const selectedItemsID = this.UI.getSelectedItems();
         let firstGroup, currentGroup, win = true, i = 0;
 
-        this.attempts[currentAttempt] = [];
+        this.attempts[this.currentAttempt] = [];
         let numberOfGroups = 0;
         selectedItemsID.forEach(id => {
             const currentItem = this.findItemById(id);
-            const currentGroup = this.mapItemAndGroup.get(currentItem);
+            currentGroup = this.mapItemAndGroup.get(currentItem);
 
             if (!firstGroup) firstGroup = currentGroup;
             else if (firstGroup !== currentGroup) win = false;
 
             if (firstGroup === currentGroup) numberOfGroups++;
 
-            this.attempts[currentAttempt].push(currentGroup.name);
+            this.attempts[this.currentAttempt].push(currentGroup);
         });
 
         this.currentAttempt++;
@@ -197,41 +199,42 @@ class Game {
         this.UI.removeDifficulty();
         if (StorageManager.autocomplete && this.groupsSolved.length >= 3) this.autocomplete();
 
-        
-        if (this.health <= 0) this.loose();
-
         StorageManager.attempts = this.attempts;
         StorageManager.currentAttempt = this.currentAttempt;
-
-        if (this.groupsSolved >= 4) this.win();
+        
+        if (this.health <= 0) this.loose();
+        else if (this.groupsSolved.length >= 4) this.win();
     }
 
     /**
      * 
      * @param {String} group The group's name to solve
      */
-    rightAnswer(group) {
+    rightAnswer = (group) => {
         this.solveGroup(group);
+        StorageManager.groupsSolved = this.groupsSolved;
+        if (this.groupsSolved.length >= 4) this.win();
     }
 
     /**
      * Handle wrong answer
      * @param {Array} selectedItems The items selected by the user
      */
-    wrongAnswer(selectedItems) {
+    wrongAnswer = (selectedItems) => {
         this.health--;
+        StorageManager.health = this.health;
         this.UI.updateHealth(this.health);
+        this.UI.shakeItems(selectedItems);
+
         if (this.health <= 0) {
+            this.autocomplete();
             this.loose();
         }
-
-        this.UI.shakeItems(selectedItems);
     }
 
-    solveGroup(group) {
-        this.groupsSolved.push(group.name);
+    solveGroup = (group) => {
+        this.groupsSolved.filter(currentGroup => currentGroup.name === group.name).length === 0 && this.groupsSolved.push(group);
         this.UI.solveGroup(group);
-        StorageManager.groupsSolved = this.groupsSolved;
     }
 
     
@@ -246,44 +249,55 @@ class Game {
     }
 
     autocomplete() {
-        this.groups.forEach(group => {
-            if (this.groupsSolved.includes(group.name)) return;
-            this.attempts[currentAttempt] = [];
-            group.items.forEach(item => {
-                this.attempts[currentAttempt].push(group.name);
-            });
-            this.solveGroup(group);
+        let groupToFind = []
+        this.mapItemAndGroup.forEach((key, value) => {
+            this.groupsSolved.filter(group => group.name === key.name).length === 0 && (groupToFind.indexOf(key) === -1) && groupToFind.push(key);
         });
+
+        if (this.health != 0)
+        {
+            this.attempts[this.currentAttempt] = [];
+            for (let i = 0; i < 4; i++) {
+                this.attempts[this.currentAttempt][i] = groupToFind[0];
+            }
+            this.currentAttempt++;
+            StorageManager.attempts = this.attempts;
+            StorageManager.currentAttempt = this.currentAttempt;
+        }
+        
+        groupToFind.forEach(group => { this.solveGroup(group); });
+        StorageManager.groupsSolved = this.groupsSolved;
     }
 
     loose() {
-        this.UI.loose();
+        if (!StorageManager.finished)
+        {
+            StorageManager.winStreak = 0;
+            StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
+            StorageManager.looses++;
+        }
 
-        StorageManager.winStreak = 0;
-        StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
-        StorageManager.looses++;
+        this.UI.loose();
     }
 
     win() {
-        this.UI.win();
+        if (!StorageManager.finished)
+        {
+            StorageManager.winStreak++;
+            StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
+            StorageManager.wins++;
+        }
 
-        StorageManager.winStreak++;
-        StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
-        StorageManager.wins++;
+        this.UI.win();        
     }
 
+    getIndexOfGroup(group) {
+        return this.groupAlreadyPicked.findIndex(currentGroup => currentGroup.name === group.name);
+    }
 
-    // get groupAlreadyPicked() {
-    //     return this.groupAlreadyPicked;
-    // }
-
-    // get mapItemAndGroup() {
-    //     return this.mapItemAndGroup;
-    // }
-
-    // get attempt() {
-    //     return this.attempts;
-    // }
+    getIndexGroupFromItem(item) {
+        return this.groupAlreadyPicked.findIndex(currentGroup => currentGroup.items.includes(item.id));
+    }
 
 }
 
