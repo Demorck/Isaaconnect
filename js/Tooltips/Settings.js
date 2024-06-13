@@ -36,7 +36,7 @@ export function themeLogic(container) {
         return;
     }
 
-    select.addEventListener('click', () => {
+    select.addEventListener('change', () => {
         changeBackground(select);
     });
     

@@ -22,7 +22,7 @@ export function addEvent(container) {
     });
 
     container.querySelector('#life').addEventListener('click', () => {
-        StorageManager.health = 999;
+        StorageManager.health = 20;
         location.reload();
     });
 }

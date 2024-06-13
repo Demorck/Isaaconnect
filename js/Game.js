@@ -5,6 +5,13 @@ import { StorageManager } from "./Helpers/StorageManager.js";
 import { UI } from "./UI.js";
 import { Utils } from "./Helpers/Utils.js";
 
+
+/**
+ * @description The main class of the game
+ *
+ * @class Game
+ * @typedef {Game}
+ */
 class Game {
     constructor(debug = false) {
         Utils.resetIfNewVersion();
@@ -25,6 +32,12 @@ class Game {
         StorageManager.version = Constants.VERSION;
     }
 
+    
+    /**
+     * @description Initialize the game
+     *
+     * @async
+     */
     async init() {
         const {items, groups} = await DataFetcher.fetchData();
         this.items = items;
@@ -32,6 +45,10 @@ class Game {
         this.setupGame();
     }
 
+    
+    /**
+     * @description Setup the game
+     */
     setupGame() {
         StorageManager.initDefaultLocalStorage();
                 
@@ -65,7 +82,6 @@ class Game {
         const lastIsaaconnect = StorageManager.lastIsaaconnect;
         if (lastIsaaconnect !== Utils.getDaysSince()) {
             StorageManager.newIsaaconnect();
-            console.log("New isaaconnect");
         } else {
             this.assignLocalStorageToVariables();
         }
@@ -75,6 +91,12 @@ class Game {
         this.UI.addTooltipListeners();
     }
 
+    
+    /**
+     * @description Get a random group from the groups array
+     *
+     * @returns {Array} The group picked randomly
+     */
     getRandomGroup() {
         let index, group, i = 0;
 
@@ -91,7 +113,7 @@ class Game {
     /**
      * Pick NUMBER_OF_ITEMS items from the group
      *
-     * @param {*} group
+     * @param {Array} group The group to pick the items from
      * @returns {{}}
      */
     getRandomItems(group) {
@@ -101,14 +123,14 @@ class Game {
             let indexGroup = Math.floor(Utils.getSeed(i) * group.items.length);
             let item = this.findItemById(group.items[indexGroup]), j = 1;
 
-            while (this.itemsAlreadyPicked.includes(item) || this.bannedItem.includes(item.id)) {
+            while (this.itemsAlreadyPicked.includes(item) || this.bannedItem.includes(item.id) || items.includes(item)){
                 if (j >= group.items.length) {
                     this.groupAlreadyPicked.pop();
                     this.bannedGroup.push(group);
                     this.mapItemAndGroup.forEach((key, value) => {
                         if (key === group) this.mapItemAndGroup.delete(value);
                     });
-                    this.itemsAlreadyPicked = this.itemsAlreadyPicked.filter(item => !group.items.includes(item.id));
+
                     group = this.getRandomGroup();
                     j = 1;
                     i = -1;
@@ -122,12 +144,15 @@ class Game {
 
             if (!reset) {
                 items.push(item);
-                this.itemsAlreadyPicked.push(item);
                 this.mapItemAndGroup.set(item, group);
             }
             reset = false;
             if (items.length >= 4) break;
         }
+
+        items.forEach(item => {
+            this.itemsAlreadyPicked.push(item);
+        });
     }
 
     
@@ -152,7 +177,6 @@ class Game {
 
             if (this.groupsSolved.length >= 4)
             {
-                console.log(this.health);
                 if (this.health > 0) this.win();
                 else this.loose();
             }
