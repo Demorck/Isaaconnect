@@ -499,7 +499,7 @@
     
     {
         "name": "Jewellery",
-        "items": [732, 604, 686, 355, 546],
+        "items": [732, 604, 686, 355, 546, 72],
         "difficulty": 0
     },
 
@@ -770,6 +770,90 @@
     {
         "name": "Items that use a crosshair",
         "items": [709, 168, 47, 394, 527],
-        "difficulty": 2
+        "difficulty": 1,
+    },
+
+    {
+        "name": "Items that spawn friendly enemies",
+        "items": [382, 545, 510, 687, 433, 539, 505, 468],
+        "difficulty": 2,
+    },
+
+    {
+        "name": "Items that can petrify enemies",
+        "items": [39, 338, 351, 178, 202, 110, 372, 546, 450, 608],
+        "difficulty": 2,
+    },
+
+    {
+        "name": "Items that cause fear",
+        "items": [41, 93, 230, 259, 228, 433, 400, 513, 554],
+        "difficulty": 1,
+    },
+
+    {
+        "name": "Items that cause confusion",
+        "items": [209, 201, 497, 760, 449, 637],
+        "difficulty": 2,
+    },
+
+    {
+        "name": "Items that can charm enemies",
+        "items": [421, 207, 200, 280, 391, 404, 432, 513, 591],
+        "difficulty": 2,
+    },
+
+    {
+        "name": "Items that end in '!'",
+        "items": [483, 40, 443, 527, 84, 467, 44, 193, 11, 49, 529, 247, 291, 436, 704, -1, 19, 709, 492],
+        "difficulty": 3,
+    },
+
+    {
+        "name": "Big pills",
+        "items": [127, 340, 348, 475],
+        "difficulty": 0,
+    },
+
+    {
+        "name": "Items with a size in their name",
+        "items": [90, 279, 473, 503, 502, 233, 645, 658],
+        "difficulty": 3,
+    },
+
+    {
+        "name": "'Lil' familiars",
+        "items": [275, 277, 362, 384, 435, 471, 519, 537, 615, 679, 681],
+        "difficulty": 1,
+    },
+
+     {
+        "name": "Set drops from bosses",
+        "items": [650, 96, 207, 73, 293, 99, 100, 132, 130, 181, 50],
+        "difficulty": 1,
+    },
+
+     {
+        "name": "Item names starting with a color",
+        "items": [289, 580, 621, 673, 246, 342, 512, 107, 181, 504],
+        "difficulty": 3,
+    },
+
+     {
+        "name": "Organs",
+        "items": [15, 276, 671, 676, 16, 229, 611, 725, 641],
+        "difficulty": 1,
+    },
+
+     {
+        "name": "Items named ball",
+        "items": [143, 158, 187, 194, 207, 231, 382],
+        "difficulty": 2,
+    },
+
+     {
+        "name": "Remotes",
+        "items": [44, 47, 419, 478, 482],
+        "difficulty": 0,
     }
 ]
