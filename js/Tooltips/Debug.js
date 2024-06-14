@@ -1,5 +1,6 @@
 import { StorageManager } from "../Helpers/StorageManager.js";
 import { Constants } from "../Helpers/Constants.js";
+import { Game } from "../Game.js";
 
 
 /**
@@ -24,5 +25,13 @@ export function addEvent(container) {
     container.querySelector('#life').addEventListener('click', () => {
         StorageManager.health = 20;
         location.reload();
+    });
+
+    container.querySelector('#tests').addEventListener('click', async () => {
+        for (let i = 1; i <= 5; i++) {
+            const {selectedGroups, selectedItems} = Game.generateSelection(i);
+            console.log(selectedGroups, selectedItems);
+        }
+        
     });
 }

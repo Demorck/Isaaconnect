@@ -1,4 +1,24 @@
 export class Constants {
+
+    static items = null;
+    static groups = null;
+
+    static get ITEMS() {
+        return this.items;
+    }
+
+    static set ITEMS(items) {
+        this.items = items;
+    }
+
+    static get GROUPS() {
+        return this.groups;
+    }
+
+    static set GROUPS(groups) {
+        this.groups = groups;
+    }
+
     static get URL() {
         return 'https://isaaconnect.com';
     }
@@ -14,6 +34,8 @@ export class Constants {
     static get NUMBER_OF_ITEMS() {
         return 4;
     }
+
+    static NUMBER_OF_DAYS_BEFORE = 5;
 
     static BASE_DATE = new Date(2024, 4, 22);
 
@@ -44,5 +66,5 @@ export class Constants {
         lastIsaaconnect: 0
     };
 
-    static VERSION = '0.7.0';
+    static VERSION = '0.8.0';
 }

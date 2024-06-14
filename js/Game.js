@@ -1,6 +1,6 @@
 "use strict";
 import { Constants } from "./Helpers/Constants.js";
-import { DataFetcher } from "./DataFetcher.js";
+import { DataFetcher } from "./Helpers/DataFetcher.js";
 import { StorageManager } from "./Helpers/StorageManager.js";
 import { UI } from "./UI.js";
 import { Utils } from "./Helpers/Utils.js";
@@ -12,26 +12,22 @@ import { Utils } from "./Helpers/Utils.js";
  * @class Game
  * @typedef {Game}
  */
-class Game {
+export class Game {
+    
     constructor(debug = false) {
         Utils.resetIfNewVersion();
         this.debug = StorageManager.debug || debug;
-        this.items = []; 
-        this.groups = [];
         this.health = Constants.MAX_HEALTH;
-        this.itemsAlreadyPicked = [];
-        this.groupAlreadyPicked = [];
+        this.itemsSelected = [];
+        this.groupsSelected = [];
         this.groupsSolved = [];
         this.attempts = [];
         this.currentAttempt = 0;
         this.mapItemAndGroup = new Map();
-        this.bannedGroup = [];
-        this.bannedItem = [];
         this.UI = new UI(this, this.debug);
         this.init();
         StorageManager.version = Constants.VERSION;
     }
-
     
     /**
      * @description Initialize the game
@@ -40,8 +36,8 @@ class Game {
      */
     async init() {
         const {items, groups} = await DataFetcher.fetchData();
-        this.items = items;
-        this.groups = groups;
+        Constants.ITEMS = items;
+        Constants.GROUPS = groups;
         this.setupGame();
     }
 
@@ -51,30 +47,31 @@ class Game {
      */
     setupGame() {
         StorageManager.initDefaultLocalStorage();
-                
+        
         this.UI.updateHealth(this.health);
-
-        for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
-            let currentGroup = this.getRandomGroup();
-            this.getRandomItems(currentGroup);
-
-            currentGroup.items.forEach(item => {
-                if (this.bannedItem.indexOf(item) === -1) {
-                    this.bannedItem.push(item);
-                }
-
-                this.groups.forEach(group => {
-                    if (group.items.indexOf(item) !== -1) {
-                        this.bannedGroup.push(group);
-                    }
-                });
-            });
+        
+        let bannedGroup = [];
+        for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
+            const {selectedGroups, selectedItems} = Game.generateSelection(i);
+            selectedGroups.forEach(group => {if (bannedGroup.indexOf(group) === -1) bannedGroup.push(group)});
         }
+
+        console.log("Banned groups", bannedGroup);
+        
+        const {selectedGroups, selectedItems} = Game.generateSelection(0, bannedGroup);
+        this.groupsSelected = selectedGroups;
+        this.itemsSelected = selectedItems;
+
+        this.groupsSelected.forEach(group => {
+            group.items.forEach(item => {
+                this.itemsSelected.filter(currentItem => currentItem.id === item).length > 0 && this.mapItemAndGroup.set(Game.findItemById(item), group);
+            });
+        });
 
         StorageManager.mapItemAndGroup = this.mapItemAndGroup;
 
-        this.itemsAlreadyPicked = Utils.shuffleArray(this.itemsAlreadyPicked);
-        this.UI.displayItems(this.itemsAlreadyPicked);
+        this.itemsSelected = Utils.shuffleArray(this.itemsSelected);
+        this.UI.displayItems(this.itemsSelected);
         this.UI.applyBorderRadius();
         this.UI.setupEventListeners();
         this.UI.addEventCheckboxes();
@@ -92,20 +89,57 @@ class Game {
     }
 
     
+    static generateSelection(daysBefore = 0, alreadyBanned = []) {
+        let bannedGroup = alreadyBanned;
+        let bannedItem = [];
+
+        let selectedGroups = [];
+        let selectedItems = [];
+
+
+        for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
+            let currentGroup = Game.getRandomGroup(bannedGroup, daysBefore);
+            selectedGroups.push(currentGroup);
+            bannedGroup.push(currentGroup);
+
+            let items = Game.getRandomItems(currentGroup, bannedItem, daysBefore);
+            items.forEach(item => {
+                selectedItems.push(item);
+            });
+
+            currentGroup.items.forEach(item => {
+                if (bannedItem.indexOf(item) === -1) {
+                    bannedItem.push(item);
+                }
+
+                Constants.GROUPS.forEach(group => {
+                    if (group.items.indexOf(item) !== -1) {
+                        bannedGroup.push(group);
+                    }
+                });
+            });
+        }
+
+        return {selectedGroups, selectedItems};
+    }
+
     /**
      * @description Get a random group from the groups array
      *
+     * @static
+     * @param {Array} groups The groups array
+     * @param {Array} bannedGroup The groups that are already picked and banned
+     * @param {number} [daysBefore=0] The number of days before the current date
      * @returns {Array} The group picked randomly
      */
-    getRandomGroup() {
+    static getRandomGroup(bannedGroup, daysBefore = 0) {
         let index, group, i = 0;
 
         do {
-            index = Math.floor(Utils.getSeed(i++) * this.groups.length);
-            group = this.groups[index];
-        } while (this.groupAlreadyPicked.includes(group) || this.bannedGroup.includes(group));
+            index = Math.floor(Utils.getSeed(i++, daysBefore) * Constants.GROUPS.length);
+            group = Constants.GROUPS[index];
+        } while (bannedGroup.includes(group));
     
-        this.groupAlreadyPicked.push(group);
         return group;
     }
 
@@ -116,43 +150,24 @@ class Game {
      * @param {Array} group The group to pick the items from
      * @returns {{}}
      */
-    getRandomItems(group) {
-        let items = [];
-        let reset = false;
+    static getRandomItems(group, bannedItem, daysBefore = 0) {
+        let itemsPicked = [];
+        let counter = 0;
         for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
-            let indexGroup = Math.floor(Utils.getSeed(i) * group.items.length);
-            let item = this.findItemById(group.items[indexGroup]), j = 1;
+            let item;
+            do {
+                let indexGroup = Math.floor(Utils.getSeed(i + counter, daysBefore) * group.items.length);
+                item = Game.findItemById(group.items[indexGroup]);
+                counter++;
+            } while (bannedItem.includes(item.id));
 
-            while (this.itemsAlreadyPicked.includes(item) || this.bannedItem.includes(item.id) || items.includes(item)){
-                if (j >= group.items.length) {
-                    this.groupAlreadyPicked.pop();
-                    this.bannedGroup.push(group);
-                    this.mapItemAndGroup.forEach((key, value) => {
-                        if (key === group) this.mapItemAndGroup.delete(value);
-                    });
-
-                    group = this.getRandomGroup();
-                    j = 1;
-                    i = -1;
-                    items = [];
-                    reset = true;
-                    break;
-                }
-                indexGroup = Math.floor(Utils.getSeed(j++) * group.items.length);
-                item = this.findItemById(group.items[indexGroup]);
+            if (counter >= 1000) {
+                return null;
             }
-
-            if (!reset) {
-                items.push(item);
-                this.mapItemAndGroup.set(item, group);
-            }
-            reset = false;
-            if (items.length >= 4) break;
+            itemsPicked.push(item);
+            bannedItem.push(item.id);
         }
-
-        items.forEach(item => {
-            this.itemsAlreadyPicked.push(item);
-        });
+        return itemsPicked;
     }
 
     
@@ -198,10 +213,11 @@ class Game {
 
         this.attempts[this.currentAttempt] = [];
         let numberOfGroups = 0;
+        
         selectedItemsID.forEach(id => {
-            const currentItem = this.findItemById(id);
+            const currentItem = Game.findItemById(id);
             currentGroup = this.mapItemAndGroup.get(currentItem);
-
+            
             if (!firstGroup) firstGroup = currentGroup;
             else if (firstGroup !== currentGroup) win = false;
 
@@ -268,8 +284,8 @@ class Game {
      * @param {number} id The id of the item
      * @returns {Object}
      */
-    findItemById(id) {
-        return this.items.find(item => item.id === id);
+    static findItemById(id) {
+        return Constants.ITEMS.find(item => item.id === id);
     }
 
     autocomplete() {
@@ -314,13 +330,13 @@ class Game {
 
         this.UI.win();        
     }
-
+    
     getIndexOfGroup(group) {
-        return this.groupAlreadyPicked.findIndex(currentGroup => currentGroup.name === group.name);
+        return this.groupsSelected.findIndex(currentGroup => currentGroup.name === group.name);
     }
 
     getIndexGroupFromItem(item) {
-        return this.groupAlreadyPicked.findIndex(currentGroup => currentGroup.items.includes(item.id));
+        return this.groupsSelected.findIndex(currentGroup => currentGroup.items.includes(item.id));
     }
 
 }

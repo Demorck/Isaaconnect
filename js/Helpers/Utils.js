@@ -31,14 +31,16 @@ export class Utils {
     *
     * @static
     * @param {number} [modifier=0]
+    * @param {number} [daysBefore=0]
     * @returns {number}
     * @memberof Utils
     */
-    static getSeed(modifier = 0) {
+    static getSeed(modifier = 0, daysBefore = 0) {
         const now = new Date();
         if (now.getHours() < 8) {
             now.setDate(now.getDate() - 1);
         }
+        now.setDate(now.getDate() - daysBefore);
         now.setHours(8, 0, 0, 0);
         return new alea(now.getTime() + modifier).quick();
     }
@@ -114,8 +116,13 @@ export class Utils {
         let currentVersion = Constants.VERSION;
         let versionUser = StorageManager.version;
         if (versionUser !== currentVersion) {
-            StorageManager.clear();
-            StorageManager.version = currentVersion;
+            if (versionUser === undefined) {
+                StorageManager.clear();
+            }
+            else {
+                StorageManager.game = Constants.DEFAULT_DATA.game;
+                StorageManager.version = currentVersion;
+            }
         }
     }
 }

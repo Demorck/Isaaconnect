@@ -2,6 +2,7 @@ import { Constants } from "./Helpers/Constants.js";
 import { StorageManager } from "./Helpers/StorageManager.js";
 import { Utils } from "./Helpers/Utils.js";
 import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
+import { Game } from "./Game.js";
 
 /**
  * @file UI.js
@@ -177,7 +178,7 @@ export class UI {
         let i = 0;
         this.game.mapItemAndGroup.forEach((key, value) => {
             if (key.name === group.name) {
-                const item = this.game.findItemById(value.id);
+                const item = Game.findItemById(value.id);
                 if (i == 2) content += `</div><div class="flex flex-row">`;
                 content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
                 document.querySelector(`label[data-id="${item.id}"]`).remove();
@@ -192,7 +193,7 @@ export class UI {
         i = 0;
         this.game.mapItemAndGroup.forEach((key, value) => {
             if (key.name === group.name) {
-                const item = this.game.findItemById(value.id);
+                const item = Game.findItemById(value.id);
                 content += `${item.alias}`;
                 if (i != 3) content += `, `;
                 i++;
