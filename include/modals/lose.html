@@ -8,7 +8,7 @@
     <div class="relative flex-auto flex flex-col items-center">
         <div class="flex flex-col justify-center items-center w-80 xxs:w-80 xs:w-96 mb-0 text-center">
             <div class="text-center">Not found :(</div>
-            <div class="text-center">with <b>0</b> group found</div>
+            <div class="text-center">with <b>{{ groups }}</b> group found</div>
         </div>
         <div data-id="results-wrapper"></div>
         <div class="flex flex-row gap-4">
@@ -27,7 +27,7 @@
         </div>
         <div class="flex flex-col justify-center items-center w-80 xxs:w-80 xs:w-96 mb-0 text-center">
             <div class="text-center"><b>You aren't on a streak ^^</b></div>
-            <div class="text-center"><b>0</b> in a row...</div>
+            <div class="text-center"><b>{{ losses }}</b> losses... </div>
         </div>
     </div>
 </div>

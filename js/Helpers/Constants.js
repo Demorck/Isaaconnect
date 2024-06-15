@@ -35,7 +35,7 @@ export class Constants {
         return 4;
     }
 
-    static NUMBER_OF_DAYS_BEFORE = 5;
+    static NUMBER_OF_DAYS_BEFORE = 3;
 
     static BASE_DATE = new Date(2024, 4, 22);
 

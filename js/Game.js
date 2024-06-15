@@ -314,7 +314,8 @@ export class Game {
         {
             StorageManager.winStreak = 0;
             StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
-            StorageManager.looses++;
+            StorageManager.losses++;
+            StorageManager.finished = true;
         }
 
         this.UI.loose();
@@ -326,6 +327,7 @@ export class Game {
             StorageManager.winStreak++;
             StorageManager.longestStreak = Math.max(StorageManager.longestStreak, StorageManager.winStreak);
             StorageManager.wins++;
+            StorageManager.finished = true;
         }
 
         this.UI.win();        

@@ -209,21 +209,49 @@ export class UI {
         this.applyBorderRadius();
     }
 
-    loose() {
+    async loose() {
         const modalPath = "/include/modals/lose.html";
+        let html = await Utils.loadHtml(modalPath);
+        let placeholders = {};
+        let attempts = StorageManager.attempts;
+        let groupsFound = 0; 
+        attempts.forEach(attempt => {
+            let firstGroup;
+            let found = true;
+            attempt.forEach(group => {
+                if (firstGroup === undefined) {
+                    firstGroup = group;
+                } else {
+                    if (firstGroup.name !== group.name) {
+                        found = false;
+                    }
+                }
+            });
+            if (found) {
+                groupsFound++;
+            }
+        });
+        placeholders.groups = groupsFound;
+        placeholders.losses = StorageManager.losses;
+        html = Utils.replacePlaceholders(html, placeholders);
 
-        this.gameOver(modalPath);
-        this.displayModal(modalPath);
+        this.gameOver(html);
+        this.displayModal(html);
     }
 
-    win() {
+    async win() {
         const modalPath = "/include/modals/win.html";
+        let html = await Utils.loadHtml(modalPath);
+        let placeholders = {};
+        placeholders.mistakes = Constants.MAX_HEALTH - StorageManager.health;
+        placeholders.streak = StorageManager.winStreak;
+        html = Utils.replacePlaceholders(html, placeholders);
 
-        this.gameOver(modalPath);
-        this.displayModal(modalPath);
+        this.gameOver(html);
+        this.displayModal(html);
     }
 
-    gameOver(modalPath) {
+    gameOver(html) {
         if (!StorageManager.finished)
             StorageManager.finished = true;
         
@@ -232,28 +260,21 @@ export class UI {
 
         const buttons = document.querySelector('.buttons');
         buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">See results</button>';
-        document.querySelector('button[data-id="results"]').addEventListener('click', () => this.displayModal(modalPath));
+        document.querySelector('button[data-id="results"]').addEventListener('click', () => this.displayModal(html));
         document.querySelector('#cards-game').classList.remove('h-min', 'md:w-min', 'md:h-min');
     }
 
-    displayModal = (modalPath) => {
+    displayModal = (html) => {
         const modalWrapper = document.getElementById('modal-wrapper');
-        fetch(modalPath)
-            .then(response => response.text())
-            .then(content => {
-                modalWrapper.innerHTML = content;
-                document.querySelector('.close-button').addEventListener('click', () => {
-                    modalWrapper.style.display = 'none';
-                    modalWrapper.innerHTML = '';
-                });
-                document.querySelector('[data-id="results-wrapper"]').innerHTML = this.convertAttemptToSquareMatrix();
+        modalWrapper.innerHTML = html;
+        document.querySelector('.close-button').addEventListener('click', () => {
+            modalWrapper.style.display = 'none';
+            modalWrapper.innerHTML = '';
+        });
+        document.querySelector('[data-id="results-wrapper"]').innerHTML = this.convertAttemptToSquareMatrix();
 
-                let copyButton = document.getElementById('copy');
-                copyButton.addEventListener('click', () => this.copyResults(copyButton));
-            })
-            .catch(error => {
-                console.error('Erreur lors du chargement du contenu de la modal:', error);
-            });
+        let copyButton = document.getElementById('copy');
+        copyButton.addEventListener('click', () => this.copyResults(copyButton));
             
         modalWrapper.style.display = 'flex';
     }
