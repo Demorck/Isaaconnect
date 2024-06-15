@@ -150,6 +150,10 @@ ol, ul {
 
 /******* LE JEU ********/
 
+.pixelated {
+    image-rendering: pixelated;
+}
+
 .hearts img {
     image-rendering: pixelated;
     width: 3em;
@@ -244,6 +248,25 @@ ol, ul {
     color: white;
     font-weight: 800;
 }
+
+.infos {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: 800;
+    position: absolute;
+    z-index: 2;
+}
+
+.selected {
+    border: 2px solid #000;
+}
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
 
 /***** TOOLTIPS *********/
 
