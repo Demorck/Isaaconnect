@@ -25,8 +25,8 @@ export class StorageManager {
     }
 
     static newIsaaconnect() {
-        this.setItem('lastIsaaconnect', Utils.getDaysSince());
-        this.setItem('game', Constants.DEFAULT_DATA.game);
+        this.lastIsaaconnect = Utils.getDaysSince();
+        this.game = Constants.DEFAULT_DATA.game;
     }
 
     static get game() {
