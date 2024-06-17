@@ -249,6 +249,8 @@ ol, ul {
     font-weight: 800;
 }
 
+/***** Group Creator *********/
+
 .infos {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -267,6 +269,73 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
+
+select#quality option[value="Quality 0"] { background-image:url(/assets/gfx/Quality\ 0.png);   }
+select#quality option[value="Quality 1"] { background-image:url(/assets/gfx/Quality\ 1.png); }
+select#quality option[value="Quality 2"] { background-image:url(/assets/gfx/Quality\ 2.png); }
+select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Quality\ 3.png); }
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.menu-right {
+    right: -400px;
+}
+
+.menu-left {
+    left: -400px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu ul li:hover {
+    background-color: #575757;
+}
+
+.menu-button {
+    position: fixed;
+    bottom: 20px;
+    padding: 15px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-button-right {
+    right: 20px;
+}
+
+.menu-button-left {
+    left: 20px;
+}
+
+.menu-button:hover {
+    background-color: #0056b3;
+}
 
 /***** TOOLTIPS *********/
 

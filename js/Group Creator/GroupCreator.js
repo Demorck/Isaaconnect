@@ -8,6 +8,7 @@ export class GroupCreator {
         this.groups = [];
         this.selectedGroup = null;
         this.selectedItem = null;
+        this.itemsToAdd = [];
         this.init();
     }
 
@@ -15,6 +16,7 @@ export class GroupCreator {
         const {items, groups} = await DataFetcher.fetchData();
         Constants.ITEMS = items;
         Constants.GROUPS = groups;
+        this.populateItems();
 
         let wrapper = document.getElementById('groups-wrapper');
         Constants.GROUPS.forEach((group, index) => {
@@ -84,7 +86,8 @@ export class GroupCreator {
     addGroup() {
         let newGroup = {
             name: 'Nouveau groupe',
-            items: []
+            items: [],
+            difficulty: 1
         };
 
         Constants.GROUPS.push(newGroup);
@@ -97,8 +100,7 @@ export class GroupCreator {
 
     removeGroup() {
         if (this.selectedGroup) {
-            let index = Constants.GROUPS.indexOf(this.selectedGroup.group);
-            Constants.GROUPS.splice(index, 1);
+            let index = this.groups.indexOf(this.selectedGroup);
             this.groups.splice(index, 1);
             this.selectedGroup.getGroupElement().remove();
             this.selectedGroup = null;
@@ -108,7 +110,27 @@ export class GroupCreator {
     }
 
     addItem() {
+        if (this.selectedGroup && this.itemsToAdd.length > 0) {
+            this.itemsToAdd.forEach(item => {
+                if (!this.selectedGroup.addItem(item))
+                    return;
+                let itemElement = item.getItemElement();
+                itemElement.addEventListener('click', () => {
+                    document.querySelectorAll('.item.selected').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+                    itemElement.classList.add('selected');
+                    this.selectedItem = item;
+                });
+                document.getElementById('items-wrapper').appendChild(itemElement);
+            });
+            this.itemsToAdd = [];
+            let itemsWrapper = document.querySelectorAll('#items .selected');
+            itemsWrapper.forEach(item => {
+                item.classList.remove('selected');
+            });
 
+        }
     }
 
     removeItem() {
@@ -123,8 +145,13 @@ export class GroupCreator {
 
     generate() {
         let groups = [];
+        let canGenerate = true;
         this.groups.forEach(group => {
             let items = [];
+            if (group.items.length < 4) {
+                canGenerate = false;
+                return;
+            }
             group.items.forEach(item => {
                 items.push(item.id);
             });
@@ -134,6 +161,11 @@ export class GroupCreator {
                 difficulty: group.difficulty
             });
         });
+
+        if (!canGenerate) {
+            alert('Chaque groupe doit au moins contenir 4 items');
+            return;
+        }
 
         let data = JSON.stringify(groups, null, 2);
         data = data.replace(/^\s*([0-9]*,?)*\n/gm, '$1 ').replace(/(: \[)\n/gm, '$1');
@@ -166,6 +198,19 @@ export class GroupCreator {
                 cls = 'null';
             }
             return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    async populateItems() {
+        let itemsWrapper = document.getElementById('items');
+        Constants.ITEMS.forEach(item => {
+            let currentItem = new Item(item.id);
+            let element = currentItem.getItemElement();
+            element.addEventListener('click', () => {
+                element.classList.add('selected');
+                this.itemsToAdd.push(currentItem);
+            });
+            itemsWrapper.appendChild(element);
         });
     }
 

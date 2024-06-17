@@ -18,15 +18,21 @@
     <link rel="stylesheet" href="/css/themes.css">
 </head>
 <body class="theme main-theme">
+    <div class="menu menu-left" id="menu-left">
+        <pre class="flex flex-col bg-white p-4 m-4 mb-0 rounded-3xl text-black overflow-y-auto hidden" style="height: 600px;width:600px;" id="code">
+
+        </pre>
+    </div>
+    <button class="menu-button menu-button-left" id="open-menu-left">Show code</button>
+
+
     <div class="flex flex-col h-full">
         <div id="title" class="flex self-center">
             <h1 class="upheaval text-5xl md:text-6xl shadow-theme text-white flex">ISAA<span>CONNECT</span></h1>
         </div>
         <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1">
 
-            <pre class="flex flex-col bg-white p-4 m-4 mb-0 rounded-3xl overflow-y-auto hidden" style="height: 600px;width:600px;" id="code">
-
-            </pre>
+            
 
             <div class="flex flex-col">
 
@@ -36,7 +42,7 @@
                     <input type="text" id="filter-input" class="p-2 border border-gray-300 rounded-md" placeholder="Filter groups">
                     <div style="height: 600px;" class="flex flex-row">
                         <div class="flex flex-col gap-2">
-                            <div  class="shadow-theme h-full p-4 m-4 mb-0 text-center rounded-3xl bg-white overflow-y-auto" id="groups-wrapper">
+                            <div  class="shadow-theme h-full p-4 m-4 mb-0 text-center rounded-3xl bg-white overflow-y-auto flex flex-col" id="groups-wrapper">
                         
                             </div>
                             <div class="flex flex-row justify-evenly">
@@ -73,6 +79,47 @@
         </div>
     </div>
 
+    <div class="menu menu-right" id="menu-right">
+        <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
+        <div class="flex flex-wrap" id="items">
+
+        </div>
+    </div>
+    <button class="menu-button menu-button-right" id="open-menu-right">Items</button>
+
     <script type="module" src="/js/Group Creator/GroupCreator.js"></script>
+    <script>
+        document.getElementById('open-menu-right').addEventListener('click', function() {
+            var menu = document.getElementById('menu-right');
+            if (menu.style.right === '0px') {
+                menu.style.right = '-400px';
+            } else {
+                menu.style.right = '0px';
+            }
+        });
+
+        document.getElementById('open-menu-left').addEventListener('click', function() {
+            var menu = document.getElementById('menu-left');
+            if (menu.style.left === '0px') {
+                menu.style.left = '-400px';
+            } else {
+                menu.style.left = '0px';
+            }
+        });
+
+        document.getElementById('filter-items-input').addEventListener('input', function() {
+            var filter = this.value.toLowerCase().trim();
+            var items = document.getElementById('items').children;
+            for (var i = 0; i < items.length; i++) {
+                var group = items[i];
+                var groupName = group.children[0].alt.toLowerCase();
+                if (groupName.toLowerCase().indexOf(filter) > -1) {
+                    group.style.display = '';
+                } else {
+                    group.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

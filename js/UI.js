@@ -357,9 +357,6 @@ export class UI {
 
             navigator.clipboard.writeText(textToCopy);
             element.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
-            setTimeout(() => {
-                element.innerHTML = `<span class="material-symbols-outlined align-bottom">content_copy</span>Copy`;
-            }, 2500);
             this.showMessage("Results copied to clipboard");
         }
         catch (error)
