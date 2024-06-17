@@ -51,8 +51,6 @@ export class Game {
         const lastIsaaconnect = StorageManager.lastIsaaconnect;
         if (lastIsaaconnect !== Utils.getDaysSince()) {
             StorageManager.newIsaaconnect();
-        } else {
-            this.assignLocalStorageToVariables();
         }
         
         this.UI.updateHealth(this.health);
@@ -62,8 +60,6 @@ export class Game {
             const {selectedGroups, selectedItems} = Game.generateSelection(i);
             selectedGroups.forEach(group => {if (bannedGroup.indexOf(group) === -1) bannedGroup.push(group)});
         }
-
-        console.log("Banned groups", bannedGroup);
         
         const {selectedGroups, selectedItems} = Game.generateSelection(0, bannedGroup);
         this.groupsSelected = selectedGroups;
@@ -83,7 +79,7 @@ export class Game {
         this.UI.setupEventListeners();
         this.UI.addEventCheckboxes();
 
-        
+        this.assignLocalStorageToVariables();        
 
         StorageManager.lastIsaaconnect = Utils.getDaysSince();
         this.UI.addDebugMenu();

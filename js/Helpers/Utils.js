@@ -50,14 +50,17 @@ export class Utils {
      * @description Get the number of days since a given date.
      *
      * @static
-     * @param {Date} [startDate=new Date(2024, 4, 24)]
+     * @param {Date} [startDate=new Date(2024, 4, 24).setHours(8, 0, 0, 0)]
      * @returns {number}
      */
     static getDaysSince(startDate = Constants.BASE_DATE) {
         const oneDay = 24 * 60 * 60 * 1000;
         const today = new Date();
+        if (today.getHours() < 8) {
+            today.setDate(today.getDate() - 1);
+        }
         const diffTime = Math.abs(today - startDate);
-        return Math.round(diffTime / oneDay);
+        return Math.floor(diffTime / oneDay);
     }
 
     
