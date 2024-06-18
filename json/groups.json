@@ -684,8 +684,8 @@
     },
 
     {
-        "name": "Items with fire",
-        "items": [223, 256, 257, 182],
+        "name": "Items with fire in their sprite",
+        "items": [223, 256, 257, 182, 567, 164, 289],
         "difficulty": 1
     },
 
@@ -854,6 +854,78 @@
      {
         "name": "Remotes",
         "items": [44, 47, 419, 478, 482],
+        "difficulty": 0
+    },
+
+    {
+        "name": "Items called 'A ___'",
+        "items": [18, 74, 130, 132, 346, 672, 564],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items that can make other items disappear",
+        "items": [706, 477, 485, 523],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items unlocked by challenges",
+        "items": [189, 267, 237, 244, 168, 406, 440, 501, 576, 364, 579],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Balance items",
+        "items": [304, 464, 498, 672],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items that can be used when not fully charged",
+        "items": [611, 720, 147, 655],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Active items that are not charged on pickup",
+        "items": [720, 611, 704, 490, 585],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items whose ID is 3 identical numbers",
+        "items": [111, 222, 333, 444, 555],
+        "difficulty": 3
+    },
+
+    {
+        "name": "Items whose names start with a number",
+        "items": [11, 116, 191, 245, 359, 526, 554, 559, 647],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Items that trigger in the first room of a new floor",
+        "items": [612, 586, 660, 673, 701, 569, 676],
+        "difficulty": 1
+    },
+
+    {
+        "name": "Passive items that allow Isaac to deal contact damage",
+        "items": [663, 30, 202, 300, 393, 468],
+        "difficulty": 2
+    },
+
+    {
+        "name": "Items that create brimstone lasers",
+        "items": [49, 118, 275, 293, 441, 556, 646],
+        "difficulty": 0
+    },
+
+    {
+        "name": "Box items",
+        "items": [198, 288, 295, 297, 357, 362, 439, 515, 518, 523, 585, 719],
         "difficulty": 0
     }
 ]
