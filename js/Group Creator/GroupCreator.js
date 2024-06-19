@@ -9,6 +9,7 @@ export class GroupCreator {
         this.selectedGroup = null;
         this.selectedItem = null;
         this.itemsToAdd = [];
+        this.regex = false;
         this.init();
     }
 
@@ -39,6 +40,9 @@ export class GroupCreator {
         
         let removeGroup = document.getElementById('delete-group');
         removeGroup.addEventListener('click', this.removeGroup.bind(this));
+        
+        let filterItem = document.getElementById('filter-items-input');
+        filterItem.addEventListener('input', this.filterItem.bind(this));
 
         let addItem = document.getElementById('add-item');
         addItem.addEventListener('click', this.addItem.bind(this));
@@ -48,6 +52,12 @@ export class GroupCreator {
         
         let generate = document.getElementById('generate');
         generate.addEventListener('click', this.generate.bind(this));
+
+        let toggleRegex = document.getElementById('toggle-regex');
+        toggleRegex.addEventListener('click', this.toggleRegex.bind(this));
+        
+        let code = document.getElementById('code');
+        code.addEventListener('click', this.copyCode.bind(this));
     }
 
     filterGroups(event) {
@@ -185,7 +195,7 @@ export class GroupCreator {
     syntaxHighlight(json) {
         json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-            var cls = 'number';
+            let cls = 'number';
             if (/^"/.test(match)) {
                 if (/:$/.test(match)) {
                     cls = 'key';
@@ -207,11 +217,78 @@ export class GroupCreator {
             let currentItem = new Item(item.id);
             let element = currentItem.getItemElement();
             element.addEventListener('click', () => {
-                element.classList.add('selected');
-                this.itemsToAdd.push(currentItem);
+                element.classList.toggle('selected');
+                if (this.itemsToAdd.includes(currentItem)) {
+                    let index = this.itemsToAdd.indexOf(currentItem);
+                    this.itemsToAdd.splice(index, 1);
+                } else {
+                    this.itemsToAdd.push(currentItem);
+                }
             });
             itemsWrapper.appendChild(element);
         });
+    }
+
+    toggleRegex(event) {
+        this.regex = event.target.checked;
+    }
+
+    filterItem(event) {
+        let items = document.getElementById('items').children;
+        if (this.regex)
+        {   
+            try {
+                let filter = event.target.value.trim();
+                for (let i = 0; i < items.length; i++) {
+                    let group = items[i];
+                    let groupName = group.children[0].alt;
+                    let regex = new RegExp(filter, 'i');
+                    if (regex.test(groupName)) {
+                        group.style.display = '';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                }
+            } catch (ignored) {}
+        }
+        else
+        {
+            let filter = event.target.value.toLowerCase().trim();
+            let items = document.getElementById('items').children;
+            for (let i = 0; i < items.length; i++) {
+                let group = items[i];
+                let groupName = group.children[0].alt.toLowerCase();
+                if (groupName.toLowerCase().indexOf(filter) > -1) {
+                    group.style.display = '';
+                } else {
+                    group.style.display = 'none';
+                }
+            }
+        }
+    }
+
+    copyCode(event) {
+        let code = document.getElementById('code');
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(code.innerText).then(() => {
+                console.log('Text copied to clipboard');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+        
+        if (document.createRange && window.getSelection) {
+            let range = document.createRange();
+            range.selectNodeContents(code);
+            let sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } else if (document.selection && document.body.createTextRange) {
+            let textRange = document.body.createTextRange();
+            textRange.moveToElementText(code);
+            textRange.select();
+        }
     }
 
 }

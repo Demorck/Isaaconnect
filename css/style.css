@@ -259,8 +259,12 @@ ol, ul {
     z-index: 2;
 }
 
-.selected {
+.group.selected {
     border: 2px solid #000;
+}
+
+.item.selected {
+    background-color: #5a5a5a;
 }
 
 pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
@@ -284,7 +288,6 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     color: white;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
 }
 
 .menu-right {
@@ -292,7 +295,8 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
 }
 
 .menu-left {
-    left: -400px;
+    width: 800px;
+    left: -800px;
 }
 
 .menu ul {

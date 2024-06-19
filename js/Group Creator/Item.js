@@ -21,20 +21,24 @@ export class Item {
         itemElement.classList.add('item');
         itemElement.dataset.id = this.id;
         itemElement.innerHTML = `<img width="64px" class="pixelated" src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(this.id)}.png" alt="${this.alias}">`;
-        itemElement.addEventListener('mouseenter', this.showItemInfo.bind(this, itemElement));
-        itemElement.addEventListener('mouseleave', this.hideItemInfo.bind(this, itemElement));
+        itemElement.addEventListener('mouseover', this.showItemInfo.bind(this, itemElement));
+        itemElement.addEventListener('mouseout', this.hideItemInfo.bind(this, itemElement));
         return itemElement;
     }
 
-    showItemInfo(element) {
+    showItemInfo(element, event) {
+        console.log(event);
+        let wrapper = document.querySelector('.infos');
+        wrapper.innerHTML = '';
+        wrapper.classList.remove('hidden');
         element.tooltip = document.createElement('div');
-        element.tooltip.classList.add('infos', 'px-4', 'py-2');
         element.tooltip.innerHTML = `<p>ID: ${this.id}</p><p>Nom: ${this.alias}</p>`;
-        element.appendChild(element.tooltip);
+        wrapper.appendChild(element.tooltip);
     }
 
-    hideItemInfo(element) {
-        element.removeChild(element.tooltip);
+    hideItemInfo(element, event) {
+        let wrapper = document.querySelector('.infos');
+        wrapper.classList.add('hidden');
     }
 
 }

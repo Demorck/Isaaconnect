@@ -18,12 +18,15 @@
     <link rel="stylesheet" href="/css/themes.css">
 </head>
 <body class="theme main-theme">
-    <div class="menu menu-left" id="menu-left">
-        <pre class="flex flex-col bg-white p-4 m-4 mb-0 rounded-3xl text-black overflow-y-auto hidden" style="height: 600px;width:600px;" id="code">
+    <div class="absolute infos px-2 py-4 z-50 hidden">
+
+    </div>
+    <div class="menu menu-left z-30" id="menu-left">
+        <pre class="flex flex-col bg-white p-4 m-4 mb-0 rounded-3xl text-black overflow-y-auto hidden" id="code">
 
         </pre>
     </div>
-    <button class="menu-button menu-button-left" id="open-menu-left">Show code</button>
+    <button class="menu-button menu-button-left z-50" id="open-menu-left">Show code</button>
 
 
     <div class="flex flex-col h-full">
@@ -35,9 +38,6 @@
             
 
             <div class="flex flex-col">
-
-                
-
                 <div class="flex flex-col gap-4 justify-center">
                     <input type="text" id="filter-input" class="p-2 border border-gray-300 rounded-md" placeholder="Filter groups">
                     <div style="height: 600px;" class="flex flex-row">
@@ -79,13 +79,14 @@
         </div>
     </div>
 
-    <div class="menu menu-right" id="menu-right">
+    <div class="menu menu-right z-30 py-4" id="menu-right">
         <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
+        <label for="toggle-regex"><input type="checkbox" id="toggle-regex"> Regex ?</label>
         <div class="flex flex-wrap" id="items">
 
         </div>
     </div>
-    <button class="menu-button menu-button-right" id="open-menu-right">Items</button>
+    <button class="menu-button menu-button-right z-50" id="open-menu-right">Items</button>
 
     <script type="module" src="/js/Group Creator/GroupCreator.js"></script>
     <script>
@@ -101,25 +102,13 @@
         document.getElementById('open-menu-left').addEventListener('click', function() {
             var menu = document.getElementById('menu-left');
             if (menu.style.left === '0px') {
-                menu.style.left = '-400px';
+                menu.style.left = '-800px';
             } else {
                 menu.style.left = '0px';
             }
         });
 
-        document.getElementById('filter-items-input').addEventListener('input', function() {
-            var filter = this.value.toLowerCase().trim();
-            var items = document.getElementById('items').children;
-            for (var i = 0; i < items.length; i++) {
-                var group = items[i];
-                var groupName = group.children[0].alt.toLowerCase();
-                if (groupName.toLowerCase().indexOf(filter) > -1) {
-                    group.style.display = '';
-                } else {
-                    group.style.display = 'none';
-                }
-            }
-        });
+        
     </script>
 </body>
 </html>

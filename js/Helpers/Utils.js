@@ -40,8 +40,8 @@ export class Utils {
         if (now.getHours() < 8) {
             now.setDate(now.getDate() - 1);
         }
-        now.setDate(now.getDate() - daysBefore);
         now.setHours(8, 0, 0, 0);
+        now.setDate(now.getDate() - daysBefore);
         return new alea(now.getTime() + modifier).quick();
     }
 
@@ -59,6 +59,7 @@ export class Utils {
         if (today.getHours() < 8) {
             today.setDate(today.getDate() - 1);
         }
+        today.setHours(8, 0, 0, 0);
         const diffTime = Math.abs(today - startDate);
         return Math.floor(diffTime / oneDay);
     }
