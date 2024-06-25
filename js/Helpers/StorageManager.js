@@ -204,6 +204,15 @@ export class StorageManager {
         this.settings = { ...settings, debug };
     }
 
+    static get link() {
+        return this.settings.link;
+    }
+
+    static set link(link) {
+        const settings = this.settings;
+        this.settings = { ...settings, link };
+    }
+
     static clear() {
         localStorage.clear();
     }

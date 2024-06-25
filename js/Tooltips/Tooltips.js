@@ -1,5 +1,5 @@
 import { statsLogic } from './Stats.js';
-import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic } from './Settings.js';
+import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic } from './Settings.js';
 import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
 import { TTSLogic } from './Accessibility.js';
@@ -70,6 +70,7 @@ export async function displayTooltip(element) {
             themeLogic(wrapper);
             autocompleteLogic(wrapper);
             difficultyLogic(wrapper);
+            linkCopyLogic(wrapper);
             break;
         case 'schedule':
             scheduleLogic();

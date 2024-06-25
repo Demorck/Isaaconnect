@@ -47,7 +47,8 @@ export class Constants {
             autocomplete: false,
             difficulty: 'normal',
             debug: false,
-            tts: false
+            tts: false,
+            link: true
         },
         game: {
             health: Constants.MAX_HEALTH,

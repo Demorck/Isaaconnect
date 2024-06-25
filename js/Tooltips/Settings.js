@@ -85,6 +85,25 @@ export function difficultyLogic(container) {
     });
 }
 
+/**
+ * @description Handles the logic for the difficulty button.
+ * @param {string} container The container to apply the logic to.
+ */
+export function linkCopyLogic(container) {
+    let link = StorageManager.link
+    if (link)
+    {
+        let checkbox = container.querySelector('#linkWhenCopy');
+        checkbox.checked = true;
+        checkbox.parentNode.classList.add('tgl-checked');
+    }
+
+    let checkbox = container.querySelector('#linkWhenCopy');
+    checkbox.addEventListener('click', () => {
+        changeLink(checkbox);
+    });
+}
+
 
 function changeBackground(element)
 {
@@ -148,5 +167,19 @@ function changeDifficulty(element)
         cards.forEach(card => {
             card.classList.remove('hidden');
         });
+    }
+}
+
+function changeLink(checkbox) {
+    let link = StorageManager.link
+    if (link)
+    {
+        StorageManager.link = false;
+        checkbox.parentNode.classList.remove('tgl-checked');
+    }
+    else
+    {
+        StorageManager.link = true;
+        checkbox.parentNode.classList.add('tgl-checked');
     }
 }
