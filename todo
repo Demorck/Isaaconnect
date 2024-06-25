@@ -1,9 +1,12 @@
 /************ TODO **************/
 
-// TODO: Prendre en compte la difficulté.
 // TODO: Rajouter un mode hard où les objets sont grayscale & rotation ? 
 
 
 /************* BUGS *************/
 
-// BUG: Bouton shuffle sur mobile avec le thème Ashpit.
+// TODO: corriger la hauteur des catégories trouvées (très légèrement plus hautes que les cases du coup ça décale le carré) - pas compris
+// TODO: mini animation genre un fondu ou un scale down->up quand tu cliques sur une case pour rendre ça plus vivant - ça suffit ? 
+// TODO: empêcher de pouvoir sumbit plusieurs fois les mêmes groupes d'objets
+// TODO: rendre les noms d'objets cliquables (lien wiki) dans les résultats finaux pour pouvoir vérifier l'info ?
+// TODO: accorder la grille des résultats finaux à celle du jeu en cours (forme carrée, noms d'objets sur deux lignes etc.) - pas compris

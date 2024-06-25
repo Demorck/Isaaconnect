@@ -66,5 +66,28 @@ export class Constants {
         lastIsaaconnect: 0
     };
 
+    static get THEMES () {
+        return [
+            "basement-theme",
+            "flooded-caves-theme",
+            "green-theme",
+            "catacombs-theme",
+            "ph-theme",
+            "depths-theme",
+            "dank-depths-theme",
+            "mausoleum-theme",
+            "gehenna-theme",
+            "womb-theme",
+            "scarred-womb-theme",
+            "dave-theme",
+            "corpse-theme",
+            "cathedral-theme",
+            "sheol-theme",
+            "chest-theme",
+            "dark-room-theme",
+            "void-theme"
+        ];
+    }
+
     static VERSION = '0.8.0';
 }

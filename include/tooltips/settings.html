@@ -1,11 +1,9 @@
 <div class="rounded-2xl tooltip shadow-theme" data-id="settings">
-    <div class="tooltip-content">
+    <div class="tooltip-content px-4 py-2">
         <div class="flex flex-col gap-4">
-            <h1 class="text-2xl">Settings</h1>
-            <p>Here you can choose some settings for the website, like the theme, autocomplete the fourth group, etc.</p>
-            
+            <h1 class="text-2xl font-bold">Settings</h1>            
             <div class="flex flex-col theme-selection">
-                <h1 class="text-xl">Theme</h1>
+                <h1 class="text-xl font-bold">Theme</h1>
                 <label>
                     <select name="background" class="rounded-3xl font-semibold">
                         <option value="basement-theme">Basement</option>
@@ -25,13 +23,16 @@
                         <option value="sheol-theme">Sheol</option>
                         <option value="chest-theme">Chest</option>
                         <option value="dark-room-theme">Dark Room</option>
-                        <option value="void-theme">The Void</option>
+                        <option value="void-theme">The Void (Random)</option>
                     </select>
                 </label>
             </div>
-            <div class="flex flex-row-reverse gap-4 justify-center">
-                <h1 class="text-xl">Autocomplete</h1>
-                <div class="checkbox-wrapper rounded-3xl">
+            <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                <div class="flex flex-col text-left">
+                    <h1 class="text-xl font-bold">Auto-solve group 4</h1>
+                    <p class="text-sm">Automaticaly groups the last 4 items togeteher and displays the ending screen when you find the third group.</p>
+                </div>
+                <div class="checkbox-wrapper rounded-3xl h-fit">
                     <input class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
                     <label class="tgl-btn" for="autocomplete">
                 </div>

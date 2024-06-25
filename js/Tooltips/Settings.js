@@ -96,19 +96,18 @@ function changeBackground(element)
     }
 
     let theme = element.value;
+    StorageManager.theme = theme;
+    console.log(theme);
 
     if (element.value === 'void-theme')
     {
         let selectElement = document.querySelector('[name=background]');
         let optionValues = [...selectElement.options].map(o => o.value)
-        let randomValue = optionValues[Math.floor(Math.random() * optionValues.length)];
+        let randomValue = optionValues[Math.floor(Math.random() * optionValues.length - 1)];
         theme = randomValue;
         element.selected = false;
-        let randomElement = document.querySelector(`option[value="${randomValue}"]`);
-        randomElement.checked = true;
     }
 
-    StorageManager.theme = theme;
     body.classList.add(theme);
 }
 

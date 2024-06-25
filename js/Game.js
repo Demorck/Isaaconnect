@@ -96,7 +96,8 @@ export class Game {
 
 
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
-            let currentGroup = Game.getRandomGroup(bannedGroup, daysBefore);
+            let currentGroup;
+            currentGroup = Game.getRandomGroup(bannedGroup, daysBefore, true, i);
             selectedGroups.push(currentGroup);
             bannedGroup.push(currentGroup);
 
@@ -130,12 +131,14 @@ export class Game {
      * @param {number} [daysBefore=0] The number of days before the current date
      * @returns {Array} The group picked randomly
      */
-    static getRandomGroup(bannedGroup, daysBefore = 0) {
+    static getRandomGroup(bannedGroup, daysBefore = 0, filter = false, difficulty = 1, modifier = 0) {
         let index, group, i = 0;
+        let groups = Constants.GROUPS;
+        if (filter) groups = groups.filter(group => group.difficulty === difficulty);
 
         do {
-            index = Math.floor(Utils.getSeed(i++, daysBefore) * Constants.GROUPS.length);
-            group = Constants.GROUPS[index];
+            index = Math.floor(Utils.getSeed(i++ + modifier, daysBefore) * groups.length);
+            group = groups[index];
         } while (bannedGroup.includes(group));
     
         return group;
@@ -235,13 +238,9 @@ export class Game {
         }
 
         this.UI.removeDifficulty();
-        if (StorageManager.autocomplete && this.groupsSolved.length >= 3) this.autocomplete();
 
         StorageManager.attempts = this.attempts;
         StorageManager.currentAttempt = this.currentAttempt;
-        
-        if (this.health <= 0) this.loose();
-        else if (this.groupsSolved.length >= 4) this.win();
     }
 
     /**
@@ -251,7 +250,16 @@ export class Game {
     rightAnswer = (group) => {
         this.solveGroup(group);
         StorageManager.groupsSolved = this.groupsSolved;
-        if (this.groupsSolved.length >= 4) this.win();
+        if (StorageManager.autocomplete && this.groupsSolved.length >= 3) {
+            this.autocomplete().then(() => {
+                this.win();
+            });
+        } else if (this.groupsSolved.length >= 4) {
+            this.UI.toggleToSolvedGroup();
+            Utils.sleep(1000).then(() => {
+                this.win()
+            });
+        }
     }
 
     /**
@@ -265,15 +273,23 @@ export class Game {
         this.UI.shakeItems(selectedItems);
 
         if (this.health <= 0) {
-            this.autocomplete();
-            this.loose();
+            this.autocomplete().then(() => {
+                Utils.sleep(1000).then(() =>
+                    this.loose()
+                );
+            });
         }
     }
 
-    solveGroup = (group) => {
-        this.groupsSolved.filter(currentGroup => currentGroup.name === group.name).length === 0 && this.groupsSolved.push(group);
-        this.UI.solveGroup(group);
+    solveGroup = (group, autocompleted = false) => {
+        if (!this.groupsSolved.some(currentGroup => currentGroup.name === group.name)) {
+            this.groupsSolved.push(group);
+        }
+        StorageManager.groupsSolved = this.groupsSolved;
+
+        return this.UI.solveGroup(group, autocompleted);
     }
+
 
     
     /**
@@ -287,25 +303,38 @@ export class Game {
     }
 
     autocomplete() {
-        let groupToFind = []
-        this.mapItemAndGroup.forEach((key, value) => {
-            this.groupsSolved.filter(group => group.name === key.name).length === 0 && (groupToFind.indexOf(key) === -1) && groupToFind.push(key);
-        });
-
-        if (this.health != 0)
-        {
-            this.attempts[this.currentAttempt] = [];
-            for (let i = 0; i < 4; i++) {
-                this.attempts[this.currentAttempt][i] = groupToFind[0];
+        return new Promise((resolve) => {
+            let remainingGroups = [];
+    
+            this.mapItemAndGroup.forEach((value, key) => {
+                if (!this.groupsSolved.some(group => group.name === value.name) && !remainingGroups.includes(value)) {
+                    remainingGroups.push(value);
+                }
+            });
+    
+            if (this.health !== 0) {
+                this.attempts[this.currentAttempt] = [];
+                for (let i = 0; i < 4; i++) {
+                    this.attempts[this.currentAttempt][i] = remainingGroups[0];
+                }
+                this.currentAttempt++;
+                StorageManager.attempts = this.attempts;
+                StorageManager.currentAttempt = this.currentAttempt;
             }
-            this.currentAttempt++;
-            StorageManager.attempts = this.attempts;
-            StorageManager.currentAttempt = this.currentAttempt;
-        }
-        
-        groupToFind.forEach(group => { this.solveGroup(group); });
-        StorageManager.groupsSolved = this.groupsSolved;
+    
+            // Je trouve ça dégueulasse le JS...
+            remainingGroups.reduce((promiseChain, group, index) => {
+                let time = 1000; 
+                return promiseChain.then(() => Utils.sleep(time).then(() => this.solveGroup(group, true)));
+            }, Promise.resolve()).then(() => {
+                this.UI.toggleToSolvedGroup();
+                return Utils.sleep(1000);
+            }).then(() => {
+                resolve();
+            });
+        });
     }
+    
 
     loose() {
         if (!StorageManager.finished)
@@ -339,8 +368,35 @@ export class Game {
         return this.groupsSelected.findIndex(currentGroup => currentGroup.items.includes(item.id));
     }
 
+    getItemsFromGroup(group) {
+        return this.itemsSelected.filter(item => group.items.includes(item.id));
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const game = new Game();
-});
+
+let theme = StorageManager.theme;
+if (theme === null) theme = 'basement-theme';
+if (theme === 'void-theme') {
+    let selectElement = document.querySelector('[name=background]');
+    let randomValue =  Constants.THEMES[Math.floor(Math.random() * Constants.THEMES.length - 1)];
+    theme = randomValue;
+}
+document.querySelector('body').classList.add(theme);
+  
+const setVisible = (elementOrSelector, visible) => 
+    (typeof elementOrSelector === 'string'
+        ? document.querySelector(elementOrSelector)
+        : elementOrSelector
+    ).style.display = visible ? 'flex' : 'none';
+
+setVisible('.page', false);
+setVisible('.loader', true);
+
+document.addEventListener('DOMContentLoaded', () =>
+    Utils.sleep(1000).then(() => {
+        setVisible('.page', true);
+        setVisible('.loader', false);
+        const game = new Game();
+    })
+);
+

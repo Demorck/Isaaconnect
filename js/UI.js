@@ -22,7 +22,7 @@ export class UI {
      * @param {number} health The health of the player
      */
     updateHealth(health) {
-        const container = document.querySelector('.hearts');
+        let container = document.querySelector('.hearts');
         container.innerHTML = '';
         for (let i = 0; i < health; i++) {
             container.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
@@ -40,7 +40,7 @@ export class UI {
      */
     displayItems(items) {
         let difficulty = StorageManager.difficulty;
-        const container = document.getElementById("cards-module");
+        let container = document.getElementById("cards-module");
         items.forEach((item, index) => {
             container.innerHTML += `
                 <label class="card-module flex-col" data-id="${item.id}">
@@ -56,7 +56,7 @@ export class UI {
      * @description Apply border radius to the cards.
      */
     applyBorderRadius() {
-        const labels = document.querySelectorAll('.card-module');
+        let labels = document.querySelectorAll('.card-module');
         labels.forEach((label, index) => {
             label.classList.remove('rounded-tl-3xl', 'rounded-tr-3xl', 'rounded-bl-3xl', 'rounded-br-3xl');
             if (index === 0) label.classList.add('rounded-tl-3xl');
@@ -65,7 +65,7 @@ export class UI {
             if (index === labels.length - 1) label.classList.add('rounded-br-3xl');
         });
 
-        const solved = document.querySelectorAll('.solved-group');
+        let solved = document.querySelectorAll('.solved-group');
         solved.forEach((group, index) => {
             group.classList.remove('rounded-tl-3xl', 'rounded-tr-3xl', 'rounded-bl-3xl', 'rounded-br-3xl');
             if (index === 0)
@@ -83,7 +83,7 @@ export class UI {
      * @param {String} message The message to be displayed
      */
     showMessage(message) {
-        const container = document.querySelector('.message');
+        let container = document.querySelector('.message');
         container.innerHTML = message;
         container.classList.toggle('hidden');
         setTimeout(() => {
@@ -104,8 +104,8 @@ export class UI {
      * @description Shuffle the cards on the screen
      */
     shuffleCards = () => {
-        const container = document.getElementById("cards-module");
-        const labels = Array.from(document.querySelectorAll('.card-module'));
+        let container = document.getElementById("cards-module");
+        let labels = Array.from(document.querySelectorAll('.card-module'));
         container.innerHTML = '';
         Utils.shuffleArray(labels).forEach(label => container.appendChild(label));
         this.applyBorderRadius();
@@ -117,12 +117,15 @@ export class UI {
             label.querySelector('input[type="checkbox"]').disabled = false;
         });
     
-        document.querySelector('button[data-id="submit"]').classList.add('button--disabled');
-        document.querySelector('button[data-id="submit"]').disabled = true;
+        let submitButton = document.querySelector('button[data-id="submit"]');
+        if (submitButton != null) {
+            submitButton.classList.add('button--disabled');
+            submitButton.disabled = true;
+        }
     }
 
     addEventCheckboxes() {
-        const checkboxes = document.querySelectorAll('.card-module input[type="checkbox"]');
+        let checkboxes = document.querySelectorAll('.card-module input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 let numberOfSelected = document.querySelectorAll('.card-module--selected').length;
@@ -168,49 +171,85 @@ export class UI {
         }
     }
 
-    solveGroup = (group) => {
-        const container = document.querySelector('.solved-groups');
+    solveGroup = (group, autocomplete = false) => {
+        let container = document.querySelector('.solved-groups');
         let index = this.game.getIndexOfGroup(group);
-        let content =   `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${Constants.COLORS[index]}">
-                            <div class="solved-group--cards flex flex-col mr-5">
-                                <div class="flex flex-row">`;
+        let wrapper = document.getElementById('cards-module');
+        let time = 0;
+        let indexContains = [];
+        let numberAlreadySelected = 0;
 
-        let i = 0;
-        this.game.mapItemAndGroup.forEach((key, value) => {
-            if (key.name === group.name) {
-                const item = Game.findItemById(value.id);
-                if (i == 2) content += `</div><div class="flex flex-row">`;
-                content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
-                document.querySelector(`label[data-id="${item.id}"]`).remove();
-                i++;
+        if (autocomplete) {
+            this.removeButtons();
+            let itemsFromGroup = this.game.getItemsFromGroup(group);
+            itemsFromGroup.forEach(item => {
+                let label = document.querySelector(`label[data-id="${item.id}"]`);
+                label.querySelector('input[type="checkbox"]').checked = true;
+                label.classList.add('card-module--selected');
+            });
+        }
+
+        let selected = document.querySelectorAll('.card-module--selected');
+
+        if (selected.length == Constants.NUMBER_OF_ITEMS && wrapper.children.length != Constants.NUMBER_OF_ITEMS) {
+            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+                let isNotSelected = !wrapper.children[i].classList.contains('card-module--selected');
+                if(isNotSelected) {
+                    indexContains.push(i);
+                }
             }
-        });
 
-        content += `</div></div>
-            <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title text-lg md:text-xl">${group.name}</h3>
-                <p class="solved-group--description text-xs md:text-lg">`;
+            numberAlreadySelected = Constants.NUMBER_OF_ITEMS - indexContains.length;
 
-        i = 0;
-        this.game.mapItemAndGroup.forEach((key, value) => {
-            if (key.name === group.name) {
-                const item = Game.findItemById(value.id);
-                content += `${item.alias}`;
-                if (i != 3) content += `, `;
-                i++;
+            for (let i = 0; i < indexContains.length; i++) {
+                this.swapUI(selected[numberAlreadySelected + i], wrapper.children[indexContains[i]]);
             }
+
+            time = 700;
+        }
+
+        Utils.sleep(time).then(() => {
+            let content =   `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${Constants.COLORS[index]}">
+                                <div class="solved-group--cards flex flex-col mr-5">
+                                    <div class="flex flex-row">`;
+
+            let i = 0;
+            this.game.mapItemAndGroup.forEach((key, value) => {
+                if (key.name === group.name) {
+                    let item = Game.findItemById(value.id);
+                    if (i == 2) content += `</div><div class="flex flex-row">`;
+                    content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
+                    document.querySelector(`label[data-id="${item.id}"]`).remove();
+                    i++;
+                }
+            });
+
+            content += `</div></div>
+                <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title text-lg md:text-xl">${group.name}</h3>
+                    <p class="solved-group--description text-xs md:text-lg">`;
+
+            i = 0;
+            this.game.mapItemAndGroup.forEach((key, value) => {
+                if (key.name === group.name) {
+                    let item = Game.findItemById(value.id);
+                    content += `${item.alias}`;
+                    if (i != 3) content += `, `;
+                    i++;
+                }
+            });
+
+            content += `</p></div>`;
+
+            content += `</div></section>`;
+            container.innerHTML += content;
+            
+            this.deselectAllCards();
+            this.applyBorderRadius();
         });
-
-        content += `</p></div>`;
-
-        content += `</div></section>`;
-        container.innerHTML += content;
-        
-        this.deselectAllCards();
-        this.applyBorderRadius();
     }
 
     async loose() {
-        const modalPath = "/include/modals/lose.html";
+        let modalPath = "/include/modals/lose.html";
         let html = await Utils.loadHtml(modalPath);
         let placeholders = {};
         let attempts = StorageManager.attempts;
@@ -240,11 +279,27 @@ export class UI {
     }
 
     async win() {
-        const modalPath = "/include/modals/win.html";
+        let modalPath = "/include/modals/win.html";
         let html = await Utils.loadHtml(modalPath);
         let placeholders = {};
         placeholders.mistakes = Constants.MAX_HEALTH - StorageManager.health;
         placeholders.streak = StorageManager.winStreak;
+        switch (placeholders.mistakes) {
+            case 0:
+                placeholders.title = "!!! DEAD GOD !!!"
+                break;
+            case 1:
+                placeholders.title = "!! PLATINUM GOD !!"
+                break;
+
+            case 2:
+                placeholders.title = "! GOLDEN GOD !"
+                break;
+
+            case 3:
+                placeholders.title = "Incredible, you did it!"
+                break;
+        }
         html = Utils.replacePlaceholders(html, placeholders);
 
         this.gameOver(html);
@@ -254,18 +309,16 @@ export class UI {
     gameOver(html) {
         if (!StorageManager.finished)
             StorageManager.finished = true;
-        
-        const shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
-        shufflesButton.forEach(button => button.remove());
 
-        const buttons = document.querySelector('.buttons');
-        buttons.innerHTML = '<button data-id="results" class="bg-purple-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">See results</button>';
-        document.querySelector('button[data-id="results"]').addEventListener('click', () => this.displayModal(html));
-        document.querySelector('#cards-game').classList.remove('h-min', 'md:w-min', 'md:h-min');
+        this.removeButtons();
+        let buttonResults = document.querySelector('button[data-id="results"]');
+        buttonResults.classList.remove('button--disabled');
+        buttonResults.addEventListener('click', () => this.displayModal(html));
+        this.toggleToSolvedGroup();
     }
 
     displayModal = (html) => {
-        const modalWrapper = document.getElementById('modal-wrapper');
+        let modalWrapper = document.getElementById('modal-wrapper');
         modalWrapper.innerHTML = html;
         document.querySelector('.close-button').addEventListener('click', () => {
             modalWrapper.style.display = 'none';
@@ -280,12 +333,12 @@ export class UI {
     }
 
     convertAttemptToSquareMatrix() {
-        const attempt = this.game.attempts;
+        let attempt = this.game.attempts;
         let content = `<div data-id="results" class="flex flex-col">`;
         attempt.forEach((group, index_attempt) => {
             content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
             group.forEach((currentGroup, index_group) => {
-                const index = this.game.getIndexOfGroup(currentGroup);
+                let index = this.game.getIndexOfGroup(currentGroup);
                 let rounded = index_group % 4 == 0 ? "rounded-l-lg" : index_group % 4 == 3 ? "rounded-r-lg" : "";
                 content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
             });
@@ -296,11 +349,78 @@ export class UI {
     }
 
     shakeItems = () => {
-        const items = document.querySelectorAll('.card-module--selected');
+        let items = document.querySelectorAll('.card-module--selected');
         items.forEach(item => item.classList.add('card-module--shake'));
         setTimeout(() => {
             document.querySelectorAll('.card-module--shake').forEach(item => item.classList.remove('card-module--shake'));
         }, 1000);
+    }
+
+    removeButtons() {
+        let shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
+        shufflesButton.forEach(button => button.remove());
+
+        let buttons = document.querySelector('.buttons');
+        buttons.innerHTML = '<button data-id="results" class="button--submit font-bold py-2 px-4 rounded button--disabled">See results</button>';
+    }
+
+    animation = () => {
+        let selected = document.querySelectorAll('.card-module--selected');
+        let first = selected[0];
+        let last = selected[selected.length - 1];
+
+        this.swapUI(first, last);
+    }
+
+    swap(node1, node2) {
+        let afterNode2 = node2.nextElementSibling;
+        let parent = node2.parentNode;
+        node1.replaceWith(node2);
+        parent.insertBefore(node1, afterNode2);
+    }
+
+    swapUI = (Element1, Element2) => {
+        let finalElement1Style = {
+            x: null,
+            y: null,
+        };
+        let finalElement2Style = {
+            x: null,
+            y: null,
+        };
+
+        let element1 = {
+            x: Element1.getBoundingClientRect().left,
+            y: Element1.getBoundingClientRect().top,
+        };
+        let element2 = {
+            x: Element2.getBoundingClientRect().left,
+            y: Element2.getBoundingClientRect().top,
+        };
+           
+        Element1.classList.add('transition');
+        Element2.classList.add('transition');
+
+        finalElement1Style.x = element2.x - element1.x;
+        finalElement2Style.x = element1.x - element2.x;
+        finalElement1Style.y = element2.y - element1.y;
+        finalElement2Style.y = element1.y - element2.y;
+
+        Element1.style.transform = `translate(${finalElement1Style.x}px, ${finalElement1Style.y}px)`;
+        Element2.style.transform = `translate(${finalElement2Style.x}px, ${finalElement2Style.y}px)`;
+    
+        setTimeout(() => {
+            this.swap(Element1, Element2);
+            this.applyBorderRadius();
+            Element1.classList.remove('transition');
+            Element2.classList.remove('transition');
+            Element2.removeAttribute('style');
+            Element1.removeAttribute('style');
+        }, 500);
+    }
+
+    sameElement = (element1, element2) => {
+        return element1.dataset.id === element2.dataset.id;
     }
 
     addDebugMenu() {
@@ -309,6 +429,10 @@ export class UI {
                     adb
                 </span>`;
         }
+    }
+
+    toggleToSolvedGroup() {
+        document.querySelector('#cards-game').classList.remove('h-min', 'md:w-min', 'md:h-min');
     }
 
     addTooltipListeners() {

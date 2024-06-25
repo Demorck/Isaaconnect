@@ -46,7 +46,6 @@ export class StorageManager {
 
     static set health(health) {
         const game = this.game;
-        console.log(health);
         this.game = { ...game, health };
     }
 
