@@ -122,7 +122,10 @@ function changeBackground(element)
     {
         let selectElement = document.querySelector('[name=background]');
         let optionValues = [...selectElement.options].map(o => o.value)
-        let randomValue = optionValues[Math.floor(Math.random() * optionValues.length - 1)];
+        let randomValue;
+        do {
+            randomValue = optionValues[Math.floor(Math.random() * optionValues.length)];
+        } while (randomValue === 'void-theme');
         theme = randomValue;
         element.selected = false;
     }

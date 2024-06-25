@@ -90,5 +90,5 @@ export class Constants {
         ];
     }
 
-    static VERSION = '0.8.0';
+    static VERSION = '0.8.5';
 }

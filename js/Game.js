@@ -377,9 +377,10 @@ export class Game {
 let theme = StorageManager.theme;
 if (theme === null) theme = 'basement-theme';
 if (theme === 'void-theme') {
-    let selectElement = document.querySelector('[name=background]');
-    let randomValue =  Constants.THEMES[Math.floor(Math.random() * Constants.THEMES.length - 1)];
-    theme = randomValue;
+    do {
+        let randomValue = Constants.THEMES[Math.floor(Math.random() * Constants.THEMES.length)];
+        theme = randomValue;
+    } while (theme === 'void-theme');
 }
 document.querySelector('body').classList.add(theme);
   
