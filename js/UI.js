@@ -22,7 +22,6 @@ export class UI {
             new ResizeObserver(() => {
                 let firstSolve = document.querySelector('.solved-group');
                 let lastSolver = document.querySelectorAll('.solved-group')[3];
-                console.log(firstSolve, lastSolver);
                 if (firstSolve != null && lastSolver != null) {
                     height = lastSolver.getBoundingClientRect().bottom - firstSolve.getBoundingClientRect().top;
                     if (height > 550) {

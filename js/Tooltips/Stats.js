@@ -20,8 +20,6 @@ export async function statsLogic(html) {
         losses: losses
     };
 
-    console.log(placeholders);
-
     html = Utils.replacePlaceholders(html, placeholders);
 
     return html;
