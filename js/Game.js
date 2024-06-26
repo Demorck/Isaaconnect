@@ -265,7 +265,7 @@ export class Game {
             StorageManager.attempts = this.attempts;
             StorageManager.currentAttempt = this.currentAttempt;
         } else {
-            this.UI.showMessage("Already tried!");
+            this.UI.showMessage("Already guessed!");
         }
     }
 
