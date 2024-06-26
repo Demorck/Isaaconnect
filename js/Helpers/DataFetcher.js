@@ -27,7 +27,7 @@ export class DataFetcher {
         try {
             const response = await fetch('/json/groups.json');
             const groups = await response.json();
-
+            
             return groups;
 
         } catch (error) {

@@ -76,6 +76,15 @@ export class StorageManager {
         this.game = { ...game, currentAttempt };
     }
 
+    static get history() {
+        return this.game.history;
+    }
+
+    static set history(history) {
+        const game = this.game;
+        this.game = { ...game, history };
+    }
+
     static get mapItemAndGroup() {
         return this.game.mapItemAndGroup;
     }

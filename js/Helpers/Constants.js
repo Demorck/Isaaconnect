@@ -22,6 +22,10 @@ export class Constants {
     static get URL() {
         return 'https://isaaconnect.com';
     }
+
+    static get WIKI() {
+        return 'https://bindingofisaacrebirth.fandom.com/wiki/';
+    }
     
     static get MAX_HEALTH() {
         return 4;
@@ -56,7 +60,8 @@ export class Constants {
             attempts: [],
             currentAttempt: 0,
             mapItemAndGroup: new Map(),
-            finished: false
+            finished: false,
+            history: []
         },
         stats: {
             winStreak: 0,

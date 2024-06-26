@@ -14,6 +14,25 @@ export class UI {
     constructor(game, debug = false) {
         this.game = game;
         this.debug = debug;
+
+        let windowWidth = window.innerWidth;
+        if (windowWidth >= 768) {
+            let square = document.getElementById('cards-game');
+            let height = square.offsetWidth;
+            new ResizeObserver(() => {
+                let firstSolve = document.querySelector('.solved-group');
+                let lastSolver = document.querySelectorAll('.solved-group')[3];
+                console.log(firstSolve, lastSolver);
+                if (firstSolve != null && lastSolver != null) {
+                    height = lastSolver.getBoundingClientRect().bottom - firstSolve.getBoundingClientRect().top;
+                    if (height > 550) {
+                        height = Math.ceil(height);
+                    }
+                }
+
+                square.style.height = `${height}px`;
+            }).observe(square);
+        }
     }
 
     /**
@@ -85,10 +104,10 @@ export class UI {
     showMessage(message) {
         let container = document.querySelector('.message');
         container.innerHTML = message;
-        container.classList.toggle('hidden');
+        container.classList.remove('hidden');
         setTimeout(() => {
             container.innerHTML = '';
-            container.classList.toggle('hidden');
+            container.classList.add('hidden');
         }, 3000);
     }
 
@@ -172,7 +191,8 @@ export class UI {
     }
 
     solveGroup = (group, autocomplete = false) => {
-        let container = document.querySelector('.solved-groups');
+        let container = document.querySelector('#cards-win');
+        container.classList.remove('hidden');
         let index = this.game.getIndexOfGroup(group);
         let wrapper = document.getElementById('cards-module');
         let time = 0;
@@ -209,7 +229,7 @@ export class UI {
         }
 
         Utils.sleep(time).then(() => {
-            let content =   `<section class="flex flex-row solved-group py-3 rounded-xl font-bold bg-${Constants.COLORS[index]}">
+            let content =   `<section class="flex flex-1 flex-row solved-group py-3 rounded-xl bg-${Constants.COLORS[index]}">
                                 <div class="solved-group--cards flex flex-col mr-5">
                                     <div class="flex flex-row">`;
 
@@ -218,21 +238,21 @@ export class UI {
                 if (key.name === group.name) {
                     let item = Game.findItemById(value.id);
                     if (i == 2) content += `</div><div class="flex flex-row">`;
-                    content += `<div class="solved-group--card"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></div>`;
+                    content += `<div class="solved-group--card"><a target="_blank"  href="${Constants.WIKI + item.alias}"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.id)}.png" alt="${item.alias}"></a></div>`;
                     document.querySelector(`label[data-id="${item.id}"]`).remove();
                     i++;
                 }
             });
 
             content += `</div></div>
-                <div class="flex flex-1 flex-col items-start"><h3 class="solved-group--title text-lg md:text-xl">${group.name}</h3>
-                    <p class="solved-group--description text-xs md:text-lg">`;
+                <div class="flex flex-1 flex-col items-start text-left"><h3 class="solved-group--title font-bold text-xs md:text-xl mb-2">${group.name}</h3>
+                    <p class="solved-group--description text-[0.65rem] font-medium md:text-sm">`;
 
             i = 0;
             this.game.mapItemAndGroup.forEach((key, value) => {
                 if (key.name === group.name) {
                     let item = Game.findItemById(value.id);
-                    content += `${item.alias}`;
+                    content += `<a target="_blank"  href="${Constants.WIKI + item.alias}">${item.alias}</a>`;
                     if (i != 3) content += `, `;
                     i++;
                 }
@@ -310,6 +330,7 @@ export class UI {
         if (!StorageManager.finished)
             StorageManager.finished = true;
 
+        document.getElementById('cards-module').remove();
         this.removeButtons();
         let buttonResults = document.querySelector('button[data-id="results"]');
         buttonResults.classList.remove('button--disabled');

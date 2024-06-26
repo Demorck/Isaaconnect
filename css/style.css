@@ -154,6 +154,16 @@ ol, ul {
     border-radius: 2.5rem;
 }
 
+@media (min-width: 768px) {
+    #cards-game {
+        width: 550px;
+    }
+}
+
+#cards-win section:nth-child(4) {
+    margin-bottom: 0;
+}
+
 .pixelated {
     image-rendering: pixelated;
 }
@@ -218,7 +228,6 @@ ol, ul {
 
 .solved-group {
     padding: 5px;
-    margin-bottom: 20px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -236,6 +245,12 @@ ol, ul {
 .solved-group--card img {
     width: 3em;
     image-rendering: pixelated;
+}
+
+@media (max-width: 768px){
+    .solved-group--card img {
+        width: 2em;
+    }
 }
 
 .solved-group--cards {

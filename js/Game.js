@@ -22,6 +22,7 @@ export class Game {
         this.groupsSelected = [];
         this.groupsSolved = [];
         this.attempts = [];
+        this.history = [];
         this.currentAttempt = 0;
         this.mapItemAndGroup = new Map();
         this.UI = new UI(this, this.debug);
@@ -203,6 +204,11 @@ export class Game {
             this.attempts = localAttempt;
             this.currentAttempt = this.attempts.length;
         }
+
+        const localHistory = StorageManager.history;
+        if (localHistory.length > 0) {
+            this.history = localHistory;
+        }
     }
 
     /**
@@ -210,37 +216,57 @@ export class Game {
      */
     handleSubmit = () => {
         const selectedItemsID = this.UI.getSelectedItems();
-        let firstGroup, currentGroup, win = true, i = 0;
-
-        this.attempts[this.currentAttempt] = [];
         let numberOfGroups = 0;
-        
-        selectedItemsID.forEach(id => {
-            const currentItem = Game.findItemById(id);
-            currentGroup = this.mapItemAndGroup.get(currentItem);
-            
-            if (!firstGroup) firstGroup = currentGroup;
-            else if (firstGroup !== currentGroup) win = false;
 
-            if (firstGroup === currentGroup) numberOfGroups++;
+        let j = 0;
+        this.history.forEach((attempt, index) => {
+            let k = 0;
+            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+                const currentItem = Game.findItemById(selectedItemsID[i]);
+                let isInclude = attempt.filter(item => item.id === currentItem.id).length > 0;
+                if (isInclude) k++;
+            }
 
-            this.attempts[this.currentAttempt].push(currentGroup);
+            if (k === Constants.NUMBER_OF_ITEMS) j++;
         });
 
-        this.currentAttempt++;
-        
-        if (numberOfGroups === 3) this.UI.showMessage("Almost...");
+        const alreadyGuessed = j > 0 && this.currentAttempt !== 0;
+        if (!alreadyGuessed) {
+            let firstGroup, currentGroup, win = true;
+            this.attempts[this.currentAttempt] = [];
+            this.history[this.currentAttempt] = [];
 
-        if (win) {
-            this.rightAnswer(firstGroup);
+            selectedItemsID.forEach(id => {
+                const currentItem = Game.findItemById(id);
+                currentGroup = this.mapItemAndGroup.get(currentItem);
+                
+                if (!firstGroup) firstGroup = currentGroup;
+                else if (firstGroup !== currentGroup) win = false;
+
+                if (firstGroup === currentGroup) numberOfGroups++;
+
+                this.attempts[this.currentAttempt].push(currentGroup);
+                this.history[this.currentAttempt].push(currentItem);
+            });
+
+            this.currentAttempt++;
+            
+            if (numberOfGroups === 3) this.UI.showMessage("Almost...");
+
+            if (win) {
+                this.rightAnswer(firstGroup);
+            } else {
+                this.wrongAnswer(selectedItemsID);
+            }
+
+            this.UI.removeDifficulty();
+
+            StorageManager.history = this.history;
+            StorageManager.attempts = this.attempts;
+            StorageManager.currentAttempt = this.currentAttempt;
         } else {
-            this.wrongAnswer(selectedItemsID);
+            this.UI.showMessage("Already tried!");
         }
-
-        this.UI.removeDifficulty();
-
-        StorageManager.attempts = this.attempts;
-        StorageManager.currentAttempt = this.currentAttempt;
     }
 
     /**
