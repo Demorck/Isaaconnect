@@ -100,14 +100,14 @@ export class UI {
      *
      * @param {String} message The message to be displayed
      */
-    showMessage(message) {
+    showMessage(message, timeout = 3000) {
         let container = document.querySelector('.message');
         container.innerHTML = message;
         container.classList.remove('hidden');
         setTimeout(() => {
             container.innerHTML = '';
             container.classList.add('hidden');
-        }, 3000);
+        }, timeout);
     }
 
     /**
@@ -511,6 +511,148 @@ export class UI {
         catch (error)
         {
             this.showMessage("Impossible to copy the results");
+        }
+    }
+
+    showTutorial() {
+        let tutorialBackground = document.getElementById('tutorial-background');
+        let game = document.getElementById('cards-game');
+        tutorialBackground.classList.remove('hidden');
+        
+        let mobile = window.innerWidth < 768;
+
+        let tutorial = document.getElementById('tutorial');
+        tutorial.classList.remove('hidden');
+
+        tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
+
+        let tutorialsSteps = [firstStep, secondStep, thirdStep, correctGroup, wrongGroup];
+
+        let nextButton = document.querySelector('[data-id="next"]');
+        let skipButton = document.querySelector('[data-id="skip"]');
+        addEvents();
+        tutorialsSteps[0]();
+
+        function firstStep() {
+            let title = document.getElementById('title');
+            let buttons = document.querySelector('.buttons');
+            let shuffleMobile = document.querySelector('.shuffle-mobile');
+
+            game.classList.add('-z-10');
+            title.classList.add('-z-10');
+            buttons.classList.add('-z-10');
+            shuffleMobile.classList.add('-z-10');
+        }
+
+        function secondStep() {
+            nextButton.classList.add('hidden');
+            tutorial.style.transform = 'translate(-50%, 0%)';
+            tutorial.classList.remove('top-1/2');
+
+            tutorial.querySelector('p').innerHTML = "There are 4 groups to solve. Each group are 4 items with one thing in common. It can be an effect in the game, a shape on it, a transformation or completely a thing out of the game. You can click on the cards to select or deselect them. <br> Now, try to solve a group by clicking on 4 cards.";
+            tutorial.querySelector('h1').innerHTML = "Solve the groups";
+            let cards = document.querySelectorAll('.card-module input[type="checkbox"]');
+            cards.forEach(card => {
+                card.addEventListener('change', () => {
+                    let selected = document.querySelectorAll('.card-module--selected');
+                    if (selected.length == 4) {
+                        nextButton.classList.remove('hidden');
+                    } else {
+                        nextButton.classList.add('hidden');
+                    }
+                });
+            });
+
+            game.classList.remove('-z-10');
+            game.classList.add('z-40');
+        }
+
+        function thirdStep() {
+            let buttons = document.querySelector('.buttons');
+            tutorial.style.transform = 'translate(-50%, 0)';
+            tutorial.classList.add(mobile ? 'bottom-4' : 'bottom-0');
+
+            tutorial.querySelector('p').innerHTML = "When you are ready, click on the submit button ! Be careful, you have only 4 lives.";
+            tutorial.querySelector('h1').innerHTML = "Moment of truth";
+
+            nextButton.classList.add('hidden');
+            let submitButton = document.querySelector('button[data-id="submit"]');
+            submitButton.classList.remove('button--disabled');
+            submitButton.disabled = false;
+            submitButton.addEventListener('click', () => {
+                let solved = StorageManager.groupsSolved;
+                tutorial.classList.remove('bottom-0');
+                tutorial.classList.remove('bottom-4');
+                if (solved.length >= 1) {
+                    shiftingSteps();
+                } else {
+                    shiftingSteps(2);
+                }
+            });
+
+            buttons.classList.remove('-z-10');
+            buttons.classList.add('z-40');
+        }
+
+        function correctGroup() {
+            let buttons = document.querySelector('.buttons');
+            tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
+            tutorial.style.transform = 'translate(-50%, -50%)';
+
+            tutorial.querySelector('h1').innerHTML = "Congratulations!";
+            tutorial.querySelector('p').innerHTML = "Congratulations! You solved your first group. You can click on the items to see more information on the wiki ! Have fun !";
+        
+            nextButton.remove();
+            skipButton.innerHTML = "Close tutorial";
+
+            game.classList.remove("z-40");
+            game.classList.add("-z-10");
+            buttons.classList.remove("z-40");
+            buttons.classList.add("-z-10");
+        }
+
+        function wrongGroup() {
+            let buttons = document.querySelector('.buttons');
+            tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
+            tutorial.style.transform = 'translate(-50%, -50%)';
+
+            tutorial.querySelector('h1').innerHTML = "Oh no! Anyway...";
+            tutorial.querySelector('p').innerHTML = "You lost a life. You can try again to solve the group. You can't guess the same group twice. If you guess a group, you can click on items to see more information on the wiki. Have fun !";
+        
+            nextButton.remove();
+            skipButton.innerHTML = "Close tutorial";
+
+            game.classList.remove("z-40");
+            game.classList.add("-z-10");
+            buttons.classList.remove("z-40");
+            buttons.classList.add("-z-10");
+        }
+
+        function addEvents() {
+            nextButton.addEventListener('click', () => {
+                shiftingSteps();
+            });
+
+            let skipButton = document.querySelector('[data-id="skip"]');
+            skipButton.addEventListener('click', removeTutorial);
+        }
+
+        function shiftingSteps(shift = 1) {
+            for (let i = 0; i < shift; i++) {
+                tutorialsSteps.shift();
+            }
+            if (tutorialsSteps.length == 0) {
+                removeTutorial();
+            }
+            else {
+                tutorialsSteps[0]();
+            }
+        }
+
+        function removeTutorial() {
+            tutorialBackground.classList.add('hidden');
+            tutorial.classList.add('hidden');
+            game.classList.remove('-z-10');
         }
     }
 

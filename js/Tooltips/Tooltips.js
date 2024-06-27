@@ -47,6 +47,9 @@ export async function displayTooltip(element) {
             html = await Utils.loadHtml('/include/tooltips/settings.html');
             html = await settingsLogic(html);
             break;
+        case 'promo':
+            html = await Utils.loadHtml('/include/tooltips/promo.html');
+            break;
         case 'schedule':
             html = await Utils.loadHtml('/include/tooltips/schedule.html');
             break;

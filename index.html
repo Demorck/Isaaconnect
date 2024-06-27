@@ -31,8 +31,24 @@
     <div class="loader flex justify-center items-center">
         <div id="square-loader"></div>
     </div>
+
+    <div id="tutorial-background" class="bg-black absolute top-0 left-0 w-full h-full opacity-80 hidden"></div>
+    <div id="tutorial" class="tooltip rounded-3xl absolute hidden z-50 w-4/5 sm:w-auto ">
+        <div class="flex flex-col justify-center items-center px-4 py-2 rounded-2xl">
+            <h1 class="text-xl">Welcome to Isaaconnect <span class="text-sm">(this is a tutorial)</span> !</h1>
+            <p class="text-justify text-[0.75rem] md:text-sm ">A game made by Démorck with the idea of Biobak, inspired by Only Connect and NYT Connections. <br> Click next to understand the game !</p>
+            <div class="flex">
+                <button type="button" data-id="skip" class="text-dark text-sm font-bold py-2 px-4 rounded-xl button--close">
+                    Skip tutorial
+                </button>
+                <button type="button" data-id="next" class="text-dark text-sm font-bold py-2 px-4 rounded-xl button--next">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
     
-    <div class="flex flex-col h-full page">
+    <div class="flex flex-col h-full page ">
         <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1">
 
             <div class="flex flex-col">
@@ -72,7 +88,7 @@
                 </section>
             </div>
 
-            <div class="flex-col gap-4 items-center hidden md:flex">
+            <div class="shuffle-mobile flex-col gap-4 items-center hidden md:flex">
                 <button type="button" data-id="shuffle" class="shadow-theme themed text-white font-bold p-3 rounded-full">
                     <span class="material-symbols-outlined align-bottom">
                         shuffle
@@ -91,7 +107,7 @@
                 <span class="material-symbols-rounded md:text-4xl" data-id="schedule">
                     schedule
                 </span>
-                <span class="material-symbols-rounded md:text-4xl">
+                <span class="material-symbols-rounded md:text-4xl" data-id="promo">
                     diversity_1
                 </span>
                 <span class="material-symbols-rounded md:text-4xl" data-id="help">

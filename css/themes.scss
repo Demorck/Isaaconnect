@@ -344,6 +344,10 @@ $white-submit: (
             color: map-get($map: $theme-map, $key: title)
         }
 
+        .medias {
+            fill: map-get($map: $theme-map, $key: card);
+        }
+
         .shadow-theme {
             -webkit-filter: drop-shadow(0px 7px 0  map-get($map: $theme-map, $key: shadows));
             -moz-filter: drop-shadow(0px 7px 0 map-get($map: $theme-map, $key: shadows));

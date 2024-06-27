@@ -127,6 +127,9 @@
 .mausoleum-theme h1 > span {
   color: #C301FF;
 }
+.mausoleum-theme .medias {
+  fill: #E5DDEB;
+}
 .mausoleum-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #1C111C);
   -moz-filter: drop-shadow(0px 7px 0 #1C111C);
@@ -183,6 +186,9 @@
 }
 .flooded-caves-theme h1 > span {
   color: #73B1F5;
+}
+.flooded-caves-theme .medias {
+  fill: #E3E8F9;
 }
 .flooded-caves-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #17223F);
@@ -241,6 +247,9 @@
 .green-theme h1 > span {
   color: #A6D60C;
 }
+.green-theme .medias {
+  fill: #E9F0CC;
+}
 .green-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #1D220A);
   -moz-filter: drop-shadow(0px 7px 0 #1D220A);
@@ -297,6 +306,9 @@
 }
 .catacombs-theme h1 > span {
   color: #B78C69;
+}
+.catacombs-theme .medias {
+  fill: #F0E7E0;
 }
 .catacombs-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #241814);
@@ -355,6 +367,9 @@
 .ph-theme h1 > span {
   color: #FF7621;
 }
+.ph-theme .medias {
+  fill: #FFEFE5;
+}
 .ph-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #B2AAA0);
   -moz-filter: drop-shadow(0px 7px 0 #B2AAA0);
@@ -411,6 +426,9 @@
 }
 .depths-theme h1 > span {
   color: #AFABAB;
+}
+.depths-theme .medias {
+  fill: #E7E6E6;
 }
 .depths-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #1E1E1E);
@@ -469,6 +487,9 @@
 .dank-depths-theme h1 > span {
   color: #959ABD;
 }
+.dank-depths-theme .medias {
+  fill: #8489B2;
+}
 .dank-depths-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #121216);
   -moz-filter: drop-shadow(0px 7px 0 #121216);
@@ -525,6 +546,9 @@
 }
 .gehenna-theme h1 > span {
   color: #EB2121;
+}
+.gehenna-theme .medias {
+  fill: #FCE0E0;
 }
 .gehenna-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #200B0B);
@@ -583,6 +607,9 @@
 .womb-theme h1 > span {
   color: #FA0000;
 }
+.womb-theme .medias {
+  fill: #D20000;
+}
 .womb-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #430000);
   -moz-filter: drop-shadow(0px 7px 0 #430000);
@@ -639,6 +666,9 @@
 }
 .scarred-womb-theme h1 > span {
   color: #C00000;
+}
+.scarred-womb-theme .medias {
+  fill: #E8DFD8;
 }
 .scarred-womb-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #82664E);
@@ -697,6 +727,9 @@
 .dave-theme h1 > span {
   color: #FFC000;
 }
+.dave-theme .medias {
+  fill: #3B5175;
+}
 .dave-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #425A82);
   -moz-filter: drop-shadow(0px 7px 0 #425A82);
@@ -753,6 +786,9 @@
 }
 .corpse-theme h1 > span {
   color: #70835F;
+}
+.corpse-theme .medias {
+  fill: #70835F;
 }
 .corpse-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #283126);
@@ -811,6 +847,9 @@
 .cathedral-theme h1 > span {
   color: #A9C5D7;
 }
+.cathedral-theme .medias {
+  fill: #8CB2CA;
+}
 .cathedral-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #1A3948);
   -moz-filter: drop-shadow(0px 7px 0 #1A3948);
@@ -867,6 +906,9 @@
 }
 .sheol-theme h1 > span {
   color: #7F7F7F;
+}
+.sheol-theme .medias {
+  fill: #4B4B4B;
 }
 .sheol-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #0D0D0D);
@@ -925,6 +967,9 @@
 .chest-theme h1 > span {
   color: #FFC000;
 }
+.chest-theme .medias {
+  fill: #FFF0C1;
+}
 .chest-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #2F2014);
   -moz-filter: drop-shadow(0px 7px 0 #2F2014);
@@ -981,6 +1026,9 @@
 }
 .dark-room-theme h1 > span {
   color: #665272;
+}
+.dark-room-theme .medias {
+  fill: #4B4B4B;
 }
 .dark-room-theme .shadow-theme {
   -webkit-filter: drop-shadow(0px 7px 0 #261036);
@@ -1040,1065 +1088,21 @@
 .scarred-womb-theme .button--submit {
   color: #fff;
 }
-
-.dave-theme .button--submit {
-  color: #fff;
-}
-
-.sheol-theme .button--submit {
-  color: #fff;
-}
-
-/*# sourceMappingURL=themes.css.map */
-
-/*************************/
-/***** MAIN THEME *******/
-/***********************/
-/******* MODAUX *******/
-.modal-content {
-  background-color: #fff;
-  border-color: #404040;
-  box-shadow: 0 0 50px 35px white;
-}
-
-.modal-content button {
-  border-color: #404040;
-}
-
-.modal-content button:hover {
-  background-color: #404040;
-  color: #fff;
-}
-
-/******* CARDS *******/
-#cards-game {
-  background-color: #fff;
-}
-
-.card-module {
-  background-color: var(--main-theme-background-card);
-}
-
-.card-module--disabled img {
-  filter: grayscale(100%);
-  opacity: 0.5;
-}
-
-.button--disabled {
-  background-color: #7e7e7e !important;
-  color: #cecece !important;
-  cursor: default;
-}
-
-/****** TOOLTIPS ******/
-.tooltip {
-  color: #fff;
-}
-
-.theme-selection label:after {
-  color: #fff;
-}
-
-.checkbox-wrapper .tgl:checked + .tgl-btn:after {
-  background-color: #fff;
-}
-
-.tgl:checked {
-  border-color: #fff !important;
-}
-
-.tgl-checked {
-  border-color: #fff !important;
-}
-
-.main-theme {
-  background-color: #42291A;
-}
-.main-theme button.themed {
-  background-color: #71472D;
-}
-.main-theme button.themed:hover {
-  background-color: #503220;
-}
-.main-theme h1 > span {
-  color: #FF5B5B;
-}
-.main-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #281910);
-  -moz-filter: drop-shadow(0px 7px 0 #281910);
-  filter: drop-shadow(0px 7px 0 #281910);
-}
-.main-theme .card-module {
-  background-color: #F3E7E1;
-}
-.main-theme .card-module--selected {
-  background-color: #7e7e7e;
-}
-.main-theme #cards-game {
-  background-color: #fff;
-}
-.main-theme .button--submit {
-  background-color: #FFC000;
-}
-.main-theme .button--submit:hover {
-  background-color: #ad8200;
-}
-.main-theme .tooltip {
-  background-color: #71472D;
-}
-.main-theme .tooltip-active::after {
-  border-color: #71472D transparent transparent transparent;
-}
-.main-theme select {
-  background-color: #42291A;
-}
-.main-theme .checkbox-wrapper {
-  border: 3px solid #C08560;
-  background: #42291A;
-}
-.main-theme .tgl-theme {
-  border: 1px solid #C08560;
-}
-.main-theme .tgl-theme + .tgl-btn:after {
-  background: #C08560;
-}
-@media (min-width: 768px) {
-  .main-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #71472D transparent;
-  }
-}
-
-.purple-theme {
-  background-color: #2F1D2E;
-}
-.purple-theme button.themed {
-  background-color: #5F3B5D;
-}
-.purple-theme button.themed:hover {
-  background-color: #422a40;
-}
-.purple-theme h1 > span {
-  color: #C301FF;
-}
-.purple-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #1C111C);
-  -moz-filter: drop-shadow(0px 7px 0 #1C111C);
-  filter: drop-shadow(0px 7px 0 #1C111C);
-}
-.purple-theme .card-module {
-  background-color: #E5DDEB;
-}
-.purple-theme .card-module--selected {
-  background-color: #9b7db2;
-}
-.purple-theme #cards-game {
-  background-color: #fff;
-}
-.purple-theme .button--submit {
-  background-color: #C301FF;
-}
-.purple-theme .button--submit:hover {
-  background-color: #9601c3;
-}
-.purple-theme .tooltip {
-  background-color: #5F3B5D;
-}
-.purple-theme .tooltip-active::after {
-  border-color: #5F3B5D transparent transparent transparent;
-}
-.purple-theme select {
-  background-color: #2F1D2E;
-}
-.purple-theme .checkbox-wrapper {
-  border: 3px solid #9a6cb1;
-  background: #2F1D2E;
-}
-.purple-theme .tgl-theme {
-  border: 1px solid #9a6cb1;
-}
-.purple-theme .tgl-theme + .tgl-btn:after {
-  background: #9a6cb1;
-}
-@media (min-width: 768px) {
-  .purple-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #5F3B5D transparent;
-  }
-}
-
-.blue-theme {
-  background-color: #1D2A4F;
-}
-.blue-theme button.themed {
-  background-color: #385094;
-}
-.blue-theme button.themed:hover {
-  background-color: #73B1F5;
-}
-.blue-theme h1 > span {
-  color: #73B1F5;
-}
-.blue-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #17223F);
-  -moz-filter: drop-shadow(0px 7px 0 #17223F);
-  filter: drop-shadow(0px 7px 0 #17223F);
-}
-.blue-theme .card-module {
-  background-color: #E3E8F9;
-}
-.blue-theme .card-module--selected {
-  background-color: #73B1F5;
-}
-.blue-theme #cards-game {
-  background-color: #fff;
-}
-.blue-theme .button--submit {
-  background-color: #73B1F5;
-}
-.blue-theme .button--submit:hover {
-  background-color: #385094;
-}
-.blue-theme .tooltip {
-  background-color: #385094;
-}
-.blue-theme .tooltip-active::after {
-  border-color: #385094 transparent transparent transparent;
-}
-.blue-theme select {
-  background-color: #1D2A4F;
-}
-.blue-theme .checkbox-wrapper {
-  border: 3px solid #73B1F5;
-  background: #1D2A4F;
-}
-.blue-theme .tgl-theme {
-  border: 1px solid #73B1F5;
-}
-.blue-theme .tgl-theme + .tgl-btn:after {
-  background: #73B1F5;
-}
-@media (min-width: 768px) {
-  .blue-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #385094 transparent;
-  }
-}
-
-.green-theme {
-  background-color: #242A0C;
-}
-.green-theme button.themed {
-  background-color: #465117;
-}
-.green-theme button.themed:hover {
-  background-color: #6A7B23;
-}
-.green-theme h1 > span {
-  color: #A6D60C;
-}
-.green-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #1D220A);
-  -moz-filter: drop-shadow(0px 7px 0 #1D220A);
-  filter: drop-shadow(0px 7px 0 #1D220A);
-}
-.green-theme .card-module {
-  background-color: #E9F0CC;
-}
-.green-theme .card-module--selected {
-  background-color: #A6D60C;
-}
-.green-theme #cards-game {
-  background-color: #fff;
-}
-.green-theme .button--submit {
-  background-color: #A6D60C;
-}
-.green-theme .button--submit:hover {
-  background-color: #6A7B23;
-}
-.green-theme .tooltip {
-  background-color: #465117;
-}
-.green-theme .tooltip-active::after {
-  border-color: #465117 transparent transparent transparent;
-}
-.green-theme select {
-  background-color: #242A0C;
-}
-.green-theme .checkbox-wrapper {
-  border: 3px solid #A6D60C;
-  background: #242A0C;
-}
-.green-theme .tgl-theme {
-  border: 1px solid #A6D60C;
-}
-.green-theme .tgl-theme + .tgl-btn:after {
-  background: #A6D60C;
-}
-@media (min-width: 768px) {
-  .green-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #465117 transparent;
-  }
-}
-
-.brown-theme {
-  background-color: #2D1E19;
-}
-.brown-theme button.themed {
-  background-color: #5B3D33;
-}
-.brown-theme button.themed:hover {
-  background-color: #B78C69;
-}
-.brown-theme h1 > span {
-  color: #B78C69;
-}
-.brown-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #241814);
-  -moz-filter: drop-shadow(0px 7px 0 #241814);
-  filter: drop-shadow(0px 7px 0 #241814);
-}
-.brown-theme .card-module {
-  background-color: #F0E7E0;
-}
-.brown-theme .card-module--selected {
-  background-color: #a8a19b;
-}
-.brown-theme #cards-game {
-  background-color: #fff;
-}
-.brown-theme .button--submit {
-  background-color: #B78C69;
-}
-.brown-theme .button--submit:hover {
-  background-color: #9e795a;
-}
-.brown-theme .tooltip {
-  background-color: #5B3D33;
-}
-.brown-theme .tooltip-active::after {
-  border-color: #5B3D33 transparent transparent transparent;
-}
-.brown-theme select {
-  background-color: #2D1E19;
-}
-.brown-theme .checkbox-wrapper {
-  border: 3px solid #B78C69;
-  background: #2D1E19;
-}
-.brown-theme .tgl-theme {
-  border: 1px solid #B78C69;
-}
-.brown-theme .tgl-theme + .tgl-btn:after {
-  background: #B78C69;
-}
-@media (min-width: 768px) {
-  .brown-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #5B3D33 transparent;
-  }
-}
-
-.ph-theme {
-  background-color: #DED4C8;
-}
-.ph-theme button.themed {
-  background-color: #000000;
-}
-.ph-theme button.themed:hover {
-  background-color: #FF7621;
-}
-.ph-theme h1 > span {
-  color: #FF7621;
-}
-.ph-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #B2AAA0);
-  -moz-filter: drop-shadow(0px 7px 0 #B2AAA0);
-  filter: drop-shadow(0px 7px 0 #B2AAA0);
-}
-.ph-theme .card-module {
-  background-color: #FFEFE5;
-}
-.ph-theme .card-module--selected {
-  background-color: #a8a19b;
-}
-.ph-theme #cards-game {
-  background-color: #fff;
-}
-.ph-theme .button--submit {
-  background-color: #FF7621;
-}
-.ph-theme .button--submit:hover {
-  background-color: #cf5d16;
-}
-.ph-theme .tooltip {
-  background-color: #000000;
-}
-.ph-theme .tooltip-active::after {
-  border-color: #000000 transparent transparent transparent;
-}
-.ph-theme select {
-  background-color: #DED4C8;
-}
-.ph-theme .checkbox-wrapper {
-  border: 3px solid #FF7621;
-  background: #DED4C8;
-}
-.ph-theme .tgl-theme {
-  border: 1px solid #FF7621;
-}
-.ph-theme .tgl-theme + .tgl-btn:after {
-  background: #FF7621;
-}
-@media (min-width: 768px) {
-  .ph-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #000000 transparent;
-  }
-}
-
-.gray-theme {
-  background-color: #262626;
-}
-.gray-theme button.themed {
-  background-color: #595959;
-}
-.gray-theme button.themed:hover {
-  background-color: #767171;
-}
-.gray-theme h1 > span {
-  color: #AFABAB;
-}
-.gray-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #1E1E1E);
-  -moz-filter: drop-shadow(0px 7px 0 #1E1E1E);
-  filter: drop-shadow(0px 7px 0 #1E1E1E);
-}
-.gray-theme .card-module {
-  background-color: #E7E6E6;
-}
-.gray-theme .card-module--selected {
-  background-color: #cacaca;
-}
-.gray-theme #cards-game {
-  background-color: #fff;
-}
-.gray-theme .button--submit {
-  background-color: #AFABAB;
-}
-.gray-theme .button--submit:hover {
-  background-color: #595959;
-}
-.gray-theme .tooltip {
-  background-color: #595959;
-}
-.gray-theme .tooltip-active::after {
-  border-color: #595959 transparent transparent transparent;
-}
-.gray-theme select {
-  background-color: #262626;
-}
-.gray-theme .checkbox-wrapper {
-  border: 3px solid #AFABAB;
-  background: #262626;
-}
-.gray-theme .tgl-theme {
-  border: 1px solid #AFABAB;
-}
-.gray-theme .tgl-theme + .tgl-btn:after {
-  background: #AFABAB;
-}
-@media (min-width: 768px) {
-  .gray-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #595959 transparent;
-  }
-}
-
-.downpour-theme {
-  background-color: #17171B;
-}
-.downpour-theme button.themed {
-  background-color: #363640;
-}
-.downpour-theme button.themed:hover {
-  background-color: #525262;
-}
-.downpour-theme h1 > span {
-  color: #959ABD;
-}
-.downpour-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #121216);
-  -moz-filter: drop-shadow(0px 7px 0 #121216);
-  filter: drop-shadow(0px 7px 0 #121216);
-}
-.downpour-theme .card-module {
-  background-color: #8489B2;
-}
-.downpour-theme .card-module--selected {
-  background-color: #3c4061;
-}
-.downpour-theme #cards-game {
-  background-color: #959ABD;
-}
-.downpour-theme .button--submit {
-  background-color: #959ABD;
-}
-.downpour-theme .button--submit:hover {
-  background-color: #474c72;
-}
-.downpour-theme .tooltip {
-  background-color: #363640;
-}
-.downpour-theme .tooltip-active::after {
-  border-color: #363640 transparent transparent transparent;
-}
-.downpour-theme select {
-  background-color: #17171B;
-}
-.downpour-theme .checkbox-wrapper {
-  border: 3px solid #959ABD;
-  background: #17171B;
-}
-.downpour-theme .tgl-theme {
-  border: 1px solid #959ABD;
-}
-.downpour-theme .tgl-theme + .tgl-btn:after {
-  background: #959ABD;
-}
-@media (min-width: 768px) {
-  .downpour-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #363640 transparent;
-  }
-}
-
-.red-theme {
-  background-color: #280E0E;
-}
-.red-theme button.themed {
-  background-color: #873535;
-}
-.red-theme button.themed:hover {
-  background-color: #D43838;
-}
-.red-theme h1 > span {
-  color: #EB2121;
-}
-.red-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #200B0B);
-  -moz-filter: drop-shadow(0px 7px 0 #200B0B);
-  filter: drop-shadow(0px 7px 0 #200B0B);
-}
-.red-theme .card-module {
-  background-color: #FCE0E0;
-}
-.red-theme .card-module--selected {
-  background-color: #ef5555;
-}
-.red-theme #cards-game {
-  background-color: #fff;
-}
-.red-theme .button--submit {
-  background-color: #EB2121;
-}
-.red-theme .button--submit:hover {
-  background-color: #690a0a;
-}
-.red-theme .tooltip {
-  background-color: #873535;
-}
-.red-theme .tooltip-active::after {
-  border-color: #873535 transparent transparent transparent;
-}
-.red-theme select {
-  background-color: #280E0E;
-}
-.red-theme .checkbox-wrapper {
-  border: 3px solid #EB2121;
-  background: #280E0E;
-}
-.red-theme .tgl-theme {
-  border: 1px solid #EB2121;
-}
-.red-theme .tgl-theme + .tgl-btn:after {
-  background: #EB2121;
-}
-@media (min-width: 768px) {
-  .red-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #873535 transparent;
-  }
-}
-
-.womb-theme {
-  background-color: #540000;
-}
-.womb-theme button.themed {
-  background-color: #A40000;
-}
-.womb-theme button.themed:hover {
-  background-color: #FA0000;
-}
-.womb-theme h1 > span {
-  color: #FA0000;
-}
-.womb-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #430000);
-  -moz-filter: drop-shadow(0px 7px 0 #430000);
-  filter: drop-shadow(0px 7px 0 #430000);
-}
-.womb-theme .card-module {
-  background-color: #D20000;
-}
-.womb-theme .card-module--selected {
-  background-color: #390000;
-}
-.womb-theme #cards-game {
-  background-color: #FA0000;
-}
-.womb-theme .button--submit {
-  background-color: #FA0000;
-}
-.womb-theme .button--submit:hover {
-  background-color: #610000;
-}
-.womb-theme .tooltip {
-  background-color: #A40000;
-}
-.womb-theme .tooltip-active::after {
-  border-color: #A40000 transparent transparent transparent;
-}
-.womb-theme select {
-  background-color: #540000;
-}
-.womb-theme .checkbox-wrapper {
-  border: 3px solid #EB2121;
-  background: #540000;
-}
-.womb-theme .tgl-theme {
-  border: 1px solid #EB2121;
-}
-.womb-theme .tgl-theme + .tgl-btn:after {
-  background: #EB2121;
-}
-@media (min-width: 768px) {
-  .womb-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #A40000 transparent;
-  }
-}
-
-.classic-theme {
-  background-color: #A37F61;
-}
-.classic-theme button.themed {
-  background-color: #873535;
-}
-.classic-theme button.themed:hover {
-  background-color: #D43838;
-}
-.classic-theme h1 > span {
-  color: #C00000;
-}
-.classic-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #82664E);
-  -moz-filter: drop-shadow(0px 7px 0 #82664E);
-  filter: drop-shadow(0px 7px 0 #82664E);
-}
-.classic-theme .card-module {
-  background-color: #E8DFD8;
-}
-.classic-theme .card-module--selected {
-  background-color: #af9078;
-}
-.classic-theme #cards-game {
-  background-color: #fff;
-}
-.classic-theme .button--submit {
-  background-color: #D20000;
-}
-.classic-theme .button--submit:hover {
-  background-color: #390000;
-}
-.classic-theme .tooltip {
-  background-color: #873535;
-}
-.classic-theme .tooltip-active::after {
-  border-color: #873535 transparent transparent transparent;
-}
-.classic-theme select {
-  background-color: #A37F61;
-}
-.classic-theme .checkbox-wrapper {
-  border: 3px solid #D20000;
-  background: #A37F61;
-}
-.classic-theme .tgl-theme {
-  border: 1px solid #D20000;
-}
-.classic-theme .tgl-theme + .tgl-btn:after {
-  background: #D20000;
-}
-@media (min-width: 768px) {
-  .classic-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #873535 transparent;
-  }
-}
-
-.dave-theme {
-  background-color: #5371A3;
-}
-.dave-theme button.themed {
-  background-color: #2A3A54;
-}
-.dave-theme button.themed:hover {
-  background-color: #3B5175;
-}
-.dave-theme h1 > span {
-  color: #FFC000;
-}
-.dave-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #425A82);
-  -moz-filter: drop-shadow(0px 7px 0 #425A82);
-  filter: drop-shadow(0px 7px 0 #425A82);
-}
-.dave-theme .card-module {
-  background-color: #3B5175;
-}
-.dave-theme .card-module--selected {
-  background-color: #080b0f;
-}
-.dave-theme #cards-game {
-  background-color: #2A3A54;
-}
-.dave-theme .button--submit {
-  background-color: #2A3A54;
-}
-.dave-theme .button--submit:hover {
-  background-color: black;
-}
-.dave-theme .tooltip {
-  background-color: #2A3A54;
-}
-.dave-theme .tooltip-active::after {
-  border-color: #2A3A54 transparent transparent transparent;
-}
-.dave-theme select {
-  background-color: #5371A3;
-}
-.dave-theme .checkbox-wrapper {
-  border: 3px solid #FFC000;
-  background: #5371A3;
-}
-.dave-theme .tgl-theme {
-  border: 1px solid #FFC000;
-}
-.dave-theme .tgl-theme + .tgl-btn:after {
-  background: #FFC000;
-}
-@media (min-width: 768px) {
-  .dave-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #2A3A54 transparent;
-  }
-}
-
-.corpse-theme {
-  background-color: #323D2F;
-}
-.corpse-theme button.themed {
-  background-color: #556F51;
-}
-.corpse-theme button.themed:hover {
-  background-color: #71936B;
-}
-.corpse-theme h1 > span {
-  color: #70835F;
-}
-.corpse-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #283126);
-  -moz-filter: drop-shadow(0px 7px 0 #283126);
-  filter: drop-shadow(0px 7px 0 #283126);
-}
-.corpse-theme .card-module {
-  background-color: #70835F;
-}
-.corpse-theme .card-module--selected {
-  background-color: #242a1f;
-}
-.corpse-theme #cards-game {
-  background-color: #5F6F51;
-}
-.corpse-theme .button--submit {
-  background-color: #FFFFFF;
-}
-.corpse-theme .button--submit:hover {
-  background-color: #b3b3b3;
-}
-.corpse-theme .tooltip {
-  background-color: #556F51;
-}
-.corpse-theme .tooltip-active::after {
-  border-color: #556F51 transparent transparent transparent;
-}
-.corpse-theme select {
-  background-color: #323D2F;
-}
-.corpse-theme .checkbox-wrapper {
-  border: 3px solid #70835F;
-  background: #323D2F;
-}
-.corpse-theme .tgl-theme {
-  border: 1px solid #70835F;
-}
-.corpse-theme .tgl-theme + .tgl-btn:after {
-  background: #70835F;
-}
-@media (min-width: 768px) {
-  .corpse-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #556F51 transparent;
-  }
-}
-
-.cathedral-theme {
-  background-color: #20475A;
-}
-.cathedral-theme button.themed {
-  background-color: #4A7FA0;
-}
-.cathedral-theme button.themed:hover {
-  background-color: #79A6C1;
-}
-.cathedral-theme h1 > span {
-  color: #A9C5D7;
-}
-.cathedral-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #1A3948);
-  -moz-filter: drop-shadow(0px 7px 0 #1A3948);
-  filter: drop-shadow(0px 7px 0 #1A3948);
-}
-.cathedral-theme .card-module {
-  background-color: #8CB2CA;
-}
-.cathedral-theme .card-module--selected {
-  background-color: #3c6681;
-}
-.cathedral-theme #cards-game {
-  background-color: #A9C5D7;
-}
-.cathedral-theme .button--submit {
-  background-color: #FF8C2D;
-}
-.cathedral-theme .button--submit:hover {
-  background-color: #934300;
-}
-.cathedral-theme .tooltip {
-  background-color: #4A7FA0;
-}
-.cathedral-theme .tooltip-active::after {
-  border-color: #4A7FA0 transparent transparent transparent;
-}
-.cathedral-theme select {
-  background-color: #20475A;
-}
-.cathedral-theme .checkbox-wrapper {
-  border: 3px solid #A9C5D7;
-  background: #20475A;
-}
-.cathedral-theme .tgl-theme {
-  border: 1px solid #A9C5D7;
-}
-.cathedral-theme .tgl-theme + .tgl-btn:after {
-  background: #A9C5D7;
-}
-@media (min-width: 768px) {
-  .cathedral-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #4A7FA0 transparent;
-  }
-}
-
-.sheol-theme {
-  background-color: #0D0D0D;
-}
-.sheol-theme button.themed {
-  background-color: #262626;
-}
-.sheol-theme button.themed:hover {
-  background-color: #404040;
-}
-.sheol-theme h1 > span {
-  color: #7F7F7F;
-}
-.sheol-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #0D0D0D);
-  -moz-filter: drop-shadow(0px 7px 0 #0D0D0D);
-  filter: drop-shadow(0px 7px 0 #0D0D0D);
-}
-.sheol-theme .card-module {
-  background-color: #4B4B4B;
-}
-.sheol-theme .card-module--selected {
-  background-color: black;
-}
-.sheol-theme #cards-game {
-  background-color: #2E2E2E;
-}
-.sheol-theme .button--submit {
-  background-color: #262626;
-}
-.sheol-theme .button--submit:hover {
-  background-color: black;
-}
-.sheol-theme .tooltip {
-  background-color: #262626;
-}
-.sheol-theme .tooltip-active::after {
-  border-color: #262626 transparent transparent transparent;
-}
-.sheol-theme select {
-  background-color: #0D0D0D;
-}
-.sheol-theme .checkbox-wrapper {
-  border: 3px solid #404040;
-  background: #0D0D0D;
-}
-.sheol-theme .tgl-theme {
-  border: 1px solid #404040;
-}
-.sheol-theme .tgl-theme + .tgl-btn:after {
-  background: #404040;
-}
-@media (min-width: 768px) {
-  .sheol-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #262626 transparent;
-  }
-}
-
-.chest-theme {
-  background-color: #3B2819;
-}
-.chest-theme button.themed {
-  background-color: #805738;
-}
-.chest-theme button.themed:hover {
-  background-color: #B9865F;
-}
-.chest-theme h1 > span {
-  color: #FFC000;
-}
-.chest-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #2F2014);
-  -moz-filter: drop-shadow(0px 7px 0 #2F2014);
-  filter: drop-shadow(0px 7px 0 #2F2014);
-}
-.chest-theme .card-module {
-  background-color: #FFF0C1;
-}
-.chest-theme .card-module--selected {
-  background-color: #ffcb28;
-}
-.chest-theme #cards-game {
-  background-color: #AC6414;
-}
-.chest-theme .button--submit {
-  background-color: #FFC000;
-}
-.chest-theme .button--submit:hover {
-  background-color: #664d00;
-}
-.chest-theme .tooltip {
-  background-color: #805738;
-}
-.chest-theme .tooltip-active::after {
-  border-color: #805738 transparent transparent transparent;
-}
-.chest-theme select {
-  background-color: #3B2819;
-}
-.chest-theme .checkbox-wrapper {
-  border: 3px solid #AC6414;
-  background: #3B2819;
-}
-.chest-theme .tgl-theme {
-  border: 1px solid #AC6414;
-}
-.chest-theme .tgl-theme + .tgl-btn:after {
-  background: #AC6414;
-}
-@media (min-width: 768px) {
-  .chest-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #805738 transparent;
-  }
-}
-
-.dark-room-theme {
-  background-color: #261036;
-}
-.dark-room-theme button.themed {
-  background-color: #402C5A;
-}
-.dark-room-theme button.themed:hover {
-  background-color: #665272;
-}
-.dark-room-theme h1 > span {
-  color: #665272;
-}
-.dark-room-theme .shadow-theme {
-  -webkit-filter: drop-shadow(0px 7px 0 #261036);
-  -moz-filter: drop-shadow(0px 7px 0 #261036);
-  filter: drop-shadow(0px 7px 0 #261036);
-}
-.dark-room-theme .card-module {
-  background-color: #4B4B4B;
-}
-.dark-room-theme .card-module--selected {
-  background-color: black;
-}
-.dark-room-theme #cards-game {
-  background-color: #000000;
-}
-.dark-room-theme .button--submit {
-  background-color: #665272;
-}
-.dark-room-theme .button--submit:hover {
-  background-color: #161219;
-}
-.dark-room-theme .tooltip {
-  background-color: #402C5A;
-}
-.dark-room-theme .tooltip-active::after {
-  border-color: #402C5A transparent transparent transparent;
-}
-.dark-room-theme select {
-  background-color: #261036;
-}
-.dark-room-theme .checkbox-wrapper {
-  border: 3px solid #665272;
-  background: #261036;
-}
-.dark-room-theme .tgl-theme {
-  border: 1px solid #665272;
-}
-.dark-room-theme .tgl-theme + .tgl-btn:after {
-  background: #665272;
-}
-@media (min-width: 768px) {
-  .dark-room-theme #tooltip-wrapper::after {
-    border-color: transparent transparent #402C5A transparent;
-  }
-}
-
-.ph-theme #title h1 {
-  color: #000;
-}
-.ph-theme select, .ph-theme option, .ph-theme label::after {
-  color: #000;
-}
-.ph-theme #tooltip-icons {
-  color: #000;
-}
-
-.classic-theme .button--submit {
+.scarred-womb-theme .button--shuffle {
   color: #fff;
 }
 
 .dave-theme .button--submit {
   color: #fff;
 }
+.dave-theme .button--shuffle {
+  color: #fff;
+}
 
 .sheol-theme .button--submit {
+  color: #fff;
+}
+.sheol-theme .button--shuffle {
   color: #fff;
 }
 

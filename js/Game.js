@@ -47,6 +47,9 @@ export class Game {
      * @description Setup the game
      */
     setupGame() {
+        let tutorial = true;
+        console.log(StorageManager.lastIsaaconnect);
+        if (StorageManager.lastIsaaconnect === Constants.DEFAULT_DATA.lastIsaaconnect) tutorial = true;
         StorageManager.initDefaultLocalStorage();
         
         const lastIsaaconnect = StorageManager.lastIsaaconnect;
@@ -85,6 +88,7 @@ export class Game {
         StorageManager.lastIsaaconnect = Utils.getDaysSince();
         this.UI.addDebugMenu();
         this.UI.addTooltipListeners();
+        if (tutorial) this.UI.showTutorial();
     }
 
     
