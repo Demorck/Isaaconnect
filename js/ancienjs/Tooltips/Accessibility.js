@@ -1,5 +1,5 @@
-import { Utils } from "../Helpers/Utils.js";
-import { StorageManager } from "../Helpers/StorageManager.js";
+import { Utils } from "../../Helpers/Utils.js";
+import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 
 /**
  * @description Handles the logic for the difficulty button.

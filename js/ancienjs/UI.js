@@ -1,6 +1,6 @@
-import { Constants } from "./Helpers/Constants.js";
-import { StorageManager } from "./Helpers/StorageManager.js";
-import { Utils } from "./Helpers/Utils.js";
+import { Constants } from "../Helpers/Constants.js";
+import { StorageManager } from "../Helpers/Data/StorageManager.js";
+import { Utils } from "../Helpers/Utils.js";
 import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
 import { Game } from "./Game.js";
 

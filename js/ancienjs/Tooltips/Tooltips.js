@@ -3,7 +3,7 @@ import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopy
 import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
 import { TTSLogic } from './Accessibility.js';
-import { Utils } from '../Helpers/Utils.js';
+import { Utils } from '../../Helpers/Utils.js';
 
 export async function displayTooltip(element) {
     let wrapper = document.querySelector('#tooltip-wrapper');

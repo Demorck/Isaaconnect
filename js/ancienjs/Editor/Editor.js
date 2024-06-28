@@ -1,7 +1,7 @@
-import { Constants } from '../Helpers/Constants.js';
-import { DataFetcher } from '../Helpers/DataFetcher.js';
-import { StorageManager } from '../Helpers/StorageManager.js';
-import { Utils } from '../Helpers/Utils.js';
+import { Constants } from '../../Helpers/Constants.js';
+import { DataFetcher } from '../../Helpers/DataFetcher.js';
+import { StorageManager } from '../../Helpers/StorageManager.js';
+import { Utils } from '../../Helpers/Utils.js';
 import { initializeTooltipListener } from '../Tooltips/Tooltips.js';
 
 export class Editor {

@@ -1,9 +1,9 @@
 "use strict";
-import { Constants } from "./Helpers/Constants.js";
-import { DataFetcher } from "./Helpers/DataFetcher.js";
-import { StorageManager } from "./Helpers/StorageManager.js";
+import { Constants } from "../Helpers/Constants.js";
+import { DataFetcher } from "../Helpers/DataFetcher.js";
+import { StorageManager } from "../Helpers/Data/StorageManager.js";
 import { UI } from "./UI.js";
-import { Utils } from "./Helpers/Utils.js";
+import { Utils } from "../Helpers/Utils.js";
 
 
 /**
@@ -17,10 +17,9 @@ export class Game {
     constructor(debug = false) {
         Utils.resetIfNewVersion();
         this.debug = StorageManager.debug || debug;
-        this.health = Constants.MAX_HEALTH;
-        this.itemsSelected = [];
         this.groupsSelected = [];
         this.groupsSolved = [];
+        
         this.attempts = [];
         this.history = [];
         this.currentAttempt = 0;
