@@ -524,6 +524,25 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     animation: l44 1s infinite linear alternate; 
 }
 
+#tboi-loader {
+    height: 40%;
+    aspect-ratio: 1;
+    image-rendering: pixelated;
+    background-size: 100% 100%;
+    background-image: url("/assets/loading-1.png");
+    animation: loader 0.2s infinite step-start alternate;
+}
+
+@keyframes loader {
+    0% {
+        background-image: url("/assets/loading-1.png");
+    }
+    50%
+    {
+        background-image: url("/assets/loading-2.png");
+    }
+}
+
 @keyframes l44 {
     0%,
     5%    {
@@ -746,4 +765,19 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
 
 .checkbox-wrapper .tgl-theme:checked + .tgl-btn:active:after {
     margin-left: -0.8em;
+}
+
+
+#filter-result {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px; /* Ajuste cette valeur selon la hauteur souhaitée */
+    overflow-y: auto;
+}
+
+#filter-result li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
 }

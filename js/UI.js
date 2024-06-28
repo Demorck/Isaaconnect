@@ -474,7 +474,9 @@ export class UI {
                 return;
             }
 
-            textToCopy += `❤️: ${health} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            let groupsSolved = StorageManager.groupsSolved.length;
+
+            textToCopy += `✅: ${groupsSolved}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
             let attempts = StorageManager.attempts;
 
             attempts.forEach((attempt, index) => {

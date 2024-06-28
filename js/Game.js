@@ -47,7 +47,7 @@ export class Game {
      * @description Setup the game
      */
     setupGame() {
-        let tutorial = true;
+        let tutorial = false;
         console.log(StorageManager.lastIsaaconnect);
         if (StorageManager.lastIsaaconnect === Constants.DEFAULT_DATA.lastIsaaconnect) tutorial = true;
         StorageManager.initDefaultLocalStorage();
