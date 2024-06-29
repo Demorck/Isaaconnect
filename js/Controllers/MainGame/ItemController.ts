@@ -9,17 +9,24 @@ export class ItemController {
         this.item = item
         this.itemView = itemView;
         this.item.addObserver(this.itemView);
+        this.item.notifyObservers();
+        this.addEventListeners();
     }
 
     public addEventListeners(): void {
         let container = this.itemView.getItemElement();
-        let checkbox = container.querySelector('input[type="checkbox"]');
-
+        let checkbox = container.querySelector<HTMLInputElement>('input[type="checkbox"]');
+        
         checkbox?.addEventListener('change', () => {
             let numberSelected = document.querySelectorAll('.card-module--selected').length;
+            
             if (numberSelected <= 4) {
                 container.classList.toggle('card-module--selected');
             }
         });
+    }
+
+    public getItemElement(): HTMLElement {
+        return this.itemView.getItemElement();
     }
 }

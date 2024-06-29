@@ -3,7 +3,7 @@ import { Utils } from "../../Helpers/Utils.js";
 import { Group } from "../Group.js";
 import { Item } from "../Item.js";
 
-export class GroupGame extends Group {
+export class GroupGame extends Group implements Iterable<Item> {
     private selectedItems: Item[];
 
     constructor(name: string, items: Item[], difficulty: number) {
@@ -30,9 +30,28 @@ export class GroupGame extends Group {
                 return null;
             }
 
-            itemsPicked.push(item);
+            this.selectedItems.push(item);
             bannedItem.push(item);
         }
-        return itemsPicked;
+        return this.selectedItems;
+    }
+
+    public [Symbol.iterator](): Iterator<Item> {
+        let index = 0;
+        return {
+            next: () => {
+                if (index < this.selectedItems.length) {
+                    return {
+                        done: false,
+                        value: this.selectedItems[index++]
+                    };
+                } else {
+                    return {
+                        done: true,
+                        value: null
+                    };
+                }
+            }
+        };
     }
 }

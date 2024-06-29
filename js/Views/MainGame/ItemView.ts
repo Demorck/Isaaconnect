@@ -12,7 +12,7 @@ export class ItemView implements Observer {
         this.itemElement = this.createItemElement(item);
     }
 
-    public update(item: Item): void {
+    public update(): void {
         this.itemContainer.appendChild(this.itemElement!);
     }
 

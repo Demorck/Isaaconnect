@@ -34,22 +34,6 @@ export class UI {
         }
     }
 
-    /**
-     * @description Display and updates hearts on the screen
-     *
-     * @param {number} health The health of the player
-     */
-    updateHealth(health) {
-        let container = document.querySelector('.hearts');
-        container.innerHTML = '';
-        for (let i = 0; i < health; i++) {
-            container.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
-        }
-        for (let i = health; i < Constants.MAX_HEALTH; i++) {
-            container.innerHTML += `<img src="/assets/gfx/empty heart.png" alt="empty heart" data-type="empty">`;
-        }
-    }
-
     
     /**
      * @description Display and create cards on the screen

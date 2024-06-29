@@ -5,13 +5,11 @@ import { Item } from "../Item.js";
 import { GroupGame } from "./GroupGame.js";
 
 export class GameUtils {
-    static generateSelection(daysBefore = 0, alreadyBanned = []) : Group[] {
+    static generateSelection(daysBefore = 0, alreadyBanned: Group[] = []) : GroupGame[] {
         let bannedGroup: Group[] = alreadyBanned;
         let bannedItem: Item[] = [];
 
         let selectedGroups: GroupGame[] = [];
-        let selectedItems: Item[] = [];
-
 
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
             let currentGroup;
@@ -27,12 +25,8 @@ export class GameUtils {
                     currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 1);
                     selectedGroups.push(currentGroup);
                     bannedGroup.push(currentGroup);
-                }
-            } while (items === null)
-
-            items.forEach(item => {
-                selectedItems.push(item);
-            });
+                }                
+            } while (items === null);
 
             currentGroup.getItems().forEach(item => {
                 if (bannedItem.indexOf(item) === -1) {

@@ -12,6 +12,7 @@ export class MainGame extends Observable {
     private attempts: [];
     private history: [];
     private currentAttempt: number;
+    private itemsIndex: number[];
 
     constructor() {
         super();
@@ -20,6 +21,11 @@ export class MainGame extends Observable {
         this.history = [];
         this.currentAttempt = 0;
         this.groups = [];
+        this.itemsIndex = [];
+        for (let i = 0; i < Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS; i++) {
+            this.itemsIndex.push(i);
+        }
+        this.itemsIndex = Utils.shuffleArray(this.itemsIndex);
         this.setupGame();
     }
 
@@ -28,13 +34,19 @@ export class MainGame extends Observable {
         if(lastIsaaconnect !== Utils.getDaysSince())
             StorageManager.newIsaaconnect();
 
-
-        let bannedGroups: Group[];
-        for (let i = 1; i <= Constants.NUMBER_OF_GROUPS; i++) {
+        let bannedGroups: Group[] = [];
+        for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
             const selectedGroups = GameUtils.generateSelection(i);
-            console.log(selectedGroups);
-            
+            selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
         }
+
+        this.groups = GameUtils.generateSelection(0, bannedGroups);
+        
+        
+    }
+
+    public getGroups(): GroupGame[] {
+        return this.groups.slice();
     }
 
     // private generateGroups(numberOfGroups: number): Group[] {
