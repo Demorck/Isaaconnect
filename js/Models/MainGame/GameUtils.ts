@@ -57,4 +57,27 @@ export class GameUtils {
 
         return new GroupGame(group.getName(), group.getItems(), group.getDifficulty());
     }
+
+    /**
+     * Find an item froms items.json by its id
+     *
+     * @param {number} id The id of the item
+     * @returns {Item}
+     */
+    static findItemById(id: number): Item {
+        let item = Constants.ITEMS.find(item => item.getId() === id);
+        if (item === undefined)
+            return Constants.ITEMS[185];
+        return item;
+    }
+
+    static findGroupByItem(item: Item, groups: GroupGame[]): GroupGame;
+    static findGroupByItem(id: number, groups: GroupGame[]): GroupGame;
+    static findGroupByItem(itemOrId: Item | number, groups: GroupGame[]): GroupGame {
+        if (typeof itemOrId === 'number') {
+            return groups.find(group => group.isItemInGroup(itemOrId)) as GroupGame;
+        } else {
+            return groups.find(group => group.isItemInGroup(itemOrId)) as GroupGame;
+        }
+    }
 }

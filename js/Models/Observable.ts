@@ -14,7 +14,7 @@ export class Observable {
             }
     }
 
-    public notifyObservers(): void {
-        this.observers.forEach(observer => observer.update());
+    public notifyObservers(data: any = {}): void {
+        this.observers.forEach(observer => observer.update(data));
     }
 }

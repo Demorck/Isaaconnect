@@ -218,22 +218,6 @@ export class Game {
      * Handle when the user click on the submit button.
      */
     handleSubmit = () => {
-        const selectedItemsID = this.UI.getSelectedItems();
-        let numberOfGroups = 0;
-
-        let j = 0;
-        this.history.forEach((attempt, index) => {
-            let k = 0;
-            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
-                const currentItem = Game.findItemById(selectedItemsID[i]);
-                let isInclude = attempt.filter(item => item.id === currentItem.id).length > 0;
-                if (isInclude) k++;
-            }
-
-            if (k === Constants.NUMBER_OF_ITEMS) j++;
-        });
-
-        const alreadyGuessed = j > 0 && this.currentAttempt !== 0;
         if (!alreadyGuessed) {
             let firstGroup, currentGroup, win = true;
             this.attempts[this.currentAttempt] = [];
@@ -401,32 +385,3 @@ export class Game {
         return this.itemsSelected.filter(item => group.items.includes(item.id));
     }
 }
-
-
-let theme = StorageManager.theme;
-if (theme === null) theme = 'basement-theme';
-if (theme === 'void-theme') {
-    do {
-        let randomValue = Constants.THEMES[Math.floor(Math.random() * Constants.THEMES.length)];
-        theme = randomValue;
-    } while (theme === 'void-theme');
-}
-document.querySelector('body').classList.add(theme);
-  
-const setVisible = (elementOrSelector, visible) => 
-    (typeof elementOrSelector === 'string'
-        ? document.querySelector(elementOrSelector)
-        : elementOrSelector
-    ).style.display = visible ? 'flex' : 'none';
-
-setVisible('.page', false);
-setVisible('.loader', true);
-
-document.addEventListener('DOMContentLoaded', () =>
-    Utils.sleep(1000).then(() => {
-        setVisible('.page', true);
-        setVisible('.loader', false);
-        const game = new Game();
-    })
-);
-

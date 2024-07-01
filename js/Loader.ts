@@ -5,9 +5,22 @@ import { DataFetcher } from "./Helpers/DataFetcher.js";
 import { Item } from "./Models/Item.js";
 import { Group } from "./Models/Group.js";
 
+/**
+ * @description Loader class that loads the page
+ *
+ * @export
+ * @class Loader
+ */
 export class Loader {
     constructor() {}
-
+    
+    /**
+     * @description Load the page.
+     *
+     * @static
+     * @async
+     * @returns {Promise<void>}
+     */
     static async load(): Promise<void> {
         const { items, groups } = await DataFetcher.fetchData();
 
@@ -37,6 +50,11 @@ export class Loader {
         let body = document.querySelector('body');
         if (body) body.classList.add(theme);
 
+        /**
+         * @param elementOrSelector The element or selector to set visible
+         * @param visible True if the element should be visible, false otherwise
+         * @returns nothing if the element is not found
+         */
         const setVisible = (elementOrSelector: string, visible: boolean) => {
             const element = document.querySelector<HTMLElement>(elementOrSelector);
             if (!element) {

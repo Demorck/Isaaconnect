@@ -36,6 +36,16 @@ export class GroupGame extends Group implements Iterable<Item> {
         return this.selectedItems;
     }
 
+    public isItemInGroup(item: Item): boolean;
+    public isItemInGroup(id: number): boolean;
+    public isItemInGroup(itemOrId: Item | number): boolean {
+        if (typeof itemOrId === 'number') {
+            return this.selectedItems.findIndex(item => item.getId() === itemOrId) !== -1;
+        } else {
+            return this.selectedItems.findIndex(item => item.getId() === itemOrId.getId()) !== -1;
+        }
+    }
+
     public [Symbol.iterator](): Iterator<Item> {
         let index = 0;
         return {

@@ -1,7 +1,3 @@
-import { Item } from './Models/Item.js';
-import { ItemController } from './Controllers/MainGame/ItemController.js';
-import { ItemView } from './Views/MainGame/ItemView.js';
-import { Constants } from './Helpers/Constants.js';
 import { ThemeController } from './Controllers/ThemeController.js';
 import { Loader } from './Loader.js';
 import { MainGame } from './Models/MainGame/MainGame.js';
@@ -15,8 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     let game = new MainGame();
     let gameView = new MainGameView('#cards-game');
     let gameController = new MainGameController(game, gameView);
-
-
 
     const themeController = new ThemeController();
 });

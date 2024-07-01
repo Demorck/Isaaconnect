@@ -98,4 +98,10 @@ export class Constants {
     }
 
     static VERSION: string = '0.8.5';
+
+    /////////////////////////////////
+
+    static get ALMOST(): string { return 'Almost...' };
+    
+    static ALREADY_GUESSED: string = 'Already guessed!';
 }

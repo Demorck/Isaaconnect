@@ -1,3 +1,6 @@
+/**
+ * Observer interface for the observer pattern
+ */
 export interface Observer {
-    update: () => void;
+    update: (data: any | null) => void;
 }

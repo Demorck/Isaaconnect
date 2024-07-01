@@ -5,6 +5,7 @@ import { Observable } from "../Observable.js";
 import { GroupGame } from "./GroupGame.js";
 import { Group } from "../Group.js";
 import { GameUtils } from "./GameUtils.js";
+import { MainGameMechanics } from "./MainGameMechanics.js";
 
 export class MainGame extends Observable {
     private health: number;
@@ -12,7 +13,8 @@ export class MainGame extends Observable {
     private attempts: [];
     private history: [];
     private currentAttempt: number;
-    private itemsIndex: number[];
+
+    private mechanics: MainGameMechanics;
 
     constructor() {
         super();
@@ -21,11 +23,8 @@ export class MainGame extends Observable {
         this.history = [];
         this.currentAttempt = 0;
         this.groups = [];
-        this.itemsIndex = [];
-        for (let i = 0; i < Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS; i++) {
-            this.itemsIndex.push(i);
-        }
-        this.itemsIndex = Utils.shuffleArray(this.itemsIndex);
+        this.mechanics = new MainGameMechanics();
+        
         this.setupGame();
     }
 
@@ -49,5 +48,20 @@ export class MainGame extends Observable {
         return this.groups.slice();
     }
 
-    // private generateGroups(numberOfGroups: number): Group[] {
+    public handleSubmit(selectedID: number[]) {
+        let results = this.mechanics.handleSubmit(selectedID, this.getGroups());
+        
+        let win = results.win;
+        let numberOfGroups = results.numberOfGroups;
+        let attempts = results.attempts;
+        let historyItems = results.historyItems;
+        let isMessage = results.isMessage;
+        let message = results.message;
+
+        if (isMessage) {
+            this.notifyObservers({ isMessage, message });
+            return;
+        }
+    }
+
 }

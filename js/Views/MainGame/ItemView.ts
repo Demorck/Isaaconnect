@@ -3,6 +3,15 @@ import { Observer } from "../Observer.js";
 import { Item } from "../../Models/Item.js";
 import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 
+
+/**
+ * @description View for each item
+ *
+ * @export
+ * @class ItemView
+ * @type {ItemView}
+ * @implements {Observer}
+ */
 export class ItemView implements Observer {
     private itemContainer: HTMLElement;
     private itemElement: HTMLElement;
