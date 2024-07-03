@@ -36,7 +36,8 @@ export class ItemView implements Observer {
 
     private createItemElement(item: Item): HTMLElement {
         const itemElement = document.createElement('label');
-        itemElement.className = 'card-module flex-col';
+        itemElement.className = 'card-module flex-col aspect-square';
+        itemElement.className += StorageManager.difficulty === 'normal' ? '' : ' easy';
         itemElement.dataset.id = item.getId().toString();
 
         const inputElement = document.createElement('input');
@@ -49,8 +50,7 @@ export class ItemView implements Observer {
         imgElement.alt = item.getAlias();
 
         const spanElement = document.createElement('span');
-        spanElement.className = 'card-module--content text-xs sm:text-sm';
-        spanElement.className += StorageManager.difficulty === 'normal' ? ' hidden' : '';
+        spanElement.className = 'card-module--content text-xs sm:text-sm text-wrap';
         spanElement.textContent = item.getAlias();
 
         itemElement.appendChild(inputElement);

@@ -23,6 +23,7 @@ export class MainGameView implements Observer {
         this.itemsContainer = this.container.querySelector<HTMLElement>('#cards-module')!;
         this.groupsContainer = this.container.querySelector<HTMLElement>('#cards-win')!;
         this.healthContainer = document.querySelector<HTMLElement>('.hearts')!;
+        // this.resizeToSquare();
     }
 
     public update(data: any): void {
@@ -146,6 +147,26 @@ export class MainGameView implements Observer {
      */
     public getItemsContainer(): HTMLElement {
         return this.itemsContainer;
+    }
+
+    private resizeToSquare(): void {
+        let windowWidth = window.innerWidth;
+        if (windowWidth >= 768) {
+            let square = document.getElementById('cards-game')!;
+            let height = square.offsetWidth;
+            new ResizeObserver(() => {
+                let firstSolve = document.querySelector('.solved-group');
+                let lastSolver = document.querySelectorAll('.solved-group')[3];
+                if (firstSolve != null && lastSolver != null) {
+                    height = lastSolver.getBoundingClientRect().bottom - firstSolve.getBoundingClientRect().top;
+                    if (height > 550) {
+                        height = Math.ceil(height);
+                    }
+                }
+
+                square.style.height = `${height}px`;
+            }).observe(square);
+        }
     }
 
     private showMessage(message: string, timeout: number = 3000): void {

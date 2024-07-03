@@ -67,7 +67,6 @@ export class MainGame extends Observable {
             if (win) {
                 let groupSolved = GameUtils.findGroupByItem(historyItems[0], this.groups);
                 this.rightAnswer(groupSolved);
-                return;
             } else {
                 this.wrongAnswer(selectedID);
             }

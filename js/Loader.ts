@@ -4,6 +4,7 @@ import { Utils } from "./Helpers/Utils.js";
 import { DataFetcher } from "./Helpers/DataFetcher.js";
 import { Item } from "./Models/Item.js";
 import { Group } from "./Models/Group.js";
+import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
 
 /**
  * @description Loader class that loads the page
@@ -49,6 +50,8 @@ export class Loader {
         }
         let body = document.querySelector('body');
         if (body) body.classList.add(theme);
+
+        initializeTooltipListener();
 
         /**
          * @param elementOrSelector The element or selector to set visible
