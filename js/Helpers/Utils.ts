@@ -77,7 +77,7 @@ export class Utils {
      * @param {string} file The file to load.
      * @returns {Promise<string>} The HTML content of the file.
      */
-    static async loadHtml(file: string): Promise<string> {
+    static async loadHTML(file: string): Promise<string> {
         const response = await fetch(file);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -92,12 +92,12 @@ export class Utils {
      *
      * @static
      * @param {string} html The HTML string.
-     * @param {Map<string, any>} variables The variables to replace.
+     * @param {any} variables The variables to replace.
      * @returns {string} The HTML string with the placeholders replaced.
      */
-    static replacePlaceholders(html: string, variables: Map<string, any>): string {
+    static replacePlaceholders(html: string, variables: any): string {
         return html.replace(/{{\s*([\w]+)\s*}}/g, (match, key) => {
-            return variables.get(key) !== undefined && variables.get(key) !== null ? variables.get(key) : '';
+            return variables[key] !== undefined && variables[key] !== null ? variables[key] : '';
         });
     }
 

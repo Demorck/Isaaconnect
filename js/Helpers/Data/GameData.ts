@@ -1,9 +1,12 @@
+import { GroupData } from "./GroupData.js";
+import { ItemData } from "./ItemData.js";
+
 export interface GameData {
     health: number;
-    groupsSolved: any[];
-    attempts: any[];
+    groupsSolved: GroupData[];
+    attempts: GroupData[][];
     currentAttempt: number;
-    history: any[];
+    history: ItemData[][];
     mapItemAndGroup: Map<any, any>;
     finished: boolean;
 }

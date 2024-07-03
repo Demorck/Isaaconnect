@@ -4,7 +4,7 @@ import { GroupGameController } from "./GroupGameController.js";
 import { GroupGameView } from "../../Views/MainGame/GroupGameView.js";
 import { Utils } from "../../Helpers/Utils.js";
 import { Constants } from "../../Helpers/Constants.js";
-import { MainGameMechanics } from "../../Models/MainGame/MainGameMechanics.js";
+import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 
 
 /**
@@ -27,13 +27,20 @@ export class MainGameController {
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
         this.game.getGroups().forEach(group => {
-            let groupView = new GroupGameView('cards-game');
+            let groupView = new GroupGameView('#cards-win');
             this.groupsController.push(new GroupGameController(group, groupView));
         });
         
         this.shuffleCard();
         this.addEventListeners();
         this.game.addObserver(this.gameView);
+        this.game.assignStorageToGame();
+        let {finished, win} = this.game.checkFinished();
+
+        if (finished) {
+            this.incrementStats(win)
+            this.toggleFinishedState();
+        }
         this.game.notifyObservers();
     }
 
@@ -92,5 +99,42 @@ export class MainGameController {
         });
         
         this.game.handleSubmit(selectedItemsID);
+        let {finished, win} = this.game.checkFinished();
+
+        if (finished) {
+            this.incrementStats(win)
+            this.toggleFinishedState();
+        }
+    }
+
+    private toggleFinishedState = () => {
+        if (!StorageManager.finished)
+            StorageManager.finished = true;
+
+        document.getElementById('cards-module')!.remove();
+        this.removeButtons();
+
+        let buttonResults = document.querySelector('button[data-id="results"]')!;
+        buttonResults.classList.remove('button--disabled');
+        buttonResults.addEventListener('click', () => this.gameView.displayModal());
+        // this.toggleToSolvedGroup();
+    }
+
+    private removeButtons(): void {
+        let shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
+        shufflesButton.forEach(button => button.remove());
+
+        let buttons = document.querySelector('.buttons')!;
+        buttons.innerHTML = '<button data-id="results" class="button--submit font-bold py-2 px-4 rounded button--disabled">See results</button>';
+    }
+
+    private incrementStats(win: boolean): void {
+        if (StorageManager.finished) return;
+        let stats = StorageManager.stats;
+        win ? stats.winStreak++ : stats.winStreak = 0;
+        win ? stats.wins++ : stats.losses++;
+        stats.longestStreak = Math.max(stats.longestStreak, stats.winStreak);
+        StorageManager.finished = true;
+        StorageManager.stats = stats;
     }
 }

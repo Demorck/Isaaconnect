@@ -28,6 +28,8 @@ export class GameUtils {
                 }                
             } while (items === null);
 
+
+            currentGroup.setIndex(i);
             currentGroup.getItems().forEach(item => {
                 if (bannedItem.indexOf(item) === -1) {
                     bannedItem.push(item);

@@ -4,6 +4,7 @@ import { GameUtils } from "./GameUtils.js";
 import { Item } from "../Item.js";
 import { Group } from "../Group.js";
 import { GroupGame } from "./GroupGame.js";
+import { ItemData } from "../../Helpers/Data/ItemData.js";
 
 export class MainGameMechanics {
     constructor() {}
@@ -11,7 +12,6 @@ export class MainGameMechanics {
 
     public handleSubmit = (selectedIDs: number[], groups: GroupGame[]) => {        
         let history = StorageManager.history;
-
         let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs);
         
         if (alreadyGuessed) {
@@ -41,26 +41,40 @@ export class MainGameMechanics {
         });
 
         if (numberOfGroups === Constants.NUMBER_OF_GROUPS - 1)
-            return { win, numberOfGroups, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
+            return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
-        return { win, numberOfGroups, attempts, historyItems, isMessage: false, message: ''};
+        return { win, attempts, historyItems, isMessage: false, message: ''};
     }
 
-    private checkIfAlreadyGuessed(history: Item[][], selectedIDs: number[]) {        
+    public handleRightAnswer = (groupSolved = GroupGame) =>  {
+
+    }
+
+    
+    /**
+     * @description Check if the current attempt has already been guessed
+     *
+     * @private
+     * @param {{id: number}[][]} history J'aime pas comment c'est fait ça
+     * @param {number[]} selectedIDs IDs of selected Items 
+     * @returns {boolean}
+     */
+    private checkIfAlreadyGuessed(history: ItemData[][], selectedIDs: number[]) {        
         let j = 0;
         let currentAttempt = StorageManager.currentAttempt;
-        history.forEach((attempt, index) => {
+        history.forEach(attempt => {
             let k = 0;
             for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
-                const currentItem = GameUtils.findItemById(selectedIDs[i]);
-                let isInclude = attempt.filter(item => item.getId() === currentItem?.getId()).length > 0;
+                let filter = attempt.filter(item => item.id == selectedIDs[i]);
+                let isInclude = filter.length > 0;
                 if (isInclude) k++;
             }
-
+            
             if (k === Constants.NUMBER_OF_ITEMS) j++;
         });
 
         const alreadyGuessed = j > 0 && currentAttempt !== 0;
+           
         return alreadyGuessed;
     }
 }

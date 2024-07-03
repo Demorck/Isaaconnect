@@ -9,7 +9,7 @@ export class ItemController {
         this.item = item
         this.itemView = itemView;
         this.item.addObserver(this.itemView);
-        this.item.notifyObservers();
+        this.item.notifyObservers({ newItem: true });
         this.addEventListeners();
     }
 

@@ -1,6 +1,7 @@
 import { Observer } from "../Observer.js";
 import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 import { Constants } from "../../Helpers/Constants.js";
+import { Utils } from "../../Helpers/Utils.js";
 
 
 /**
@@ -30,6 +31,26 @@ export class MainGameView implements Observer {
             this.showMessage(data.message);
             return;
         }
+
+        if (data.isFinished)
+        {
+            this.showResults(data.win, data).then(html => {
+                let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!; 
+                modalContainer.innerHTML = html;
+                modalContainer.classList.remove('hidden');
+                // TODO: A mettre dans le controller
+                document.querySelector('.close-button')!.addEventListener('click', () => {
+                    modalContainer.classList.add('hidden');
+                });
+                document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix();
+                let copyButton = document.getElementById('copy')!;
+                copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
+        
+            });
+        }
+
+        if (data.deselect) this.deselectCards();
+
         this.renderHealth(StorageManager.health);
         this.applyBorderRadius();
     }
@@ -59,11 +80,12 @@ export class MainGameView implements Observer {
      */
     public toggleSubmitButton(disabled: boolean): void {
         const submitButton = document.querySelector<HTMLButtonElement>('[data-id="submit"]')!;
-        console.log(submitButton);
+
         if (disabled)
             submitButton.classList.add('button--disabled');
         else
             submitButton.classList.remove('button--disabled');
+            
         submitButton.disabled = disabled;
     }
 
@@ -135,4 +157,108 @@ export class MainGameView implements Observer {
             container.classList.add('hidden');
         }, timeout);
     }
+
+    private deselectCards(): void {
+        let selectedCards = document.querySelectorAll('.card-module');
+        selectedCards.forEach(card => {
+            card.classList.remove('card-module--selected', 'card-module--disabled');
+            card.querySelector<HTMLInputElement>('input[type="checkbox"]')!.disabled = false;
+        });
+
+        let submitButton = document.querySelector<HTMLInputElement>('button[data-id="submit"]');
+        if (submitButton != null) {
+            submitButton.classList.add('button--disabled');
+            submitButton.disabled = true;
+        }
+    }
+
+    private async showResults(win: boolean, data: any): Promise<string> {
+        let modalPath: string;
+        if (win) modalPath = "/include/modals/win.html";
+        else modalPath = "/include/modals/lose.html";
+        let html = await Utils.loadHTML(modalPath);
+        
+        html = Utils.replacePlaceholders(html, data);
+        return html;
+    }
+
+    private convertAttemptToSquareMatrix(): string {
+        let attempt = StorageManager.attempts;
+        let content = `<div data-id="results" class="flex flex-col">`;
+        attempt.forEach((group, index_attempt) => {
+            content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
+            group.forEach((currentGroup, index_group) => {
+                let index = currentGroup.index;
+                let rounded = index_group % 4 == 0 ? "rounded-l-lg" : index_group % 4 == 3 ? "rounded-r-lg" : "";
+                content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
+            });
+            content += `</div>`;
+        });
+        content += `</div>`;
+        return content;
+    }
+
+    private copyResults(copyButton: HTMLElement, data: any): void {
+        let title = "Isaaconnect #" + StorageManager.lastIsaaconnect;
+        try
+        {
+            let textToCopy = "";
+            textToCopy = title + "\n";
+
+            let health = StorageManager.health;
+            
+            if (typeof health != "number")
+            {
+                this.showMessage("Impossible to copy the results");
+                return;
+            }
+
+            let groupsSolved = data.solved ? data.solved : Constants.NUMBER_OF_GROUPS;
+
+            textToCopy += `✅: ${groupsSolved}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            let attempts = StorageManager.attempts;
+
+            attempts.forEach((attempt, index) => {
+                attempt.forEach((group: {index: number}, index_group: number) => {
+                    let index = group.index;
+                    switch (index)
+                    {
+                        case 0:
+                            textToCopy += "🟥";
+                            break;
+                        case 1:
+                            textToCopy += "🟦";
+                            break;
+                        case 2:
+                            textToCopy += "🟩";
+                            break;
+                        case 3:
+                            textToCopy += "🟨";
+                            break;
+                    }
+                });
+                textToCopy += "\n";
+            });
+
+            if (StorageManager.link)
+            {
+                textToCopy += Constants.URL;
+            }
+
+            navigator.clipboard.writeText(textToCopy);
+            copyButton.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
+            this.showMessage("Results copied to clipboard");
+        }
+        catch (error)
+        {
+            this.showMessage("Impossible to copy the results");
+        }
+    }
+
+    public displayModal() {
+        let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!;
+        modalContainer.classList.remove('hidden');
+    }
+
+
 }

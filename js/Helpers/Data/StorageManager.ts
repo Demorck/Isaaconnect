@@ -4,6 +4,11 @@ import { Utils } from '../Utils.js';
 import { GameData } from './GameData.js';
 import { StatsData } from './StatsData.js';
 import { SettingsData } from './SettingsData.js';
+import { GroupData } from './GroupData.js';
+import { GroupGame } from '../../Models/MainGame/GroupGame.js';
+import { ItemData } from './ItemData.js';
+import { Item } from '../../Models/Item.js';
+import { Group } from '../../Models/Group.js';
 
 
 /**
@@ -54,21 +59,23 @@ export class StorageManager {
         this.game = { ...game, health };
     }
 
-    static get groupsSolved(): any[] {
+    static get groupsSolved(): GroupData[] {
         return this.game.groupsSolved;
     }
 
-    static set groupsSolved(groupsSolved: any[]) {
+    static set groupsSolved(data: GroupGame[]) {
         const game = this.game;
+        let groupsSolved = data.map(group => group.getData());
         this.game = { ...game, groupsSolved };
     }
 
-    static get attempts(): any[] {
+    static get attempts(): GroupData[][] {
         return this.game.attempts;
     }
 
-    static set attempts(attempts: any[]) {
+    static set attempts(data: Group[][]) {
         const game = this.game;
+        let attempts = data.map(groups => groups.map(group => group.getData()));
         this.game = { ...game, attempts };
     }
 
@@ -81,12 +88,13 @@ export class StorageManager {
         this.game = { ...game, currentAttempt };
     }
 
-    static get history(): any[] {
+    static get history(): ItemData[][] {
         return this.game.history;
     }
 
-    static set history(history: any[]) {
+    static set history(data: Item[][]) {
         const game = this.game;
+        let history = data.map(items => items.map(item => item.getData()));
         this.game = { ...game, history };
     }
 

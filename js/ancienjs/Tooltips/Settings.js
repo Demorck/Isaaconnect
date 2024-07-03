@@ -6,7 +6,7 @@ import { StorageManager } from "../../Helpers/Data/StorageManager.js";
  * @returns {string} The HTML content of the tooltip.
  */
 export async function settingsLogic(html) {
-    let easyHtml = await Utils.loadHtml('/include/tooltips/easy.html');
+    let easyHtml = await Utils.loadHTML('/include/tooltips/easy.html');
     let attempt = StorageManager.currentAttempt;
     if (attempt > 0)
     {

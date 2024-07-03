@@ -1,10 +1,13 @@
 import { Constants } from "../../Helpers/Constants.js";
+import { GroupData } from "../../Helpers/Data/GroupData.js";
 import { Utils } from "../../Helpers/Utils.js";
 import { Group } from "../Group.js";
 import { Item } from "../Item.js";
 
 export class GroupGame extends Group implements Iterable<Item> {
     private selectedItems: Item[];
+    private index = 0;
+    private solved = false;
 
     constructor(name: string, items: Item[], difficulty: number) {
         super(name, items, difficulty);
@@ -30,10 +33,12 @@ export class GroupGame extends Group implements Iterable<Item> {
                 return null;
             }
 
-            this.selectedItems.push(item);
+            itemsPicked.push(item);
             bannedItem.push(item);
         }
-        return this.selectedItems;
+
+        this.selectedItems = itemsPicked;
+        return itemsPicked;
     }
 
     public isItemInGroup(item: Item): boolean;
@@ -44,6 +49,22 @@ export class GroupGame extends Group implements Iterable<Item> {
         } else {
             return this.selectedItems.findIndex(item => item.getId() === itemOrId.getId()) !== -1;
         }
+    }
+
+    public isSolved(): boolean {
+        return this.solved;
+    }
+
+    public setSolved(solved: boolean = true): void {
+        this.solved = solved;
+
+        if (solved) {
+            this.notifyObservers({ solved: true, index: this.index, items: this.selectedItems, name: this.getName() });
+        }
+    }
+
+    public setIndex(index: number): void {
+        this.index = index;
     }
 
     public [Symbol.iterator](): Iterator<Item> {
@@ -64,4 +85,19 @@ export class GroupGame extends Group implements Iterable<Item> {
             }
         };
     }
+
+    public override getData(): GroupData {
+        return {
+            name: this.getName(),
+            items: this.selectedItems.map(item => item.getData()),
+            difficulty: this.getDifficulty(),
+            index: this.index  
+        };
+    }
+
+    forEach(callback: (item: Item) => void) {
+        for (const item of this) {
+          callback(item);
+        }
+      }
 }

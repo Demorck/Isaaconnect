@@ -21,8 +21,17 @@ export class ItemView implements Observer {
         this.itemElement = this.createItemElement(item);
     }
 
-    public update(): void {
-        this.itemContainer.appendChild(this.itemElement!);
+    public update(data: any): void {
+        if (data.shake) {
+            this.itemElement.classList.add('card-module--shake');
+            setTimeout(() => {
+                this.itemElement.classList.remove('card-module--shake');
+            }, 1000);
+        }
+        
+        if (data.newItem) {
+            this.itemContainer.appendChild(this.itemElement!);
+        }
     }
 
     private createItemElement(item: Item): HTMLElement {

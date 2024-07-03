@@ -97,6 +97,15 @@ export class Constants {
         ];
     }
 
+    static get WIN_MESSAGES(): string[] {
+        return [
+            "!!! DEAD GOD !!!",
+            "!! REAL PLATINUM GOD !!",
+            "! PLATINUM GOD !",
+            "GOLDEN GOD"
+        ];
+    }
+
     static VERSION: string = '0.8.5';
 
     /////////////////////////////////

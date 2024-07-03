@@ -1,4 +1,5 @@
 import { Constants } from "../Helpers/Constants.js";
+import { ItemData } from "../Helpers/Data/ItemData.js";
 import { Observable } from "./Observable.js";
 
 export class Item extends Observable {
@@ -11,7 +12,7 @@ export class Item extends Observable {
         super();
         this.id = id;
         this.alias_en = alias;
-        this.alias_fr = alias;
+        this.alias_fr = alias;        
     }
 
     public getId(): number {
@@ -20,6 +21,13 @@ export class Item extends Observable {
 
     public getAlias(): string {
         return this.alias_en;
+    }
+
+    public getData(): ItemData {
+        return {
+            id: this.id,
+            name: this.alias_en
+        };
     }
 
     private getAliasFromId(id: number): string {
@@ -31,5 +39,9 @@ export class Item extends Observable {
             }
         });
         return alias;
+    }
+
+    public wrongAnswer(): void {
+        this.notifyObservers({ shake: true });
     }
 }

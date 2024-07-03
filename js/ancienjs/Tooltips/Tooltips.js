@@ -37,27 +37,27 @@ export async function displayTooltip(element) {
     switch (type)
     {
         case 'stats':
-            html = await Utils.loadHtml('/include/tooltips/stats.html');
+            html = await Utils.loadHTML('/include/tooltips/stats.html');
             html = await statsLogic(html);
             break;
         case 'help':
-            html = await Utils.loadHtml('/include/tooltips/help.html');
+            html = await Utils.loadHTML('/include/tooltips/help.html');
             break;
         case 'settings':
-            html = await Utils.loadHtml('/include/tooltips/settings.html');
+            html = await Utils.loadHTML('/include/tooltips/settings.html');
             html = await settingsLogic(html);
             break;
         case 'promo':
-            html = await Utils.loadHtml('/include/tooltips/promo.html');
+            html = await Utils.loadHTML('/include/tooltips/promo.html');
             break;
         case 'schedule':
-            html = await Utils.loadHtml('/include/tooltips/schedule.html');
+            html = await Utils.loadHTML('/include/tooltips/schedule.html');
             break;
         case 'accessibility':
-            html = await Utils.loadHtml('/include/tooltips/accessibility.html');
+            html = await Utils.loadHTML('/include/tooltips/accessibility.html');
             break;
         case 'debug':
-            html = await Utils.loadHtml('/include/tooltips/debug.html');
+            html = await Utils.loadHTML('/include/tooltips/debug.html');
             break;
         default:
             break;

@@ -1,3 +1,4 @@
+import { GroupData } from "../Helpers/Data/GroupData.js";
 import { Item } from "./Item.js";
 import { GroupGame } from "./MainGame/GroupGame.js";
 import { Observable } from "./Observable.js";
@@ -24,6 +25,15 @@ export class Group extends Observable implements Iterable<Item> {
 
     public getDifficulty(): number {
         return this.difficulty;
+    }
+
+    public getData(): GroupData {
+        return {
+            name: this.getName(),
+            items: this.items.map(item => item.getData()),
+            difficulty: this.getDifficulty(),
+            index: 0
+        };
     }
 
     public [Symbol.iterator](): Iterator<Item> {
