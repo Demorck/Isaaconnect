@@ -5,6 +5,8 @@ import { GroupGameView } from "../../Views/MainGame/GroupGameView.js";
 import { Utils } from "../../Helpers/Utils.js";
 import { Constants } from "../../Helpers/Constants.js";
 import { StorageManager } from "../../Helpers/Data/StorageManager.js";
+import { swapUI } from "./Animation.js";
+import { GroupGame } from "../../Models/MainGame/GroupGame.js";
 
 
 /**
@@ -20,9 +22,9 @@ export class MainGameController {
     private itemsIndex: number[] = [];
     private groupsController: GroupGameController[] = [];
 
-    constructor(game: MainGame, gameView: MainGameView) {
+    constructor(game: MainGame, view : MainGameView) {
         this.game = game;
-        this.gameView = gameView;
+        this.gameView = view
 
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
@@ -42,6 +44,7 @@ export class MainGameController {
             this.toggleFinishedState();
         }
         this.game.notifyObservers();
+        this.gameView.setController(this);
     }
 
     public shuffleCard = () => {
@@ -50,6 +53,20 @@ export class MainGameController {
         container.innerHTML = '';
         Utils.shuffleArray(labels).forEach(label => container.appendChild(label));
         this.game.notifyObservers();
+    }
+
+    
+    public async toggleGroupSolved(group: GroupGame): Promise<void> {
+        return new Promise((resolve) => {
+            for (let i = 0; i < this.groupsController.length; i++) {
+                if (this.groupsController[i].getGroupName() === group.getName()) {
+                    this.groupsController[i].toggleSolved();
+                    break;
+                }
+            }
+            this.gameView.applyBorderRadius();
+            resolve();
+        });
     }
 
     private addEventListeners(): void {        
@@ -103,21 +120,19 @@ export class MainGameController {
 
         if (finished) {
             this.incrementStats(win)
-            this.toggleFinishedState();
         }
     }
 
-    private toggleFinishedState = () => {
+    public toggleFinishedState = () => {
         if (!StorageManager.finished)
             StorageManager.finished = true;
 
-        document.getElementById('cards-module')!.remove();
         this.removeButtons();
+        document.getElementById('cards-module')?.remove();
 
         let buttonResults = document.querySelector('button[data-id="results"]')!;
         buttonResults.classList.remove('button--disabled');
         buttonResults.addEventListener('click', () => this.gameView.displayModal());
-        // this.toggleToSolvedGroup();
     }
 
     private removeButtons(): void {

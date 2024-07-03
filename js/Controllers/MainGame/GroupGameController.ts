@@ -24,4 +24,12 @@ export class GroupGameController {
     public getItemElement(index: number): HTMLElement {
         return this.itemsController[index % Constants.NUMBER_OF_ITEMS].getItemElement();
     }
+
+    public toggleSolved(): void {
+        this.group.setSolved(true, true);        
+    }
+
+    public getGroupName(): string {
+        return this.group.getName();
+    }
 }

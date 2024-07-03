@@ -10,7 +10,7 @@ export class GroupGameView implements Observer {
         this.container = typeof container === 'string' ? document.querySelector<HTMLElement>(container)! : container;
     }
 
-    public update(data: any): void {
+    public update(data: any): void {        
         if (data.solved)
         {
             if (this.container.classList.contains('hidden')) this.container.classList.remove('hidden');
@@ -28,7 +28,7 @@ export class GroupGameView implements Observer {
         data.items.forEach((item, index) => {
             if (index == 2) content += `</div><div class="flex flex-row">`;
             content += `<div class="solved-group--card"><a target="_blank"  href="${Constants.WIKI + item.getAlias()}"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.getId())}.png" alt="${item.getAlias()}"></a></div>`;
-            document.querySelector<HTMLElement>(`label[data-id="${item.getId()}"]`)!.remove();
+            document.querySelector<HTMLElement>(`label[data-id="${item.getId()}"]`)?.remove();
         });
 
         content += `</div></div>

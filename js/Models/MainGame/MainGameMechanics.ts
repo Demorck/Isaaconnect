@@ -59,7 +59,7 @@ export class MainGameMechanics {
      * @param {number[]} selectedIDs IDs of selected Items 
      * @returns {boolean}
      */
-    private checkIfAlreadyGuessed(history: ItemData[][], selectedIDs: number[]) {        
+    private checkIfAlreadyGuessed(history: ItemData[][], selectedIDs: number[]): boolean {        
         let j = 0;
         let currentAttempt = StorageManager.currentAttempt;
         history.forEach(attempt => {
@@ -75,6 +75,6 @@ export class MainGameMechanics {
 
         const alreadyGuessed = j > 0 && currentAttempt !== 0;
            
-        return alreadyGuessed;
+        return false;
     }
 }

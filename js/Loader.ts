@@ -51,6 +51,12 @@ export class Loader {
         let body = document.querySelector('body');
         if (body) body.classList.add(theme);
 
+        if (StorageManager.debug) {
+            document.getElementById('tooltip-icons')!.innerHTML += `<span class="material-symbols-rounded md:text-4xl"  data-id="debug">
+                    adb
+                </span>`;
+        }
+
         initializeTooltipListener();
 
         /**

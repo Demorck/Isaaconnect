@@ -17,6 +17,10 @@ export class GroupGame extends Group implements Iterable<Item> {
     public getSelectedItems(): Item[] {
         return this.selectedItems;
     }
+
+    public getSelectedItemsIds(): number[] {
+        return this.selectedItems.map(item => item.getId());
+    }
     
     public getRandomItems(bannedItem: Item[], daysBefore = 0): Item[] | null {
         let itemsPicked: Item[] = [];
@@ -55,10 +59,10 @@ export class GroupGame extends Group implements Iterable<Item> {
         return this.solved;
     }
 
-    public setSolved(solved: boolean = true): void {
+    public setSolved(solved: boolean = true, notify: boolean = false): void {
         this.solved = solved;
 
-        if (solved) {
+        if (notify) {
             this.notifyObservers({ solved: true, index: this.index, items: this.selectedItems, name: this.getName() });
         }
     }

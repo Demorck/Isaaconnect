@@ -79,6 +79,13 @@ export class MainGame extends Observable {
     }
 
     
+    /**
+     * @description Check if the game is finished and if the player won or lost. 
+     *
+     * @todo //TODO: Separate the logic of checking if the game is finished and if the player won or lost.
+     * @public
+     * @returns {{finished: boolean, win: boolean}}
+     */
     public checkFinished(): {finished: boolean, win: boolean} {
         let groupsSolved = this.getGroupSolved();
         let autocomplete = StorageManager.autocomplete;
@@ -86,26 +93,47 @@ export class MainGame extends Observable {
         let finished = false;
         let win = false;
         if (this.health <= 0) {
-            let solved = groupsSolved.length;
             this.autocomplete();
-            this.notifyObservers({ isFinished: true, win: win, solved: solved, losses: StorageManager.losses });
+            this.notifyObservers(this.getNotifyData(win));
             finished = true
         } else {
             win = true;
             if (autocomplete && groupsSolved.length == Constants.NUMBER_OF_GROUPS - 1) {
-                this.autocomplete();
+                this.autocomplete(true);
                 finished = true;
             } else if (groupsSolved.length == Constants.NUMBER_OF_GROUPS) finished = true;
 
             if (finished) {
-                let mistakes = Constants.MAX_HEALTH - this.health;
-                let title = Constants.WIN_MESSAGES[mistakes];
-                this.notifyObservers({ isFinished: true, win: win, health: this.health, title: title, mistakes: mistakes, streak: StorageManager.winStreak});
-
+                this.notifyObservers(this.getNotifyData(win));
             }
         }
 
         return {finished, win};
+    }
+
+    private getNotifyData(win: boolean, autocomplete: boolean = false): any {
+        if (win) {
+            let mistakes = Constants.MAX_HEALTH - this.health;
+            let title = Constants.WIN_MESSAGES[mistakes];
+            return {
+                autocomplete: autocomplete,
+                isFinished: true,
+                win: true,
+                health: this.health,
+                title: title,
+                mistakes: mistakes,
+                streak: StorageManager.winStreak
+            };
+        } else {
+            let solved = this.getGroupSolved().length;
+            return {
+                autocomplete: autocomplete,
+                isFinished: true,
+                win: false,
+                solved: solved,
+                losses: StorageManager.losses
+            };
+        }
     }
 
     private wrongAnswer(selectedID: number[]) {        
@@ -123,11 +151,12 @@ export class MainGame extends Observable {
         this.notifyObservers();
     }
 
-    private rightAnswer(group: GroupGame) {
+    private rightAnswer(group: GroupGame, animate: boolean = true) {
+        this.notifyObservers({ deselect: true, animate: animate, group: group });
         group.setSolved();
+        
         StorageManager.groupsSolved = this.getGroupSolved();
 
-        this.notifyObservers({ deselect: true });
     }
 
     private getGroupSolved() : GroupGame[] {
@@ -135,14 +164,27 @@ export class MainGame extends Observable {
         return groupSolved;
     }
 
-    private autocomplete() {
+    private autocomplete(win: boolean = false) {
         let groupSolved = this.getGroupSolved();
         let groupNotSolved = this.groups.filter(group => !group.isSolved());
         let selectedIDs: number[] = [];
 
-        groupNotSolved.forEach(group => {
-            this.rightAnswer(group)
+        groupNotSolved.reduce((promiseChain, group, index) => {
+            let time = 1000; 
+            return promiseChain.then(() => Utils.sleep(time).then(() => {
+                for (const item of group) {
+                    selectedIDs.push(item.getId());
+                }
+                win ? this.handleSubmit(selectedIDs) : this.rightAnswer(group);
+            }));
+        }, Promise.resolve()).then(() => {
+
+            this.notifyObservers(this.getNotifyData(win, true));
+            return Utils.sleep(1000);
+        }).then(() => {
+            Promise.resolve();
         });
+    
     }
 
     public assignStorageToGame() {
@@ -152,10 +194,10 @@ export class MainGame extends Observable {
         const localGroupSolved = StorageManager.groupsSolved;
         if (localGroupSolved.length > 0) {
             this.groups.forEach(group => {        
-                console.log(document.querySelectorAll('.card-module'));
-                console.log(localGroupSolved, group.getData());
                 localGroupSolved.forEach(groupSolved => {
-                    if(groupSolved.name === group.getName()) this.rightAnswer(group)
+                    if(groupSolved.name === group.getName()) {
+                        group.setSolved(true, true);
+                    }
                 });
             });
         }

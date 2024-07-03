@@ -2,7 +2,9 @@ import { Observer } from "../Observer.js";
 import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 import { Constants } from "../../Helpers/Constants.js";
 import { Utils } from "../../Helpers/Utils.js";
-
+import { animation, swap, swapUI } from "../../Controllers/MainGame/Animation.js";
+import { MainGameController } from "../../Controllers/MainGame/MainGameController.js";
+import { GroupGame } from "../../Models/MainGame/GroupGame.js";
 
 /**
  * @description MainGameView class that displays the main game (the big container).
@@ -14,6 +16,7 @@ import { Utils } from "../../Helpers/Utils.js";
  */
 export class MainGameView implements Observer {
     private container: HTMLElement;
+    private controller: MainGameController;
     private itemsContainer: HTMLElement;
     private groupsContainer: HTMLElement;
     private healthContainer: HTMLElement;
@@ -23,7 +26,7 @@ export class MainGameView implements Observer {
         this.itemsContainer = this.container.querySelector<HTMLElement>('#cards-module')!;
         this.groupsContainer = this.container.querySelector<HTMLElement>('#cards-win')!;
         this.healthContainer = document.querySelector<HTMLElement>('.hearts')!;
-        // this.resizeToSquare();
+        this.controller = null as any;
     }
 
     public update(data: any): void {
@@ -33,27 +36,50 @@ export class MainGameView implements Observer {
             return;
         }
 
-        if (data.isFinished)
+        if (data.animate)
         {
-            this.showResults(data.win, data).then(html => {
-                let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!; 
-                modalContainer.innerHTML = html;
-                modalContainer.classList.remove('hidden');
-                // TODO: A mettre dans le controller
-                document.querySelector('.close-button')!.addEventListener('click', () => {
-                    modalContainer.classList.add('hidden');
+            let group: GroupGame = data.group;
+            let itemsID: number[] = group.getSelectedItems().map(item => item.getId());
+            let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
+            if (selected.length != Constants.NUMBER_OF_ITEMS)
+            {
+                itemsID.forEach((id, index) => {
+                    let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`)!;
+                    item.classList.add('card-module--selected');
                 });
-                document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix();
-                let copyButton = document.getElementById('copy')!;
-                copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
+            }
+
+            this.animate().then(async () => {
+                await this.controller.toggleGroupSolved(data.group);
+                if (data.deselect) this.deselectCards();
+            });
+        }
         
+        if (data.isFinished && data.autocomplete || data.isFinished && data.win) {
+            Utils.sleep(1000).then(() => {
+                this.controller?.toggleFinishedState();
+                this.toggleFinishedState(data);
             });
         }
 
-        if (data.deselect) this.deselectCards();
-
         this.renderHealth(StorageManager.health);
         this.applyBorderRadius();
+    }
+
+    private toggleFinishedState(data: any): void {
+        this.showResults(data.win, data).then(html => {
+            let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!; 
+            modalContainer.innerHTML = html;
+            modalContainer.classList.remove('hidden');
+            // TODO: A mettre dans le controller
+            document.querySelector('.close-button')!.addEventListener('click', () => {
+                modalContainer.classList.add('hidden');
+            });
+            document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix();
+            let copyButton = document.getElementById('copy')!;
+            copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
+    
+        });
     }
     
     /**
@@ -147,26 +173,6 @@ export class MainGameView implements Observer {
      */
     public getItemsContainer(): HTMLElement {
         return this.itemsContainer;
-    }
-
-    private resizeToSquare(): void {
-        let windowWidth = window.innerWidth;
-        if (windowWidth >= 768) {
-            let square = document.getElementById('cards-game')!;
-            let height = square.offsetWidth;
-            new ResizeObserver(() => {
-                let firstSolve = document.querySelector('.solved-group');
-                let lastSolver = document.querySelectorAll('.solved-group')[3];
-                if (firstSolve != null && lastSolver != null) {
-                    height = lastSolver.getBoundingClientRect().bottom - firstSolve.getBoundingClientRect().top;
-                    if (height > 550) {
-                        height = Math.ceil(height);
-                    }
-                }
-
-                square.style.height = `${height}px`;
-            }).observe(square);
-        }
     }
 
     private showMessage(message: string, timeout: number = 3000): void {
@@ -281,5 +287,34 @@ export class MainGameView implements Observer {
         modalContainer.classList.remove('hidden');
     }
 
+    public async animate(): Promise<void> {
+        let indexContains = [];
+        let numberAlreadySelected = 0;
+        let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
+
+        if (selected.length == Constants.NUMBER_OF_ITEMS && this.itemsContainer.children.length != Constants.NUMBER_OF_ITEMS) {
+            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+                let item = this.itemsContainer.children[i];
+                let isNotSelected = !item.classList.contains('card-module--selected');
+                if(isNotSelected) {
+                    indexContains.push(i);
+                }
+            }
+
+            numberAlreadySelected = Constants.NUMBER_OF_ITEMS - indexContains.length;
+
+            for (let i = 0; i < indexContains.length; i++) {
+                let index = indexContains[i];
+                let elem = this.itemsContainer.children[index];
+                swapUI(selected[numberAlreadySelected + i] as HTMLElement, elem as HTMLElement);
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 500));
+        }
+    }
+
+    public setController(controller: MainGameController): void {
+        this.controller = controller;
+    }
 
 }

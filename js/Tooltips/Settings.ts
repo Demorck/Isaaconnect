@@ -9,7 +9,7 @@ import { StorageManager } from "../Helpers/Data/StorageManager.js";
 export async function settingsLogic(html: string): Promise<string> {
     const easyHtml = await Utils.loadHTML('/include/tooltips/easy.html');
     const attempt = StorageManager.currentAttempt;
-    if (attempt < 0) {
+    if (attempt > 0) {
         html = Utils.replacePlaceholders(html, { attempt: '' });
     } else {
         html = Utils.replacePlaceholders(html, { attempt: easyHtml });
@@ -68,7 +68,7 @@ export function autocompleteLogic(container: HTMLElement): void {
  * @param {HTMLElement} container - The container to apply the logic to.
  */
 export function difficultyLogic(container: HTMLElement): void {
-    // if (StorageManager.currentAttempt > 0) return;
+    if (StorageManager.currentAttempt > 0) return;
 
     const difficulty = StorageManager.difficulty;
     const checkbox = container.querySelector('#difficulty') as HTMLInputElement;
