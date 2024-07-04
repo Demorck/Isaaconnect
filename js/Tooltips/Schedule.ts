@@ -2,8 +2,8 @@ import { initializeCountdown } from "../Helpers/Countdown.js";
 
 /**
  * @description Display the settings tooltip.
- * @returns {string} The HTML content of the tooltip.
+ * @returns {void}
  */
-export function scheduleLogic() {
+export function scheduleLogic(): void {
     initializeCountdown();
 }

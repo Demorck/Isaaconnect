@@ -1,13 +1,15 @@
-export class Constants {
+import { Group } from "../Models/Group";
+import { Item } from "../Models/Item";
 
-    static items = null;
-    static groups = null;
+export class Constants {
+    static items: Item[] = [];
+    static groups: Group[] = [];
 
     static get ITEMS() {
         return this.items;
     }
 
-    static set ITEMS(items) {
+    static set ITEMS(items: Item[]) {
         this.items = items;
     }
 
@@ -15,37 +17,37 @@ export class Constants {
         return this.groups;
     }
 
-    static set GROUPS(groups) {
+    static set GROUPS(groups: Group[]) {
         this.groups = groups;
     }
 
-    static get URL() {
+    static get URL(): string {
         return 'https://isaaconnect.com';
     }
 
-    static get WIKI() {
+    static get WIKI(): string {
         return 'https://bindingofisaacrebirth.fandom.com/wiki/';
     }
-    
-    static get MAX_HEALTH() {
+
+    static get MAX_HEALTH(): number {
         return 4;
     }
 
-    static get NUMBER_OF_GROUPS() {
+    static get NUMBER_OF_GROUPS(): number {
         return 4;
     }
 
-    static get NUMBER_OF_ITEMS() {
+    static get NUMBER_OF_ITEMS(): number {
         return 4;
     }
 
-    static NUMBER_OF_DAYS_BEFORE = 3;
+    static NUMBER_OF_DAYS_BEFORE: number = 3;
 
-    static BASE_DATE = new Date(2024, 4, 22).setHours(7, 59, 59, 999);
+    static BASE_DATE: number = new Date(2024, 4, 22).setHours(7, 59, 59, 999);
 
-    static COLORS = ["red-300", "blue-300", "green-300", "yellow-300"];
+    static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300"];
 
-    static DEFAULT_DATA = {
+    static DEFAULT_DATA: any = {
         settings: {
             theme: 'basement-theme',
             autocomplete: false,
@@ -72,7 +74,7 @@ export class Constants {
         lastIsaaconnect: 0
     };
 
-    static get THEMES () {
+    static get THEMES(): string[] {
         return [
             "basement-theme",
             "flooded-caves-theme",
@@ -95,5 +97,20 @@ export class Constants {
         ];
     }
 
-    static VERSION = '0.8.5';
+    static get WIN_MESSAGES(): string[] {
+        return [
+            "!!! DEAD GOD !!!",
+            "!! REAL PLATINUM GOD !!",
+            "! PLATINUM GOD !",
+            "GOLDEN GOD"
+        ];
+    }
+
+    static VERSION: string = '0.8.5';
+
+    /////////////////////////////////
+
+    static get ALMOST(): string { return 'Almost...' };
+    
+    static ALREADY_GUESSED: string = 'Already guessed!';
 }

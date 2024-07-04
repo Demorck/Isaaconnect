@@ -179,10 +179,17 @@ ol, ul {
     margin: 2px;
     cursor: pointer;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     transition: all 0.5s ease;
+}
+
+@media (min-width: 768px) {
+    .card-module {
+        width: 112px !important; /* J'ai pas trouvé mieux pour le moment */
+        height: 112px !important;
+    }
 }
 
 .card-module.transition {
@@ -194,12 +201,25 @@ ol, ul {
     image-rendering: pixelated;
 }
 
+.card-module--content {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .card-module span {
         font-size: 0.5rem;
         font-weight: 800;
     }
     
+}
+
+.easy img {
+    width: 4em;
+    font-size: 0.80rem;
+}
+
+.easy .card-module--content {
+    display: flex;
 }
 
 .card-module--disabled {
@@ -213,6 +233,10 @@ ol, ul {
 
 .card-module--shake {
     animation: shake 0.5s;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .visually-hidden {
