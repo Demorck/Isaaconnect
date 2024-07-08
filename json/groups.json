@@ -903,7 +903,7 @@
   },
   {
     "name": "Items that affect item generation or pools",
-    "items": [691, 721, 642, 72],
+    "items": [691, 721, 642, 72, 402],
     "difficulty": 3
   },
   {
