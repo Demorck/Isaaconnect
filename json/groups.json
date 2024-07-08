@@ -815,5 +815,105 @@
     "name": "Items with a fetus in their sprite",
     "items": [678, 688, 697, 52, 168, 703     ],
     "difficulty": 0
+  },
+  {
+    "name": "Items that grant coins on pickup",
+    "items": [18, 74, 227, 304, 307, 380, 555],
+    "difficulty": 1 
+  },
+  {
+    "name": "Headgear",
+    "items": [7, 87, 91, 101, 156, 173, 217, 216, 312, 358, 415, 424, 442, 513,          689, 375],
+    "difficulty": 0
+  },
+  {
+    "name": "Items that can instakill",
+    "items": [33, 291, 475, 638],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that make tears split",
+    "items": [224, 453, 531, 532, 104],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that allow Angel Rooms to spawn again",
+    "items": [499, 584, 601, 498],
+    "difficulty": 1
+  },
+  {
+    "name": "Range down items",
+    "items": [6, 149, 224, 336, 531, ],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that randomize stats",
+    "items": [240, 258, 406, 481],
+    "difficulty": 1
+  },
+  {
+    "name": "Shot speed down items",
+    "items": [149, 182, 213, 310, 331, 336, 342, 572, 415],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that grant empty heart containers",
+    "items": [501, 219, 594, 676],
+    "difficulty": 2
+  },
+  {
+    "name": "Items that can remove red heart containers",
+    "items": [81, 133, 487, 240, 230, 549, 642],
+    "difficulty": 1
+  },
+  {
+    "name": "Full heals",
+    "items": [12, 15, 16, 182, 189, 669, 664, 573],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that grant spectral tears",
+    "items": [573, 185, 159, 115, 336, 233, 358, 379, 369,           677, 573],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that grant homing tears",
+    "items": [192, 331, 182, 3, 543, 678, 651],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that grant piercing tears",
+    "items": [118, 48, 336, 237, 306, 68, 462, 533, 678],
+    "difficulty": 1
+  },
+  {
+    "name": "Fixed Bag of Crafting recipes",
+    "items": [36, 177, 45, 686, 118, 343, 37, 85, 331, 182, 75, 654, 639, 175, 483, 628, 489, 580],
+    "difficulty": 3 
+  },
+  {
+    "name": "Tears Up items",
+    "items": [1, 6, 32, 80, 90, 101, 120, 183, 196, 206, 222, 224, 228, 255, 307, 309, 330, 341, 342, 370, 381, 394, 407, 438, 442, 443, 465, 561, 564, 567, 598, 600, 601],
+    "difficulty": 1
+  },
+  {
+    "name": "Items that replace Isaac's tears",
+    "items": [52, 68, 114, 118, 168, 395, 579, 678],
+    "difficulty": 2
+  },
+  {
+    "name": "Items that affect item generation or pools",
+    "items": [691, 721, 642, 72],
+    "difficulty": 3
+  },
+  {
+    "name": "Items awith 'stone' in their name",
+    "items": [118, 275, 440, 540, 617, 646, ],
+    "difficulty": 1
+  },
+  {
+    "name": "Rock items",
+    "items": [90, 540, 562, 617],
+    "difficulty": 0
   }
 ]
