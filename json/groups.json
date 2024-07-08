@@ -908,7 +908,7 @@
   },
   {
     "name": "Items awith 'stone' in their name",
-    "items": [118, 275, 440, 540, 617, 646, ],
+    "items": [118, 275, 440, 540, 617, 646],
     "difficulty": 1
   },
   {
