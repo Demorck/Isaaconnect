@@ -41,12 +41,9 @@ export class Utils {
     */
     static getSeed(modifier: number = 0, daysBefore: number = 0): number {
         const now = new Date();
-        if (now.getHours() < 8) {
-            now.setDate(now.getDate() - 1);
-        }
-        now.setHours(8, 0, 0, 0);
-        now.setDate(now.getDate() - daysBefore);
-        return new alea(now.getTime() + modifier).quick();
+        const seed = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));        
+        seed.setUTCDate(seed.getUTCDate() - daysBefore);
+        return new alea(seed.getTime() + modifier).quick();
     }
 
     
@@ -59,11 +56,9 @@ export class Utils {
      */
     static getDaysSince(startDate: number = Constants.BASE_DATE): number {
         const oneDay = 24 * 60 * 60 * 1000;
-        const today = new Date();
-        if (today.getHours() < 8) {
-            today.setDate(today.getDate() - 1);
-        }
-        today.setHours(8, 0, 0, 0);
+        const now = new Date();
+        const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));        
+        today.setUTCHours(0, 0, 0, 0);
         const diffTime = Math.abs(today.getTime() - startDate);
         return Math.floor(diffTime / oneDay);
     }

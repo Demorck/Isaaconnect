@@ -9,7 +9,7 @@ interface TimeRemaining {
 
 function getTimeRemaining(): TimeRemaining {
     const now = new Date();
-    const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 8, 0, 0, 0);
+    const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0, 0));
     const timeRemaining = target.getTime() - now.getTime();
     
     const seconds = Math.floor((timeRemaining / 1000) % 60);

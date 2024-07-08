@@ -21,7 +21,7 @@ export class MainGameMechanics {
         let firstGroup: GroupGame, 
             currentGroup: GroupGame, 
             win = true,
-            numberOfGroups = 0,
+            numberOfItemsCorrect = 0,
             attempts: Group[] = [],
             historyItems: Item[] = [];
 
@@ -33,23 +33,18 @@ export class MainGameMechanics {
                 if (!firstGroup) firstGroup = currentGroup;
                 else if (firstGroup !== currentGroup) win = false;
 
-                if (firstGroup === currentGroup) numberOfGroups++;
+                if (firstGroup === currentGroup) numberOfItemsCorrect++;
 
                 attempts.push(currentGroup);
                 historyItems.push(currentItem);
             }
         });
 
-        if (numberOfGroups === Constants.NUMBER_OF_GROUPS - 1)
+        if (numberOfItemsCorrect === Constants.NUMBER_OF_ITEMS - 1)
             return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
         return { win, attempts, historyItems, isMessage: false, message: ''};
     }
-
-    public handleRightAnswer = (groupSolved = GroupGame) =>  {
-
-    }
-
     
     /**
      * @description Check if the current attempt has already been guessed
@@ -75,6 +70,6 @@ export class MainGameMechanics {
 
         const alreadyGuessed = j > 0 && currentAttempt !== 0;
            
-        return false;
+        return alreadyGuessed;
     }
 }
