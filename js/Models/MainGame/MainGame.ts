@@ -154,9 +154,10 @@ export class MainGame extends Observable {
     private rightAnswer(group: GroupGame, animate: boolean = true) {
         this.notifyObservers({ deselect: true, animate: animate, group: group });
         group.setSolved();
+        if (!StorageManager.finished)
+            StorageManager.groupFound++;
         
         StorageManager.groupsSolved = this.getGroupSolved();
-
     }
 
     private getGroupSolved() : GroupGame[] {

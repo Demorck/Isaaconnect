@@ -9,4 +9,5 @@ export interface GameData {
     history: ItemData[][];
     mapItemAndGroup: Map<any, any>;
     finished: boolean;
+    groupFound: number;
 }

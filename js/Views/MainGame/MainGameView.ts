@@ -240,9 +240,9 @@ export class MainGameView implements Observer {
                 return;
             }
 
-            let groupsSolved = data.solved ? data.solved : Constants.NUMBER_OF_GROUPS;
+            let groupFound = StorageManager.groupFound
 
-            textToCopy += `✅: ${groupsSolved}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            textToCopy += `✅: ${groupFound}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
             let attempts = StorageManager.attempts;
 
             attempts.forEach((attempt, index) => {

@@ -59,6 +59,15 @@ export class StorageManager {
         this.game = { ...game, health };
     }
 
+    static get groupFound(): number {
+        return this.game.groupFound;
+    }
+
+    static set groupFound(groupFound: number) {
+        const game = this.game;
+        this.game = { ...game, groupFound };
+    }
+
     static get groupsSolved(): GroupData[] {
         return this.game.groupsSolved;
     }
