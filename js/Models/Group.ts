@@ -1,18 +1,19 @@
 import { GroupData } from "../Helpers/Data/GroupData.js";
 import { Item } from "./Item.js";
-import { GroupGame } from "./MainGame/GroupGame.js";
 import { Observable } from "./Observable.js";
 
 export class Group extends Observable implements Iterable<Item> {
     private name: string;
     private items: Item[];
     private difficulty: number;
+    private tags: string[];
 
     constructor(name: string, items: Item[], difficulty: number) {
         super();
         this.name = name;
         this.items = items;
         this.difficulty = difficulty;
+        this.tags = [];
     }
 
     public getName(): string {
@@ -21,6 +22,17 @@ export class Group extends Observable implements Iterable<Item> {
 
     public getItems(): Item[] {
         return this.items;
+    }
+
+    public getTags(): string[] {
+        return this.tags;
+    }
+
+    public addTags(tag: string[]): void {
+        this.tags.push(...tag);
+    }
+    public addTag(tag: string): void {
+        this.tags.push(tag);
     }
 
     public getDifficulty(): number {
@@ -32,6 +44,7 @@ export class Group extends Observable implements Iterable<Item> {
             name: this.getName(),
             items: this.items.map(item => item.getData()),
             difficulty: this.getDifficulty(),
+            tags: this.getTags(),
             index: 0
         };
     }

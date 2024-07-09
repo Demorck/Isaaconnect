@@ -29,7 +29,7 @@ export class Loader {
             Constants.ITEMS.push(new Item(item.id, item.alias));
         });
 
-        groups.forEach((group: { name: string, items: number[], difficulty: number; }) => {
+        groups.forEach((group: { name: string, items: number[], difficulty: number, tags: string[] | undefined }) => {
             let items: Item[] = [];
             group.items.forEach((itemId: number) => {
                 let item = Constants.ITEMS.find((item: Item) => item.getId() === itemId);
@@ -37,7 +37,16 @@ export class Loader {
                     items.push(item);
                 }
             });
-            Constants.GROUPS.push(new Group(group.name, items, group.difficulty));
+            let newGroup = new Group(group.name, items, group.difficulty);
+            if (typeof group.tags === 'string') {
+                group.tags = [group.tags];
+            }
+            if (group.tags === undefined) group.tags = [];
+            
+            group.tags.forEach((tag: string) => {
+                newGroup.addTag(tag);
+            });
+            Constants.GROUPS.push(newGroup);
         });
 
         let theme = StorageManager.theme;
@@ -71,10 +80,7 @@ export class Loader {
             }
             element.style.display = visible ? 'flex' : 'none';
         }
-
-        setVisible('.page', false);
-        setVisible('.loader', true);
-
+        
         await Utils.sleep(1000);
 
         setVisible('.page', true);

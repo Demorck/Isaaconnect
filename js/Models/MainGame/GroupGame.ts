@@ -95,6 +95,7 @@ export class GroupGame extends Group implements Iterable<Item> {
             name: this.getName(),
             items: this.selectedItems.map(item => item.getData()),
             difficulty: this.getDifficulty(),
+            tags: this.getTags(),
             index: this.index  
         };
     }

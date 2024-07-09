@@ -8,21 +8,23 @@ export class GameUtils {
     static generateSelection(daysBefore = 0, alreadyBanned: Group[] = []) : GroupGame[] {
         let bannedGroup: Group[] = alreadyBanned;
         let bannedItem: Item[] = [];
+        let bannedTags: string[] = [];
 
         let selectedGroups: GroupGame[] = [];
 
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
             let currentGroup;
-            currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i);
+            currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 0, bannedTags);
             selectedGroups.push(currentGroup);
             bannedGroup.push(currentGroup);
+            bannedTags.push(...currentGroup.getTags());
 
             let items: Item[] | null;
             do {
                 items = currentGroup.getRandomItems(bannedItem, daysBefore);
                 if (items === null) {
                     selectedGroups.pop();
-                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 1);
+                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 1, bannedTags);
                     selectedGroups.push(currentGroup);
                     bannedGroup.push(currentGroup);
                 }                
@@ -46,7 +48,7 @@ export class GameUtils {
         return selectedGroups;
     }
 
-    static getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0): GroupGame {
+    static getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0, bannedTags: string[] = []): GroupGame {
         let index: number, group: Group, i = 0;
         let groups = Constants.GROUPS;
 
@@ -55,9 +57,11 @@ export class GameUtils {
         do {
             index = Math.floor(Utils.getSeed(i++ + modifier, daysBefore) * groups.length);
             group = groups[index];
-        } while (bannedGroup.includes(group));
+        } while (bannedGroup.includes(group) || bannedTags.some(tag => group.getTags().includes(tag)));
 
-        return new GroupGame(group.getName(), group.getItems(), group.getDifficulty());
+        let selectedGroup = new GroupGame(group.getName(), group.getItems(), group.getDifficulty());
+        selectedGroup.addTags(group.getTags());
+        return selectedGroup;
     }
 
     /**
