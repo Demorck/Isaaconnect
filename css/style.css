@@ -426,6 +426,10 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     transition: transform 0.5s ease;
 }
 
+.shuffle-mobile {
+    display: none;
+}
+
 @media (min-width: 768px) { 
     #tooltip-wrapper::after {
         content: "";
