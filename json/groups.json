@@ -2,187 +2,224 @@
   {
     "name": "Items with Head in their name",
     "items": [4, 38, 42, 145, 215, 269, 293, 331, 424, 429, 457, 599     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "name"
   },
   {
     "name": "Dad items",
     "items": [175, 455, 546, 668, 547     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "family"
   },
   {
     "name": "Angel Room items",
     "items": [7, 33, 72, 78, 98, 101, 108, 112, 124, 138, 142, 146, 156, 162, 173, 178, 182, 184, 185, 197, 243, 313, 326, 331, 332, 333, 334, 335, 363, 374, 387, 390, 400, 407, 413, 415, 423, 464, 477, 490, 498, 499, 510, 519, 526, 528, 533, 543, 567, 568, 573, 574, 579, 584, 586, 601, 622, 634, 640, 643, 651, 653, 685, 686, 691, 696     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "pool"
   },
   {
     "name": "Familiars",
     "items": [8, 10, 57, 67, 73, 88, 95, 96, 99, 100, 112, 113, 117, 128, 144, 155, 163, 167, 170, 172, 174, 188, 207, 264, 265, 266, 267, 268, 269, 270, 272, 273, 274, 275, 277, 278, 279, 280, 281, 320, 322, 360, 361, 363, 364, 365, 372, 384, 385, 388, 390, 403, 404, 417, 426, 430, 435, 468, 470, 471, 472, 473, 491, 492, 509, 511, 518, 519, 537, 575, 581, 607, 608, 610, 612, 615, 629, 635, 645, 649, 661, 679, 682, 698     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Electricity items",
     "items": [63, 116, 205, 356, 372, 494, 520, 559, 603, 647     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "type"
   },
   {
     "name": "Beggar payouts",
     "items": [21, 22, 23, 24, 25, 26, 46, 54, 102, 111, 144, 177, 180, 195, 198, 204, 246, 271, 294, 362, 376, 385, 447, 455, 456, 485, 707     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "payout"
   },
   {
     "name": "Bomb items",
     "items": [19, 37, 106, 125, 131, 137, 140, 190, 209, 220, 250, 256, 353, 366, 367, 432, 483, 517, 563, 583, 614, 646, 727     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Boss items",
     "items": [14, 15, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 51, 70, 92, 100, 141, 143, 165, 176, 183, 193, 194, 195, 196, 197, 198, 218, 219, 240, 253, 254, 255, 339, 340, 341, 342, 343, 344, 345, 346, 354, 355, 370, 428, 438, 455, 456, 538, 541, 547, 564, 600, 624, 644, 659, 707, 708, 730, 731     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "pool"
   },
   {
     "name": "Curse Room items",
     "items": [51, 79, 80, 81, 126, 133, 134, 145, 212, 215, 216, 225, 241, 260, 371, 408, 442, 451, 468, 475, 496, 503, 508, 536, 565, 569, 580, 642, 654, 665, 692, 694, 697, 702, 711     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Devil Room items",
     "items": [8, 34, 35, 51, 67, 74, 79, 80, 81, 82, 83, 84, 97, 109, 113, 114, 115, 118, 122, 123, 126, 127, 133, 134, 145, 157, 159, 163, 172, 186, 187, 212, 215, 216, 225, 230, 237, 241, 259, 262, 268, 269, 275, 278, 292, 311, 360, 391, 399, 408, 409, 411, 412, 417, 420, 431, 433, 441, 442, 462, 468, 475, 477, 498, 503, 506, 519, 526, 530, 536, 545, 554, 556, 569, 572, 577, 606, 634, 646, 654, 665, 672, 679, 684, 692, 694, 695, 698, 699, 702, 704, 705, 706, 712, 728     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Books",
     "items": [33, 34, 35, 58, 65, 78, 97, 123, 192, 282, 287, 292, 545, 584, 712     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Mom items",
     "items": [29, 30, 31, 39, 41, 55, 102, 110, 114, 139, 195, 199, 200, 217, 228, 355, 439, 508     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "family"
   },
   {
     "name": "Planetarium items",
     "items": [588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Rotten Beggar payouts",
     "items": [26, 42, 140, 268, 273, 336, 480, 618, 639     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "payout"
   },
   {
     "name": "Secret Room items",
     "items": [11, 16, 17, 20, 35, 84, 120, 121, 127, 168, 190, 213, 226, 242, 258, 262, 263, 271, 286, 287, 316, 321, 348, 388, 389, 402, 405, 424, 450, 489, 500, 501, 546, 562, 571, 580, 582, 609, 612, 625, 628, 632, 636, 664, 667, 669, 674, 675, 677, 688, 689, 691, 697, 700, 701, 703, 711, 716, 717, 719, 721, 723     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Shop items",
     "items": [21, 33, 54, 60, 63, 64, 75, 85, 102, 116, 137, 139, 147, 156, 164, 177, 195, 199, 203, 204, 205, 208, 227, 232, 246, 247, 248, 249, 250, 251, 252, 260, 286, 289, 290, 295, 296, 297, 337, 338, 347, 348, 349, 356, 357, 372, 376, 380, 383, 396, 402, 403, 414, 416, 422, 424, 425, 434, 439, 451, 472, 475, 479, 480, 483, 485, 486, 487, 505, 514, 515, 518, 520, 521, 523, 527, 534, 535, 566, 585, 599, 602, 603, 604, 619, 621, 623, 624, 638, 642, 647, 660, 670, 716, 719     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Ultra Secret Room items",
     "items": [12, 13, 15, 30, 31, 40, 45, 49, 51, 53, 67, 72, 73, 79, 80, 82, 96, 105, 109, 110, 118, 119, 122, 135, 137, 157, 159, 166, 167, 176, 177, 182, 193, 208, 214, 230, 247, 253, 254, 261, 276, 289, 334, 373, 394, 399, 411, 412, 421, 435, 443, 452, 462, 466, 475, 481, 506, 511, 531, 541, 554, 556, 565, 572, 573, 580, 606, 607, 614, 616, 618, 621, 637, 650, 654, 657, 671, 678, 682, 684, 692, 694, 695, 700, 702, 703, 704, 705, 706, 711, 724, 726, 728     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "Wooden items",
     "items": [719, 527, 349, 7, 60, 362, 138, 183, 27     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Unlocked by Isaac",
     "items": [114, 323, 166, 362, 476, 404, 489, 631, 670     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Magdalene",
     "items": [312, 112, 98, 162, 387, 464, 407, 499, 639, 671     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Cain",
     "items": [319, 131, 94, 188, 410, 500, 386, 665, 672     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Judas",
     "items": [311, 206, 433, 462, 391, 468, 641, 673     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by ???",
     "items": [320, 127, 105, 179, 361, 472, 609, 680     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Eve",
     "items": [310, 126, 172, 408, 486, 610, 675     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Samson",
     "items": [321, 186, 157, 411, 695, 676     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Azazel",
     "items": [83, 292, 230, 399, 442, 679     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Lazarus",
     "items": [258, 332, 297, 388, 475, 409, 453, 645, 677     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Eden",
     "items": [324, 287, 286, 271, 405, 488, 381, 490, 720     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by The Lost",
     "items": [283, 331, 333, 334, 335, 276, 392, 455, 363, 612, 684     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Lilith",
     "items": [413, 393, 389, 417, 412, 357, 498, 360, 496, 565, 678     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Keeper",
     "items": [416, 450, 485, 716     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Apollyon",
     "items": [479, 504, 470, 477, 681, 682     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by The Forgotten",
     "items": [547, 541, 544, 542, 549, 548, 546, 543, 545, 683, 674     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Bethany",
     "items": [584, 585, 640, 686, 653, 568, 651, 643, 685     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Unlocked by Jacob & Esau",
     "items": [562, 621, 586, 577, 619, 688, 622, 697, 709, 642, 687     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Quality 0 Items",
     "items": [9, 19, 36, 40, 41, 44, 56, 74, 117, 126, 141, 148, 177, 180, 186, 188, 198, 211, 233, 238, 239, 252, 258, 262, 274, 276, 290, 315, 316, 358, 371, 388, 426, 447, 468, 470, 474, 475, 481, 482, 504, 603, 626, 627, 668, 714, 715, 721, 725     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "quality"
   },
   {
     "name": "Quality 4 Items",
     "items": [4, 12, 52, 105, 108, 114, 118, 149, 168, 169, 182, 223, 232, 245, 292, 313, 331, 360, 395, 415, 441, 477, 489, 531, 550, 551, 552, 581, 625, 628, 636, 643, 664, 678, 689, 691, 698, 706, 711, 723     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "quality"
   },
   {
     "name": "Conjoined familiars",
@@ -192,22 +229,26 @@
   {
     "name": "Battery items",
     "items": [63, 116, 356, 603, 647, 372, 520     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Bob items",
     "items": [42, 140, 149, 273     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Ghost items",
     "items": [634, 653, 674, 677, 727, 163, 277, 495, 527, 612, 684     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Glyph items",
     "items": [696, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 318, 392, 572, 711, 556, 118, 82, 159, 122, 464, 466, 350, 394, 376     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Non-shooting familiars",
@@ -222,17 +263,20 @@
   {
     "name": "Dice items",
     "items": [609, 723, 283, 166, 105, 285, 284, 386, 437, 406, 476, 489     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "All stats ups",
     "items": [669, 12, 101, 307, 189     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stats"
   },
   {
     "name": "Key items",
     "items": [623, 580, 175, 238, 239, 199, 343, 17     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Story items",
@@ -242,37 +286,44 @@
   {
     "name": "Jar items",
     "items": [703, 715, 578, 685, 583, 720, 52, 168, 323, 149, 290, 434     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Mushroom items",
     "items": [625, 582, 12, 11, 71, 342, 120, 121, 398     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Eye items",
     "items": [730, 558, 572, 665, 731, 331, 169, 2, 319, 316, 55, 329, 261, 155, 110, 244, 68, 152, 379, 347, 373, 410, 460, 529, 509, 462, 524, 516     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Food items",
     "items": [664, 707, 129, 25, 193, 314, 23, 26, 346, 354, 456, 669, 621, 578, 690, 616, 561, 330, 56, 1, 294, 69, 111, 180, 421, 351, 418, 495, 443, 447     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Glitchy items",
     "items": [689, 721, 258, 324, 405, 481, 514     ],
-    "difficulty": 2
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Nintendo references",
     "items": [210, 11, 282, 93, 125, 12, 71, 625, 382, 258, 505, 721, 579     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "ref"
   },
   {
     "name": "References to other McMillen games",
     "items": [73, 207, 47, 52, 168, 96, 189, 99, 50, 100, 537, 467     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "ref"
   },
   {
     "name": "Items that teleport Isaac",
@@ -287,12 +338,14 @@
   {
     "name": "Items with readable letters on them",
     "items": [654, 636, 664, 129, 247, 137, 241, 75, 24, 282, 358, 354, 427, 383     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "char"
   },
   {
     "name": "Items with numbers on them",
     "items": [64, 285, 203, 19, 190, 74, 194, 386, 437, 79, 191, 406     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "char"
   },
   {
     "name": "Money-related items",
@@ -307,12 +360,14 @@
   {
     "name": "Speed down items",
     "items": [594, 582, 129, 314, 299, 121, 90     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "stats"
   },
   {
     "name": "Items that grant a damage multiplier",
     "items": [573, 561, 12, 4, 310, 245, 417, 182, 330, 169, 415, 373, 531, 543, 651, 406     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "stats"
   },
   {
     "name": "Revive items",
@@ -342,12 +397,14 @@
   {
     "name": "Items that can negate damage",
     "items": [677, 313, 457, 690, 242, 535, 633, 543, 449, 375, 651     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "invincible"
   },
   {
     "name": "Items with invincibility effects",
     "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "invincible"
   },
   {
     "name": "Items that max out a counter",
@@ -362,42 +419,50 @@
   {
     "name": "Bean items",
     "items": [294, 111, 180, 421, 351, 447, 484     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items with a character in their name",
     "items": [701, 276, 323, 67, 312, 319, 311, 320, 310, 321, 699, 332, 381, 703, 494, 716, 717, 719, 490, 429     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "name"
   },
   {
     "name": "Items unavailable in Greed Mode",
     "items": [580, 241, 21, 249, 54, 376, 672, 660, 670, 697     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "unavailable"
   },
   {
     "name": "Syringes",
     "items": [240, 70, 14, 143, 345, 13, 493, 496     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Technology items",
     "items": [95, 267, 244, 68, 152, 395, 524     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items unavailable in challenges",
     "items": [482, 636, 161, 311, 332     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "unavailable"
   },
   {
     "name": "Spider items",
     "items": [717, 575, 170, 266, 217, 234, 153, 280, 211, 171, 288, 89, 367, 377, 403     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "animal"
   },
   {
     "name": "Fly items",
     "items": [649, 581, 629, 693, 274, 279, 264, 248, 320, 151, 128, 57, 364, 365, 430, 426, 434, 511, 492, 461     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "animal"
   },
   {
     "name": "Items that grant flight",
@@ -407,47 +472,56 @@
   {
     "name": "Paper items",
     "items": [654, 668, 628, 619, 601, 327, 80, 262, 241, 54, 75, 203, 246, 115, 341, 250, 328     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Jewellery",
     "items": [732, 604, 686, 355, 546, 72     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items with question mark descriptions",
     "items": [609, 689, 619, 626, 627, 287, 52, 238, 239, 297     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "desc"
   },
   {
     "name": "Items with no black pixels",
     "items": [464, 326, 696, 405, 402, 431     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "sprite"
   },
   {
     "name": "Items starting with 'The'",
     "items": [1, 2, 13, 21, 28, 33, 34, 35, 36, 60, 63, 66, 79, 80, 83, 90, 93, 97, 98, 101, 103, 104, 105, 107, 108, 111, 151, 155, 164, 180, 290, 327, 328, 329, 333, 334, 335, 338, 358, 586, 605, 693     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "name"
   },
   {
     "name": "Items with multiple sprites",
     "items": [711, 685, 720, 489, 483, 479, 523, 640     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "sprite"
   },
   {
     "name": "Guppy items",
     "items": [133, 134, 145, 187, 212, 665, 81     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "animal"
   },
   {
     "name": "Items that are greyscale",
     "items": [3, 5, 10, 17, 19, 32, 34, 37, 41, 47, 50, 57, 62, 74, 81, 87, 90, 100, 106, 107, 113, 117, 125, 126, 129, 132, 134, 143, 145, 150, 156, 160, 161, 162, 165, 180, 190, 194, 201, 205, 213, 216, 219, 225, 231, 233, 237, 245, 249, 255, 259, 260, 270, 274, 275, 278, 263, 265, 266, 277, 283, 286, 287, 288, 291, 310, 311, 315, 316, 325, 321, 339, 340, 347, 348, 352, 353, 355, 358, 359, 364, 366, 378, 377, 380, 381, 388, 400, 406, 407, 408, 416, 420, 423, 431, 433, 436, 437, 442, 445, 449, 450, 455, 465, 474, 476, 496, 498, 503, 545, 548, 564, 549, 582, 605, 609, 610, 612, 617, 627, 645, 661, 670, 683, 687, 708, 693, 727, 633, 663, 495, 434, 163, 127, 712     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "sprite"
   },
   {
     "name": "Items that grant Luck",
     "items": [5, 46, 253, 343, 355, 439, 492, 632, 669, 730     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stats"
   },
   {
     "name": "Items that create flames",
@@ -457,12 +531,14 @@
   {
     "name": "Grey items with red eyes",
     "items": [89, 267, 360, 417, 441, 575, 646, 679, 698     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "sprite"
   },
   {
     "name": "Drop items",
     "items": [6, 214, 459, 368, 157, 222     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items that can remove coins from Isaac",
@@ -477,7 +553,8 @@
   {
     "name": "Items that have 'Evil up' in their description",
     "items": [654, 344, 230, 262, 339, 260, 216     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "desc"
   },
   {
     "name": "Items that can directly damage Isaac",
@@ -492,7 +569,8 @@
   {
     "name": "Items with a question mark",
     "items": [670, 287, 249, 414, 271     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "name"
   },
   {
     "name": "Characters' starting items",
@@ -502,7 +580,8 @@
   {
     "name": "Items with crosses",
     "items": [82, 98, 138, 142, 161, 162, 173, 313, 499, 567, 568, 569, 584, 601, 633, 673, 691     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "sprite"
   },
   {
     "name": "Items that can summon beams of light",
@@ -512,12 +591,14 @@
   {
     "name": "Milk items",
     "items": [25, 69, 330, 436, 561     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Bag items",
     "items": [710, 271, 139, 135, 119, 252, 94, 195, 204, 131, 389, 420, 500, 501, 534, 538, 716     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Items triggered by a double tap",
@@ -527,32 +608,37 @@
   {
     "name": "Items named after diseases or conditions",
     "items": [531, 726, 103, 167, 236, 254, 261, 350, 368, 379, 440, 460, 459, 454, 453, 452, 469, 466, 509, 525, 549, 553, 558, 657, 683, 680, 694, 697, 725, 724, 731     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "name"
   },
   {
     "name": "Teeth-related items",
     "items": [86, 150, 183, 445, 446, 663     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "type"
   },
   {
     "name": "Bumbino set drops",
     "items": [15, 209, 56, 86, 6, 103, 36, 45, 453, 446, 459, 683     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "payout"
   },
   {
     "name": "Items with a unique pick-up sound effect",
     "items": [11, 12, 71, 92, 625     ],
-    "difficulty": 2
+    "difficulty": 3
   },
   {
     "name": "Items that create circles around Isaac",
     "items": [423, 546, 696, 399, 595     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "circle"
   },
   {
     "name": "Items that grant AOE auras",
     "items": [651, 574, 336, 387, 417, 522, 446, 543, 331     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "circle"
   },
   {
     "name": "Items that cut off Isaac's head",
@@ -562,73 +648,87 @@
   {
     "name": "Items that got a major sprite change in Repentance",
     "items": [317, 326, 421, 427, 482, 483, 489, 518, 519     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "sprite"
   },
   {
     "name": "Items with fire in their sprite",
     "items": [223, 256, 257, 182, 567, 164, 289     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "sprite"
   },
   {
     "name": "10¢ shop items",
     "items": [338, 290, 295, 102, 177, 357, 348, 383, 396, 349, 480, 486, 604     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "pool"
   },
   {
     "name": "Items that can poison enemies",
     "items": [13, 42, 103, 111, 140, 149, 180, 305, 317, 350, 351, 446, 466, 553, 594, 273, 404, 491     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "status"
   },
   {
     "name": "Items that can slow down enemies",
     "items": [66, 89, 171, 232, 337, 387, 231, 99, 266, 425, 502, 461, 652, 575, 596     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "status"
   },
   {
     "name": "Items that decrease Isaac's damage stat",
     "items": [245, 120, 330, 561     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "stats"
   },
   {
     "name": "Items with variable charge bars",
     "items": [263, 489, 348, 286     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "charge"
   },
   {
     "name": "Items with 12 charges",
     "items": [441, 510, 490, 585, 720, 685, 611, 625     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "charge"
   },
   {
     "name": "One-time use active items",
     "items": [636, 622, 628, 577, 536, 475, 483, 347, 297, 127     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "charge"
   },
   {
     "name": "Items unavailable in the Death Certificate area",
     "items": [      -1,
 668, 714, 715, 628     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "unavailable"
   },
   {
     "name": "Items with no recharge time",
     "items": [186, 133, 282, 135, 40, 295, 147, 177, 126, 137, 290, 422, 434, 396, 487, 710, 555, 715, 623, 640, 653     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "charge"
   },
   {
     "name": "Timed recharge items",
     "items": [582, 709, 713, 635, 655, 326, 294, 289, 338, 164, 352, 383, 504, 507, 522, 484, 722, 704, 705, 729, 604, 714, 638     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "charge"
   },
   {
     "name": "Items both in the Devil and Angel room pool",
     "items": [477, 526, 519, 498, 634     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "pool"
   },
   {
     "name": "'Mr.' items",
     "items": [37, 106, 370, 527     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "name"
   },
   {
     "name": "Items that use a crosshair",
@@ -643,38 +743,45 @@
   {
     "name": "Items that can petrify enemies",
     "items": [39, 338, 351, 178, 202, 110, 372, 546, 450, 608     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "status"
   },
   {
     "name": "Items that cause fear",
     "items": [41, 93, 230, 259, 228, 433, 400, 513, 554     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "status"
   },
   {
     "name": "Items that cause confusion",
     "items": [209, 201, 497, 449, 637, 460     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "status"
   },
   {
     "name": "Items that can charm enemies",
     "items": [421, 207, 200, 280, 391, 404, 432, 513, 591     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "status"
   },
   {
     "name": "Items that end with a '!'",
     "items": [483, 40, 443, 527, 84, 467, 44, 193, 11, 49, 529, 247, 291, 436, 704,       -1,
 19, 709, 492     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "name"
   },
   {
     "name": "Big pills",
     "items": [127, 340, 348, 475     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items with a size adjective in their name",
     "items": [90, 279, 473, 503, 502, 233, 645, 658     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "name"
   },
   {
     "name": "'Lil' familiars",
@@ -689,27 +796,32 @@
   {
     "name": "Item names starting with a color",
     "items": [289, 580, 621, 673, 246, 342, 512, 181, 504, 260     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "name"
   },
   {
     "name": "Viscera",
     "items": [15, 276, 671, 676, 16, 229, 611, 725, 641, 273     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Items named ball",
     "items": [143, 158, 187, 194, 207, 231, 382     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "name"
   },
   {
     "name": "Remotes",
     "items": [44, 47, 419, 478, 482     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items called 'A ___'",
     "items": [18, 74, 130, 132, 346, 672, 564     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "name"
   },
   {
     "name": "Items that can make other items disappear",
@@ -719,22 +831,26 @@
   {
     "name": "Items unlocked by challenges",
     "items": [189, 267, 237, 244, 168, 406, 440, 501, 576, 579, 634     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "unlocks"
   },
   {
     "name": "Balance items",
     "items": [304, 464, 498, 672     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "type"
   },
   {
     "name": "Items that can be used when not fully charged",
     "items": [611, 720, 147, 655     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "charge"
   },
   {
     "name": "Active items that are not charged on pickup",
     "items": [720, 611, 704, 490, 585     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "charge"
   },
   {
     "name": "Items whose ID is 3 identical numbers",
@@ -744,7 +860,8 @@
   {
     "name": "Items whose names start with a number",
     "items": [11, 116, 191, 245, 359, 526, 554, 559, 647     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "name"
   },
   {
     "name": "Items that trigger in the first room of a new floor",
@@ -764,7 +881,8 @@
   {
     "name": "Box items",
     "items": [198, 288, 295, 297, 357, 362, 439, 515, 518, 523, 585, 719     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items with decimal numbers in their name",
@@ -784,7 +902,8 @@
   {
     "name": "Acronym names",
     "items": [272, 247, 725, 75     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "name"
   },
   {
     "name": "Items that affect the shop",
@@ -804,7 +923,8 @@
   {
     "name": "Items that increase a stat when picking up something",
     "items": [671, 686, 716, 109     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "stats"
   },
   {
     "name": "Items that get weaker after taking damage",
