@@ -179,7 +179,6 @@ export class MainGame extends Observable {
                 win ? this.handleSubmit(selectedIDs) : this.rightAnswer(group);
             }));
         }, Promise.resolve()).then(() => {
-
             this.notifyObservers(this.getNotifyData(win, true));
             return Utils.sleep(1000);
         }).then(() => {

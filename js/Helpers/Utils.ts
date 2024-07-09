@@ -90,11 +90,18 @@ export class Utils {
      * @param {any} variables The variables to replace.
      * @returns {string} The HTML string with the placeholders replaced.
      */
-    static replacePlaceholders(html: string, variables: any): string {
-        return html.replace(/{{\s*([\w]+)\s*}}/g, (match, key) => {
-            return variables[key] !== undefined && variables[key] !== null ? variables[key] : '';
+    static replacePlaceholders(html: string, variables: { [key: string]: any }): string {
+        return html.replace(/{{\s*([^{}]+)\s*}}/g, (match, expression) => {
+            try {
+                const func = new Function(...Object.keys(variables), `return ${expression};`);
+                return func(...Object.keys(variables).map(key => variables[key]));
+            } catch (error) {
+                return variables[expression] || match;
+            }
         });
     }
+    
+    
 
     
     /**

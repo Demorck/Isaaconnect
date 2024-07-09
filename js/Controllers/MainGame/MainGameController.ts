@@ -125,7 +125,9 @@ export class MainGameController {
 
     public toggleFinishedState = () => {
         if (!StorageManager.finished)
+        {
             StorageManager.finished = true;
+        }
 
         this.removeButtons();
         document.getElementById('cards-module')?.remove();

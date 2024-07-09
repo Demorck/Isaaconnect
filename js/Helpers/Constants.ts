@@ -43,7 +43,7 @@ export class Constants {
 
     static NUMBER_OF_DAYS_BEFORE: number = 3;
 
-    static BASE_DATE: number = new Date(2024, 4, 22).setHours(7, 59, 59, 999);
+    static BASE_DATE: number = new Date(2024, 4, 21, 0, 0, 0, 0).getTime();
 
     static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300"];
 

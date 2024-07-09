@@ -57,6 +57,8 @@ export class MainGameView implements Observer {
         
         if (data.isFinished && data.autocomplete || data.isFinished && data.win) {
             Utils.sleep(1000).then(() => {
+                data.streak = StorageManager.winStreak;
+                data.losses = StorageManager.losses;                
                 this.controller?.toggleFinishedState();
                 this.toggleFinishedState(data);
             });
