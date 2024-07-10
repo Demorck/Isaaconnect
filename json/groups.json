@@ -328,7 +328,8 @@
   {
     "name": "Items that teleport Isaac",
     "items": [681, 635, 316, 324, 44, 419     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags" : "tp",
   },
   {
     "name": "Items with blood on them",
@@ -350,12 +351,14 @@
   {
     "name": "Money-related items",
     "items": [555, 716, 109, 177, 141, 202, 227, 144, 295, 18, 94, 74, 385, 349, 429, 380, 501, 485, 455, 450, 191, 416     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags" : "type",
   },
   {
     "name": "Items with blades",
     "items": [705, 579, 569, 631, 627, 172, 114, 206, 126, 325, 107, 237, 48, 396, 391, 400, 506, 487, 555, 443, 189     ],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags" : "sprite"
   },
   {
     "name": "Speed down items",
@@ -387,7 +390,8 @@
   {
     "name": "Items that can take Isaac to the I AM ERROR room",
     "items": [580, 286, 324, 419     ],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags" : "tp",
   },
   {
     "name": "Items that have special effects on certain bosses",
@@ -489,7 +493,7 @@
   },
   {
     "name": "Items with no black pixels",
-    "items": [464, 326, 696, 405, 402, 431     ],
+    "items": [464, 326, 696, 405, 402, 431, 328     ],
     "difficulty": 2,
     "tags": "sprite"
   },
@@ -570,7 +574,7 @@
     "name": "Items with a question mark",
     "items": [670, 287, 249, 414, 271     ],
     "difficulty": 1,
-    "tags": "name"
+    "tags": "sprite"
   },
   {
     "name": "Characters' starting items",
@@ -679,7 +683,7 @@
     "name": "Items that decrease Isaac's damage stat",
     "items": [245, 120, 330, 561     ],
     "difficulty": 2,
-    "tags": "stats"
+    "tags": "stat"
   },
   {
     "name": "Items with variable charge bars",
@@ -786,12 +790,14 @@
   {
     "name": "'Lil' familiars",
     "items": [275, 277, 362, 384, 435, 471, 519, 537, 615, 679, 681     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags" : "name",
   },
   {
     "name": "Set drops from bosses",
     "items": [650, 96, 207, 73, 293, 99, 100, 132, 130, 181, 50     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags" : "pool",
   },
   {
     "name": "Item names starting with a color",
@@ -887,7 +893,8 @@
   {
     "name": "Items with decimal numbers in their name",
     "items": [244, 267, 419, 647     ],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags" : "name",
   },
   {
     "name": "Items that boost one eye",
@@ -913,12 +920,14 @@
   {
     "name": "Sleep-related items",
     "items": [535, 566, 425, 438, 428, 370     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items that grant extra tears",
     "items": [245, 2, 153, 358     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags" : "tears",
   },
   {
     "name": "Items that increase a stat when picking up something",
@@ -934,7 +943,8 @@
   {
     "name": "Items with a fetus in their sprite",
     "items": [678, 688, 697, 52, 168, 703     ],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "sprite"
   },
   {
     "name": "Items that grant coins on pickup",
@@ -944,7 +954,8 @@
   {
     "name": "Headgear",
     "items": [7, 87, 91, 101, 156, 173, 217, 216, 312, 358, 415, 424, 442, 513,          689, 375],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
   },
   {
     "name": "Items that can instakill",
@@ -954,7 +965,8 @@
   {
     "name": "Items that make tears split",
     "items": [224, 453, 531, 532, 104],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "tears"
   },
   {
     "name": "Items that allow Angel Rooms to spawn again",
@@ -964,76 +976,133 @@
   {
     "name": "Range down items",
     "items": [6, 149, 224, 336, 531],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stat"
   },
   {
     "name": "Items that randomize stats",
     "items": [240, 258, 406, 481],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stat"
   },
   {
     "name": "Shot speed down items",
     "items": [149, 182, 213, 310, 331, 336, 342, 572, 415],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stat"
   },
   {
     "name": "Items that grant empty heart containers",
     "items": [501, 219, 594, 676],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "hp"
+    
   },
   {
     "name": "Items that can remove red heart containers",
     "items": [81, 133, 487, 240, 230, 549, 642],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "hp"
   },
   {
     "name": "Full heals",
     "items": [12, 15, 16, 182, 189, 669, 664, 573],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "hp"
   },
   {
     "name": "Items that grant spectral tears",
     "items": [573, 185, 159, 115, 336, 233, 358, 379, 369,           677, 573],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "tears"
   },
   {
     "name": "Items that grant homing tears",
     "items": [192, 331, 182, 3, 543, 678, 651],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "tears"
   },
   {
     "name": "Items that grant piercing tears",
     "items": [118, 48, 336, 237, 306, 68, 462, 533, 678],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "tears"
   },
   {
     "name": "Fixed Bag of Crafting recipes",
     "items": [36, 177, 45, 686, 118, 343, 37, 85, 331, 182, 75, 654, 639, 175, 483, 628, 489, 580],
-    "difficulty": 3 
+    "difficulty": 3
   },
   {
     "name": "Tears Up items",
     "items": [1, 6, 32, 80, 90, 101, 120, 183, 196, 206, 222, 224, 228, 255, 307, 309, 330, 341, 342, 370, 381, 394, 407, 438, 442, 443, 465, 561, 564, 567, 598, 600, 601],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "stat"
   },
   {
     "name": "Items that replace Isaac's tears",
     "items": [52, 68, 114, 118, 168, 395, 579, 678],
-    "difficulty": 2
+    "difficulty": 2,
+    "tags": "tears"
   },
   {
     "name": "Items that affect item generation or pools",
     "items": [691, 721, 642, 72, 402],
-    "difficulty": 3
+    "difficulty": 3,
+    "tags": "pool"
   },
   {
     "name": "Items with 'stone' in their name",
     "items": [118, 275, 440, 540, 617, 646],
-    "difficulty": 1
+    "difficulty": 1,
+    "tags": "name"
   },
   {
     "name": "Rock items",
     "items": [90, 540, 562, 617],
-    "difficulty": 0
+    "difficulty": 0,
+    "tags": "type"
+  },
+  {
+    "name": "Items that look happy",
+    "items": [37, 67, 88, 95, 96, 99, 104, 112, 113, 125, 144, 148, 153, 174, 190, 211, 234, 256, 272, 275, 278, 384, 385, 435, 537, 563, 565, 649],
+    "difficulty": 0,
+    "tags": "sprite"
+  },
+  {
+    "name": "Items whose name appear in their description",
+    "items": [44, 222, 288, 324, 409, 440, 492, 433],
+    "difficulty": 3,
+    "tags": ["desc", "name"]
+  },
+  {
+    "name": "Items named after Magic the Gathering cards",
+    "items": [226, 82, 159, 241],
+    "difficulty": 3,
+    "tags": "ref"
+  },
+  {
+    "name": "Items with a heart on their sprite",
+    "items": [9,15, 45, 151, 182, 211, 223, 247, 276, 411, 541, 573, 576, 639, 676, 671, 682, 686, 694, 724],
+    "difficulty": 0,
+    "tags": "sprite"
+  },
+  {
+    "name": "Solid color items",
+    "items": [32, 311, 402, 433, 464],
+    "difficulty": 0,
+    "tags": "sprite"
+  },
+  {
+    "name": "Items that depend on Isaac's health",
+    "items": [694, 674, 569, 122, 409, 493, 464, 579, 676, 262, 327, 328, 442],
+    "difficulty": 2,
+    "tags": "hp"
+  },
+   {
+    "name": "Crying items",
+    "items": [1, 220, 379, 424, 562, 608, 729, 721],
+    "difficulty": 0,
+    "tags": "sprite"
   }
 ]
