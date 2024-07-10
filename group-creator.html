@@ -88,7 +88,30 @@
     </div>
     <button class="menu-button menu-button-right z-50" id="open-menu-right">Items</button>
 
-    <script type="module" src="/js/Group Creator/GroupCreator.js"></script>
+    <div class="flex flex-col relative md:fixed hidden">
+        <div id="tooltip-wrapper" class="bottom-20 md:top-20 max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
+        <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
+            <span class="material-symbols-rounded md:text-4xl" data-id="stats">
+                bar_chart
+            </span>
+            <span class="material-symbols-rounded md:text-4xl" data-id="schedule">
+                schedule
+            </span>
+            <span class="material-symbols-rounded md:text-4xl" data-id="promo">
+                diversity_1
+            </span>
+            <span class="material-symbols-rounded md:text-4xl" data-id="help">
+                help
+            </span>
+            <span class="material-symbols-rounded md:text-4xl"  data-id="settings">
+                settings
+            </span>
+            <!-- <span class="material-symbols-rounded md:text-4xl"  data-id="accessibility">
+                settings_accessibility
+            </span> -->
+        </div>
+    </div>
+    <script type="module" src="/dist/MainGroupCreator.js"></script>
     <script>
         document.getElementById('open-menu-right').addEventListener('click', function() {
             var menu = document.getElementById('menu-right');

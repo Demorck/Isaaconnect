@@ -37,11 +37,12 @@ export class Loader {
                     items.push(item);
                 }
             });
-            let newGroup = new Group(group.name, items, group.difficulty);
             if (typeof group.tags === 'string') {
                 group.tags = [group.tags];
             }
             if (group.tags === undefined) group.tags = [];
+            let newGroup = new Group(group.name, items, group.difficulty, group.tags);
+            
             
             group.tags.forEach((tag: string) => {
                 newGroup.addTag(tag);

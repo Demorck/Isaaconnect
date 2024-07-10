@@ -8,20 +8,30 @@ export class Group extends Observable implements Iterable<Item> {
     private difficulty: number;
     private tags: string[];
 
-    constructor(name: string, items: Item[], difficulty: number) {
+    constructor(name: string, items: Item[], difficulty: number, tags: string[] | undefined) {
         super();
         this.name = name;
         this.items = items;
         this.difficulty = difficulty;
-        this.tags = [];
+        this.tags = tags ? tags : [];
     }
 
     public getName(): string {
         return this.name;
     }
 
+    public setName(name: string): void {
+        this.name = name;
+        this.notifyObservers();
+    }
+
     public getItems(): Item[] {
         return this.items;
+    }
+
+    public setDifficulty(difficulty: number): void {
+        this.difficulty = difficulty;
+        this.notifyObservers({ difficulty: difficulty });
     }
 
     public getTags(): string[] {

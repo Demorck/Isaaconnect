@@ -59,7 +59,7 @@ export class GameUtils {
             group = groups[index];
         } while (bannedGroup.includes(group) || bannedTags.some(tag => group.getTags().includes(tag)));
 
-        let selectedGroup = new GroupGame(group.getName(), group.getItems(), group.getDifficulty());
+        let selectedGroup = new GroupGame(group.getName(), group.getItems(), group.getDifficulty(), group.getTags());
         selectedGroup.addTags(group.getTags());
         return selectedGroup;
     }

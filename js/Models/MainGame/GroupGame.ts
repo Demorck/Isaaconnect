@@ -9,8 +9,8 @@ export class GroupGame extends Group implements Iterable<Item> {
     private index = 0;
     private solved = false;
 
-    constructor(name: string, items: Item[], difficulty: number) {
-        super(name, items, difficulty);
+    constructor(name: string, items: Item[], difficulty: number, tags: string[] | undefined) {
+        super(name, items, difficulty, tags);
         this.selectedItems = [];
     }
 

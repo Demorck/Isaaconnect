@@ -44,8 +44,8 @@ export class MainGameView implements Observer {
             if (selected.length != Constants.NUMBER_OF_ITEMS)
             {
                 itemsID.forEach((id, index) => {
-                    let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`)!;
-                    item.classList.add('card-module--selected');
+                    let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`);
+                    item?.classList.add('card-module--selected');
                 });
             }
 
