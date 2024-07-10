@@ -636,7 +636,7 @@
   },
   {
     "name": "Items that grant AOE auras",
-    "items": [651, 574, 336, 387, 417, 522, 446, 543, 331     ],
+    "items": [651, 574, 387, 417, 522, 446, 543, 331     ],
     "difficulty": 2,
     "tags": "circle"
   },
