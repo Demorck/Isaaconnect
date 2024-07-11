@@ -36,7 +36,7 @@ export class ItemView implements Observer {
 
     private createItemElement(item: Item): HTMLElement {
         const itemElement = document.createElement('label');
-        itemElement.className = 'card-module flex-col aspect-square';
+        itemElement.className = 'card-module flex-col sm:aspect-square';
         itemElement.className += StorageManager.difficulty === 'normal' ? '' : ' easy';
         itemElement.dataset.id = item.getId().toString();
 

@@ -329,7 +329,7 @@
     "name": "Items that teleport Isaac",
     "items": [681, 635, 316, 324, 44, 419     ],
     "difficulty": 2,
-    "tags" : "tp",
+    "tags" : "tp"
   },
   {
     "name": "Items with blood on them",
@@ -352,7 +352,7 @@
     "name": "Money-related items",
     "items": [555, 716, 109, 177, 141, 202, 227, 144, 295, 18, 94, 74, 385, 349, 429, 380, 501, 485, 455, 450, 191, 416     ],
     "difficulty": 1,
-    "tags" : "type",
+    "tags" : "type"
   },
   {
     "name": "Items with blades",
@@ -391,7 +391,7 @@
     "name": "Items that can take Isaac to the I AM ERROR room",
     "items": [580, 286, 324, 419     ],
     "difficulty": 3,
-    "tags" : "tp",
+    "tags" : "tp"
   },
   {
     "name": "Items that have special effects on certain bosses",
@@ -791,13 +791,13 @@
     "name": "'Lil' familiars",
     "items": [275, 277, 362, 384, 435, 471, 519, 537, 615, 679, 681     ],
     "difficulty": 1,
-    "tags" : "name",
+    "tags" : "name"
   },
   {
     "name": "Set drops from bosses",
     "items": [650, 96, 207, 73, 293, 99, 100, 132, 130, 181, 50     ],
     "difficulty": 1,
-    "tags" : "pool",
+    "tags" : "pool"
   },
   {
     "name": "Item names starting with a color",
@@ -894,7 +894,7 @@
     "name": "Items with decimal numbers in their name",
     "items": [244, 267, 419, 647     ],
     "difficulty": 1,
-    "tags" : "name",
+    "tags" : "name"
   },
   {
     "name": "Items that boost one eye",
@@ -927,7 +927,7 @@
     "name": "Items that grant extra tears",
     "items": [245, 2, 153, 358     ],
     "difficulty": 0,
-    "tags" : "tears",
+    "tags" : "tears"
   },
   {
     "name": "Items that increase a stat when picking up something",

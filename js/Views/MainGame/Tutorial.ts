@@ -147,6 +147,13 @@ class Tutorial {
         this.tutorialBackground.classList.add('hidden');
         this.tutorial.classList.add('hidden');
         this.game.classList.remove('-z-10');
+        let title = document.getElementById('title')!;
+        let buttons = document.querySelector('.buttons')!;
+        let shuffleMobile = document.querySelector('.shuffle-mobile')!;
+
+        title.classList.remove('-z-10');
+        buttons.classList.remove('-z-10');
+        shuffleMobile.classList.remove('-z-10');
     }
 }
 

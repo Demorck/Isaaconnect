@@ -35,6 +35,13 @@ body {
     height: 100vh;
 }
 
+@media (max-width: 768px) {
+    body {
+        max-height: 93vh !important;
+    }
+}
+
+
 button, input, optgroup, select, textarea {
     font-family: inherit;
     font-size: 100%;
@@ -460,6 +467,10 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
         left: 17%;
     }
 
+    #tooltip-wrapper[data-id="promo"]::after {
+        left: 20%;
+    }
+
     #tooltip-wrapper[data-id="help"]::after {
         left: 29.5%;
     }
@@ -799,7 +810,7 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
 #filter-result {
     list-style-type: none;
     padding: 0;
-    max-height: 150px; /* Ajuste cette valeur selon la hauteur souhaitée */
+    max-height: 150px;
     overflow-y: auto;
 }
 

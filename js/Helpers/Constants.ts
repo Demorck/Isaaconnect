@@ -107,7 +107,7 @@ export class Constants {
         ];
     }
 
-    static VERSION: string = '0.9.0';
+    static VERSION: string = '0.9.3';
 
     /////////////////////////////////
 
