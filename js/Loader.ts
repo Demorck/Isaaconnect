@@ -5,6 +5,7 @@ import { DataFetcher } from "./Helpers/DataFetcher.js";
 import { Item } from "./Models/Item.js";
 import { Group } from "./Models/Group.js";
 import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
+import { ThemeController } from "./Controllers/ThemeController.js";
 
 /**
  * @description Loader class that loads the page
@@ -23,6 +24,9 @@ export class Loader {
      * @returns {Promise<void>}
      */
     static async load(): Promise<void> {
+        let theme = StorageManager.theme;
+        const themeController = new ThemeController(theme);
+        
         const { items, groups } = await DataFetcher.fetchData();
 
         items.forEach((item: { id: number; alias: string; }) => {
@@ -51,17 +55,6 @@ export class Loader {
             });
             Constants.GROUPS.push(newGroup);
         });
-
-        let theme = StorageManager.theme;
-        if (theme === null) theme = 'basement-theme';
-        if (theme === 'void-theme') {
-            do {
-                let randomValue = Constants.THEMES[Math.floor(Math.random() * Constants.THEMES.length)];
-                theme = randomValue;
-            } while (theme === 'void-theme');
-        }
-        let body = document.querySelector('body');
-        if (body) body.classList.add(theme);
 
         if (StorageManager.debug) {
             document.getElementById('tooltip-icons')!.innerHTML += `<span class="material-symbols-rounded md:text-4xl"  data-id="debug">

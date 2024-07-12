@@ -5,7 +5,6 @@ import { MainGroupCreatorView } from "./Views/GroupCreator/MainGroupCreatorView.
 import { MainGroupCreatorController } from "./Controllers/GroupCreator/MainGroupCreatorController.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const themeController = new ThemeController();
     await Loader.load();
 
     const mainGroupCreator = new MainGroupCreator();

@@ -11,11 +11,12 @@ import { Observer } from "./Observer.js";
  * @implements {Observer}
  */
 export class ThemeView implements Observer {
-    update() {
-        let data = StorageManager.theme;
+    update(data: any) {
         const bodyElement = document.querySelector('body');
+        console.log(data);
+        
         if (bodyElement) {
-            bodyElement.setAttribute('class', data);
+            bodyElement.setAttribute('class', data.theme);
         }
     }
 }
