@@ -7,7 +7,7 @@
     </div>
     <div class="relative flex-auto flex flex-col items-center">
         <div class="flex flex-col justify-center items-center w-80 xxs:w-80 xs:w-96 mb-0 text-center">
-            <div class="text-center">Found in <b>{{ mistakes }}</b> mistakes</div>
+            <div class="text-center">Found with <b>{{ health }}</b> {{ health > 1 ? "hearts" : "heart" }} left</div>
         </div>
         <div data-id="results-wrapper"></div>
         <div class="flex flex-row gap-4">
