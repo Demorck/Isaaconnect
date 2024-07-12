@@ -14,12 +14,14 @@ export class MainGame extends Observable {
     private attempts: Group[][];
     private history: Item[][];
     private currentAttempt: number;
+    private seeded: boolean;
 
     private mechanics: MainGameMechanics;
 
-    constructor() {
+    constructor(seeded = true) {
         super();
         this.health = Constants.MAX_HEALTH;
+        this.seeded = seeded;
         this.attempts = [];
         this.history = [];
         this.currentAttempt = 0;
@@ -30,17 +32,22 @@ export class MainGame extends Observable {
     }
 
     private setupGame() : void {
-        const lastIsaaconnect = StorageManager.lastIsaaconnect;
-        if(lastIsaaconnect !== Utils.getDaysSince())
-            StorageManager.newIsaaconnect();
-
         let bannedGroups: Group[] = [];
-        for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
-            const selectedGroups = GameUtils.generateSelection(i);
-            selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
+        if (this.seeded) {
+            const lastIsaaconnect = StorageManager.lastIsaaconnect;
+            if(lastIsaaconnect !== Utils.getDaysSince())
+                StorageManager.newIsaaconnect();
+            for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
+                const selectedGroups = GameUtils.generateSelection(i);
+                selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
+            }
+            
+            this.groups = GameUtils.generateSelection(0, bannedGroups);
+        } else {
+            StorageManager.newIsaaconnect();
+            this.groups = GameUtils.generateSelection(0, bannedGroups, false);
         }
 
-        this.groups = GameUtils.generateSelection(0, bannedGroups);
     }
 
     public getGroups(): GroupGame[] {
@@ -122,7 +129,8 @@ export class MainGame extends Observable {
                 health: this.health,
                 title: title,
                 mistakes: mistakes,
-                streak: StorageManager.winStreak
+                streak: StorageManager.winStreak,
+                seeded: this.seeded
             };
         } else {
             let solved = this.getGroupSolved().length;
@@ -131,7 +139,8 @@ export class MainGame extends Observable {
                 isFinished: true,
                 win: false,
                 solved: solved,
-                losses: StorageManager.losses
+                losses: StorageManager.losses,
+                seeded: this.seeded
             };
         }
     }

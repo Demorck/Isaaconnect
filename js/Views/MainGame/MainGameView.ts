@@ -228,7 +228,11 @@ export class MainGameView implements Observer {
     }
 
     private copyResults(copyButton: HTMLElement, data: any): void {
-        let title = "Isaaconnect #" + StorageManager.lastIsaaconnect;
+        let title: string;
+        if (data.seeded)
+            title = "Isaaconnect #" + StorageManager.lastIsaaconnect;
+        else
+            title = "I finished a random Isaaconnect!"
         try
         {
             let textToCopy = "";
@@ -243,8 +247,9 @@ export class MainGameView implements Observer {
             }
 
             let groupFound = StorageManager.groupFound
-
+            
             textToCopy += `✅: ${groupFound}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
+
             let attempts = StorageManager.attempts;
 
             attempts.forEach((attempt, index) => {

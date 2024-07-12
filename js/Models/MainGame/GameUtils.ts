@@ -5,7 +5,7 @@ import { Item } from "../Item.js";
 import { GroupGame } from "./GroupGame.js";
 
 export class GameUtils {
-    static generateSelection(daysBefore = 0, alreadyBanned: Group[] = []) : GroupGame[] {
+    static generateSelection(daysBefore = 0, alreadyBanned: Group[] = [], seeded = true) : GroupGame[] {
         let bannedGroup: Group[] = alreadyBanned;
         let bannedItem: Item[] = [];
         let bannedTags: string[] = [];
@@ -14,17 +14,17 @@ export class GameUtils {
 
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
             let currentGroup;
-            currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 0, bannedTags);
+            currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 0, bannedTags, seeded);
             selectedGroups.push(currentGroup);
             bannedGroup.push(currentGroup);
             bannedTags.push(...currentGroup.getTags());
 
             let items: Item[] | null;
             do {
-                items = currentGroup.getRandomItems(bannedItem, daysBefore);
+                items = currentGroup.getRandomItems(bannedItem, daysBefore, seeded);
                 if (items === null) {
                     selectedGroups.pop();
-                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 1, bannedTags);
+                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, true, i, 1, bannedTags, seeded);
                     selectedGroups.push(currentGroup);
                     bannedGroup.push(currentGroup);
                 }                
@@ -48,14 +48,17 @@ export class GameUtils {
         return selectedGroups;
     }
 
-    static getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0, bannedTags: string[] = []): GroupGame {
+    static getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0, bannedTags: string[] = [], seeded: boolean): GroupGame {
         let index: number, group: Group, i = 0;
         let groups = Constants.GROUPS;
 
         if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() === difficulty);
 
         do {
-            index = Math.floor(Utils.getSeed(i++ + modifier, daysBefore) * groups.length);
+            if (seeded)
+                index = Math.floor(Utils.getSeed(i++ + modifier, daysBefore) * groups.length);
+            else
+                index = Math.floor(Math.random() * groups.length);
             group = groups[index];
         } while (bannedGroup.includes(group) || bannedTags.some(tag => group.getTags().includes(tag)));
 

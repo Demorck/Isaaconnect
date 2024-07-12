@@ -22,13 +22,18 @@ export class GroupGame extends Group implements Iterable<Item> {
         return this.selectedItems.map(item => item.getId());
     }
     
-    public getRandomItems(bannedItem: Item[], daysBefore = 0): Item[] | null {
+    public getRandomItems(bannedItem: Item[], daysBefore = 0, seeded: boolean): Item[] | null {
         let itemsPicked: Item[] = [];
         let counter = 0;
         for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
             let item: Item;
             do {
-                let indexGroup = Math.floor(Utils.getSeed(i + counter, daysBefore) * this.getItems().length);
+                let indexGroup;
+                if (seeded) {
+                    indexGroup = Math.floor(Utils.getSeed(i + counter, daysBefore) * this.getItems().length);
+                } else {
+                    indexGroup = Math.floor(Math.random() * this.getItems().length);
+                }
                 item = this.getItems()[indexGroup];
                 counter++;
             } while (bannedItem.includes(item));
