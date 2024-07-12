@@ -124,13 +124,8 @@ export class Utils {
         let currentVersion = Constants.VERSION;
         let versionUser = StorageManager.version;
         if (versionUser !== currentVersion) {
-            if (versionUser === undefined) {
-                StorageManager.clear();
-            }
-            else {
-                StorageManager.game = Constants.DEFAULT_DATA.game;
-                StorageManager.version = currentVersion;
-            }
+            StorageManager.game = Constants.DEFAULT_DATA.game;
+            StorageManager.version = currentVersion;
         }
     }
 

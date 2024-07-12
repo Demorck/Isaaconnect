@@ -18,7 +18,7 @@ import { Group } from '../../Models/Group.js';
 export class StorageManager {
     static getItem<T>(key: string, defaultValue: T | null = null): T | null {
         const item = localStorage.getItem(key);
-        return item !== null ? JSON.parse(item) : Constants.DEFAULT_DATA[key] ?? defaultValue;
+        return item !== null ? JSON.parse(item) : defaultValue;
     }
 
     static setItem(key: string, value: any): void {
@@ -28,15 +28,15 @@ export class StorageManager {
     static initDefaultLocalStorage(): void {
         for (const [key, value] of (Object as any).entries(Constants.DEFAULT_DATA)) {
             if (this.getItem(key) === null) {
-                this.setItem(key, value);
+                this.setItem(key, value);                
             }
         }
         document.body.classList.add(this.settings.theme);
     }
 
     static newIsaaconnect(): void {
-        this.lastIsaaconnect = Utils.getDaysSince();
         Utils.resetIfNewVersion();
+        this.lastIsaaconnect = Utils.getDaysSince();
         this.game = Constants.DEFAULT_DATA.game;
     }
 

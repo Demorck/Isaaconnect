@@ -50,22 +50,26 @@ class Tutorial {
         this.tutorial.querySelector('h1')!.innerHTML = "Solve the groups";
         let cards = document.querySelectorAll('.card-module input[type="checkbox"]');
         cards.forEach(card => {
-            card.addEventListener('change', () => {
-                let selected = document.querySelectorAll('.card-module--selected');
-                if (selected.length == 4) {
-                    this.nextButton.classList.remove('hidden');
-                } else {
-                    this.nextButton.classList.add('hidden');
-                }
-            });
+            card.addEventListener('change', this.hiddenNextButton.bind(this));
         });
 
         this.game.classList.remove('-z-10');
         this.game.classList.add('z-40');
     }
 
+    private hiddenNextButton() {
+        if (this.tutorialsSteps.length <= 3) return;
+        let selected = document.querySelectorAll('.card-module--selected');
+        if (selected.length == 4) {
+            this.nextButton.classList.remove('hidden');
+        } else {
+            this.nextButton.classList.add('hidden');
+        }
+    }
+
     private thirdStep() {
         let buttons = document.querySelector('.buttons')!;
+        let cards = document.querySelectorAll('.card-module input[type="checkbox"]');
         this.tutorial.style.transform = 'translate(-50%, 0)';
         this.tutorial.classList.add(this.mobile ? 'top-0' : 'bottom-0');
 

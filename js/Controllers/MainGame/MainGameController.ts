@@ -146,6 +146,7 @@ export class MainGameController {
     }
 
     private incrementStats(win: boolean): void {
+        if (!this.game.isSeeded()) return;
         if (StorageManager.finished) return;
         let stats = StorageManager.stats;
         win ? stats.winStreak++ : stats.winStreak = 0;

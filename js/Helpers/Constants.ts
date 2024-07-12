@@ -4,6 +4,8 @@ import { Item } from "../Models/Item";
 export class Constants {
     static items: Item[] = [];
     static groups: Group[] = [];
+    
+    static VERSION: string = '1.0.0';
 
     static get ITEMS() {
         return this.items;
@@ -72,7 +74,8 @@ export class Constants {
             wins: 0,
             losses: 0,
         },
-        lastIsaaconnect: 0
+        lastIsaaconnect: 0,
+        version: Constants.VERSION
     };
 
     static get THEMES(): string[] {
@@ -106,8 +109,6 @@ export class Constants {
             "GOLDEN GOD"
         ];
     }
-
-    static VERSION: string = '1.0.0';
 
     /////////////////////////////////
 

@@ -241,4 +241,8 @@ export class MainGame extends Observable {
         }        
     }
 
+    public isSeeded(): boolean {
+        return this.seeded;
+    }
+
 }

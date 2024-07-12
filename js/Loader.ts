@@ -29,6 +29,8 @@ export class Loader {
             Constants.ITEMS.push(new Item(item.id, item.alias));
         });
 
+        StorageManager.initDefaultLocalStorage();
+
         groups.forEach((group: { name: string, items: number[], difficulty: number, tags: string[] | undefined }) => {
             let items: Item[] = [];
             group.items.forEach((itemId: number) => {

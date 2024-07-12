@@ -8,8 +8,8 @@ import Tutorial from './Views/MainGame/Tutorial.js';
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const themeController = new ThemeController();
     await Loader.load();
+    const themeController = new ThemeController();
 
     let tutorial = StorageManager.lastIsaaconnect === 0;
     let game = new MainGame();
