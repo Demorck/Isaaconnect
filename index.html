@@ -32,7 +32,7 @@
         <div id="tboi-loader"></div>
     </div>
 
-    <div id="tutorial-background" class="bg-black absolute top-0 left-0 w-full h-full opacity-80 hidden"></div>
+    <div id="tutorial-background" class="hidden"></div>
     <div id="tutorial" class="tooltip rounded-3xl absolute hidden z-50 w-4/5 sm:w-auto ">
         <div class="flex flex-col justify-center items-center px-4 py-2 rounded-2xl">
             <h1 class="text-xl">Welcome to Isaaconnect <span class="text-sm">(this is a tutorial)</span> !</h1>
@@ -48,7 +48,7 @@
         </div>
     </div>
     
-    <div class="flex flex-col h-full page" style="display: none;">
+    <div class="flex flex-col h-full page  sm:items-stretch" style="display: none;">
         <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1">
 
             <div class="flex flex-col">
@@ -98,22 +98,22 @@
         </div>
 
         
-        <div class="flex flex-col relative md:fixed">
-            <div id="tooltip-wrapper" class="bottom-20 md:top-20 max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
-            <div id="tooltip-icons" class="flex flex-row bottom align-bottom text-white  symbol-fill gap-6 md:gap-2 justify-center md:justify-start">
-                <span class="material-symbols-rounded md:text-4xl" data-id="stats">
+        <div class="flex flex-col fixed self-center md:self-auto items-center md:items-auto bottom-4 md:top-4" id="tooltips">
+            <div id="tooltip-wrapper" class="flex md:top-20 md:left-5 md:w-max max-w-sm md:max-w-md xl:max-w-lg" style="display: none"></div>
+            <div id="tooltip-icons" class="flex flex-row bottom  align-bottom text-white  symbol-fill gap-6 md:gap-2 md:justify-center md:justify-start">
+                <span class="material-symbols-rounded md:text-4xl tooltip-inactive" data-id="stats">
                     bar_chart
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" data-id="schedule">
+                <span class="material-symbols-rounded md:text-4xl tooltip-inactive" data-id="schedule">
                     schedule
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" data-id="promo">
+                <span class="material-symbols-rounded md:text-4xl tooltip-inactive" data-id="promo">
                     diversity_1
                 </span>
-                <span class="material-symbols-rounded md:text-4xl" data-id="help">
+                <span class="material-symbols-rounded md:text-4xl tooltip-inactive" data-id="help">
                     help
                 </span>
-                <span class="material-symbols-rounded md:text-4xl"  data-id="settings">
+                <span class="material-symbols-rounded md:text-4xl tooltip-inactive"  data-id="settings">
                     settings
                 </span>
                 <!-- <span class="material-symbols-rounded md:text-4xl"  data-id="accessibility">

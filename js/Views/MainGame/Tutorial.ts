@@ -6,6 +6,7 @@ class Tutorial {
     private tutorial: HTMLElement;
     private nextButton: HTMLElement;
     private skipButton: HTMLElement;
+    private tooltips: HTMLElement;
     private tutorialsSteps: Array<() => void>;
     private mobile: boolean;
 
@@ -15,6 +16,7 @@ class Tutorial {
         this.tutorial = document.getElementById('tutorial')!;
         this.nextButton = document.querySelector('[data-id="next"]')!;
         this.skipButton = document.querySelector('[data-id="skip"]')!;
+        this.tooltips = document.querySelector('#tooltips')!;
         this.mobile = window.innerWidth < 768;
         this.tutorialsSteps = [this.firstStep.bind(this), this.secondStep.bind(this), this.thirdStep.bind(this), this.correctGroup.bind(this), this.wrongGroup.bind(this)];
     }
@@ -33,6 +35,7 @@ class Tutorial {
         let shuffleMobile = document.querySelector('.shuffle-mobile')!;
 
         this.game.classList.add('-z-10');
+        this.tooltips.classList.add('-z-10');
         title.classList.add('-z-10');
         buttons.classList.add('-z-10');
         shuffleMobile.classList.add('-z-10');
@@ -43,7 +46,7 @@ class Tutorial {
         this.tutorial.style.transform = 'translate(-50%, 0%)';
         this.tutorial.classList.remove('top-1/2');
 
-        this.tutorial.querySelector('p')!.innerHTML = "There are 4 groups to solve. Each group are 4 items with one thing in common. It can be an effect in the game, a shape on it, a transformation or completely a thing out of the game. You can click on the cards to select or deselect them. <br> Now, try to solve a group by clicking on 4 cards.";
+        this.tutorial.querySelector('p')!.innerHTML = "There are 4 groups to solve. Each group are 4 items with one thing in common. You can click on the cards to select or deselect them. <br> Now, try to solve a group by clicking on 4 cards.";
         this.tutorial.querySelector('h1')!.innerHTML = "Solve the groups";
         let cards = document.querySelectorAll('.card-module input[type="checkbox"]');
         cards.forEach(card => {
@@ -64,7 +67,7 @@ class Tutorial {
     private thirdStep() {
         let buttons = document.querySelector('.buttons')!;
         this.tutorial.style.transform = 'translate(-50%, 0)';
-        this.tutorial.classList.add(this.mobile ? 'bottom-4' : 'bottom-0');
+        this.tutorial.classList.add(this.mobile ? 'top-0' : 'bottom-0');
 
         this.tutorial.querySelector('p')!.innerHTML = "When you are ready, click on the submit button ! Be careful, you have only 4 lives.";
         this.tutorial.querySelector('h1')!.innerHTML = "Moment of truth";
@@ -91,7 +94,6 @@ class Tutorial {
     private correctGroup() {
         let buttons = document.querySelector('.buttons')!;
         this.tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
-        this.tutorial.style.transform = 'translate(-50%, -50%)';
 
         this.tutorial.querySelector('h1')!.innerHTML = "Congratulations!";
         this.tutorial.querySelector('p')!.innerHTML = "Congratulations! You solved your first group. You can click on the items to see more information on the wiki ! Have fun !";
@@ -108,7 +110,6 @@ class Tutorial {
     private wrongGroup() {
         let buttons = document.querySelector('.buttons')!;
         this.tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
-        this.tutorial.style.transform = 'translate(-50%, -50%)';
 
         this.tutorial.querySelector('h1')!.innerHTML = "Oh no! Anyway...";
         this.tutorial.querySelector('p')!.innerHTML = "You lost a life. You can try again to solve the group. You can't guess the same group twice. If you guess a group, you can click on items to see more information on the wiki. Have fun !";
@@ -147,6 +148,7 @@ class Tutorial {
         this.tutorialBackground.classList.add('hidden');
         this.tutorial.classList.add('hidden');
         this.game.classList.remove('-z-10');
+        this.tooltips.classList.remove('-z-10');
         let title = document.getElementById('title')!;
         let buttons = document.querySelector('.buttons')!;
         let shuffleMobile = document.querySelector('.shuffle-mobile')!;
@@ -154,6 +156,11 @@ class Tutorial {
         title.classList.remove('-z-10');
         buttons.classList.remove('-z-10');
         shuffleMobile.classList.remove('-z-10');
+
+        let elements = document.querySelectorAll('.z-40');
+        elements.forEach(element => {
+            element.classList.remove('z-40');
+        });
     }
 }
 

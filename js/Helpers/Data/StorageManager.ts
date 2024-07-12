@@ -36,6 +36,7 @@ export class StorageManager {
 
     static newIsaaconnect(): void {
         this.lastIsaaconnect = Utils.getDaysSince();
+        Utils.resetIfNewVersion();
         this.game = Constants.DEFAULT_DATA.game;
     }
 
