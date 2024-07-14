@@ -190,7 +190,7 @@ export class StorageManager {
     }
 
     static get theme(): string {
-        return this.settings.theme;
+        return this.settings?.theme;
     }
 
     static set theme(theme: string) {

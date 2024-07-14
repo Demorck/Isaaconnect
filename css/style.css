@@ -171,6 +171,10 @@ ol, ul {
     margin-bottom: 0;
 }
 
+#cards-win, #cards-module {
+    width: -webkit-fill-available;
+}
+
 .pixelated {
     image-rendering: pixelated;
 }

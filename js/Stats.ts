@@ -4,10 +4,11 @@ import { Stats } from './Models/Stats/Stats.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
+    let time = performance.now();
 
     let bigMap = new Map<string, number>();
     let numberOfGeneration = 10000;
-    let times = 50;
+    let times = 5;
     let numberCalled = 0;
     let getTotalOccurence = 0;
     let ImpossibleGridFound = 0;
@@ -33,6 +34,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             ImpossibleGridFound += stats.getNumberOfImpossibleGridFound();            
         }
     }
+
+    let delta = performance.now() - time;
     
     bigMap = new Map([...bigMap].sort((a, b) => b[1] - a[1]));
     
@@ -74,6 +77,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let moyenne = numberCalled * 4 / Constants.GROUPS.length;
     let ecartType = dev(Array.from(bigMap.values()));
     let meanfound = meanf(Array.from(bigMap.values()));    
+    console.log("Temps : " + delta + " ms");
+    
     console.log("Nombre de générations : " + numberOfGeneration);
     console.log("Nombre de fois appelé : " + numberCalled);
     console.log("Impossible grid : " + ImpossibleGridFound);

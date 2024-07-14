@@ -7,14 +7,6 @@ import { StorageManager } from "../Helpers/Data/StorageManager.js";
  * @returns {Promise<string>} The updated HTML content of the tooltip.
  */
 export async function settingsLogic(html: string): Promise<string> {
-    const easyHtml = await Utils.loadHTML('/include/tooltips/easy.html');
-    const attempt = StorageManager.currentAttempt;
-    if (attempt > 0) {
-        html = Utils.replacePlaceholders(html, { attempt: '' });
-    } else {
-        html = Utils.replacePlaceholders(html, { attempt: easyHtml });
-    }
-
     const temp = document.createElement('div');
     temp.innerHTML = html;
 

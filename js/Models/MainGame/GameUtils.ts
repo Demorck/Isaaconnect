@@ -68,7 +68,6 @@ export class GameUtils {
         let index: number, group: Group, i = 0;
         let groups = Constants.GROUPS;
 
-        // if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() === difficulty);
         if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
 
         do {
