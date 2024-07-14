@@ -4,7 +4,7 @@
         "module": "es6",
         "outDir": "dist",
         "strict": true,
-        "lib": ["ES2016", "DOM"]
+        "lib": ["ES2023", "DOM"]
     },
     "exclude": [
         "node_modules"

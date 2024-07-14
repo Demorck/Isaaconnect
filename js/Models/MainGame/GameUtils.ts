@@ -13,6 +13,7 @@ export class GameUtils {
     
         let selectedGroups: GroupGame[] = [];
         let difficultyFound = false;
+        let j = 0;
     
         for (let i = 0; i < Constants.NUMBER_OF_GROUPS; i++) {
             let currentGroup;
@@ -20,20 +21,34 @@ export class GameUtils {
             if (currentGroup.getDifficulty() === 3) {
                 difficultyFound = true;
             }
-
             let items: Item[] | null;
             let attemptCount = 0;
-            do {                
-                items = currentGroup.getRandomItems(bannedItem, daysBefore, seeded, selectedItems);                
-                if (items === null) {
-                    bannedGroup.push(currentGroup);
-                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, false, i, 1, bannedTags, seeded);
-                }                
-                attemptCount++;
+            do {
+
+                do {             
+                    items = currentGroup.getRandomItems(bannedItem, daysBefore, seeded);             
+                    if (items === null) {
+                        bannedGroup.push(currentGroup);
+                        currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, false, i, attemptCount, bannedTags, seeded);
+                    }                
+                    attemptCount++;
+                } while (items === null);     
+
+                selectedItems.push(...items!);
+                selectedGroups.push(currentGroup);
+    
+                let check = GameUtils.checkGrid(selectedGroups, selectedItems);
+                if (check.impossible) {
+                    selectedGroups.pop();
+                    for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+                        selectedItems.pop();
+                    }
+                    currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, false, i, attemptCount, bannedTags, seeded);
+                    items = null;
+                }
+
             } while (items === null);
 
-            selectedItems.push(...items);
-            selectedGroups.push(currentGroup);
             bannedGroup.push(currentGroup);
             bannedTags.push(...currentGroup.getTags());
     
@@ -42,15 +57,8 @@ export class GameUtils {
                 if (bannedItem.indexOf(item) === -1) {
                     bannedItem.push(item);
                 }
-    
-                // Constants.GROUPS.forEach(group => {
-                //     if (group.getItems().indexOf(item) !== -1) {
-                //         bannedGroup.push(group);
-                //     }
-                // });
             });
         }
-        // console.log(selectedGroups);
         
         return selectedGroups;
     }
@@ -61,7 +69,7 @@ export class GameUtils {
         let groups = Constants.GROUPS;
 
         // if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() === difficulty);
-        // if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
+        if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
 
         do {
             if (seeded)
@@ -73,6 +81,24 @@ export class GameUtils {
 
         let selectedGroup = new GroupGame(group.getName(), group.getItems(), group.getDifficulty(), group.getTags());
         return selectedGroup;
+    }
+
+    static checkGrid(groups: GroupGame[], allSelectedItems: Item[]): { impossible: boolean, itemsNotInGroup: Item[] } {
+        if (allSelectedItems.length < Constants.NUMBER_OF_ITEMS) return { impossible: false, itemsNotInGroup: [] };
+        let impossible = false;
+        let itemsNotInGroup: Item[] = [];
+        groups.forEach(group => {
+            let allItemsInGroup = group.getItems();
+            let selectedItems = allSelectedItems.filter(item => allItemsInGroup.includes(item));
+            if (selectedItems.length > Constants.NUMBER_OF_ITEMS)
+            {
+                let selectedInGroup = group.getSelectedItems();
+                itemsNotInGroup = selectedItems.filter(item => !selectedInGroup.includes(item));
+                impossible = true;
+            }
+        });
+        
+        return { impossible, itemsNotInGroup };
     }
 
     /**

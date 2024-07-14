@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let bigMap = new Map<string, number>();
     let numberOfGeneration = 10000;
-    let times = 5;
+    let times = 50;
     let numberCalled = 0;
     let getTotalOccurence = 0;
+    let ImpossibleGridFound = 0;
 
     for (let i = 0; i < times; i++) {
         let stats = new Stats(numberOfGeneration);
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
             numberCalled += stats.getNumberOfGameCalled();
+            ImpossibleGridFound += stats.getNumberOfImpossibleGridFound();            
         }
     }
     
@@ -74,11 +76,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     let meanfound = meanf(Array.from(bigMap.values()));    
     console.log("Nombre de générations : " + numberOfGeneration);
     console.log("Nombre de fois appelé : " + numberCalled);
-    
+    console.log("Impossible grid : " + ImpossibleGridFound);
+
     console.log("Nombre de fois : " + times);
     console.log("Nombre de groupes : " + Constants.GROUPS.length);
     console.log("Moyenne cherchée: " + moyenne);
     console.log("Écart type : " + ecartType);
+    console.log("Coefficiant de variation : " + 100 * ecartType / moyenne);
 
 });
 
