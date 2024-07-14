@@ -1,5 +1,5 @@
-import { StorageManager } from "../Helpers/Data/StorageManager.js";
-import { Observer } from "./Observer.js";
+import { StorageManager } from "../Helpers/Data/StorageManager";
+import { Observer } from "./Observer";
 
 
 /**
@@ -12,9 +12,7 @@ import { Observer } from "./Observer.js";
  */
 export class ThemeView implements Observer {
     update(data: any) {
-        const bodyElement = document.querySelector('body');
-        console.log(data);
-        
+        const bodyElement = document.querySelector('body');        
         if (bodyElement) {
             bodyElement.setAttribute('class', data.theme);
         }

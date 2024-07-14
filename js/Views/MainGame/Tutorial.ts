@@ -9,8 +9,10 @@ class Tutorial {
     private tooltips: HTMLElement;
     private tutorialsSteps: Array<() => void>;
     private mobile: boolean;
+    private skipTutorial: boolean;
 
     constructor() {
+        this.skipTutorial = false;
         this.tutorialBackground = document.getElementById('tutorial-background')!;
         this.game = document.getElementById('cards-game')!;
         this.tutorial = document.getElementById('tutorial')!;
@@ -81,6 +83,7 @@ class Tutorial {
         submitButton.classList.remove('button--disabled');
         submitButton.disabled = false;
         submitButton.addEventListener('click', () => {
+            if (this.skipTutorial) return;
             let solved = StorageManager.groupsSolved;
             this.tutorial.classList.remove('bottom-0');
             this.tutorial.classList.remove('bottom-4');
@@ -151,17 +154,14 @@ class Tutorial {
     private removeTutorial() {
         this.tutorialBackground.classList.add('hidden');
         this.tutorial.classList.add('hidden');
-        this.game.classList.remove('-z-10');
-        this.tooltips.classList.remove('-z-10');
-        let title = document.getElementById('title')!;
-        let buttons = document.querySelector('.buttons')!;
-        let shuffleMobile = document.querySelector('.shuffle-mobile')!;
+        this.skipTutorial = true;
 
-        title.classList.remove('-z-10');
-        buttons.classList.remove('-z-10');
-        shuffleMobile.classList.remove('-z-10');
+        let elements = document.querySelectorAll('.-z-10');
+        elements.forEach(element => {
+            element.classList.remove('-z-10');
+        });
 
-        let elements = document.querySelectorAll('.z-40');
+        elements = document.querySelectorAll('.z-40');
         elements.forEach(element => {
             element.classList.remove('z-40');
         });

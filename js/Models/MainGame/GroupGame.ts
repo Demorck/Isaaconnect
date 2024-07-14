@@ -22,7 +22,7 @@ export class GroupGame extends Group implements Iterable<Item> {
         return this.selectedItems.map(item => item.getId());
     }
     
-    public getRandomItems(bannedItem: Item[], daysBefore = 0, seeded: boolean): Item[] | null {
+    public getRandomItems(bannedItem: Item[], daysBefore = 0, seeded: boolean, selectedItems: Item[]): Item[] | null {
         let itemsPicked: Item[] = [];
         let counter = 0;
         for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
@@ -35,8 +35,8 @@ export class GroupGame extends Group implements Iterable<Item> {
                     indexGroup = Math.floor(Math.random() * this.getItems().length);
                 }
                 item = this.getItems()[indexGroup];
-                counter++;
-            } while (bannedItem.includes(item));
+                counter++;                
+            } while (bannedItem.includes(item) && counter < 1000);
 
             if (counter >= 1000) {
                 return null;
