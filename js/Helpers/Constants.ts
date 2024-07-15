@@ -5,7 +5,7 @@ export class Constants {
     static items: Item[] = [];
     static groups: Group[] = [];
     
-    static VERSION: string = '1.1.0';
+    static VERSION: string = '1.1.2';
 
     static get ITEMS() {
         return this.items;
@@ -56,7 +56,8 @@ export class Constants {
             difficulty: 'normal',
             debug: false,
             tts: false,
-            link: true
+            link: true,
+            redirect: false
         },
         game: {
             health: Constants.MAX_HEALTH,

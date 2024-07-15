@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (tutorial) {
         let tutorialView = new Tutorial();
-        tutorialView.showTutorial();
     }
 
 });

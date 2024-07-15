@@ -8,9 +8,9 @@ export function animation() {
 
 export function swap(node1: HTMLElement, node2: HTMLElement): void {
     let afterNode2 = node2.nextElementSibling;
-    let parent = node2.parentNode!;
+    let parent = node2.parentNode;
     node1.replaceWith(node2);
-    parent.insertBefore(node1, afterNode2);
+    parent?.insertBefore(node1, afterNode2);
 }
 
 export function swapUI(node1: HTMLElement, node2: HTMLElement): void {

@@ -38,7 +38,13 @@ export function addEvent(container: HTMLElement): void {
 
     if (testsButton) {
         testsButton.addEventListener('click', async () => {
-            // Code for tests button click event
+            StorageManager.lastIsaaconnect = 0;
+            if (StorageManager.version === "1.2.0") {
+                StorageManager.version = "1.1.0";
+            } else {
+                StorageManager.version = "1.2.0";
+            }
+            location.reload();
         });
     }
 }

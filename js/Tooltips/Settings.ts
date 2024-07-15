@@ -1,5 +1,6 @@
 import { Utils } from "../Helpers/Utils.js";
 import { StorageManager } from "../Helpers/Data/StorageManager.js";
+import { Constants } from "../Helpers/Constants.js";
 
 /**
  * @description Display the settings tooltip.
@@ -60,8 +61,6 @@ export function autocompleteLogic(container: HTMLElement): void {
  * @param {HTMLElement} container - The container to apply the logic to.
  */
 export function difficultyLogic(container: HTMLElement): void {
-    if (StorageManager.currentAttempt > 0) return;
-
     const difficulty = StorageManager.difficulty;
     const checkbox = container.querySelector('#difficulty') as HTMLInputElement;
 
@@ -72,6 +71,24 @@ export function difficultyLogic(container: HTMLElement): void {
 
     checkbox.addEventListener('click', () => {
         changeDifficulty(checkbox);
+    });
+}
+
+/**
+ * @description Handles the logic for the link copy button.
+ * @param {HTMLElement} container - The container to apply the logic to.
+ */
+export function redirectWikiLogic(container: HTMLElement): void {
+    const redirect = StorageManager.redirect;
+    const checkbox = container.querySelector('#redirectWiki') as HTMLInputElement;
+
+    if (redirect) {
+        checkbox.checked = true;
+        checkbox.parentElement?.classList.add('tgl-checked');
+    }
+
+    checkbox.addEventListener('click', () => {
+        changeRedirectWiki(checkbox);
     });
 }
 
@@ -146,6 +163,27 @@ function changeDifficulty(element: HTMLInputElement): void {
         cards.forEach(card => {
             card.classList.add('easy');
         });
+    }
+}
+
+function changeRedirectWiki(checkbox: HTMLInputElement): void {
+    const redirect = StorageManager.redirect;
+    let a = document.querySelectorAll<HTMLLinkElement>('#cards-win a');
+    if (redirect) {
+        StorageManager.redirect = false;
+        a.forEach((el) => {
+            el.href = '#';
+            el.target = '';
+        });
+        checkbox.parentElement?.classList.remove('tgl-checked');
+    } else {
+        StorageManager.redirect = true;
+        a.forEach((el) => {
+            let alias = el.getAttribute('data-id');
+            el.href = Constants.WIKI + alias;
+            el.target = '_blank';
+        });
+        checkbox.parentElement?.classList.add('tgl-checked');
     }
 }
 

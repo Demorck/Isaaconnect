@@ -218,6 +218,15 @@ export class StorageManager {
         this.settings = { ...settings, difficulty };
     }
 
+    static get redirect(): boolean {
+        return this.settings.redirect;
+    }
+
+    static set redirect(redirect: boolean) {
+        const settings = this.settings;
+        this.settings = { ...settings, redirect };
+    }
+
     static get tts(): boolean {
         return this.settings.tts;
     }

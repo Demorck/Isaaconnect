@@ -5,4 +5,5 @@ export interface SettingsData {
     debug: boolean;
     tts: boolean;
     link: boolean;
+    redirect: boolean;
 }

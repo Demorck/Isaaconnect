@@ -1,33 +1,42 @@
 import { StorageManager } from "../../Helpers/Data/StorageManager.js";
+import { Utils } from "../../Helpers/Utils.js";
 
 class Tutorial {
     private tutorialBackground: HTMLElement;
     private game: HTMLElement;
     private tutorial: HTMLElement;
-    private nextButton: HTMLElement;
-    private skipButton: HTMLElement;
-    private tooltips: HTMLElement;
-    private tutorialsSteps: Array<() => void>;
-    private mobile: boolean;
+    private nextButton!: HTMLElement;
+    private skipButton!: HTMLElement;
+    private tooltips!: HTMLElement;
+    private tutorialsSteps!: Array<() => void>;
+    private mobile!: boolean;
     private skipTutorial: boolean;
 
     constructor() {
         this.skipTutorial = false;
-        this.tutorialBackground = document.getElementById('tutorial-background')!;
+        this.tutorialBackground = document.getElementById('bigmodal-background')!;
         this.game = document.getElementById('cards-game')!;
-        this.tutorial = document.getElementById('tutorial')!;
-        this.nextButton = document.querySelector('[data-id="next"]')!;
-        this.skipButton = document.querySelector('[data-id="skip"]')!;
-        this.tooltips = document.querySelector('#tooltips')!;
-        this.mobile = window.innerWidth < 768;
-        this.tutorialsSteps = [this.firstStep.bind(this), this.secondStep.bind(this), this.thirdStep.bind(this), this.correctGroup.bind(this), this.wrongGroup.bind(this)];
+        this.tutorial = document.getElementById('bigmodal-wrapper')!;
+        this.loadTutorial().then(() => {
+            this.nextButton = document.querySelector('[data-id="next"]')!;
+            this.skipButton = document.querySelector('[data-id="skip"]')!;
+            this.tooltips = document.querySelector('#tooltips')!;
+            this.mobile = window.innerWidth < 768;
+            this.tutorialsSteps = [this.firstStep.bind(this), this.secondStep.bind(this), this.thirdStep.bind(this), this.correctGroup.bind(this), this.wrongGroup.bind(this)];
+            this.addEvents();
+            this.showTutorial();
+        });
     }
 
-    public showTutorial() {
+    private async loadTutorial(): Promise<void> {
+        let tutorial = await Utils.loadHTML('/include/modals/tutorial.html');
+        this.tutorial.innerHTML = tutorial;
+    }
+
+    private showTutorial() {
         this.tutorialBackground.classList.remove('hidden');
         this.tutorial.classList.remove('hidden');
         this.tutorial.classList.add('top-1/2', 'left-1/2', 'transform', '-translate-x-1/2', '-translate-y-1/2');
-        this.addEvents();
         this.tutorialsSteps[0]();
     }
 

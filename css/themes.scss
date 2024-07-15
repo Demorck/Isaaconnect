@@ -440,6 +440,15 @@ $white-submit: (
                 border-color: transparent transparent map-get($map: $theme-map, $key: secondary) transparent;
             }
         }
+
+        .button--language {
+            border: 2px solid map-get($map: $theme-map, $key: secondary);
+        }
+
+        .button--language-active {
+            font-weight: bold;
+            background-color: map-get($map: $theme-map, $key: secondary-hover);
+        }
     }
 }
 

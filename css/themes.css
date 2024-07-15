@@ -114,6 +114,13 @@
     border-color: transparent transparent #71472D transparent;
   }
 }
+.basement-theme .button--language {
+  border: 2px solid #71472D;
+}
+.basement-theme .button--language-active {
+  font-weight: bold;
+  background-color: #503220;
+}
 
 .mausoleum-theme {
   background-color: #2F1D2E;
@@ -173,6 +180,13 @@
   .mausoleum-theme #tooltip-wrapper::after {
     border-color: transparent transparent #5F3B5D transparent;
   }
+}
+.mausoleum-theme .button--language {
+  border: 2px solid #5F3B5D;
+}
+.mausoleum-theme .button--language-active {
+  font-weight: bold;
+  background-color: #422a40;
 }
 
 .flooded-caves-theme {
@@ -234,6 +248,13 @@
     border-color: transparent transparent #385094 transparent;
   }
 }
+.flooded-caves-theme .button--language {
+  border: 2px solid #385094;
+}
+.flooded-caves-theme .button--language-active {
+  font-weight: bold;
+  background-color: #73B1F5;
+}
 
 .green-theme {
   background-color: #242A0C;
@@ -293,6 +314,13 @@
   .green-theme #tooltip-wrapper::after {
     border-color: transparent transparent #465117 transparent;
   }
+}
+.green-theme .button--language {
+  border: 2px solid #465117;
+}
+.green-theme .button--language-active {
+  font-weight: bold;
+  background-color: #6A7B23;
 }
 
 .catacombs-theme {
@@ -354,6 +382,13 @@
     border-color: transparent transparent #5B3D33 transparent;
   }
 }
+.catacombs-theme .button--language {
+  border: 2px solid #5B3D33;
+}
+.catacombs-theme .button--language-active {
+  font-weight: bold;
+  background-color: #B78C69;
+}
 
 .ph-theme {
   background-color: #DED4C8;
@@ -413,6 +448,13 @@
   .ph-theme #tooltip-wrapper::after {
     border-color: transparent transparent #000000 transparent;
   }
+}
+.ph-theme .button--language {
+  border: 2px solid #000000;
+}
+.ph-theme .button--language-active {
+  font-weight: bold;
+  background-color: #FF7621;
 }
 
 .depths-theme {
@@ -474,6 +516,13 @@
     border-color: transparent transparent #595959 transparent;
   }
 }
+.depths-theme .button--language {
+  border: 2px solid #595959;
+}
+.depths-theme .button--language-active {
+  font-weight: bold;
+  background-color: #767171;
+}
 
 .dank-depths-theme {
   background-color: #17171B;
@@ -533,6 +582,13 @@
   .dank-depths-theme #tooltip-wrapper::after {
     border-color: transparent transparent #363640 transparent;
   }
+}
+.dank-depths-theme .button--language {
+  border: 2px solid #363640;
+}
+.dank-depths-theme .button--language-active {
+  font-weight: bold;
+  background-color: #525262;
 }
 
 .gehenna-theme {
@@ -594,6 +650,13 @@
     border-color: transparent transparent #873535 transparent;
   }
 }
+.gehenna-theme .button--language {
+  border: 2px solid #873535;
+}
+.gehenna-theme .button--language-active {
+  font-weight: bold;
+  background-color: #D43838;
+}
 
 .womb-theme {
   background-color: #540000;
@@ -653,6 +716,13 @@
   .womb-theme #tooltip-wrapper::after {
     border-color: transparent transparent #A40000 transparent;
   }
+}
+.womb-theme .button--language {
+  border: 2px solid #A40000;
+}
+.womb-theme .button--language-active {
+  font-weight: bold;
+  background-color: #FA0000;
 }
 
 .scarred-womb-theme {
@@ -714,6 +784,13 @@
     border-color: transparent transparent #873535 transparent;
   }
 }
+.scarred-womb-theme .button--language {
+  border: 2px solid #873535;
+}
+.scarred-womb-theme .button--language-active {
+  font-weight: bold;
+  background-color: #D43838;
+}
 
 .dave-theme {
   background-color: #5371A3;
@@ -773,6 +850,13 @@
   .dave-theme #tooltip-wrapper::after {
     border-color: transparent transparent #2A3A54 transparent;
   }
+}
+.dave-theme .button--language {
+  border: 2px solid #2A3A54;
+}
+.dave-theme .button--language-active {
+  font-weight: bold;
+  background-color: #3B5175;
 }
 
 .corpse-theme {
@@ -834,6 +918,13 @@
     border-color: transparent transparent #556F51 transparent;
   }
 }
+.corpse-theme .button--language {
+  border: 2px solid #556F51;
+}
+.corpse-theme .button--language-active {
+  font-weight: bold;
+  background-color: #71936B;
+}
 
 .cathedral-theme {
   background-color: #20475A;
@@ -893,6 +984,13 @@
   .cathedral-theme #tooltip-wrapper::after {
     border-color: transparent transparent #4A7FA0 transparent;
   }
+}
+.cathedral-theme .button--language {
+  border: 2px solid #4A7FA0;
+}
+.cathedral-theme .button--language-active {
+  font-weight: bold;
+  background-color: #79A6C1;
 }
 
 .sheol-theme {
@@ -954,6 +1052,13 @@
     border-color: transparent transparent #262626 transparent;
   }
 }
+.sheol-theme .button--language {
+  border: 2px solid #262626;
+}
+.sheol-theme .button--language-active {
+  font-weight: bold;
+  background-color: #404040;
+}
 
 .chest-theme {
   background-color: #3B2819;
@@ -1014,6 +1119,13 @@
     border-color: transparent transparent #805738 transparent;
   }
 }
+.chest-theme .button--language {
+  border: 2px solid #805738;
+}
+.chest-theme .button--language-active {
+  font-weight: bold;
+  background-color: #B9865F;
+}
 
 .dark-room-theme {
   background-color: #261036;
@@ -1073,6 +1185,13 @@
   .dark-room-theme #tooltip-wrapper::after {
     border-color: transparent transparent #402C5A transparent;
   }
+}
+.dark-room-theme .button--language {
+  border: 2px solid #402C5A;
+}
+.dark-room-theme .button--language-active {
+  font-weight: bold;
+  background-color: #665272;
 }
 
 .ph-theme #title h1 {

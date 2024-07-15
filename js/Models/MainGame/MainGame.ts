@@ -161,12 +161,11 @@ export class MainGame extends Observable {
     }
 
     private rightAnswer(group: GroupGame, animate: boolean = true) {
-        this.notifyObservers({ deselect: true, animate: animate, group: group });
+        StorageManager.groupFound++;
         group.setSolved();
-        if (!StorageManager.finished)
-            StorageManager.groupFound++;
-        
         StorageManager.groupsSolved = this.getGroupSolved();
+
+        this.notifyObservers({ deselect: true, animate: animate, group: group });
     }
 
     private getGroupSolved() : GroupGame[] {
@@ -185,7 +184,15 @@ export class MainGame extends Observable {
                 for (const item of group) {
                     selectedIDs.push(item.getId());
                 }
-                win ? this.handleSubmit(selectedIDs) : this.rightAnswer(group);
+                if (win)
+                {
+                    this.handleSubmit(selectedIDs);
+                } else {
+                    this.notifyObservers({ deselect: true, animate: true, group: group });
+                    group.setSolved();
+                    
+                    StorageManager.groupsSolved = this.getGroupSolved();
+                }
             }));
         }, Promise.resolve()).then(() => {
             this.notifyObservers(this.getNotifyData(win, true));

@@ -2,6 +2,7 @@ import { Constants } from "../../Helpers/Constants.js";
 import { Utils } from "../../Helpers/Utils.js";
 import { Item } from "../../Models/Item.js";
 import { Observer } from "../Observer.js";
+import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 
 export class GroupGameView implements Observer {
     private container: HTMLElement;
@@ -27,7 +28,7 @@ export class GroupGameView implements Observer {
 
         data.items.forEach((item, index) => {
             if (index == 2) content += `</div><div class="flex flex-row">`;
-            content += `<div class="solved-group--card"><a target="_blank"  href="${Constants.WIKI + item.getAlias()}"><img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.getId())}.png" alt="${item.getAlias()}"></a></div>`;
+            content += `<div class="solved-group--card">${this.getRedirectLinkHTML(item.getAlias())}<img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.getId())}.png" alt="${item.getAlias()}"></a></div>`;
             document.querySelector<HTMLElement>(`label[data-id="${item.getId()}"]`)?.remove();
         });
 
@@ -36,7 +37,7 @@ export class GroupGameView implements Observer {
             <p class="solved-group--description text-[0.65rem] font-medium md:text-sm">`;
 
         data.items.forEach((item, index) => {
-            content += `<a target="_blank"  href="${Constants.WIKI + item.getAlias()}">${item.getAlias()}</a>`;
+            content += `${this.getRedirectLinkHTML(item.getAlias())}${item.getAlias()}</a>`;
             if (index != 3) content += `, `;
         });
 
@@ -44,6 +45,16 @@ export class GroupGameView implements Observer {
         content += `</div></section>`;
         
         return content;
+    }
+
+    private getRedirectLinkHTML(alias: string): string {
+        let a: string;
+        if (StorageManager.redirect) {
+            a = `<a target="_blank"  href="${Constants.WIKI + alias}" data-id="${alias}">`;
+        } else {
+            a = `<a href="#" data-id="${alias}">`;
+        }
+        return a;
     }
 
 }

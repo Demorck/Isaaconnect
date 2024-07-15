@@ -1,7 +1,8 @@
 import { statsLogic } from './Stats.js';
-import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic } from './Settings.js';
+import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic, redirectWikiLogic } from './Settings.js';
 import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
+import { addEventLogs } from './Logs.js';
 // import { TTSLogic } from './Accessibility.js';
 import { Utils } from '../Helpers/Utils.js';
 
@@ -59,6 +60,9 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
         case 'debug':
             html = await Utils.loadHTML('/include/tooltips/debug.html');
             break;
+        case 'logs':
+            html = await Utils.loadHTML('/include/tooltips/logs.html');
+            break;
         default:
             break;
     }
@@ -73,6 +77,7 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
             autocompleteLogic(wrapper);
             difficultyLogic(wrapper);
             linkCopyLogic(wrapper);
+            redirectWikiLogic(wrapper);
             break;
         case 'schedule':
             scheduleLogic();
@@ -82,6 +87,9 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
             break;
         case 'debug':
             addEvent(wrapper);
+            break;
+        case 'logs':
+            addEventLogs(wrapper);
             break;
         default:
             break;

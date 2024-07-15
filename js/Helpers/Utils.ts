@@ -1,3 +1,4 @@
+import { ChangelogsView } from "../Views/ChangelogsView.js";
 import { Constants } from "./Constants.js";
 import { StorageManager } from "./Data/StorageManager.js";
 
@@ -123,9 +124,13 @@ export class Utils {
     static resetIfNewVersion() {
         let currentVersion = Constants.VERSION;
         let versionUser = StorageManager.version;
-        if (versionUser !== currentVersion) {
-            StorageManager.game = Constants.DEFAULT_DATA.game;
+        if (versionUser === null) {
             StorageManager.version = currentVersion;
+        } else if (versionUser !== currentVersion) {
+            StorageManager.game = Constants.DEFAULT_DATA.game;
+            StorageManager.version = currentVersion;        
+            let changelog = new ChangelogsView();
+            changelog.showNewChangelogs();
         }
     }
 

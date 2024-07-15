@@ -411,7 +411,7 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     bottom: 5.25rem;
 }
 
-#tutorial-background {
+#bigmodal-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -494,8 +494,8 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
         left: 38%;
     }
 
-    #tooltip-wrapper[data-id="accessibility"]::after {
-        left: 74%;
+    #tooltip-wrapper[data-id="logs"]::after {
+        left: 59%;
     }
 
     #tooltip-wrapper[data-id="debug"]::after {
@@ -585,6 +585,11 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     background-size: 100% 100%;
     background-image: url("/assets/loading-1.png");
     animation: loader 0.2s infinite step-start alternate;
+}
+
+.button--language-active[data-lang="fr"] {
+    background: linear-gradient(to right, blue 33%, white 33%, white 66%, red 66%);
+    color: #000;
 }
 
 @keyframes loader {
