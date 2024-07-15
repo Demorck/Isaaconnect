@@ -764,7 +764,7 @@
   },
   {
     "name": "Items that can charm enemies",
-    "items": [421, 207, 200, 280, 391, 404, 432, 513, 591     ],
+    "items": [421, 207, 200, 280, 404, 432, 513, 591     ],
     "difficulty": 2,
     "tags": "status"
   },
