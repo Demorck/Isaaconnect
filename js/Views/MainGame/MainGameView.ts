@@ -244,11 +244,8 @@ export class MainGameView implements Observer {
             title = "I finished a random Isaaconnect!"
         try
         {
-            console.log(data);
-            
             let textToCopy = "";
             textToCopy = title + "\n";
-
             let health = data.health;
             
             if (typeof health != "number")

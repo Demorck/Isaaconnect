@@ -44,7 +44,7 @@ export class MainGameController {
             this.incrementStats(win)
             this.toggleFinishedState();
         }
-        this.game.notifyObservers({health: 4});
+        this.game.notifyObservers({health: this.game.getHealth()});
         this.gameView.setController(this);
     }
 

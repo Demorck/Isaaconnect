@@ -13,6 +13,7 @@ export class MainGame extends Observable {
     private groups: GroupGame[];
     private attempts: Group[][];
     private history: Item[][];
+    private groupFound: number;
     private currentAttempt: number;
     private seeded: boolean;
     private isFinished: boolean = false;
@@ -26,6 +27,7 @@ export class MainGame extends Observable {
         this.attempts = [];
         this.history = [];
         this.currentAttempt = 0;
+        this.groupFound = 0;
         this.groups = [];
         this.mechanics = new MainGameMechanics();
         
@@ -136,19 +138,20 @@ export class MainGame extends Observable {
                 streak: StorageManager.winStreak,
                 seeded: this.seeded,
                 attempts: this.attempts,
-                groupFound: this.getGroupSolved().length,
+                groupFound: this.groupFound,
             };
         } else {
-            let solved = this.getGroupSolved().length;
+            let solved = this.groupFound;
             return {
                 autocomplete: autocomplete,
                 isFinished: true,
                 win: false,
+                health: this.health,
                 solved: solved,
                 losses: StorageManager.losses,
                 seeded: this.seeded,
                 attempts: this.attempts,
-                groupFound: this.getGroupSolved().length,
+                groupFound: this.groupFound,
             };
         }
     }
@@ -171,7 +174,10 @@ export class MainGame extends Observable {
 
     private rightAnswer(group: GroupGame, animate: boolean = true) {
         if (this.seeded)
+        {
             StorageManager.groupFound++;
+            this.groupFound++;
+        }
         group.setSolved();
         
         if (this.seeded)
@@ -200,9 +206,7 @@ export class MainGame extends Observable {
                 {
                     this.handleSubmit(selectedIDs);
                 } else {
-                    this.notifyObservers({ deselect: true, animate: true, group: group });
-                    group.setSolved();
-                    
+                    this.notifyObservers({ deselect: true, animate: true, group: group });                    
                     if (this.seeded)
                         StorageManager.groupsSolved = this.getGroupSolved();
                 }
@@ -258,11 +262,20 @@ export class MainGame extends Observable {
                 });
                 this.history.push(historyItems);
             });
-        }        
+        }     
+        
+        const localGroupFound = StorageManager.groupFound;
+        if (localGroupFound !== null) this.groupFound = localGroupFound;
     }
 
     public isSeeded(): boolean {
         return this.seeded;
+    }
+
+    
+
+    public getHealth(): number {
+        return this.health;
     }
 
 }
