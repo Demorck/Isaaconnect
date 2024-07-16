@@ -36,14 +36,15 @@ export class MainGameController {
         this.shuffleCard();
         this.addEventListeners();
         this.game.addObserver(this.gameView);
-        this.game.assignStorageToGame();
+        if (this.game.isSeeded())
+            this.game.assignStorageToGame();
         let {finished, win} = this.game.checkFinished();
 
         if (finished) {
             this.incrementStats(win)
             this.toggleFinishedState();
         }
-        this.game.notifyObservers();
+        this.game.notifyObservers({health: 4});
         this.gameView.setController(this);
     }
 
@@ -78,10 +79,16 @@ export class MainGameController {
         let shuffleButton = document.querySelectorAll('[data-id="shuffle"]');
         shuffleButton.forEach(button => {
             button.addEventListener('click', this.shuffleCard);
+            let element = button as HTMLButtonElement;
+            element.dataset.umamiEvent = "Shuffle button clicked";
         });
 
         let submitButton = document.querySelectorAll('[data-id="submit"]');
-        submitButton.forEach(button => button.addEventListener('click', this.handleSubmit));
+        submitButton.forEach(button => {
+            button.addEventListener('click', this.handleSubmit)
+            let element = button as HTMLButtonElement;
+            element.dataset.umamiEvent = "Submit button clicked";
+        });
     }
 
     private checkboxChangeHandler = (event: Event, checkboxes: NodeListOf<HTMLInputElement>) => {

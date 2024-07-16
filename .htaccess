@@ -1,3 +1,11 @@
 RewriteEngine On
+
+# If the requested file doesn't exist, check if adding .php results in an existing file
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# If the requested file doesn't exist, check if adding .html results in an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]

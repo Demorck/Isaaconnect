@@ -1,4 +1,4 @@
-import { ChangelogsView } from "../Views/ChangelogsView";
+import { ChangelogsView } from "../Views/ChangelogsView.js";
 
 /**
  * @description Adds event listeners for displaying changelogs.
@@ -6,14 +6,10 @@ import { ChangelogsView } from "../Views/ChangelogsView";
  */
 export function addEventLogs(container: HTMLElement): void {
     const buttons = container.querySelectorAll<HTMLButtonElement>('.button--logs');
-    console.log(buttons);
-    
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const version = button.getAttribute('data-version')!;
             let logs = new ChangelogsView(version);
-            console.log(logs, version);
-            
             logs.showNewChangelogs();
         });
     });

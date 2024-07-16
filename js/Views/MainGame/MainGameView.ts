@@ -5,6 +5,7 @@ import { Utils } from "../../Helpers/Utils.js";
 import { animation, swap, swapUI } from "../../Controllers/MainGame/Animation.js";
 import { MainGameController } from "../../Controllers/MainGame/MainGameController.js";
 import { GroupGame } from "../../Models/MainGame/GroupGame.js";
+import { GroupData } from "../../Helpers/Data/GroupData.js";
 
 /**
  * @description MainGameView class that displays the main game (the big container).
@@ -64,7 +65,7 @@ export class MainGameView implements Observer {
             });
         }
 
-        this.renderHealth(StorageManager.health);
+        this.renderHealth(data.health);
         this.applyBorderRadius();
     }
 
@@ -77,7 +78,7 @@ export class MainGameView implements Observer {
             document.querySelector('.close-button')!.addEventListener('click', () => {
                 modalContainer.classList.add('hidden');
             });
-            document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix();
+            document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix(data.attempts);
             let copyButton = document.getElementById('copy')!;
             copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
     
@@ -91,6 +92,7 @@ export class MainGameView implements Observer {
      * @param {number} health - The health of the player
      */
     private renderHealth(health: number): void {
+        if (health < 0 || health == undefined) return;
         this.healthContainer.innerHTML = '';
         
         for (let i = 0; i < health; i++)
@@ -203,16 +205,23 @@ export class MainGameView implements Observer {
 
     private async showResults(win: boolean, data: any): Promise<string> {
         let modalPath: string;
-        if (win) modalPath = "/include/modals/win.html";
-        else modalPath = "/include/modals/lose.html";
+        if (data.seeded)
+        {
+            if (win) modalPath = "/include/modals/results/win.html";
+            else modalPath = "/include/modals/results/lose.html";
+
+        } else {
+            if (win) modalPath = "/include/modals/results/win random.html";
+            else modalPath = "/include/modals/results/lose random.html";
+            
+        }
         let html = await Utils.loadHTML(modalPath);
         
         html = Utils.replacePlaceholders(html, data);
         return html;
     }
 
-    private convertAttemptToSquareMatrix(): string {
-        let attempt = StorageManager.attempts;
+    private convertAttemptToSquareMatrix(attempt: GroupData[][]): string {
         let content = `<div data-id="results" class="flex flex-col">`;
         attempt.forEach((group, index_attempt) => {
             content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
@@ -235,10 +244,12 @@ export class MainGameView implements Observer {
             title = "I finished a random Isaaconnect!"
         try
         {
+            console.log(data);
+            
             let textToCopy = "";
             textToCopy = title + "\n";
 
-            let health = StorageManager.health;
+            let health = data.health;
             
             if (typeof health != "number")
             {
@@ -246,11 +257,11 @@ export class MainGameView implements Observer {
                 return;
             }
 
-            let groupFound = StorageManager.groupFound
+            let groupFound = data.groupFound;
             
             textToCopy += `✅: ${groupFound}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
 
-            let attempts = StorageManager.attempts;
+            let attempts: GroupData[][] = data.attempts;
 
             attempts.forEach((attempt, index) => {
                 attempt.forEach((group: {index: number}, index_group: number) => {

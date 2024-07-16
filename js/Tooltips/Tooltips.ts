@@ -113,6 +113,9 @@ export function initializeTooltipListener(): void {
         elements.forEach(element => {
             element.addEventListener('click', () => {
                 displayTooltip(element as HTMLElement);
+                let el = element as HTMLElement;
+                
+                el.dataset.umamiEvent = `Tooltip ${el.getAttribute('data-id')} clicked`;
             });
         });
     }

@@ -15,6 +15,7 @@ export class MainGame extends Observable {
     private history: Item[][];
     private currentAttempt: number;
     private seeded: boolean;
+    private isFinished: boolean = false;
 
     private mechanics: MainGameMechanics;
 
@@ -37,6 +38,7 @@ export class MainGame extends Observable {
             const lastIsaaconnect = StorageManager.lastIsaaconnect;
             if(lastIsaaconnect !== Utils.getDaysSince())
                 StorageManager.newIsaaconnect();
+
             for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
                 const selectedGroups = GameUtils.generateSelection(i);
                 selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
@@ -44,7 +46,7 @@ export class MainGame extends Observable {
             
             this.groups = GameUtils.generateSelection(0, bannedGroups);
         } else {
-            StorageManager.newIsaaconnect();
+            // StorageManager.newIsaaconnect();
             this.groups = GameUtils.generateSelection(0, bannedGroups, false);
         }
 
@@ -79,9 +81,11 @@ export class MainGame extends Observable {
             }
 
             this.currentAttempt++;
-            StorageManager.currentAttempt = this.currentAttempt;
-            StorageManager.history = this.history;
-            StorageManager.attempts = this.attempts;
+            if (this.seeded) {
+                StorageManager.currentAttempt = this.currentAttempt;
+                StorageManager.history = this.history;
+                StorageManager.attempts = this.attempts;
+            }
         }
     }
 
@@ -130,7 +134,9 @@ export class MainGame extends Observable {
                 title: title,
                 mistakes: mistakes,
                 streak: StorageManager.winStreak,
-                seeded: this.seeded
+                seeded: this.seeded,
+                attempts: this.attempts,
+                groupFound: this.getGroupSolved().length,
             };
         } else {
             let solved = this.getGroupSolved().length;
@@ -140,14 +146,17 @@ export class MainGame extends Observable {
                 win: false,
                 solved: solved,
                 losses: StorageManager.losses,
-                seeded: this.seeded
+                seeded: this.seeded,
+                attempts: this.attempts,
+                groupFound: this.getGroupSolved().length,
             };
         }
     }
 
     private wrongAnswer(selectedID: number[]) {        
         this.health--;
-        StorageManager.health = this.health;
+        if (this.seeded)
+            StorageManager.health = this.health;
         
         this.groups.forEach(group => {
             for (const item of group) {
@@ -157,13 +166,16 @@ export class MainGame extends Observable {
             }
         });
 
-        this.notifyObservers();
+        this.notifyObservers({health: this.health});
     }
 
     private rightAnswer(group: GroupGame, animate: boolean = true) {
-        StorageManager.groupFound++;
+        if (this.seeded)
+            StorageManager.groupFound++;
         group.setSolved();
-        StorageManager.groupsSolved = this.getGroupSolved();
+        
+        if (this.seeded)
+            StorageManager.groupsSolved = this.getGroupSolved();
 
         this.notifyObservers({ deselect: true, animate: animate, group: group });
     }
@@ -191,7 +203,8 @@ export class MainGame extends Observable {
                     this.notifyObservers({ deselect: true, animate: true, group: group });
                     group.setSolved();
                     
-                    StorageManager.groupsSolved = this.getGroupSolved();
+                    if (this.seeded)
+                        StorageManager.groupsSolved = this.getGroupSolved();
                 }
             }));
         }, Promise.resolve()).then(() => {
