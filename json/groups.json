@@ -327,7 +327,7 @@
   },
   {
     "name": "Items that teleport Isaac",
-    "items": [681, 635, 316, 324, 44, 419     ],
+    "items": [681, 635, 316, 324, 44, 419, 660, 396],
     "difficulty": 2,
     "tags" : "tp"
   },
