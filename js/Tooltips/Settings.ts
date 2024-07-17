@@ -181,6 +181,8 @@ function changeRedirectWiki(checkbox: HTMLInputElement): void {
             el.href = Constants.WIKI + alias;
             if (alias == "<3")
                 el.href = Constants.WIKI + 'Less_Than_Three';
+            if (alias == "Little Horn")
+                el.href = Constants.WIKI + 'Little_Horn_(Item)';
             el.target = '_blank';
         });
         checkbox.parentElement?.classList.add('tgl-checked');
