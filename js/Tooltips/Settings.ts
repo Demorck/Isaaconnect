@@ -119,8 +119,6 @@ function changeBackground(element: HTMLSelectElement): void {
 
     let theme = element.value;
     StorageManager.theme = theme;
-    console.log(theme);
-
     if (element.value === 'void-theme') {
         const selectElement = document.querySelector('[name=background]') as HTMLSelectElement;
         const optionValues = Array.from(selectElement.options).map(o => o.value);
@@ -181,6 +179,8 @@ function changeRedirectWiki(checkbox: HTMLInputElement): void {
         a.forEach((el) => {
             let alias = el.getAttribute('data-id');
             el.href = Constants.WIKI + alias;
+            if (alias == "<3")
+                el.href = Constants.WIKI + 'Less_Than_Three';
             el.target = '_blank';
         });
         checkbox.parentElement?.classList.add('tgl-checked');

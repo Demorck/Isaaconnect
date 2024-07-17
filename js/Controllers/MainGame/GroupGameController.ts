@@ -10,11 +10,11 @@ export class GroupGameController {
     private groupView: GroupGameView;
     private itemsController: ItemController[] = [];
 
-    constructor(group: GroupGame, groupView: GroupGameView) {
+    constructor(group: GroupGame, groupView: GroupGameView, blind: boolean = false) {
         this.group = group;
         this.groupView = groupView;
         for (const item of group) {
-            let itemView = new ItemView('cards-module', item);
+            let itemView = new ItemView('cards-module', item, blind);
             this.itemsController.push(new ItemController(item, itemView));
         }
 

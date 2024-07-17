@@ -50,7 +50,8 @@ export class GroupGameView implements Observer {
     private getRedirectLinkHTML(alias: string): string {
         let a: string;
         if (StorageManager.redirect) {
-            a = `<a target="_blank"  href="${Constants.WIKI + alias}" data-id="${alias}">`;
+            a = `<a target="_blank"  href="${Constants.WIKI + alias}" data-id="${alias}">`;            
+            if (alias == "&lt;3") a = `<a target="_blank"  href="${Constants.WIKI + 'Less_Than_Three'}" data-id="${alias}">`;
         } else {
             a = `<a href="#" data-id="${alias}">`;
         }

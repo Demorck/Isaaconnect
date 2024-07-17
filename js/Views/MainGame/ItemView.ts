@@ -15,8 +15,10 @@ import { StorageManager } from "../../Helpers/Data/StorageManager.js";
 export class ItemView implements Observer {
     private itemContainer: HTMLElement;
     private itemElement: HTMLElement;
+    private blind: boolean;
 
-    constructor(itemContainerId: string, item: Item) {
+    constructor(itemContainerId: string, item: Item, blind: boolean = false) {
+        this.blind = blind;
         this.itemContainer = document.getElementById(itemContainerId)!;
         this.itemElement = this.createItemElement(item);
     }
@@ -53,6 +55,13 @@ export class ItemView implements Observer {
         const spanElement = document.createElement('span');
         spanElement.className = 'card-module--content text-xs sm:text-sm text-wrap';
         spanElement.textContent = item.getAlias();
+
+        
+        
+        if (this.blind) {
+            imgElement.src = '/assets/gfx/items/collectibles/questionmark.png';
+            spanElement.textContent = 'Question Mark';
+        }
 
         itemElement.appendChild(inputElement);
         itemElement.appendChild(imgElement);

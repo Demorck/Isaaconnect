@@ -16,13 +16,14 @@ export class MainGame extends Observable {
     private groupFound: number;
     private currentAttempt: number;
     private seeded: boolean;
-    private isFinished: boolean = false;
+    private isBlind: boolean;
 
     private mechanics: MainGameMechanics;
 
-    constructor(seeded = true) {
+    constructor(seeded = true, blind = false) {
         super();
         this.health = Constants.MAX_HEALTH;
+        this.isBlind = blind;
         this.seeded = seeded;
         this.attempts = [];
         this.history = [];
@@ -54,12 +55,16 @@ export class MainGame extends Observable {
 
     }
 
+    public setupFinished() {
+        this.notifyObservers({ health: this.health });
+    }
+
     public getGroups(): GroupGame[] {
         return this.groups.slice();
     }
 
     public handleSubmit(selectedID: number[]) {
-        let results = this.mechanics.handleSubmit(selectedID, this.getGroups());
+        let results = this.mechanics.handleSubmit(selectedID, this.getGroups(), this.history);
         
         let win = results.win;
         let attempts = results.attempts;
@@ -183,7 +188,7 @@ export class MainGame extends Observable {
         if (this.seeded)
             StorageManager.groupsSolved = this.getGroupSolved();
 
-        this.notifyObservers({ deselect: true, animate: animate, group: group });
+        this.notifyObservers({ deselect: true, animate: animate, group: group, disabled: true });
     }
 
     private getGroupSolved() : GroupGame[] {
@@ -276,6 +281,10 @@ export class MainGame extends Observable {
 
     public getHealth(): number {
         return this.health;
+    }
+
+    public getBlind(): boolean {
+        return this.isBlind;
     }
 
 }

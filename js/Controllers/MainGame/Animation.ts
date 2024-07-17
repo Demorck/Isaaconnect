@@ -1,3 +1,5 @@
+import { Constants } from "../../Helpers/Constants.js";
+
 export function animation() {
     let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
     let first = selected[0];
@@ -7,6 +9,7 @@ export function animation() {
 }
 
 export function swap(node1: HTMLElement, node2: HTMLElement): void {
+    let cards = document.querySelectorAll<HTMLElement>('.card-module');
     let afterNode2 = node2.nextElementSibling;
     let parent = node2.parentNode;
     node1.replaceWith(node2);
@@ -44,7 +47,9 @@ export function swapUI(node1: HTMLElement, node2: HTMLElement): void {
     node2.style.transform = `translate(${finalElement2Style.x}px, ${finalElement2Style.y}px)`;
 
     setTimeout(() => {
-        swap(node1, node2);
+        try {
+            swap(node1, node2);
+        } catch (ignored) {}
         node1.classList.remove('transition');
         node2.classList.remove('transition');
         node2.removeAttribute('style');

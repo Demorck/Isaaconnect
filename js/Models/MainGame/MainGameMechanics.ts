@@ -4,14 +4,12 @@ import { GameUtils } from "./GameUtils.js";
 import { Item } from "../Item.js";
 import { Group } from "../Group.js";
 import { GroupGame } from "./GroupGame.js";
-import { ItemData } from "../../Helpers/Data/ItemData.js";
 
 export class MainGameMechanics {
     constructor() {}
 
 
-    public handleSubmit = (selectedIDs: number[], groups: GroupGame[]) => {        
-        let history = StorageManager.history;
+    public handleSubmit = (selectedIDs: number[], groups: GroupGame[], history: Item[][]) => {        
         let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs);
         
         if (alreadyGuessed) {
@@ -54,13 +52,13 @@ export class MainGameMechanics {
      * @param {number[]} selectedIDs IDs of selected Items 
      * @returns {boolean}
      */
-    private checkIfAlreadyGuessed(history: ItemData[][], selectedIDs: number[]): boolean {        
+    private checkIfAlreadyGuessed(history: Item[][], selectedIDs: number[]): boolean {        
         let j = 0;
-        let currentAttempt = StorageManager.currentAttempt;
+        let currentAttempt = history.length;
         history.forEach(attempt => {
-            let k = 0;
+            let k = 0;            
             for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
-                let filter = attempt.filter(item => item.id == selectedIDs[i]);
+                let filter = attempt.filter(item => item.getId() == selectedIDs[i]);
                 let isInclude = filter.length > 0;
                 if (isInclude) k++;
             }

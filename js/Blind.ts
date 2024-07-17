@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
 
     let tutorial = StorageManager.lastIsaaconnect === 0;
-    let game = new MainGame(false);
+    let game = new MainGame(false, true);
     let gameView = new MainGameView('#cards-game');
     let gameController = new MainGameController(game, gameView);
 

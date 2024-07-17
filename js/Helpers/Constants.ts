@@ -5,7 +5,7 @@ export class Constants {
     static items: Item[] = [];
     static groups: Group[] = [];
     
-    static VERSION: string = '1.1.2';
+    static VERSION: string = '1.1.3';
 
     static get ITEMS() {
         return this.items;

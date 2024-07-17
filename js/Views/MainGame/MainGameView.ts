@@ -37,6 +37,9 @@ export class MainGameView implements Observer {
             return;
         }
 
+        if (data.disabled)
+            this.toggleSubmitButton(data.disabled);
+
         if (data.animate)
         {
             let group: GroupGame = data.group;
@@ -52,6 +55,14 @@ export class MainGameView implements Observer {
 
             this.animate().then(async () => {
                 await this.controller.toggleGroupSolved(data.group);
+                let cards = document.querySelectorAll<HTMLElement>('.card-module');
+                if (cards.length == Constants.NUMBER_OF_ITEMS)
+                {
+                    cards.forEach(card => {
+                        card.style.transform = `translate(0px, $0px)`;
+                    });
+                }
+                
                 if (data.deselect) this.deselectCards();
             });
         }
@@ -66,7 +77,7 @@ export class MainGameView implements Observer {
         }
 
         this.renderHealth(data.health);
-        this.applyBorderRadius();
+        this.applyBorderRadius();        
     }
 
     private toggleFinishedState(data: any): void {
@@ -110,7 +121,8 @@ export class MainGameView implements Observer {
      * @param {boolean} disabled - True if the button should be disabled, false otherwise
      */
     public toggleSubmitButton(disabled: boolean): void {
-        const submitButton = document.querySelector<HTMLButtonElement>('[data-id="submit"]')!;
+        const submitButton = document.querySelector<HTMLButtonElement>('[data-id="submit"]');
+        if (submitButton == null) return;
 
         if (disabled)
             submitButton.classList.add('button--disabled');
@@ -321,7 +333,9 @@ export class MainGameView implements Observer {
             for (let i = 0; i < indexContains.length; i++) {
                 let index = indexContains[i];
                 let elem = this.itemsContainer.children[index];
-                swapUI(selected[numberAlreadySelected + i] as HTMLElement, elem as HTMLElement);
+                try {
+                    swapUI(selected[numberAlreadySelected + i] as HTMLElement, elem as HTMLElement);
+                } catch (ignored) {}
             }
 
             await new Promise(resolve => setTimeout(resolve, 500));

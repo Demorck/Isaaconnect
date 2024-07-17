@@ -30,7 +30,7 @@ export class MainGameController {
 
         this.game.getGroups().forEach(group => {
             let groupView = new GroupGameView('#cards-win');
-            this.groupsController.push(new GroupGameController(group, groupView));
+            this.groupsController.push(new GroupGameController(group, groupView, this.game.getBlind()));
         });
         
         this.shuffleCard();
@@ -44,7 +44,8 @@ export class MainGameController {
             this.incrementStats(win)
             this.toggleFinishedState();
         }
-        this.game.notifyObservers({health: this.game.getHealth()});
+        
+        this.game.setupFinished();
         this.gameView.setController(this);
     }
 
@@ -79,15 +80,16 @@ export class MainGameController {
         let shuffleButton = document.querySelectorAll('[data-id="shuffle"]');
         shuffleButton.forEach(button => {
             button.addEventListener('click', this.shuffleCard);
-            let element = button as HTMLButtonElement;
-            element.dataset.umamiEvent = "Shuffle button clicked";
         });
 
         let submitButton = document.querySelectorAll('[data-id="submit"]');
         submitButton.forEach(button => {
-            button.addEventListener('click', this.handleSubmit)
-            let element = button as HTMLButtonElement;
-            element.dataset.umamiEvent = "Submit button clicked";
+            button.addEventListener('click', e => {
+                this.gameView.toggleSubmitButton(true);
+                Utils.sleep(100).then(() =>
+                    this.handleSubmit()
+                );
+            });
         });
     }
 
@@ -115,7 +117,7 @@ export class MainGameController {
         }
     }
 
-    private handleSubmit = () => {
+    private handleSubmit(): void {
         let selectedItemsID: number[] = [];
         let elements = document.querySelectorAll<HTMLElement>('.card-module--selected');
         elements.forEach(element => {
