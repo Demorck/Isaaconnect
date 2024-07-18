@@ -124,10 +124,15 @@ export class Utils {
     static resetIfNewVersion() {
         let currentVersion = Constants.VERSION;
         let versionUser = StorageManager.version;
-        if (versionUser === null) {
-            StorageManager.version = currentVersion;
-        } else if (versionUser !== currentVersion) {
+        if (versionUser !== currentVersion)
             StorageManager.game = Constants.DEFAULT_DATA.game;
+    }
+
+    static checkIfNewVersion() {
+        let currentVersion = Constants.VERSION;
+        let versionUser = StorageManager.version;
+        
+        if (versionUser !== currentVersion) {
             StorageManager.version = currentVersion;        
             let changelog = new ChangelogsView();
             changelog.showNewChangelogs();
@@ -136,5 +141,22 @@ export class Utils {
 
     static sleep(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    static generateWikiLink(alias: string): string {
+        let link = Constants.WIKI;
+        switch (alias) {
+            case "<3":
+            case "&lt;3":
+                link += "Less_Than_Three";
+                break;
+            case "Little Horn":
+                link += "Little_Horn_(Item)";
+                break;
+            default:
+                link += alias;
+                break;
+        }
+        return link;
     }
 }

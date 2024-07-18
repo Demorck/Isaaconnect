@@ -178,11 +178,8 @@ function changeRedirectWiki(checkbox: HTMLInputElement): void {
         StorageManager.redirect = true;
         a.forEach((el) => {
             let alias = el.getAttribute('data-id');
-            el.href = Constants.WIKI + alias;
-            if (alias == "<3")
-                el.href = Constants.WIKI + 'Less_Than_Three';
-            if (alias == "Little Horn")
-                el.href = Constants.WIKI + 'Little_Horn_(Item)';
+            alias ??= '';
+            el.href = Utils.generateWikiLink(alias);
             el.target = '_blank';
         });
         checkbox.parentElement?.classList.add('tgl-checked');
