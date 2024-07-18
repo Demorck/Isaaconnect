@@ -178,15 +178,13 @@ export class MainGame extends Observable {
     }
 
     private rightAnswer(group: GroupGame, animate: boolean = true) {
-        if (this.seeded)
-        {
-            StorageManager.groupFound++;
-            this.groupFound++;
-        }
+        this.groupFound++;
         group.setSolved();
         
-        if (this.seeded)
+        if (this.seeded) {
+            StorageManager.groupFound = this.groupFound;
             StorageManager.groupsSolved = this.getGroupSolved();
+        }
 
         this.notifyObservers({ deselect: true, animate: animate, group: group, disabled: true });
     }
