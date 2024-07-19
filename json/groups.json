@@ -651,7 +651,7 @@
   },
   {
     "name": "Items that got a major sprite change in Repentance",
-    "items": [317, 326, 421, 427, 482, 483, 489, 518, 519     ],
+    "items": [317, 326, 421, 427, 482, 483, 489, 518, 519, 477     ],
     "difficulty": 3,
     "tags": "sprite"
   },
