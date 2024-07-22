@@ -25,6 +25,10 @@ export class ItemCreatorController {
         return this.itemView.getElement();
     }
 
+    public getItem(): Item {
+        return this.item;
+    }
+
     private createElement(): HTMLDivElement {
         let itemElement = document.createElement('div');
         itemElement.classList.add('item');

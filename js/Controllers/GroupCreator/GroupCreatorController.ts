@@ -1,4 +1,5 @@
 import { Group } from "../../Models/Group.js";
+import { Item } from "../../Models/Item.js";
 import { GroupCreatorView } from "../../Views/GroupCreator/GroupCreatorView.js";
 import { ItemCreatorController } from "./ItemCreatorController.js";
 
@@ -9,9 +10,9 @@ export class GroupCreatorController {
     private selectedItem: ItemCreatorController | null;
     
     constructor(group: Group) {
+        this.group = group;
         let element = this.createElement(group);
         this.groupView = new GroupCreatorView(element)
-        this.group = group;
         this.selectedItem = null;
         this.itemsControllers = this.createItemsControllers();
         this.group.addObserver(this.groupView);
@@ -24,6 +25,7 @@ export class GroupCreatorController {
     private createElement(group: Group): HTMLDivElement {
         let groupElement = document.createElement('div');
         groupElement.classList.add('group', 'inline-flex', 'items-center');
+        groupElement.dataset.name = this.group.getName();
         groupElement.innerHTML = `
                                 <img class="pixelated mr-4" width="16px" src="/assets/gfx/Quality ${group.getDifficulty()}.png" alt="Difficulté ${group.getDifficulty()}">
                                 <h3 contenteditable="true" >
@@ -63,9 +65,24 @@ export class GroupCreatorController {
             });
     }
 
+    public addItem(item: Item): void {
+        this.group.addItem(item);
+        this.itemsControllers.push(new ItemCreatorController(item));
+        this.toggleItems();
+    }
+
+    public removeItem(): void {
+        if (!this.selectedItem) {
+            return;
+        }
+        let item = this.selectedItem.getItem();
+        this.group.removeItem(item);
+        this.itemsControllers = this.itemsControllers.filter(itemController => itemController.getItem() != item);
+        this.toggleItems();
+        this.selectedItem = null;
+    }
+
     private createItemsControllers(): ItemCreatorController[] {
-        console.log(this.group);
-        
         let items = this.group.getItems();
         let itemsControllers: ItemCreatorController[] = [];
         items.forEach(item => {
@@ -73,5 +90,18 @@ export class GroupCreatorController {
             itemsControllers.push(itemController);
         });
         return itemsControllers;
+    }
+
+    public filter(filter: string) {
+        let groupName = this.group.getName().toLowerCase();
+        if (groupName.includes(filter)) {
+            this.groupView.toggleDisplay(true);
+        } else {
+            this.groupView.toggleDisplay(false);
+        }
+    }
+
+    public getGroup(): Group {  
+        return this.group;
     }
 }

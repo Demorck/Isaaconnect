@@ -26,5 +26,12 @@ export class GroupCreatorView implements Observer {
     public getElement(): HTMLElement {
         return this.element;
     }
-    
+
+    public toggleDisplay(display: boolean): void {
+        if (display) {
+            this.element.classList.remove('hidden');
+        } else {
+            this.element.classList.add('hidden');
+        }
+    }
 }

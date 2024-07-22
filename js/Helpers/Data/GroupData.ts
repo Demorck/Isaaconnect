@@ -7,3 +7,10 @@ export interface GroupData {
     tags: string[];
     index: number;
 } 
+
+export interface GroupJSONData {
+    name: string;
+    items: number[];
+    difficulty: number;
+    tags: string[];
+}

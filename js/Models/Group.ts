@@ -25,6 +25,24 @@ export class Group extends Observable implements Iterable<Item> {
         this.notifyObservers();
     }
 
+    public addItem(item: Item): void {
+        if (this.items.includes(item)) {
+            return;
+        }
+        this.items.push(item);
+        this.notifyObservers();
+    }
+
+    public removeItem(item: Item): void {
+        let index = this.items.indexOf(item);
+        this.items.splice(index, 1);
+        this.notifyObservers();
+    }
+
+    public hasItem(item: Item): boolean {
+        return this.items.includes(item);
+    }
+
     public getItems(): Item[] {
         return this.items;
     }
@@ -42,6 +60,9 @@ export class Group extends Observable implements Iterable<Item> {
         this.tags.push(...tag);
     }
     public addTag(tag: string): void {
+        if (this.tags.includes(tag)) {
+            return;
+        }
         this.tags.push(tag);
     }
 
