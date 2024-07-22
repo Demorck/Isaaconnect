@@ -24,10 +24,6 @@ export class MainGroupCreatorController {
         this.addEventListeners();
     }
 
-    // public addGroup(name: string, items: Item[], difficulty: number, tags: string[] | undefined): void {
-    //     this.mainGroupCreator.addGroup(new Group(name, items, difficulty, tags));
-    // }
-
     private createGroups(): void {
         Constants.GROUPS.forEach(group => {
             this.mainGroupCreator.addGroup(group);
@@ -141,7 +137,6 @@ export class MainGroupCreatorController {
         if (this.selectedGroup) {
             this.mainGroupCreator.removeGroup(this.selectedGroup.getGroup());
             this.groupsController = this.groupsController.filter(group => group.getGroup() != this.selectedGroup?.getGroup());
-            
             this.selectedGroup = undefined;
         }
     }
