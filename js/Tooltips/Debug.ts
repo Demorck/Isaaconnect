@@ -1,5 +1,5 @@
-import { StorageManager } from "../Helpers/Data/StorageManager.js";
-import { Constants } from "../Helpers/Constants.js";
+import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
+import { Constants } from "../Shared/Helpers/Constants.js";
 
 /**
  * @description Display the settings tooltip.
@@ -31,8 +31,8 @@ export function addEvent(container: HTMLElement): void {
 
     if (lifeButton) {
         lifeButton.addEventListener('click', () => {
-            StorageManager.health = 20;
-            location.reload();
+            StorageManager.numberOfGroups = 6;
+            StorageManager.numberOfItems = 4;
         });
     }
 

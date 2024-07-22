@@ -1,5 +1,5 @@
-import { Utils } from "../Helpers/Utils.js";
-import { StorageManager } from "../Helpers/Data/StorageManager.js";
+import { Utils } from "../Shared/Helpers/Utils.js";
+import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
 
 /**
  * @description Display the settings tooltip.

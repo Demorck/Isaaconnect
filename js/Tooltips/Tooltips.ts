@@ -4,7 +4,7 @@ import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
 import { addEventLogs } from './Logs.js';
 // import { TTSLogic } from './Accessibility.js';
-import { Utils } from '../Helpers/Utils.js';
+import { Utils } from '../Shared/Helpers/Utils.js';
 
 
 export async function displayTooltip(element: HTMLElement): Promise<void> {
