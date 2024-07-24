@@ -8,6 +8,13 @@ import { GameUtils } from "./GameUtils.js";
 import { MainGameMechanics } from "./MainGameMechanics.js";
 import { Item } from "../../Shared/Models/Item.js";
 
+/**
+ * Represents the main game logic and state.
+ * 
+ * @export
+ * @class MainGame
+ * @extends {Observable}
+ */
 export class MainGame extends Observable {
     private health: number;
     private groups: GroupGame[];
@@ -20,6 +27,11 @@ export class MainGame extends Observable {
 
     private mechanics: MainGameMechanics;
 
+    /**
+     * Creates an instance of MainGame.
+     * @param {boolean} [seeded=true] - Whether the game uses seeded randomization.
+     * @param {boolean} [blind=false] - Whether the game is in blind mode.
+     */
     constructor(seeded = true, blind = false) {
         super();
         this.health = Constants.MAX_HEALTH;
@@ -35,6 +47,11 @@ export class MainGame extends Observable {
         this.setupGame();
     }
 
+    /**
+     * Sets up the game by generating the initial groups.
+     * @private
+     * @memberof MainGame
+     */
     private setupGame() : void {
         let bannedGroups: Group[] = [];
         if (this.seeded) {
@@ -49,20 +66,32 @@ export class MainGame extends Observable {
             
             this.groups = GameUtils.generateSelection(0, bannedGroups);
         } else {
-            // StorageManager.newIsaaconnect();
             this.groups = GameUtils.generateSelection(0, bannedGroups, false);
         }
-
     }
 
+    /**
+     * Notifies observers that setup is finished.
+     * @memberof MainGame
+     */
     public setupFinished() {
         this.notifyObservers({ health: this.health });
     }
 
+    /**
+     * Gets the current groups in the game.
+     * @returns {GroupGame[]} The current groups.
+     * @memberof MainGame
+     */
     public getGroups(): GroupGame[] {
         return this.groups.slice();
     }
 
+    /**
+     * Handles the submission of selected item IDs.
+     * @param {number[]} selectedID - The selected item IDs.
+     * @memberof MainGame
+     */
     public handleSubmit(selectedID: number[]) {
         let results = this.mechanics.handleSubmit(selectedID, this.getGroups(), this.history);
         
@@ -96,13 +125,10 @@ export class MainGame extends Observable {
         }
     }
 
-    
     /**
-     * @description Check if the game is finished and if the player won or lost. 
-     *
-     * @todo //TODO: Separate the logic of checking if the game is finished and if the player won or lost.
-     * @public
-     * @returns {{finished: boolean, win: boolean}}
+     * Checks if the game is finished and if the player won or lost.
+     * @returns {{finished: boolean, win: boolean}} The game status.
+     * @memberof MainGame
      */
     public checkFinished(): {finished: boolean, win: boolean} {
         let groupsSolved = this.getGroupSolved();
@@ -129,6 +155,14 @@ export class MainGame extends Observable {
         return {finished, win};
     }
 
+    /**
+     * Constructs the notification data for observers.
+     * @private
+     * @param {boolean} win - Whether the game was won.
+     * @param {boolean} [autocomplete=false] - Whether the game was autocompleted.
+     * @returns {any} The notification data.
+     * @memberof MainGame
+     */
     private getNotifyData(win: boolean, autocomplete: boolean = false): any {
         if (win) {
             let mistakes = Constants.MAX_HEALTH - this.health;
@@ -161,6 +195,12 @@ export class MainGame extends Observable {
         }
     }
 
+    /**
+     * Handles a wrong answer submission.
+     * @private
+     * @param {number[]} selectedID - The selected item IDs.
+     * @memberof MainGame
+     */
     private wrongAnswer(selectedID: number[]) {        
         this.health--;
         if (this.seeded)
@@ -177,6 +217,13 @@ export class MainGame extends Observable {
         this.notifyObservers({health: this.health});
     }
 
+    /**
+     * Handles a correct answer submission.
+     * @private
+     * @param {GroupGame} group - The group that was correctly solved.
+     * @param {boolean} [animate=true] - Whether to animate the solution.
+     * @memberof MainGame
+     */
     private rightAnswer(group: GroupGame, animate: boolean = true) {
         this.groupFound++;
         group.setSolved();
@@ -189,11 +236,23 @@ export class MainGame extends Observable {
         this.notifyObservers({ deselect: true, animate: animate, group: group, disabled: true });
     }
 
+    /**
+     * Gets the groups that have been solved.
+     * @private
+     * @returns {GroupGame[]} The solved groups.
+     * @memberof MainGame
+     */
     private getGroupSolved() : GroupGame[] {
         let groupSolved = this.groups.filter(group => group.isSolved());
         return groupSolved;
     }
 
+    /**
+     * Autocompletes the game if necessary.
+     * @private
+     * @param {boolean} [win=false] - Whether the game was won.
+     * @memberof MainGame
+     */
     private autocomplete(win: boolean = false) {
         let groupSolved = this.getGroupSolved();
         let groupNotSolved = this.groups.filter(group => !group.isSolved());
@@ -205,8 +264,7 @@ export class MainGame extends Observable {
                 for (const item of group) {
                     selectedIDs.push(item.getId());
                 }
-                if (win)
-                {
+                if (win) {
                     this.handleSubmit(selectedIDs);
                 } else {
                     this.notifyObservers({ deselect: true, animate: true, group: group });                    
@@ -220,12 +278,15 @@ export class MainGame extends Observable {
         }).then(() => {
             Promise.resolve();
         });
-    
     }
 
+    /**
+     * Assigns the saved game state to the current game.
+     * @memberof MainGame
+     */
     public assignStorageToGame() {
         const localHealth = StorageManager.health;
-        if (localHealth !== null) this.health = localHealth
+        if (localHealth !== null) this.health = localHealth;
 
         const localGroupSolved = StorageManager.groupsSolved;
         if (localGroupSolved.length > 0) {
@@ -243,8 +304,8 @@ export class MainGame extends Observable {
             localAttempts.forEach(attempt => {
                 let attemptGroup: GroupGame[] = [];
                 attempt.forEach(group => {
-                        this.groups.filter(g => g.getName() === group.name).forEach(g => {
-                            attemptGroup.push(g);
+                    this.groups.filter(g => g.getName() === group.name).forEach(g => {
+                        attemptGroup.push(g);
                     });
                 });
                 this.attempts.push(attemptGroup);
@@ -271,18 +332,30 @@ export class MainGame extends Observable {
         if (localGroupFound !== null) this.groupFound = localGroupFound;
     }
 
+    /**
+     * Checks if the game is seeded.
+     * @returns {boolean} Whether the game is seeded.
+     * @memberof MainGame
+     */
     public isSeeded(): boolean {
         return this.seeded;
     }
 
-    
-
+    /**
+     * Gets the current health of the player.
+     * @returns {number} The current health.
+     * @memberof MainGame
+     */
     public getHealth(): number {
         return this.health;
     }
 
+    /**
+     * Checks if the game is in blind mode.
+     * @returns {boolean} Whether the game is in blind mode.
+     * @memberof MainGame
+     */
     public getBlind(): boolean {
         return this.isBlind;
     }
-
 }

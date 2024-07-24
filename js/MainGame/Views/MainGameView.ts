@@ -2,7 +2,7 @@ import { Observer } from "../../Shared/Views/Observer.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
 import { Utils } from "../../Shared/Helpers/Utils.js";
-import { animation, swap, swapUI } from "../Controllers/Animation.js";
+import { swapUI } from "../Controllers/Animation.js";
 import { MainGameController } from "../Controllers/MainGameController.js";
 import { GroupGame } from "../Models/GroupGame.js";
 import { GroupData } from "../../Shared/Helpers/Data/GroupData.js";

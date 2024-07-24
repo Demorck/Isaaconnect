@@ -9,6 +9,15 @@ export class MainGameMechanics {
     constructor() {}
 
 
+    
+    /**
+     * @description Handle the submission of the current attempt
+     *
+     * @param {number[]} selectedIDs IDs of selected Items
+     * @param {GroupGame[]} groups Groups of the current game
+     * @param {Item[][]} history History of the game
+     * @returns {({ isMessage: boolean; message: any; win?: undefined; attempts?: undefined; historyItems?: undefined; } | { win: boolean; attempts: {}; historyItems: {}; isMessage: boolean; message: any; })}
+     */
     public handleSubmit = (selectedIDs: number[], groups: GroupGame[], history: Item[][]) => {        
         let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs);
         

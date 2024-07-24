@@ -45,7 +45,7 @@ export class Constants {
 
     static NUMBER_OF_DAYS_BEFORE: number = 3;
 
-    static BASE_DATE: number = new Date(2024, 6, 11, 0, 0, 0, 0).getTime();
+    static BASE_DATE: number = new Date(Date.UTC(2024, 6, 11, 0, 0, 0, 0)).getTime();
 
     static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300"];
 

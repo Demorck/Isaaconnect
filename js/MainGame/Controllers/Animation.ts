@@ -1,3 +1,10 @@
+
+/**
+ * Create the animation by swapping the selected cards
+ *
+ * @deprecated
+ * @export
+ */
 export function animation() {
     let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
     let first = selected[0];
@@ -6,6 +13,14 @@ export function animation() {
     swapUI(first, last);
 }
 
+
+/**
+ * Swap the position of two elements in the DOM
+ *
+ * @export
+ * @param {HTMLElement} node1 The first element
+ * @param {HTMLElement} node2 The second element
+ */
 export function swap(node1: HTMLElement, node2: HTMLElement): void {
     let cards = document.querySelectorAll<HTMLElement>('.card-module');
     let afterNode2 = node2.nextElementSibling;
@@ -14,6 +29,14 @@ export function swap(node1: HTMLElement, node2: HTMLElement): void {
     parent?.insertBefore(node1, afterNode2);
 }
 
+
+/**
+ * Create the animation by swapping the selected cards in the UI and in the DOM
+ *
+ * @export
+ * @param {HTMLElement} node1 The first element
+ * @param {HTMLElement} node2 The second element
+ */
 export function swapUI(node1: HTMLElement, node2: HTMLElement): void {
     let finalElement1Style = {
         x: 0,

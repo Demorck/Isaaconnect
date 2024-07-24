@@ -5,7 +5,27 @@ import { Item } from "../../Shared/Models/Item.js";
 import { GroupGame } from "./GroupGame.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 
+
+/**
+ * @description Class that contains the game logic 
+ *
+ * @export
+ * @class GameUtils
+ * @typedef {GameUtils}
+ */
 export class GameUtils {
+
+    
+    /**
+     * @description Generate a selection of groups for the game
+     * TODO: Refactor this method & catching errors / too much iterations
+     *
+     * @static
+     * @param {number} [daysBefore=0] Number of days before the current day, used to avoid repeating groups
+     * @param {Group[]} [alreadyBanned=[]] Groups that are already banned
+     * @param {boolean} [seeded=true] If the selection should be seeded
+     * @returns {GroupGame[]} The selected groups
+     */
     static generateSelection(daysBefore = 0, alreadyBanned: Group[] = [], seeded = true): GroupGame[] {        
         let bannedGroup: Group[] = alreadyBanned;
         let bannedItem: Item[] = [];
@@ -15,29 +35,30 @@ export class GameUtils {
         let selectedGroups: GroupGame[] = [];
         let difficultyFound = false;
         let j = 0;
-        let numberOfGroups = StorageManager.numberOfGroups;
+        let numberOfGroups = seeded ? Constants.NUMBER_OF_GROUPS : StorageManager.numberOfGroups;
         
     
         for (let i = 0; i < numberOfGroups; i++) {
             let currentGroup;
             currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, difficultyFound, i, 0, bannedTags, seeded);
+
+            // To prevent grid with more than one group of difficulty 3
             if (currentGroup.getDifficulty() === 3) {
                 difficultyFound = true;
             }
             let items: Item[] | null;
             let attemptCount = 0;
             do {
-
                 do {             
                     items = currentGroup.getRandomItems(bannedItem, daysBefore, seeded);             
                     if (items === null) {
                         bannedGroup.push(currentGroup);
-                        currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, false, i, attemptCount, bannedTags, seeded);
+                        currentGroup = GameUtils.getRandomGroup(bannedGroup, daysBefore, difficultyFound, i, attemptCount, bannedTags, seeded);
                     }                
                     attemptCount++;
                 } while (items === null);     
 
-                selectedItems.push(...items!);
+                selectedItems.push(...items);
                 selectedGroups.push(currentGroup);
     
                 let check = GameUtils.checkGrid(selectedGroups, selectedItems);
@@ -66,7 +87,20 @@ export class GameUtils {
         return selectedGroups;
     }
     
-
+    
+    /**
+     * @description Get a random group from the list of groups with some restrictions
+     *
+     * @static
+     * @param {Group[]} bannedGroup List of groups that are already banned
+     * @param {number} [daysBefore=0] Number of days before the current day, used to avoid repeating groups
+     * @param {boolean} [filterDifficulty=false] If the group should be filtered by difficulty
+     * @param {number} [difficulty=1] The difficulty of the group to finnd
+     * @param {number} [modifier=0] The modifier to apply to the random number
+     * @param {string[]} [bannedTags=[]] List of tags that are banned
+     * @param {boolean} seeded If the selection should be seeded
+     * @returns {GroupGame}
+     */
     static getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0, bannedTags: string[] = [], seeded: boolean): GroupGame {
         let index: number, group: Group, i = 0;
         let groups = Constants.GROUPS;
@@ -85,6 +119,15 @@ export class GameUtils {
         return selectedGroup;
     }
 
+    
+    /**
+     * @description Check if the grid is impossible to solve, Here impossible means that there are more than 4 items can be placed in one of selected groups
+     *
+     * @static
+     * @param {GroupGame[]} groups The selected groups
+     * @param {Item[]} allSelectedItems All the selected items
+     * @returns {{ impossible: boolean, itemsNotInGroup: Item[] }} The result of the check. If the grid is impossible, the items that are not in the group are returned
+     */
     static checkGrid(groups: GroupGame[], allSelectedItems: Item[]): { impossible: boolean, itemsNotInGroup: Item[] } {
         if (allSelectedItems.length < Constants.NUMBER_OF_ITEMS) return { impossible: false, itemsNotInGroup: [] };
         let impossible = false;
@@ -116,6 +159,15 @@ export class GameUtils {
         return item;
     }
 
+    
+    /**
+     * @description Find a group by its item
+     *
+     * @static
+     * @param {Item | number} item The item to find
+     * @param {GroupGame[]} groups The list of groups
+     * @returns {GroupGame}
+     */
     static findGroupByItem(item: Item, groups: GroupGame[]): GroupGame;
     static findGroupByItem(id: number, groups: GroupGame[]): GroupGame;
     static findGroupByItem(itemOrId: Item | number, groups: GroupGame[]): GroupGame {

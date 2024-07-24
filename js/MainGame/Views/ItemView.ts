@@ -40,7 +40,6 @@ export class ItemView implements Observer {
         const itemElement = document.createElement('label');
         itemElement.className = 'card-module flex-col sm:aspect-square';
         itemElement.className += StorageManager.difficulty === 'normal' ? '' : ' easy';
-        itemElement.dataset.umamiEvent = "Cell clicked";
         itemElement.dataset.id = item.getId().toString();
 
         const inputElement = document.createElement('input');

@@ -5,16 +5,13 @@ import { GroupGameView } from "../Views/GroupGameView.js";
 import { Utils } from "../../Shared/Helpers/Utils.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { swapUI } from "./Animation.js";
 import { GroupGame } from "../Models/GroupGame.js";
 
-
 /**
- * @description MainGameController class that controls the main game (Isaaconnect).
+ * MainGameController class that controls the main game (Isaaconnect).
  *
  * @export
  * @class MainGameController
- * @type {MainGameController}
  */
 export class MainGameController {
     private game: MainGame;
@@ -22,9 +19,14 @@ export class MainGameController {
     private itemsIndex: number[] = [];
     private groupsController: GroupGameController[] = [];
 
-    constructor(game: MainGame, view : MainGameView) {
+    /**
+     * Creates an instance of MainGameController.
+     * @param {MainGame} game - The main game model.
+     * @param {MainGameView} view - The main game view.
+     */
+    constructor(game: MainGame, view: MainGameView) {
         this.game = game;
-        this.gameView = view
+        this.gameView = view;
 
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
@@ -38,10 +40,10 @@ export class MainGameController {
         this.game.addObserver(this.gameView);
         if (this.game.isSeeded())
             this.game.assignStorageToGame();
-        let {finished, win} = this.game.checkFinished();
+        let { finished, win } = this.game.checkFinished();
 
         if (finished) {
-            this.incrementStats(win)
+            this.incrementStats(win);
             this.toggleFinishedState();
         }
         
@@ -49,7 +51,12 @@ export class MainGameController {
         this.gameView.setController(this);
     }
 
-    public shuffleCard = () => {
+    /**
+     * Shuffles the cards.
+     * @public
+     * @returns {void}
+     */
+    public shuffleCard = (): void => {
         let container = this.gameView.getItemsContainer();
         let labels = Array.from(document.querySelectorAll('.card-module'));
         container.innerHTML = '';
@@ -57,7 +64,14 @@ export class MainGameController {
         this.game.notifyObservers();
     }
 
-    
+    /**
+     * Toggles the solved state of the group.
+     *
+     * @public
+     * @async
+     * @param {GroupGame} group - The group to toggle the solved state for.
+     * @returns {Promise<void>}
+     */
     public async toggleGroupSolved(group: GroupGame): Promise<void> {
         return new Promise((resolve) => {
             for (let i = 0; i < this.groupsController.length; i++) {
@@ -71,6 +85,12 @@ export class MainGameController {
         });
     }
 
+    /**
+     * Adds event listeners to the checkboxes, shuffle button, and submit button.
+     *
+     * @private
+     * @returns {void}
+     */
     private addEventListeners(): void {        
         let checkboxes = document.querySelectorAll<HTMLInputElement>('.card-module input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
@@ -93,17 +113,25 @@ export class MainGameController {
         });
     }
 
-    private checkboxChangeHandler = (event: Event, checkboxes: NodeListOf<HTMLInputElement>) => {
+    /**
+     * Handles checkbox change events.
+     * TODO:
+     *
+     * @private
+     * @param {Event} event - The change event.
+     * @param {NodeListOf<HTMLInputElement>} checkboxes - The list of checkboxes.
+     * @returns {void}
+     */
+    private checkboxChangeHandler = (event: Event, checkboxes: NodeListOf<HTMLInputElement>): void => {
         let numberSelected = document.querySelectorAll('.card-module--selected').length;
         if (numberSelected == 4) {
             checkboxes.forEach(otherCheckbox => {
                 let element = otherCheckbox.parentNode as Element;
-                if (!element.classList.contains('card-module--selected'))
-                {
+                if (!element.classList.contains('card-module--selected')) {
                     element.classList.add('card-module--disabled');
                     otherCheckbox.disabled = true;
                 }
-            })
+            });
 
             this.gameView.toggleSubmitButton(false);
         } else {
@@ -111,12 +139,18 @@ export class MainGameController {
                 let element = otherCheckbox.parentNode as Element;
                 element.classList.remove('card-module--disabled');
                 otherCheckbox.disabled = false;
-            })
+            });
 
             this.gameView.toggleSubmitButton(true);
         }
     }
 
+    /**
+     * Handles the submit action.
+     *
+     * @private
+     * @returns {void}
+     */
     private handleSubmit(): void {
         let selectedItemsID: number[] = [];
         let elements = document.querySelectorAll<HTMLElement>('.card-module--selected');
@@ -125,16 +159,21 @@ export class MainGameController {
         });
         
         this.game.handleSubmit(selectedItemsID);
-        let {finished, win} = this.game.checkFinished();
+        let { finished, win } = this.game.checkFinished();
 
         if (finished) {
-            this.incrementStats(win)
+            this.incrementStats(win);
         }
     }
 
-    public toggleFinishedState = () => {
-        if (!StorageManager.finished)
-        {
+    /**
+     * Toggles the finished state of the game.
+     *
+     * @public
+     * @returns {void}
+     */
+    public toggleFinishedState = (): void => {
+        if (!StorageManager.finished) {
             StorageManager.finished = true;
         }
 
@@ -146,6 +185,12 @@ export class MainGameController {
         buttonResults.addEventListener('click', () => this.gameView.displayModal());
     }
 
+    /**
+     * Removes the shuffle and submit buttons.
+     *
+     * @private
+     * @returns {void}
+     */
     private removeButtons(): void {
         let shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
         shufflesButton.forEach(button => button.remove());
@@ -154,6 +199,13 @@ export class MainGameController {
         buttons.innerHTML = '<button data-id="results" class="button--submit font-bold py-2 px-4 rounded button--disabled">See results</button>';
     }
 
+    /**
+     * Increments the game statistics.
+     *
+     * @private
+     * @param {boolean} win - Whether the game was won.
+     * @returns {void}
+     */
     private incrementStats(win: boolean): void {
         if (!this.game.isSeeded()) return;
         if (StorageManager.finished) return;

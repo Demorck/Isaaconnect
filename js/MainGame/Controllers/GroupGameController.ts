@@ -5,11 +5,27 @@ import { ItemView } from "../Views/ItemView.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
 
 
+/**
+ * Controller for the GroupGame model
+ *
+ * @export
+ * @class GroupGameController
+ * @typedef {GroupGameController}
+ */
 export class GroupGameController {
     private group: GroupGame;
     private groupView: GroupGameView;
     private itemsController: ItemController[] = [];
 
+    
+    /**
+     * Creates an instance of GroupGameController.
+     *
+     * @constructor
+     * @param {GroupGame} group The model
+     * @param {GroupGameView} groupView The view
+     * @param {boolean} [blind=false] If the game is blind (for joking purposes)
+     */
     constructor(group: GroupGame, groupView: GroupGameView, blind: boolean = false) {
         this.group = group;
         this.groupView = groupView;
@@ -21,14 +37,23 @@ export class GroupGameController {
         this.group.addObserver(this.groupView);
     }
 
-    public getItemElement(index: number): HTMLElement {
-        return this.itemsController[index % Constants.NUMBER_OF_ITEMS].getItemElement();
-    }
-
+    
+    /**
+     * Toggle the solved state of the group and update the view
+     *
+     * @public
+     */
     public toggleSolved(): void {
         this.group.setSolved(true, true);        
     }
 
+    
+    /**
+     * Return the group name
+     *
+     * @public
+     * @returns {string} The group name
+     */
     public getGroupName(): string {
         return this.group.getName();
     }
