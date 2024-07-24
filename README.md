@@ -27,6 +27,7 @@ tsc --watch
 
 #### Present plan
 * [ ]  Documentation
+* [ ]  Refactor CSS into SASS
 * [ ]  Add/Remove/Change some groups
 * [ ]  Make a menu (to find the random game)
 
