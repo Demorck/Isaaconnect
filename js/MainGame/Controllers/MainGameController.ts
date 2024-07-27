@@ -6,6 +6,7 @@ import { Utils } from "../../Shared/Helpers/Utils.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 import { GroupGame } from "../Models/GroupGame.js";
+import { GameOptions } from "../Models/GameOptions.js";
 
 /**
  * MainGameController class that controls the main game (Isaaconnect).
@@ -16,6 +17,7 @@ import { GroupGame } from "../Models/GroupGame.js";
 export class MainGameController {
     private game: MainGame;
     private gameView: MainGameView;
+    private gameOptions: GameOptions;
     private itemsIndex: number[] = [];
     private groupsController: GroupGameController[] = [];
 
@@ -27,12 +29,13 @@ export class MainGameController {
     constructor(game: MainGame, view: MainGameView) {
         this.game = game;
         this.gameView = view;
+        this.gameOptions = Constants.OPTIONS
 
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
         this.game.getGroups().forEach(group => {
             let groupView = new GroupGameView('#cards-win');
-            this.groupsController.push(new GroupGameController(group, groupView, this.game.getBlind()));
+            this.groupsController.push(new GroupGameController(group, groupView, this.game.getBlind(), this.gameOptions));
         });
         
         this.shuffleCard();
@@ -47,8 +50,9 @@ export class MainGameController {
             this.toggleFinishedState();
         }
         
-        this.game.setupFinished();
         this.gameView.setController(this);
+        this.game.setupFinished();
+        this.modifyWithOptions();
     }
 
     /**
@@ -124,7 +128,7 @@ export class MainGameController {
      */
     private checkboxChangeHandler = (event: Event, checkboxes: NodeListOf<HTMLInputElement>): void => {
         let numberSelected = document.querySelectorAll('.card-module--selected').length;
-        if (numberSelected == 4) {
+        if (numberSelected == this.gameOptions.numberOfItems) {
             checkboxes.forEach(otherCheckbox => {
                 let element = otherCheckbox.parentNode as Element;
                 if (!element.classList.contains('card-module--selected')) {
@@ -215,5 +219,15 @@ export class MainGameController {
         stats.longestStreak = Math.max(stats.longestStreak, stats.winStreak);
         StorageManager.finished = true;
         StorageManager.stats = stats;
+    }
+
+    private modifyWithOptions(): void {
+        let itemsContainer = this.gameView.getItemsContainer();
+        itemsContainer.classList.remove('grid-cols-4');
+        itemsContainer.classList.add(`grid-cols-${this.gameOptions.numberOfItems}`);
+    }
+
+    public getGameOptions(): GameOptions {
+        return this.gameOptions;
     }
 }

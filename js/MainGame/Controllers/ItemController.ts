@@ -1,4 +1,5 @@
 import { Item } from "../../Shared/Models/Item.js";
+import { GameOptions } from "../Models/GameOptions.js";
 import { ItemView } from "../Views/ItemView.js";
 
 /**
@@ -9,15 +10,17 @@ export class ItemController {
     
     private item: Item;
     private itemView: ItemView;
+    private options: GameOptions;
 
     /**
      * Creates an instance of ItemController.
      * @param {Item} item - The item model to be controlled.
      * @param {ItemView} itemView - The view associated with the item.
      */
-    constructor(item: Item, itemView: ItemView) {
+    constructor(item: Item, itemView: ItemView, options: GameOptions) {
         this.item = item;
         this.itemView = itemView;
+        this.options = options;
         this.item.addObserver(this.itemView);
         this.item.notifyObservers({ newItem: true });
         this.addEventListeners();
@@ -35,7 +38,7 @@ export class ItemController {
         checkbox?.addEventListener('change', () => {
             let numberSelected = document.querySelectorAll('.card-module--selected').length;
             
-            if (numberSelected <= 4) {
+            if (numberSelected <= this.options.numberOfItems) {
                 container.classList.toggle('card-module--selected');
             }
         });

@@ -4,6 +4,7 @@ import { GameUtils } from "./GameUtils.js";
 import { Item } from "../../Shared/Models/Item.js";
 import { Group } from "../../Shared/Models/Group.js";
 import { GroupGame } from "./GroupGame.js";
+import { GameOptions } from "./GameOptions.js";
 
 export class MainGameMechanics {
     constructor() {}
@@ -18,8 +19,8 @@ export class MainGameMechanics {
      * @param {Item[][]} history History of the game
      * @returns {({ isMessage: boolean; message: any; win?: undefined; attempts?: undefined; historyItems?: undefined; } | { win: boolean; attempts: {}; historyItems: {}; isMessage: boolean; message: any; })}
      */
-    public handleSubmit = (selectedIDs: number[], groups: GroupGame[], history: Item[][]) => {        
-        let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs);
+    public handleSubmit = (selectedIDs: number[], groups: GroupGame[], history: Item[][], options: GameOptions) => {        
+        let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs, options);
         
         if (alreadyGuessed) {
             return { isMessage: true, message: Constants.ALREADY_GUESSED };
@@ -47,7 +48,7 @@ export class MainGameMechanics {
             }
         });
 
-        if (numberOfItemsCorrect === Constants.NUMBER_OF_ITEMS - 1)
+        if (numberOfItemsCorrect === options.numberOfItems - 1)
             return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
         return { win, attempts, historyItems, isMessage: false, message: ''};
@@ -61,18 +62,18 @@ export class MainGameMechanics {
      * @param {number[]} selectedIDs IDs of selected Items 
      * @returns {boolean}
      */
-    private checkIfAlreadyGuessed(history: Item[][], selectedIDs: number[]): boolean {        
+    private checkIfAlreadyGuessed(history: Item[][], selectedIDs: number[], options: GameOptions): boolean {        
         let j = 0;
         let currentAttempt = history.length;
         history.forEach(attempt => {
             let k = 0;            
-            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+            for (let i = 0; i < options.numberOfItems; i++) {
                 let filter = attempt.filter(item => item.getId() == selectedIDs[i]);
                 let isInclude = filter.length > 0;
                 if (isInclude) k++;
             }
             
-            if (k === Constants.NUMBER_OF_ITEMS) j++;
+            if (k === options.numberOfItems) j++;
         });
 
         const alreadyGuessed = j > 0 && currentAttempt !== 0;

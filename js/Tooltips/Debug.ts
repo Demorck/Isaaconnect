@@ -19,32 +19,28 @@ export async function debugLogic(html: string): Promise<string> {
 export function addEvent(container: HTMLElement): void {
     const resetButton = container.querySelector<HTMLElement>('#reset');
     const lifeButton = container.querySelector<HTMLElement>('#life');
-    const testsButton = container.querySelector<HTMLElement>('#tests');
+    const range = container.querySelector<HTMLInputElement>('#range-group');
+    const rangeItems = container.querySelector<HTMLInputElement>('#range-items');
 
     if (resetButton) {
         resetButton.addEventListener('click', () => {
-            StorageManager.game = Constants.DEFAULT_DATA.game;
-            StorageManager.lastIsaaconnect = 0;
             location.reload();
         });
     }
 
-    if (lifeButton) {
-        lifeButton.addEventListener('click', () => {
-            StorageManager.numberOfGroups = 6;
-            StorageManager.numberOfItems = 4;
+    if (range) {
+        range.addEventListener('input', () => {
+            console.log(range.value);
+            
+            StorageManager.numberOfGroups = Number(range.value);
         });
     }
 
-    if (testsButton) {
-        testsButton.addEventListener('click', async () => {
-            StorageManager.lastIsaaconnect = 0;
-            if (StorageManager.version === "1.2.0") {
-                StorageManager.version = "1.1.0";
-            } else {
-                StorageManager.version = "1.2.0";
-            }
-            location.reload();
+    if (rangeItems) {
+        rangeItems.addEventListener('input', () => {
+            console.log(rangeItems.value);
+            
+            StorageManager.numberOfItems = Number(rangeItems.value);
         });
     }
 }

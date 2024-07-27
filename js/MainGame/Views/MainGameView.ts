@@ -6,6 +6,7 @@ import { swapUI } from "../Controllers/Animation.js";
 import { MainGameController } from "../Controllers/MainGameController.js";
 import { GroupGame } from "../Models/GroupGame.js";
 import { GroupData } from "../../Shared/Helpers/Data/GroupData.js";
+import { GameOptions } from "../Models/GameOptions.js";
 
 /**
  * @description MainGameView class that displays the main game (the big container).
@@ -140,11 +141,12 @@ export class MainGameView implements Observer {
      */
     public applyBorderRadius() {
         let labels = document.querySelectorAll('.card-module');
+        let options: GameOptions = this.controller.getGameOptions();
         labels.forEach((label, index) => {
             label.classList.remove('rounded-tl-3xl', 'rounded-tr-3xl', 'rounded-bl-3xl', 'rounded-br-3xl');
             if (index === 0) label.classList.add('rounded-tl-3xl');
-            if (index === 3) label.classList.add('rounded-tr-3xl');
-            if (index === labels.length - 4) label.classList.add('rounded-bl-3xl');
+            if (index === options.numberOfItems - 1) label.classList.add('rounded-tr-3xl');
+            if (index === labels.length - options.numberOfItems) label.classList.add('rounded-bl-3xl');
             if (index === labels.length - 1) label.classList.add('rounded-br-3xl');
         });
 
@@ -236,11 +238,11 @@ export class MainGameView implements Observer {
     private convertAttemptToSquareMatrix(attempt: GroupData[][]): string {
         let content = `<div data-id="results" class="flex flex-col">`;
         attempt.forEach((group, index_attempt) => {
-            content += `<div data-id="results-attempt${index_attempt}" class="flex justify-center items-center">`;
+            content += `<div data-id="results-attempt-${index_attempt}" class="flex justify-center items-center">`;
             group.forEach((currentGroup, index_group) => {
                 let index = currentGroup.index;
-                let rounded = index_group % 4 == 0 ? "rounded-l-lg" : index_group % 4 == 3 ? "rounded-r-lg" : "";
-                content += `<span data-id="results-attempt${index_attempt}-item${index_group}-group${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
+                let rounded = index_group % Constants.OPTIONS.numberOfItems == 0 ? "rounded-l-lg" : index_group % Constants.OPTIONS.numberOfItems == Constants.OPTIONS.numberOfItems - 1 ? "rounded-r-lg" : "";
+                content += `<span data-id="results-attempt-${index_attempt}-item-${index_group}-group-${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
             });
             content += `</div>`;
         });
@@ -268,7 +270,7 @@ export class MainGameView implements Observer {
 
             let groupFound = data.groupFound;
             
-            textToCopy += `✅: ${groupFound}/${Constants.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.numberOfGroups} 💔: ${Constants.MAX_HEALTH - health}\n`;
 
             let attempts: GroupData[][] = data.attempts;
 
@@ -288,6 +290,21 @@ export class MainGameView implements Observer {
                             break;
                         case 3:
                             textToCopy += "🟨";
+                            break;
+                        case 4:
+                            textToCopy += "🟪";
+                            break;
+                        case 5:
+                            textToCopy += "🟧";
+                            break;
+                        case 6:
+                            textToCopy += "🟫";
+                            break;
+                        case 7:
+                            textToCopy += "⬜";
+                            break;
+                        default:
+                            textToCopy += "⬛";
                             break;
                     }
                 });

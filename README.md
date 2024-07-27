@@ -25,6 +25,9 @@ tsc --watch
 
 ## Roadmap
 
+#### TODO
+* [ ] Modify all files to properly use Constants.OPTIONS
+
 #### Present plan
 * [ ]  Documentation
 * [ ]  Refactor CSS into SASS

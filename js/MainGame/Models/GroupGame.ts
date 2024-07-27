@@ -4,6 +4,7 @@ import { Group } from "../../Shared/Models/Group.js";
 import { Item } from "../../Shared/Models/Item.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
+import { GameOptions } from "./GameOptions.js";
 
 /**
  * Represents a group game with selected items and various game-related methods.
@@ -53,12 +54,11 @@ export class GroupGame extends Group implements Iterable<Item> {
      * @param {boolean} seeded - Whether to use seeded randomization.
      * @returns {Item[] | null} The selected items or null if no items can be selected.
      */
-    public getRandomItems(bannedItem: Item[], daysBefore = 0, seeded: boolean): Item[] | null {
+    public getRandomItems(bannedItem: Item[], daysBefore: number = 0, options: GameOptions): Item[] | null {
         let itemsPicked: Item[] = [];
-        let numberOfItems = seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.randomSettings.numberOfItems;
-        for (let i = 0; i < numberOfItems; i++) {
+        for (let i = 0; i < options.numberOfItems; i++) {
             let item: Item | null;
-            item = this.getRandomItem(bannedItem, daysBefore, seeded, i);
+            item = this.getRandomItem(bannedItem, daysBefore, options.seeded, i);
 
             if (item === null)
                 return null;
@@ -67,7 +67,9 @@ export class GroupGame extends Group implements Iterable<Item> {
             bannedItem.push(item);
         }
 
+        
         this.selectedItems = itemsPicked;
+        
         return itemsPicked;
     }
 
@@ -79,7 +81,7 @@ export class GroupGame extends Group implements Iterable<Item> {
      * @param {number} i - The index for seeding.
      * @returns {Item | null} The selected item or null if no item can be selected.
      */
-    public getRandomItem(bannedItem: Item[], daysBefore = 0, seeded: boolean, i: number): Item | null {
+    public getRandomItem(bannedItem: Item[], daysBefore: number = 0, seeded: boolean, i: number): Item | null {
         let item: Item;
         let counter = 0;
         do {

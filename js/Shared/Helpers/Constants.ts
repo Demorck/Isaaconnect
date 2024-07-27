@@ -1,9 +1,11 @@
+import { GameOptions } from "../../MainGame/Models/GameOptions";
 import { Group } from "../Models/Group";
 import { Item } from "../Models/Item";
 
 export class Constants {
     static items: Item[] = [];
     static groups: Group[] = [];
+    static options: GameOptions;
     
     static VERSION: string = '1.1.3';
 
@@ -43,11 +45,21 @@ export class Constants {
         return 4;
     }
 
+    static get OPTIONS(): GameOptions {
+        return this.options;
+    }
+
+    static set OPTIONS(options: GameOptions) {
+        this.options = options;
+    }
+
+
+
     static NUMBER_OF_DAYS_BEFORE: number = 3;
 
     static BASE_DATE: number = new Date(Date.UTC(2024, 6, 11, 0, 0, 0, 0)).getTime();
 
-    static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300"];
+    static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300", "purple-300", "orange-300", "yellow-900", "neutral-500"];
 
     static DEFAULT_DATA: any = {
         settings: {

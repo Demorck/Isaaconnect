@@ -3,6 +3,7 @@ import { ItemController } from "./ItemController.js";
 import { GroupGameView } from "../Views/GroupGameView.js";
 import { ItemView } from "../Views/ItemView.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
+import { GameOptions } from "../Models/GameOptions.js";
 
 
 /**
@@ -16,6 +17,7 @@ export class GroupGameController {
     private group: GroupGame;
     private groupView: GroupGameView;
     private itemsController: ItemController[] = [];
+    
 
     
     /**
@@ -26,12 +28,12 @@ export class GroupGameController {
      * @param {GroupGameView} groupView The view
      * @param {boolean} [blind=false] If the game is blind (for joking purposes)
      */
-    constructor(group: GroupGame, groupView: GroupGameView, blind: boolean = false) {
+    constructor(group: GroupGame, groupView: GroupGameView, blind: boolean = false, options: GameOptions) {
         this.group = group;
         this.groupView = groupView;
         for (const item of group) {
             let itemView = new ItemView('cards-module', item, blind);
-            this.itemsController.push(new ItemController(item, itemView));
+            this.itemsController.push(new ItemController(item, itemView, options));
         }
 
         this.group.addObserver(this.groupView);

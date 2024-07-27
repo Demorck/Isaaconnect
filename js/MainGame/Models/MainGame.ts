@@ -7,6 +7,7 @@ import { Group } from "../../Shared/Models/Group.js";
 import { GameUtils } from "./GameUtils.js";
 import { MainGameMechanics } from "./MainGameMechanics.js";
 import { Item } from "../../Shared/Models/Item.js";
+import { GameOptions } from "./GameOptions.js";
 
 /**
  * Represents the main game logic and state.
@@ -26,6 +27,7 @@ export class MainGame extends Observable {
     private isBlind: boolean;
 
     private mechanics: MainGameMechanics;
+    private utils: GameUtils;
 
     /**
      * Creates an instance of MainGame.
@@ -37,12 +39,14 @@ export class MainGame extends Observable {
         this.health = Constants.MAX_HEALTH;
         this.isBlind = blind;
         this.seeded = seeded;
+        Constants.OPTIONS = this.generateOptions();
         this.attempts = [];
         this.history = [];
         this.currentAttempt = 0;
         this.groupFound = 0;
         this.groups = [];
         this.mechanics = new MainGameMechanics();
+        this.utils = new GameUtils(Constants.OPTIONS);
         
         this.setupGame();
     }
@@ -60,13 +64,13 @@ export class MainGame extends Observable {
                 StorageManager.newIsaaconnect();
 
             for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
-                const selectedGroups = GameUtils.generateSelection(i);
+                const selectedGroups = this.utils.whileSelection(i);
                 selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
             }
             
-            this.groups = GameUtils.generateSelection(0, bannedGroups);
+            this.groups = this.utils.whileSelection(0, bannedGroups);
         } else {
-            this.groups = GameUtils.generateSelection(0, bannedGroups, false);
+            this.groups = this.utils.whileSelection(0, bannedGroups);
         }
     }
 
@@ -93,7 +97,7 @@ export class MainGame extends Observable {
      * @memberof MainGame
      */
     public handleSubmit(selectedID: number[]) {
-        let results = this.mechanics.handleSubmit(selectedID, this.getGroups(), this.history);
+        let results = this.mechanics.handleSubmit(selectedID, this.getGroups(), this.history, Constants.OPTIONS);
         
         let win = results.win;
         let attempts = results.attempts;
@@ -142,10 +146,10 @@ export class MainGame extends Observable {
             finished = true
         } else {
             win = true;
-            if (autocomplete && groupsSolved.length == Constants.NUMBER_OF_GROUPS - 1) {
+            if (autocomplete && groupsSolved.length == Constants.OPTIONS.numberOfGroups - 1) {
                 this.autocomplete(true);
                 finished = true;
-            } else if (groupsSolved.length == Constants.NUMBER_OF_GROUPS) finished = true;
+            } else if (groupsSolved.length == Constants.OPTIONS.numberOfGroups) finished = true;
 
             if (finished) {
                 this.notifyObservers(this.getNotifyData(win));
@@ -278,6 +282,16 @@ export class MainGame extends Observable {
         }).then(() => {
             Promise.resolve();
         });
+    }
+
+    private generateOptions(): GameOptions {
+        let options: GameOptions = {
+            numberOfGroups: this.seeded ? Constants.NUMBER_OF_GROUPS : StorageManager.numberOfGroups,
+            numberOfItems: this.seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.numberOfItems,
+            seeded: this.seeded,
+            blind: this.isBlind
+        };
+        return options;
     }
 
     /**
