@@ -37,8 +37,6 @@ export class ItemView implements Observer {
     }
 
     private createItemElement(item: Item): HTMLElement {
-        let container = document.createElement('div');
-        container.classList.add('bg-black');
         const itemElement = document.createElement('label');
         itemElement.className = 'card-module flex-col aspect-square';
         itemElement.className += StorageManager.difficulty === 'normal' ? '' : ' easy';
@@ -59,7 +57,7 @@ export class ItemView implements Observer {
 
         
         
-        if (this.blind) {
+        if (item.isBlind()) {
             imgElement.src = '/assets/gfx/items/collectibles/questionmark.png';
             spanElement.textContent = 'Question Mark';
         }
@@ -68,9 +66,7 @@ export class ItemView implements Observer {
         itemElement.appendChild(imgElement);
         itemElement.appendChild(spanElement);
 
-        container.appendChild(itemElement);
-
-        return container;
+        return itemElement;
     }
 
     public getContainer(): HTMLElement {

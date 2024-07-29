@@ -38,7 +38,9 @@ export class ItemController {
         checkbox?.addEventListener('change', () => {
             let numberSelected = document.querySelectorAll('.card-module--selected').length;
             
-            if (numberSelected <= this.options.numberOfItems) {
+            if (numberSelected <= this.options.NUMBER_OF_ITEMS) {
+                console.log(container);
+                
                 container.classList.toggle('card-module--selected');
             }
         });

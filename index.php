@@ -30,6 +30,7 @@
             $help = true;
             $settings = true;
             $logs = true;
+            $randomSettings = false;
             include 'include/template/tooltips.php'; ?>
     </div>
 </body>

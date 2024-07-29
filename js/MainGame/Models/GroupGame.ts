@@ -56,9 +56,9 @@ export class GroupGame extends Group implements Iterable<Item> {
      */
     public getRandomItems(bannedItem: Item[], daysBefore: number = 0, options: GameOptions): Item[] | null {
         let itemsPicked: Item[] = [];
-        for (let i = 0; i < options.numberOfItems; i++) {
+        for (let i = 0; i < options.NUMBER_OF_ITEMS; i++) {
             let item: Item | null;
-            item = this.getRandomItem(bannedItem, daysBefore, options.seeded, i);
+            item = this.getRandomItem(bannedItem, daysBefore, options.SEEDED, i);
 
             if (item === null)
                 return null;
@@ -163,6 +163,10 @@ export class GroupGame extends Group implements Iterable<Item> {
      */
     public setIndex(index: number): void {
         this.index = index;
+    }
+
+    public setBlindItem(index: number): void {
+        this.selectedItems[index].setBlind(true);
     }
 
     /**

@@ -4,6 +4,9 @@ export interface RandomSettingsData {
     
     numberOfGroups: number;
     numberOfItems: number;
+    numberOfBlindItems: number;
+
+    randomHealth: number;
 
     customDifficulty: boolean;
     difficulty_0: number;

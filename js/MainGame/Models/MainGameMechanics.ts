@@ -48,7 +48,7 @@ export class MainGameMechanics {
             }
         });
 
-        if (numberOfItemsCorrect === options.numberOfItems - 1)
+        if (numberOfItemsCorrect === options.NUMBER_OF_ITEMS - 1)
             return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
         return { win, attempts, historyItems, isMessage: false, message: ''};
@@ -67,13 +67,13 @@ export class MainGameMechanics {
         let currentAttempt = history.length;
         history.forEach(attempt => {
             let k = 0;            
-            for (let i = 0; i < options.numberOfItems; i++) {
+            for (let i = 0; i < options.NUMBER_OF_ITEMS; i++) {
                 let filter = attempt.filter(item => item.getId() == selectedIDs[i]);
                 let isInclude = filter.length > 0;
                 if (isInclude) k++;
             }
             
-            if (k === options.numberOfItems) j++;
+            if (k === options.NUMBER_OF_ITEMS) j++;
         });
 
         const alreadyGuessed = j > 0 && currentAttempt !== 0;

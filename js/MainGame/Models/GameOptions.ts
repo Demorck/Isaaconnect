@@ -9,11 +9,29 @@ export interface GameOptions {
     /**
      * The number of groups in the game.
      */
-    numberOfGroups: number;
+    NUMBER_OF_GROUPS: number;
     /**
      * The number of items in each group.
      */
-    numberOfItems: number;
-    seeded: boolean;
-    blind: boolean;
+    NUMBER_OF_ITEMS: number;
+
+    /**
+     * If the game is seeded
+     */
+    SEEDED: boolean;
+
+    /**
+     * Health 
+     */
+    HEALTH: number  ;
+
+    /**
+     * If the game should be blind
+     */
+    NUMBER_OF_BLIND_ITEMS: number;
+
+    /**
+     * If the game should have banned tags
+     */
+    TAGS_BANNED: boolean;
 }

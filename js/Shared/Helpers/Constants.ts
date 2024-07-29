@@ -76,6 +76,7 @@ export class Constants {
             checkGrid: false,
             numberOfGroups: Constants.NUMBER_OF_GROUPS,
             numberOfItems: Constants.NUMBER_OF_ITEMS,
+            numberOfBlindItems: 0,
             customDifficulty: false,
             difficulty_0: 0,
             difficulty_1: 0,

@@ -25,7 +25,7 @@ export class GroupGameView implements Observer {
         let content =   `<section class="flex flex-1 flex-row solved-group py-3 rounded-xl bg-${Constants.COLORS[data.index]}">
                                 <div class="solved-group--cards flex flex-col mr-5">
                                     <div class="flex flex-row">`;
-        let modulo = Math.ceil(Math.sqrt(Constants.OPTIONS.numberOfItems));
+        let modulo = Math.ceil(Math.sqrt(Constants.OPTIONS.NUMBER_OF_ITEMS));
         data.items.forEach((item, index) => {
             if (index % modulo == 0) content += `</div><div class="flex flex-row">`;
             content += `<div class="solved-group--card">${this.getRedirectLinkHTML(item.getAlias())}<img src="/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.getId())}.png" alt="${item.getAlias()}"></a></div>`;

@@ -301,6 +301,25 @@ export class StorageManager {
         this.randomSettings = { ...randomSettings, numberOfItems };
     }
 
+    static get numberOfBlindItems(): number {
+        return this.randomSettings.numberOfBlindItems;
+    }
+
+    static set numberOfBlindItems(numberOfBlindItems: number) {
+        const randomSettings = this.randomSettings;        
+        this.randomSettings = { ...randomSettings, numberOfBlindItems };
+    }
+
+    static get randomHealth(): number {
+        return this.randomSettings.randomHealth;
+    }
+
+    static set randomHealth(randomHealth: number) {
+        const randomSettings = this.randomSettings;        
+        this.randomSettings = { ...randomSettings, randomHealth };
+    }
+
+
     static get customDifficulty(): boolean {
         return this.randomSettings.customDifficulty;
     }

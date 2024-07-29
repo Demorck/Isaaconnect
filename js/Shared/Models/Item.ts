@@ -6,6 +6,7 @@ export class Item extends Observable {
     private id: number;
     private alias_en: string;
     private alias_fr: string;
+    private blinded: boolean = false;
 
 
     constructor(id: number, alias: string) {
@@ -43,5 +44,13 @@ export class Item extends Observable {
 
     public wrongAnswer(): void {
         this.notifyObservers({ shake: true });
+    }
+
+    public setBlind(isBlind: boolean): void {
+        this.blinded = isBlind;
+    }
+
+    public isBlind(): boolean {
+        return this.blinded;
     }
 }

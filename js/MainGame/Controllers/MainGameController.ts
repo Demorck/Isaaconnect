@@ -53,14 +53,6 @@ export class MainGameController {
         
         this.game.setupFinished();
         this.modifyWithOptions();
-
-        if (window.innerWidth > 768) {
-            let container = this.gameView.getMainContainer();
-            
-            let width = 110 * (this.gameOptions.numberOfItems + 1);
-            let height = 110 * (this.gameOptions.numberOfGroups + 1);
-            container.style.width = width + 'px';
-        }
     }
 
     /**
@@ -136,7 +128,7 @@ export class MainGameController {
      */
     private checkboxChangeHandler = (event: Event, checkboxes: NodeListOf<HTMLInputElement>): void => {
         let numberSelected = document.querySelectorAll('.card-module--selected').length;
-        if (numberSelected == this.gameOptions.numberOfItems) {
+        if (numberSelected == this.gameOptions.NUMBER_OF_ITEMS) {
             checkboxes.forEach(otherCheckbox => {
                 let element = otherCheckbox.parentNode as Element;
                 if (!element.classList.contains('card-module--selected')) {
@@ -232,7 +224,13 @@ export class MainGameController {
     private modifyWithOptions(): void {
         let itemsContainer = this.gameView.getItemsContainer();
         itemsContainer.classList.remove('grid-cols-4');
-        itemsContainer.classList.add(`grid-cols-${this.gameOptions.numberOfItems}`);
+        itemsContainer.classList.add(`grid-cols-${this.gameOptions.NUMBER_OF_ITEMS}`);
+        
+        if (window.innerWidth > 768) {
+            let container = this.gameView.getMainContainer();
+            let width = 110 * (this.gameOptions.NUMBER_OF_ITEMS + 1);
+            container.style.width = width + 'px';
+        }
     }
 
     public getGameOptions(): GameOptions {

@@ -84,10 +84,12 @@ export class Stats {
 
     public generateOptions(): GameOptions {
         return {
-            numberOfGroups: 10,
-            numberOfItems: 10,
-            seeded: false,
-            blind: false
+            NUMBER_OF_GROUPS: 10,
+            NUMBER_OF_ITEMS: 10,
+            SEEDED: false,
+            HEALTH: 3,
+            NUMBER_OF_BLIND_ITEMS: 0,
+            TAGS_BANNED: false
         }
     }
 }

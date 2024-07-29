@@ -19,6 +19,7 @@ export async function debugLogic(html: string): Promise<string> {
 export function addEvent(container: HTMLElement): void {
     const resetButton = container.querySelector<HTMLElement>('#reset');
     const lifeButton = container.querySelector<HTMLElement>('#life');
+    const tagsButton = container.querySelector<HTMLInputElement>('#tags');
     const range = container.querySelector<HTMLInputElement>('#range-group');
     const rangeItems = container.querySelector<HTMLInputElement>('#range-items');
 
@@ -41,6 +42,12 @@ export function addEvent(container: HTMLElement): void {
             console.log(rangeItems.value);
             
             StorageManager.numberOfItems = Number(rangeItems.value);
+        });
+    }
+
+    if (tagsButton) {
+        tagsButton.addEventListener('click', () => {
+            StorageManager.bannedTags = tagsButton.checked;
         });
     }
 }

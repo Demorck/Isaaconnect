@@ -46,7 +46,7 @@ export class MainGameView implements Observer {
             let group: GroupGame = data.group;
             let itemsID: number[] = group.getSelectedItems().map(item => item.getId());
             let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
-            if (selected.length != Constants.NUMBER_OF_ITEMS)
+            if (selected.length != Constants.OPTIONS.NUMBER_OF_ITEMS)
             {
                 itemsID.forEach((id, index) => {
                     let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`);
@@ -57,7 +57,7 @@ export class MainGameView implements Observer {
             this.animate().then(async () => {
                 await this.controller.toggleGroupSolved(data.group);
                 let cards = document.querySelectorAll<HTMLElement>('.card-module');
-                if (cards.length == Constants.NUMBER_OF_ITEMS)
+                if (cards.length == Constants.OPTIONS.NUMBER_OF_ITEMS)
                 {
                     cards.forEach(card => {
                         card.style.transform = `translate(0px, $0px)`;
@@ -110,7 +110,7 @@ export class MainGameView implements Observer {
         for (let i = 0; i < health; i++)
             this.healthContainer.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
 
-        for (let i = health; i < Constants.MAX_HEALTH; i++)
+        for (let i = health; i < Constants.OPTIONS.HEALTH; i++)
             this.healthContainer.innerHTML += `<img src="/assets/gfx/empty heart.png" alt="empty heart" data-type="empty">`;
     }
 
@@ -145,8 +145,8 @@ export class MainGameView implements Observer {
         labels.forEach((label, index) => {
             label.classList.remove('rounded-tl-3xl', 'rounded-tr-3xl', 'rounded-bl-3xl', 'rounded-br-3xl');
             if (index === 0) label.classList.add('rounded-tl-3xl');
-            if (index === options.numberOfItems - 1) label.classList.add('rounded-tr-3xl');
-            if (index === labels.length - options.numberOfItems) label.classList.add('rounded-bl-3xl');
+            if (index === options.NUMBER_OF_ITEMS - 1) label.classList.add('rounded-tr-3xl');
+            if (index === labels.length - options.NUMBER_OF_ITEMS) label.classList.add('rounded-bl-3xl');
             if (index === labels.length - 1) label.classList.add('rounded-br-3xl');
         });
 
@@ -241,7 +241,7 @@ export class MainGameView implements Observer {
             content += `<div data-id="results-attempt-${index_attempt}" class="flex justify-center items-center">`;
             group.forEach((currentGroup, index_group) => {
                 let index = currentGroup.index;
-                let rounded = index_group % Constants.OPTIONS.numberOfItems == 0 ? "rounded-l-lg" : index_group % Constants.OPTIONS.numberOfItems == Constants.OPTIONS.numberOfItems - 1 ? "rounded-r-lg" : "";
+                let rounded = index_group % Constants.OPTIONS.NUMBER_OF_ITEMS == 0 ? "rounded-l-lg" : index_group % Constants.OPTIONS.NUMBER_OF_ITEMS == Constants.OPTIONS.NUMBER_OF_ITEMS - 1 ? "rounded-r-lg" : "";
                 content += `<span data-id="results-attempt-${index_attempt}-item-${index_group}-group-${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
             });
             content += `</div>`;
@@ -270,7 +270,7 @@ export class MainGameView implements Observer {
 
             let groupFound = data.groupFound;
             
-            textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.numberOfGroups} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
 
             let attempts: GroupData[][] = data.attempts;
 
@@ -336,8 +336,8 @@ export class MainGameView implements Observer {
         let numberAlreadySelected = 0;
         let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
 
-        if (selected.length == Constants.NUMBER_OF_ITEMS && this.itemsContainer.children.length != Constants.NUMBER_OF_ITEMS) {
-            for (let i = 0; i < Constants.NUMBER_OF_ITEMS; i++) {
+        if (selected.length == Constants.OPTIONS.NUMBER_OF_ITEMS && this.itemsContainer.children.length != Constants.OPTIONS.NUMBER_OF_ITEMS) {
+            for (let i = 0; i < Constants.OPTIONS.NUMBER_OF_ITEMS; i++) {
                 let item = this.itemsContainer.children[i];
                 let isNotSelected = !item.classList.contains('card-module--selected');
                 if(isNotSelected) {
@@ -345,7 +345,7 @@ export class MainGameView implements Observer {
                 }
             }
 
-            numberAlreadySelected = Constants.NUMBER_OF_ITEMS - indexContains.length;
+            numberAlreadySelected = Constants.OPTIONS.NUMBER_OF_ITEMS - indexContains.length;
 
             for (let i = 0; i < indexContains.length; i++) {
                 let index = indexContains[i];

@@ -23,6 +23,8 @@ export class MainGame extends Observable {
     private history: Item[][];
     private groupFound: number;
     private currentAttempt: number;
+
+    // TODO: Modifier le seeded pour que ça prenne depuis la constante qu'ici
     private seeded: boolean;
     private isBlind: boolean;
 
@@ -36,7 +38,6 @@ export class MainGame extends Observable {
      */
     constructor(seeded = true, blind = false) {
         super();
-        this.health = Constants.MAX_HEALTH;
         this.isBlind = blind;
         this.seeded = seeded;
         Constants.OPTIONS = this.generateOptions();
@@ -47,6 +48,7 @@ export class MainGame extends Observable {
         this.groups = [];
         this.mechanics = new MainGameMechanics();
         this.utils = new GameUtils(Constants.OPTIONS);
+        this.health = Constants.OPTIONS.HEALTH;
         
         this.setupGame();
     }
@@ -146,10 +148,10 @@ export class MainGame extends Observable {
             finished = true
         } else {
             win = true;
-            if (autocomplete && groupsSolved.length == Constants.OPTIONS.numberOfGroups - 1) {
+            if (autocomplete && groupsSolved.length == Constants.OPTIONS.NUMBER_OF_GROUPS - 1) {
                 this.autocomplete(true);
                 finished = true;
-            } else if (groupsSolved.length == Constants.OPTIONS.numberOfGroups) finished = true;
+            } else if (groupsSolved.length == Constants.OPTIONS.NUMBER_OF_GROUPS) finished = true;
 
             if (finished) {
                 this.notifyObservers(this.getNotifyData(win));
@@ -169,7 +171,7 @@ export class MainGame extends Observable {
      */
     private getNotifyData(win: boolean, autocomplete: boolean = false): any {
         if (win) {
-            let mistakes = Constants.MAX_HEALTH - this.health;
+            let mistakes = Constants.OPTIONS.HEALTH - this.health;
             let title = Constants.WIN_MESSAGES[mistakes];
             return {
                 autocomplete: autocomplete,
@@ -286,10 +288,12 @@ export class MainGame extends Observable {
 
     private generateOptions(): GameOptions {
         let options: GameOptions = {
-            numberOfGroups: this.seeded ? Constants.NUMBER_OF_GROUPS : StorageManager.numberOfGroups,
-            numberOfItems: this.seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.numberOfItems,
-            seeded: this.seeded,
-            blind: this.isBlind
+            NUMBER_OF_GROUPS: this.seeded ? Constants.NUMBER_OF_GROUPS : StorageManager.numberOfGroups,
+            NUMBER_OF_ITEMS: this.seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.numberOfItems,
+            SEEDED: this.seeded,
+            HEALTH: this.seeded ? Constants.MAX_HEALTH : StorageManager.randomHealth,
+            NUMBER_OF_BLIND_ITEMS: this.seeded ? 0 : StorageManager.numberOfBlindItems,
+            TAGS_BANNED: this.seeded ? true : StorageManager.bannedTags,
         };
         return options;
     }

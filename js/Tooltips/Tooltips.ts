@@ -2,6 +2,7 @@ import { statsLogic } from './Stats.js';
 import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic, redirectWikiLogic } from './Settings.js';
 import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
+import { addEvent as addRandomSettingsEvent } from './RandomSettings.js';
 import { addEventLogs } from './Logs.js';
 // import { TTSLogic } from './Accessibility.js';
 import { Utils } from '../Shared/Helpers/Utils.js';
@@ -59,6 +60,9 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
             break;
         case 'debug':
             html = await Utils.loadHTML('/include/tooltips/debug.html');
+            break;  
+        case 'random-settings':
+            html = await Utils.loadHTML('/include/tooltips/random_settings.html');
             break;
         case 'logs':
             html = await Utils.loadHTML('/include/tooltips/logs.html');
@@ -84,6 +88,9 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
             break;
         case 'accessibility':
             // TTSLogic(wrapper);
+            break;
+        case 'random-settings':
+            addRandomSettingsEvent(wrapper)
             break;
         case 'debug':
             addEvent(wrapper);
