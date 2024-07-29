@@ -37,6 +37,7 @@ tsc --watch
 
 #### Future plan
 * [ ]  Fully customizable random game
+* [ ]  Seeded game to share them
 * [ ]  Localization
 * [ ]  Editor mode
 * [ ]  Backend
