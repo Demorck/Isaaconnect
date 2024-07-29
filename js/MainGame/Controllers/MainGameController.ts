@@ -29,7 +29,8 @@ export class MainGameController {
     constructor(game: MainGame, view: MainGameView) {
         this.game = game;
         this.gameView = view;
-        this.gameOptions = Constants.OPTIONS
+        this.gameView.setController(this);
+        this.gameOptions = Constants.OPTIONS;
 
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
@@ -50,9 +51,16 @@ export class MainGameController {
             this.toggleFinishedState();
         }
         
-        this.gameView.setController(this);
         this.game.setupFinished();
         this.modifyWithOptions();
+
+        if (window.innerWidth > 768) {
+            let container = this.gameView.getMainContainer();
+            
+            let width = 110 * (this.gameOptions.numberOfItems + 1);
+            let height = 110 * (this.gameOptions.numberOfGroups + 1);
+            container.style.width = width + 'px';
+        }
     }
 
     /**

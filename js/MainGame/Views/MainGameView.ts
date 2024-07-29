@@ -141,7 +141,7 @@ export class MainGameView implements Observer {
      */
     public applyBorderRadius() {
         let labels = document.querySelectorAll('.card-module');
-        let options: GameOptions = this.controller.getGameOptions();
+        let options: GameOptions = Constants.OPTIONS;
         labels.forEach((label, index) => {
             label.classList.remove('rounded-tl-3xl', 'rounded-tr-3xl', 'rounded-bl-3xl', 'rounded-br-3xl');
             if (index === 0) label.classList.add('rounded-tl-3xl');
@@ -361,6 +361,10 @@ export class MainGameView implements Observer {
 
     public setController(controller: MainGameController): void {
         this.controller = controller;
+    }
+
+    public getMainContainer(): HTMLElement {
+        return this.container;
     }
 
 }

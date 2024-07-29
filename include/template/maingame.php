@@ -4,20 +4,19 @@
         <?php include 'include/template/title.php'; ?>
 
         <div class="flex flex-row justify-center">
-            <div class="shadow-theme flex flex-col justify-center items-center p-4 m-4 mb-0 text-center bg-paper gap-1 md:gap-4 h-min md:w-min md:h-min aspect-square" id="cards-game">
-                <div id="cards-win" class="flex flex-1 flex-col gap-2 justify-evenly hidden w-fit">
+            <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 md:gap-4 h-min aspect-square" id="cards-game">
+                <div id="cards-win" class="flex flex-1 flex-col gap-2 justify-evenly hidden w-full">
                 </div>
-                <div id="cards-module" class="h-max md:h-max md:w-max cards-module grid grid-cols-4 gap-1 md:gap-4 w-fit">
+                <div id="cards-module" class="h-max md:h-max w-full h-full cards-module grid grid-cols-4 gap-1 md:flex md:flex-wrap flex-1 items-center justify-between w-fit">
                 </div>
                 <div id="modal-wrapper" class="z-10 hidden">
-
                 </div>
             </div>
             <div class="message flex absolute px-4 py-2 rounded-2xl hidden">
                 JUST MONIKA
             </div>
         </div>
-
+        <!--  -->
         <section class="buttons flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
             <div class="flex justify-evenly">
                 <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle block md:hidden">

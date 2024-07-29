@@ -161,19 +161,13 @@ ol, ul {
     border-radius: 2.5rem;
 }
 
-@media (min-width: 768px) {
-    #cards-game {
-        width: 550px;
-    }
-}
-
 #cards-win section:nth-child(4) {
     margin-bottom: 0;
 }
 
-#cards-win, #cards-module {
+/* #cards-win, #cards-module {
     width: -webkit-fill-available;
-}
+} */
 
 .pixelated {
     image-rendering: pixelated;
@@ -186,7 +180,6 @@ ol, ul {
 
 .card-module {
     border-radius: 5px;
-    padding: 0.5em;
     margin: 2px;
     cursor: pointer;
     display: flex;
@@ -198,6 +191,7 @@ ol, ul {
 
 @media (min-width: 768px) {
     .card-module {
+        padding: 0.5em;
         width: 112px !important; /* J'ai pas trouvé mieux pour le moment */
         height: 112px !important;
     }
@@ -221,13 +215,19 @@ ol, ul {
         font-size: 0.5rem;
         font-weight: 800;
     }
-    
+    .easy img {
+        width: 3.5em;
+        font-size: 0.80rem;
+    }
 }
 
-.easy img {
-    width: 4em;
-    font-size: 0.80rem;
+@media (min-width: 768px) {
+    .easy img {
+        width: 4em;
+        font-size: 0.80rem;
+    }
 }
+
 
 .easy .card-module--content {
     display: flex;
