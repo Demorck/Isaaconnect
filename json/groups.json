@@ -1142,7 +1142,7 @@
     "tags": ["sprite"]
   },
   {
-    "name": "Items that can open Mega Satan Door",
+    "name": "Items that can open Mega Satan's Door",
     "items": [175, 527, 623, 675],
     "difficulty": 1,
     "tags": []
@@ -1160,13 +1160,13 @@
     "tags": []
   },
   {
-    "name": "Items with an X on their sprite",
-    "items": [38, 4, 67, 19, 81, 95, 117, 125, 140, 136, 145, 179, 188, 190, 217, 246, 293, 320, 322, 336, 361, 463, 618, 635],
-    "difficulty": 3,
+    "name": "Items with crossed eyes",
+    "items": [38, 4, 67, 81, 95, 117, 125, 140, 136, 145, 179, 188, 293, 320, 322, 336, 361, 618, 635],
+    "difficulty": 0,
     "tags": ["sprite"]
   },
   {
-    "name": "Active Items with charge but don't recharge when cleaning a room",
+    "name": "Items that can't be charged with batteries",
     "items": [585, 638, 704, 147],
     "difficulty": 2,
     "tags": []
@@ -1178,9 +1178,9 @@
     "tags": []
   },
   {
-    "name": "Item with name contening 4 or more words",
+    "name": "Item names containing 4+ words",
     "items": [7, 102, 518, 545, 132, 34, 62, 159, 564, 572, 371, 82, 84, 399, 583, 672, 429, 97],
-    "difficulty": 3,
+    "difficulty": 2,
     "tags": ["name"]
   },
   {
@@ -1190,20 +1190,20 @@
     "tags": []
   },
   {
-    "name": "Items that have a 2 parts sprite or more",
+    "name": "Items whose sprite is in multiple parts",
     "items": [      -1,
 9, 10, 19, 22, 25, 24, 57, 122, 128, 129, 151, 190, 211, 217, 259, 261, 266, 288, 295, 310, 326, 347, 364, 368, 377, 391, 411, 440, 432, 453, 474, 529, 532, 540, 549, 563, 576, 575, 570, 606, 618, 611, 622, 657, 664, 682, 706, 693, 700, 694, 724, 729, 726, 641, 714, 721, 704, 702, 692, 652, 494, 647, 234],
     "difficulty": 3,
     "tags": ["sprite"]
   },
   {
-    "name": "Items that's require pickup to work",
-    "items": [144, 278, 388, 385, 109, 623, 710, 166, 476, 491, 405, 681, 290, 295, 555, 177, 286, 263, 348, 479, 53],
+    "name": "Items that are useless without pickups",
+    "items": [144, 278, 388, 385, 109, 623, 710, 166, 476, 290, 295, 555, 177, 286, 263, 348, 479, 53],
     "difficulty": 2,
     "tags": []
   },
   {
-    "name": "Items which modify Isaac's size",
+    "name": "Items that change Isaac's size",
     "items": [438, 688, 340, 71, 625, 12, 302, 598],
     "difficulty": 2,
     "tags": []
@@ -1229,7 +1229,7 @@
   {
     "name": "Familiars that can despawn",
     "items": [273, 178, 405, 436, 543, 539, 238, 239, 627, 626, 697, 272, 612, 645, 693, 519, 681, 81, 11, 667, 468],
-    "difficulty": 2,
+    "difficulty": 3,
     "tags": []
   }
 ]
