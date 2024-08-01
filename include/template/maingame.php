@@ -17,8 +17,8 @@
             </div>
         </div>
         <!--  -->
-        <section class="buttons flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
-            <div class="flex justify-evenly">
+        <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
+            <div class="buttons items-center gap-4 flex justify-evenly" id="buttons-ingame">
                 <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle block md:hidden">
                     Shuffle
                 </button>
@@ -26,8 +26,16 @@
                     Submit
                 </button>
             </div>
+            <div class="buttons gap-4 flex justify-evenly hidden" id="buttons-finished">
+                <button type="button" data-id="results" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                    View Results
+                </button>
+                <button type="button" data-id="play-again" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                    Play Again
+                </button>
+            </div>
             <section class="health flex justify-center md:justify-between upheaval">
-                <span class="flex ml-2 items-between hearts">
+                <span class="flex flex-col items-start ml-2 items-between hearts">
                 </span>
             </section>
         </section>

@@ -1,4 +1,5 @@
 import { GameOptions } from "../../MainGame/Models/GameOptions";
+import { Difficulties } from "../Models/Enums/Difficulties";
 import { Group } from "../Models/Group";
 import { Item } from "../Models/Item";
 
@@ -54,7 +55,7 @@ export class Constants {
     }
 
 
-
+    public static readonly DEFAULT_DIFFICULTY: Difficulties = Difficulties.NORMAL;
     static NUMBER_OF_DAYS_BEFORE: number = 3;
 
     static BASE_DATE: number = new Date(Date.UTC(2024, 6, 11, 0, 0, 0, 0)).getTime();
@@ -77,11 +78,8 @@ export class Constants {
             numberOfGroups: Constants.NUMBER_OF_GROUPS,
             numberOfItems: Constants.NUMBER_OF_ITEMS,
             numberOfBlindItems: 0,
-            customDifficulty: false,
-            difficulty_0: 0,
-            difficulty_1: 0,
-            difficulty_2: 0,
-            difficulty_3: 0
+            customDifficulty: Constants.DEFAULT_DIFFICULTY,
+            randomHealth: Constants.MAX_HEALTH,
         },
         game: {
             health: Constants.MAX_HEALTH,

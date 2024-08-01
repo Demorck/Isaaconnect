@@ -5,6 +5,7 @@ import { Item } from "../../Shared/Models/Item.js";
 import { GroupGame } from "./GroupGame.js";
 import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 import { GameOptions } from "./GameOptions.js";
+import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
 
 
 /**
@@ -38,13 +39,13 @@ export class GameUtils {
         let selectedItems: Item[] = [];
         let selectedGroups: GroupGame[] = [];
         let difficultyFound = false;
+        let breakLoop = false;
+
 
         let counterGroup = 0;
-        while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && counterGroup < 1000) {
+        while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && counterGroup < 1000 && !breakLoop) {
             let currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, counterGroup, bannedTags, this.options.SEEDED);
-            if (currentGroup.getDifficulty() === 3) {
-                difficultyFound = true;
-            }
+            difficultyFound = this.checkDifficultyFound(currentGroup, difficultyFound);
 
             let counterItem = 0;
             let items: Item[] = [];
@@ -53,14 +54,14 @@ export class GameUtils {
                 if (result === null) {
                     bannedGroup.push(currentGroup);
                     currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, counterItem, bannedTags, this.options.SEEDED);
+                    difficultyFound = this.checkDifficultyFound(currentGroup, difficultyFound);
                 } else {
                     items = result;
                 }
                 counterItem++;
             }
 
-            if (items.length < this.options.NUMBER_OF_ITEMS) {    
-                console.log("No items can be selected");
+            if (items.length < this.options.NUMBER_OF_ITEMS) {
                 break;
             }
             
@@ -143,6 +144,23 @@ export class GameUtils {
     }
     
     
+    private checkDifficultyFound(currentGroup: GroupGame, difficultyFound: boolean) {
+        switch (Constants.OPTIONS.CUSTOM_DIFFICULTY) {
+            case Difficulties.SUPER_EASY:
+                if (currentGroup.getDifficulty() === 2) difficultyFound = true;
+                break;
+            case Difficulties.HARD:
+                if (currentGroup.getDifficulty() === 1) difficultyFound = true;
+                break;
+            case Difficulties.NORMAL:
+                if (currentGroup.getDifficulty() === 3) difficultyFound = true;
+                break;
+            default:
+                break;
+        }
+        return difficultyFound;
+    }
+
     /**
      * @description Get a random group from the list of groups with some restrictions
      *
@@ -161,7 +179,7 @@ export class GameUtils {
         let groups = Constants.GROUPS;
         let numberOfItems = seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.numberOfItems;
 
-        if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
+        groups = this.filterGroupsByDifficulty(groups, filterDifficulty);
 
         do {
             if (seeded)
@@ -176,6 +194,31 @@ export class GameUtils {
     }
 
     
+    private filterGroupsByDifficulty(groups: Group[], filterDifficulty: boolean) {
+        switch (Constants.OPTIONS.CUSTOM_DIFFICULTY) {
+            case Difficulties.SUPER_EASY:
+                groups = groups.filter((group: Group) => group.getDifficulty() != 3);
+                if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() != 2);
+                break;
+            case Difficulties.EASY:
+                groups = groups.filter((group: Group) => group.getDifficulty() != 3);
+                break;
+            case Difficulties.HARD:
+                groups = groups.filter((group: Group) => group.getDifficulty() != 0);
+                if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() != 1);
+                break;
+            case Difficulties.ULTRA_HARD:
+                groups = groups.filter((group: Group) => group.getDifficulty() != 0 && group.getDifficulty() != 1);
+                break;
+            case Difficulties.NORMAL:
+            default:
+                if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
+                break;
+        }
+
+        return groups;
+    }
+
     /**
      * @description Check if the grid is impossible to solve, Here impossible means that there are more than 4 items can be placed in one of selected groups
      *

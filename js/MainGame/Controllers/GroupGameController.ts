@@ -16,7 +16,7 @@ import { GameOptions } from "../Models/GameOptions.js";
 export class GroupGameController {
     private group: GroupGame;
     private groupView: GroupGameView;
-    private itemsController: ItemController[] = [];
+    private itemsController: ItemController[];
     
 
     
@@ -28,13 +28,15 @@ export class GroupGameController {
      * @param {GroupGameView} groupView The view
      * @param {boolean} [blind=false] If the game is blind (for joking purposes)
      */
-    constructor(group: GroupGame, groupView: GroupGameView, blind: boolean = false, options: GameOptions) {
+    constructor(group: GroupGame, groupView: GroupGameView, options: GameOptions) {
         this.group = group;
         this.groupView = groupView;
-        for (const item of group) {
-            let itemView = new ItemView('cards-module', item, blind);
+        this.itemsController = [];
+        for (const item of group) {            
+            let itemView = new ItemView('cards-module', item);
             this.itemsController.push(new ItemController(item, itemView, options));
         }
+        
 
         this.group.addObserver(this.groupView);
     }

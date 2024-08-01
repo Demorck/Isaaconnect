@@ -15,10 +15,8 @@ import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
 export class ItemView implements Observer {
     private itemContainer: HTMLElement;
     private itemElement: HTMLElement;
-    private blind: boolean;
 
-    constructor(itemContainerId: string, item: Item, blind: boolean = false) {
-        this.blind = blind;
+    constructor(itemContainerId: string, item: Item) {
         this.itemContainer = document.getElementById(itemContainerId)!;
         this.itemElement = this.createItemElement(item);
     }

@@ -1,3 +1,5 @@
+import { Difficulties } from "../../Shared/Models/Enums/Difficulties";
+
 /**
  * Description placeholder
  *
@@ -34,4 +36,9 @@ export interface GameOptions {
      * If the game should have banned tags
      */
     TAGS_BANNED: boolean;
+
+    /**
+     * The custom difficulty
+     */
+    CUSTOM_DIFFICULTY: Difficulties;
 }

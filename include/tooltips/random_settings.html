@@ -68,6 +68,20 @@
                     </ul>
                 </div>
             </div>
+            <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                <div class="flex flex-col text-left flex-1">
+                    <h1 class="text-xl font-bold">Difficulty</h1>                    
+                    <p class="text-sm">Groups has difficulty assigned from 0 to 3. Super easy means that groups with difficulty 3 won't appear and maximum of 1 group with difficulty 2. Ultra hard means that groups with difficulty 0 and 1 are rerolled.</p>
+                </div>
+                <div class="flex flex-col space-y-2 p-2 flex-1">
+                    <input type="range" id="range-difficulty" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="0" max="4" step="1"/>
+                    <ul class="flex justify-between w-full px-[10px]">
+                        <li class="flex justify-center relative"><span class="absolute">Super easy</span></li>
+                        <li class="flex justify-center relative"><span class="absolute">Normal</span></li>
+                        <li class="flex justify-center relative"><span class="absolute">Ultra hard</span></li>
+                    </ul>
+                </div>
+            </div>
             <div class="flex flex-row-reverse gap-4 items-center">
                 <div class="flex flex-col text-left">
                     <h1 class="text-xl">Not same tags in grid</h1>
@@ -76,6 +90,16 @@
                 <div class="checkbox-wrapper rounded-3xl h-fit">
                     <input class="tgl tgl-theme" id="tags" type="checkbox"/>
                     <label class="tgl-btn" for="tags">
+                </div>
+            </div>
+            <div class="flex flex-row-reverse gap-4 items-center">
+                <div class="flex flex-col text-left">
+                    <h1 class="text-xl">Test</h1>
+                    <p class="text-sm">Play</p>
+                </div>
+                <div class="checkbox-wrapper rounded-3xl h-fit">
+                    <input class="tgl tgl-theme" id="play" type="checkbox"/>
+                    <label class="tgl-btn" for="play">
                 </div>
             </div>
         </div>

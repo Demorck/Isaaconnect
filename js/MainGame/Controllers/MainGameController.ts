@@ -34,12 +34,8 @@ export class MainGameController {
 
         this.itemsIndex = Array.from({ length: Constants.NUMBER_OF_GROUPS * Constants.NUMBER_OF_ITEMS }, (_, i) => i);
 
-        this.game.getGroups().forEach(group => {
-            let groupView = new GroupGameView('#cards-win');
-            this.groupsController.push(new GroupGameController(group, groupView, this.game.getBlind(), this.gameOptions));
-        });
+        this.initializeGroups();
         
-        this.shuffleCard();
         this.addEventListeners();
         this.game.addObserver(this.gameView);
         if (this.game.isSeeded())
@@ -66,6 +62,22 @@ export class MainGameController {
         container.innerHTML = '';
         Utils.shuffleArray(labels).forEach(label => container.appendChild(label));
         this.game.notifyObservers();
+    }
+
+    private initializeGroups() {
+        this.groupsController = [];
+        
+        this.game.getGroups().forEach(group => {
+            let groupView = new GroupGameView('#cards-win');
+            this.groupsController.push(new GroupGameController(group, groupView, this.gameOptions));
+        });
+
+        let checkboxes = document.querySelectorAll<HTMLInputElement>('.card-module input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => this.checkboxChangeHandler(event, checkboxes));
+        });
+        
+        this.shuffleCard();
     }
 
     /**
@@ -96,11 +108,6 @@ export class MainGameController {
      * @returns {void}
      */
     private addEventListeners(): void {        
-        let checkboxes = document.querySelectorAll<HTMLInputElement>('.card-module input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', (event) => this.checkboxChangeHandler(event, checkboxes));
-        });
-
         let shuffleButton = document.querySelectorAll('[data-id="shuffle"]');
         shuffleButton.forEach(button => {
             button.addEventListener('click', this.shuffleCard);
@@ -115,6 +122,16 @@ export class MainGameController {
                 );
             });
         });
+
+        let buttonResults = document.querySelector('button[data-id="results"]')!;
+        buttonResults.classList.remove('button--disabled');
+        buttonResults.addEventListener('click', () => this.gameView.displayModal());
+
+        if (!Constants.OPTIONS.SEEDED) {
+            let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
+            buttonPlay.classList.remove('button--disabled', 'hidden');
+            buttonPlay.addEventListener('click', () => this.resetGame());
+        }
     }
 
     /**
@@ -182,11 +199,8 @@ export class MainGameController {
         }
 
         this.removeButtons();
-        document.getElementById('cards-module')?.remove();
-
-        let buttonResults = document.querySelector('button[data-id="results"]')!;
-        buttonResults.classList.remove('button--disabled');
-        buttonResults.addEventListener('click', () => this.gameView.displayModal());
+        document.getElementById('cards-module')?.classList.add('hidden');
+        document.querySelector('.health')?.classList.add('hidden');
     }
 
     /**
@@ -196,11 +210,14 @@ export class MainGameController {
      * @returns {void}
      */
     private removeButtons(): void {
-        let shufflesButton = document.querySelectorAll('button[data-id="shuffle"]');
-        shufflesButton.forEach(button => button.remove());
+        let shuffleButton = document.querySelector('.shuffle-mobile');
+        shuffleButton?.classList.add("hidden");
 
-        let buttons = document.querySelector('.buttons')!;
-        buttons.innerHTML = '<button data-id="results" class="button--submit font-bold py-2 px-4 rounded button--disabled">See results</button>';
+        let buttons = document.getElementById('buttons-ingame')!;
+        buttons.classList.add("hidden");
+
+        buttons = document.getElementById('buttons-finished')!;
+        buttons.classList.remove("hidden");
     }
 
     /**
@@ -230,10 +247,24 @@ export class MainGameController {
             let container = this.gameView.getMainContainer();
             let width = 110 * (this.gameOptions.NUMBER_OF_ITEMS + 1);
             container.style.width = width + 'px';
+
+            // let cards = document.querySelectorAll<HTMLElement>('.card-module');
+            // cards.forEach(card => {
+            //     card.style.flexBasis = `calc(100% / ${this.gameOptions.NUMBER_OF_ITEMS + 1})`;
+            // });
         }
     }
 
     public getGameOptions(): GameOptions {
         return this.gameOptions;
+    }
+
+    private resetGame(): void {
+        this.gameView.clearGrid();
+        this.gameView.toggleSubmitButton(true);
+
+        this.game.resetGame();
+        this.initializeGroups();
+        this.game.setupFinished();
     }
 }

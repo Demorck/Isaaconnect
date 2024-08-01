@@ -3,7 +3,8 @@ import { Observer } from '../Views/Observer.js';
 export class Observable {
     private observers: Observer[] = [];
 
-    public addObserver(observer: Observer): void {
+    public addObserver(observer: Observer, unique: boolean = false): void {
+        if (unique) this.observers = [];
         this.observers.push(observer);
     }
 
@@ -15,6 +16,8 @@ export class Observable {
     }
 
     public notifyObservers(data: any = {}): void  {
+        if (this.observers.length > 2) throw new Error("");
+        
         this.observers.forEach(observer => observer.update(data));
     }
 }

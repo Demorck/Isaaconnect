@@ -106,12 +106,33 @@ export class MainGameView implements Observer {
     private renderHealth(health: number): void {
         if (health < 0 || health == undefined) return;
         this.healthContainer.innerHTML = '';
+        let container = this.healthContainer;
+        if (health >= 6)
+        {
+            let div = document.createElement('div');
+            div.classList.add('flex', 'flex-row', 'justify-center', 'items-center');
+            container = this.healthContainer.appendChild(div);
+        }
         
-        for (let i = 0; i < health; i++)
-            this.healthContainer.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
+        for (let i = 1; i <= health; i++){
+            container.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
+            
+            if (i == 6) {
+                let div = document.createElement('div');
+                div.classList.add('flex', 'flex-row', 'justify-center', 'items-center');
+                container = this.healthContainer.appendChild(div);
+            }
+        }
 
-        for (let i = health; i < Constants.OPTIONS.HEALTH; i++)
-            this.healthContainer.innerHTML += `<img src="/assets/gfx/empty heart.png" alt="empty heart" data-type="empty">`;
+        for (let i = health + 1; i <= Constants.OPTIONS.HEALTH; i++){
+            container.innerHTML += `<img src="/assets/gfx/empty heart.png" alt="empty heart" data-type="empty">`;
+
+            if (i == 6) {
+                let div = document.createElement('div');
+                div.classList.add('flex', 'flex-row', 'justify-center', 'items-center');
+                container = this.healthContainer.appendChild(div);
+            }
+        }
     }
 
     
@@ -270,11 +291,10 @@ export class MainGameView implements Observer {
 
             let groupFound = data.groupFound;
             
-            textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.NUMBER_OF_GROUPS} 💔: ${Constants.MAX_HEALTH - health}\n`;
+            textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.NUMBER_OF_GROUPS} ❤️: ${health}/${Constants.OPTIONS.HEALTH}\n`;
 
             let attempts: GroupData[][] = data.attempts;
-
-            attempts.forEach((attempt, index) => {
+            attempts.forEach((attempt, _index) => {
                 attempt.forEach((group: {index: number}, index_group: number) => {
                     let index = group.index;
                     switch (index)
@@ -365,6 +385,26 @@ export class MainGameView implements Observer {
 
     public getMainContainer(): HTMLElement {
         return this.container;
+    }
+
+    public clearGrid(): void {
+        this.itemsContainer.classList.remove('hidden');
+        document.querySelector('.health')?.classList.remove('hidden');
+        this.groupsContainer.classList.add('hidden');
+
+        let shuffleButton = document.querySelector('.shuffle-mobile');
+        shuffleButton?.classList.remove("hidden");
+
+        let buttons = document.getElementById('buttons-ingame')!;
+        buttons.classList.remove("hidden");
+
+        buttons = document.getElementById('buttons-finished')!;
+        buttons.classList.add("hidden");
+        
+
+        this.itemsContainer.innerHTML = '';
+        this.healthContainer.innerHTML = '';
+        this.groupsContainer.innerHTML = '';
     }
 
 }

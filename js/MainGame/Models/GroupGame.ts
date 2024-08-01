@@ -55,7 +55,7 @@ export class GroupGame extends Group implements Iterable<Item> {
      * @returns {Item[] | null} The selected items or null if no items can be selected.
      */
     public getRandomItems(bannedItem: Item[], daysBefore: number = 0, options: GameOptions): Item[] | null {
-        let itemsPicked: Item[] = [];
+        let itemsPicked: Item[] = [];        
         for (let i = 0; i < options.NUMBER_OF_ITEMS; i++) {
             let item: Item | null;
             item = this.getRandomItem(bannedItem, daysBefore, options.SEEDED, i);
@@ -174,7 +174,7 @@ export class GroupGame extends Group implements Iterable<Item> {
      * @returns {Iterator<Item>} The iterator for the selected items.
      */
     public [Symbol.iterator](): Iterator<Item> {
-        let index = 0;
+        let index = 0;        
         return {
             next: () => {
                 if (index < this.selectedItems.length) {

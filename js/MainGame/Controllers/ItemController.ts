@@ -21,7 +21,7 @@ export class ItemController {
         this.item = item;
         this.itemView = itemView;
         this.options = options;
-        this.item.addObserver(this.itemView);
+        this.item.addObserver(this.itemView, true);
         this.item.notifyObservers({ newItem: true });
         this.addEventListeners();
     }
@@ -39,8 +39,6 @@ export class ItemController {
             let numberSelected = document.querySelectorAll('.card-module--selected').length;
             
             if (numberSelected <= this.options.NUMBER_OF_ITEMS) {
-                console.log(container);
-                
                 container.classList.toggle('card-module--selected');
             }
         });

@@ -10,6 +10,7 @@ import { ItemData } from './ItemData.js';
 import { Item } from '../../Models/Item.js';
 import { Group } from '../../Models/Group.js';
 import { RandomSettingsData } from './RandomSettingsData.js';
+import { Difficulties } from '../../Models/Enums/Difficulties.js';
 
 
 /**
@@ -320,49 +321,13 @@ export class StorageManager {
     }
 
 
-    static get customDifficulty(): boolean {
+    static get customDifficulty(): Difficulties {
         return this.randomSettings.customDifficulty;
     }
 
-    static set customDifficulty(customDifficulty: boolean) {
+    static set customDifficulty(customDifficulty: Difficulties) {
         const randomSettings = this.randomSettings;
         this.randomSettings = { ...randomSettings, customDifficulty };
-    }
-
-    static get difficulty_0(): number {
-        return this.randomSettings.difficulty_0;
-    }
-
-    static set difficulty_0(difficulty_0: number) {
-        const randomSettings = this.randomSettings;
-        this.randomSettings = { ...randomSettings, difficulty_0 };
-    }
-
-    static get difficulty_1(): number {
-        return this.randomSettings.difficulty_1;
-    }
-
-    static set difficulty_1(difficulty_1: number) {
-        const randomSettings = this.randomSettings;
-        this.randomSettings = { ...randomSettings, difficulty_1 };
-    }
-
-    static get difficulty_2(): number {
-        return this.randomSettings.difficulty_2;
-    }
-
-    static set difficulty_2(difficulty_2: number) {
-        const randomSettings = this.randomSettings;
-        this.randomSettings = { ...randomSettings, difficulty_2 };
-    }
-
-    static get difficulty_3(): number {
-        return this.randomSettings.difficulty_3;
-    }
-
-    static set difficulty_3(difficulty_3: number) {
-        const randomSettings = this.randomSettings;
-        this.randomSettings = { ...randomSettings, difficulty_3 };
     }
     
     static get lastIsaaconnect(): number {

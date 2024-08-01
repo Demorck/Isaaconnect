@@ -1,3 +1,5 @@
+import { Difficulties } from "../../Models/Enums/Difficulties";
+
 export interface RandomSettingsData {
     bannedTags: boolean;
     checkGrid: boolean;
@@ -8,9 +10,5 @@ export interface RandomSettingsData {
 
     randomHealth: number;
 
-    customDifficulty: boolean;
-    difficulty_0: number;
-    difficulty_1: number;
-    difficulty_2: number;
-    difficulty_3: number;
+    customDifficulty: Difficulties;
 }

@@ -1,0 +1,129 @@
+<div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1">
+    <div class="flex flex-col">
+
+        <?php include 'include/template/title.php'; ?>
+
+        <div class="flex flex-col jutify-center bg-blue-100" style="width:800px">
+            <div class="flex flex-col gap-4">
+                <h1 class="text-2xl font-bold">Random settings</h1>    
+                <p>With certain settings, the game may be very complicated or repetitive.</p>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Number of groups</h1>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 flex-1">
+                        <input type="range" id="range-group" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="2" max="8" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">2</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">3</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">4</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">5</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">6</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">7</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">8</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Number of items per group</h1>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 flex-1">
+                        <input type="range" id="range-items" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="2" max="8" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">2</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">3</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">4</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">5</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">6</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">7</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">8</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Curse of the blind items: </h1>
+                        <p id="range-blind-current-value">0</p>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 flex-1">
+                        <input type="range" id="range-blind" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="0" max="8" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">0</span></li>
+                            <li class="flex justify-center relative"><span id="range-blind-max-value" class="absolute">8</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Health</h1>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 flex-1">
+                        <input type="range" id="range-health" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="1" max="8" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">1</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">2</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">3</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">4</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">5</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">6</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">7</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">8</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Difficulty</h1>                    
+                        <p class="text-sm">Groups has difficulty assigned from 0 to 3. Super easy means that groups with difficulty 3 won't appear and maximum of 1 group with difficulty 2. Ultra hard means that groups with difficulty 0 and 1 are rerolled.</p>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 flex-1">
+                        <input type="range" id="range-difficulty" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="0" max="4" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">Super easy</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">Normal</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">Ultra hard</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl">Not same tags in grid</h1>
+                        <p class="text-sm">Groups has tags to prevent the same type of groups appears multiple time in the grid. Enable this activate this property.</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="tags" type="checkbox"/>
+                        <label class="tgl-btn" for="tags">
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl">Test</h1>
+                        <p class="text-sm">Play</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="test" type="checkbox"/>
+                        <label class="tgl-btn" for="test">
+                    </div>
+                </div>
+                <div class="flex flex-row-reverse gap-4 items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl">Permalink</h1>
+                    </div>
+                    <div class="w-full rounded-3xl h-fit">
+                        <input class="w-full tgl tgl-theme" id="permalink" type="input"/>
+                        <label class="tgl-btn" for="permalink">
+                    </div>
+                </div>
+
+                <div class="flex flex-row-reverse gap-4 items-center">
+                    <div class="w-full rounded-3xl h-fit">
+                        <button class="w-full tgl tgl-theme" id="play" type="input">Play </button>
+                        <label class="tgl-btn" for="play">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

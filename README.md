@@ -25,8 +25,12 @@ tsc --watch
 
 ## Roadmap
 
+### Next update:
+* Customizable random game
+
 #### TODO
 * [ ] Modify all files to properly use Constants.OPTIONS
+* [ ] UI & UX improvement to finish the customizable random game
 
 #### Present plan
 * [ ]  Documentation
@@ -37,6 +41,7 @@ tsc --watch
 
 #### Future plan
 * [ ]  Fully customizable random game
+* [ ]  Unit tests
 * [ ]  Seeded game to share them
 * [ ]  Localization
 * [ ]  Editor mode

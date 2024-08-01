@@ -26,7 +26,6 @@ export class MainGame extends Observable {
 
     // TODO: Modifier le seeded pour que ça prenne depuis la constante qu'ici
     private seeded: boolean;
-    private isBlind: boolean;
 
     private mechanics: MainGameMechanics;
     private utils: GameUtils;
@@ -36,9 +35,8 @@ export class MainGame extends Observable {
      * @param {boolean} [seeded=true] - Whether the game uses seeded randomization.
      * @param {boolean} [blind=false] - Whether the game is in blind mode.
      */
-    constructor(seeded = true, blind = false) {
+    constructor(seeded = true) {
         super();
-        this.isBlind = blind;
         this.seeded = seeded;
         Constants.OPTIONS = this.generateOptions();
         this.attempts = [];
@@ -80,7 +78,7 @@ export class MainGame extends Observable {
      * Notifies observers that setup is finished.
      * @memberof MainGame
      */
-    public setupFinished() {
+    public setupFinished() {        
         this.notifyObservers({ health: this.health });
     }
 
@@ -172,7 +170,7 @@ export class MainGame extends Observable {
     private getNotifyData(win: boolean, autocomplete: boolean = false): any {
         if (win) {
             let mistakes = Constants.OPTIONS.HEALTH - this.health;
-            let title = Constants.WIN_MESSAGES[mistakes];
+            let title = Constants.WIN_MESSAGES[Math.floor(mistakes / Constants.WIN_MESSAGES.length)];
             return {
                 autocomplete: autocomplete,
                 isFinished: true,
@@ -294,7 +292,9 @@ export class MainGame extends Observable {
             HEALTH: this.seeded ? Constants.MAX_HEALTH : StorageManager.randomHealth,
             NUMBER_OF_BLIND_ITEMS: this.seeded ? 0 : StorageManager.numberOfBlindItems,
             TAGS_BANNED: this.seeded ? true : StorageManager.bannedTags,
+            CUSTOM_DIFFICULTY: this.seeded ? Constants.DEFAULT_DIFFICULTY : StorageManager.customDifficulty
         };
+
         return options;
     }
 
@@ -368,12 +368,18 @@ export class MainGame extends Observable {
         return this.health;
     }
 
-    /**
-     * Checks if the game is in blind mode.
-     * @returns {boolean} Whether the game is in blind mode.
-     * @memberof MainGame
-     */
-    public getBlind(): boolean {
-        return this.isBlind;
+    public resetGame(): void {
+        this.seeded = Constants.OPTIONS.SEEDED;
+        Constants.OPTIONS = this.generateOptions();
+        this.attempts = [];
+        this.history = [];
+        this.currentAttempt = 0;
+        this.groupFound = 0;
+        this.groups = [];
+        this.mechanics = new MainGameMechanics();
+        this.utils = new GameUtils(Constants.OPTIONS);
+        this.health = Constants.OPTIONS.HEALTH;
+        
+        this.setupGame();        
     }
 }

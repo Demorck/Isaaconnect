@@ -1,12 +1,14 @@
 import { Constants } from '../Shared/Helpers/Constants.js';
 import { Loader } from '../Loader.js';
 import { Stats } from './Models/Stats.js';
+import { Difficulties } from '../Shared/Models/Enums/Difficulties.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
     let time = performance.now();
 
     let bigMap = new Map<string, number>();
+    let difficultyMap = new Map<Difficulties, number>();
     let numberOfGeneration = 10000;
     let times = 5;
     let numberCalled = 0;
@@ -31,7 +33,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
             numberCalled += stats.getNumberOfGameCalled();
-            ImpossibleGridFound += stats.getNumberOfImpossibleGridFound();            
+            ImpossibleGridFound += stats.getNumberOfImpossibleGridFound();       
+            let difficultyOccurence = stats.getDifficultyOccurence();
+            for (let [key, value] of difficultyOccurence) {
+                let occurence = difficultyMap.get(key);
+                if (occurence) {
+                    difficultyMap.set(key, occurence + value);
+                } else {
+                    difficultyMap.set(key, value);
+                }
+            }
+
         }
     }
 
@@ -88,6 +100,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("Moyenne cherchée: " + moyenne);
     console.log("Écart type : " + ecartType);
     console.log("Coefficiant de variation : " + 100 * ecartType / moyenne);
+    
+    console.log("Difficulty : ", difficultyMap);
 
 });
 

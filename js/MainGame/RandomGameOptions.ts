@@ -1,18 +1,17 @@
-import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "../Shared/Helpers/Constants.js";
+import { Loader } from "../Loader";
+import { StorageManager } from "../Shared/Helpers/Data/StorageManager";
 
-/**
- * @description Adds event listeners for debug actions.
- * @param {HTMLElement} container - The container to which the event listeners will be added.
- */
-export function addEvent(container: HTMLElement): void {
-    const rangeGroups = container.querySelector<HTMLInputElement>('#range-group');
-    const rangeItems = container.querySelector<HTMLInputElement>('#range-items');
-    const rangeBlind = container.querySelector<HTMLInputElement>('#range-blind');
-    const tagsButton = container.querySelector<HTMLInputElement>('#tags');
-    const rangeHealth = container.querySelector<HTMLInputElement>('#range-health');
-    const rangeDifficulty = container.querySelector<HTMLInputElement>('#range-difficulty');
-    const play = container.querySelector<HTMLInputElement>('#play');
+document.addEventListener('DOMContentLoaded', async () => {
+    await Loader.load();
+
+    const rangeGroups = document.querySelector<HTMLInputElement>('#range-group');
+    const rangeItems = document.querySelector<HTMLInputElement>('#range-items');
+    const rangeBlind = document.querySelector<HTMLInputElement>('#range-blind');
+    const tagsButton = document.querySelector<HTMLInputElement>('#tags');
+    const rangeHealth = document.querySelector<HTMLInputElement>('#range-health');
+    const rangeDifficulty = document.querySelector<HTMLInputElement>('#range-difficulty');
+    const test = document.querySelector<HTMLInputElement>('#test');
+    const play = document.querySelector<HTMLInputElement>('#play');
 
     if (rangeGroups) {
         rangeGroups.value = String(StorageManager.numberOfGroups);
@@ -72,14 +71,24 @@ export function addEvent(container: HTMLElement): void {
         });
     }
 
-    if (play) {
-        play.addEventListener('click', () => {
-            let options = window.btoa(JSON.stringify(Constants.OPTIONS));
-            window.location.href = "/random?options=" + options;
+    if (test) {
+        test.addEventListener('click', () => {
+            let json = JSON.stringify(StorageManager.randomSettings);
+            let options = encodeBase64(json);
+            let a = document.querySelector<HTMLInputElement>('#permalink')!;
+            a.value = options;
         });
     }
-}
 
+    if (play) {
+        play.addEventListener('click', () => {
+            let json = JSON.stringify(StorageManager.randomSettings);
+            let options = encodeBase64(json);
+            window.location.href = `/random?options=${options}`;
+        });
+    }
+
+});
 
 function modifyRangeBlind(rangeBlind: HTMLInputElement): void {
     rangeBlind.max = String(StorageManager.numberOfGroups * StorageManager.numberOfItems);
@@ -95,4 +104,12 @@ function modifyRangeBlind(rangeBlind: HTMLInputElement): void {
         StorageManager.numberOfBlindItems = Number(rangeBlind.value);
         rangeBlind.value = rangeBlind.max;
     }
+}
+
+function encodeBase64(input: string): string {
+    return window.btoa(input);
+}
+
+function decodeBase64(input: string): string {
+    return window.atob(input);
 }

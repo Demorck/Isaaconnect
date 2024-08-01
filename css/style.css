@@ -192,8 +192,8 @@ ol, ul {
 @media (min-width: 768px) {
     .card-module {
         padding: 0.5em;
-        width: 112px !important; /* J'ai pas trouvé mieux pour le moment */
-        height: 112px !important;
+        /* width: 112px !important; J'ai pas trouvé mieux pour le moment
+        height: 112px !important; */
     }
 }
 
