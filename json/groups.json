@@ -387,7 +387,7 @@
     "name": "Items that behave differently with a certain character",
     "items": [619, 188, 728, 360, 711, 122, 227, 722, 549, 230, 642, 694, 713],
     "difficulty": 3,
-    "tags": []
+    "tags": ["specialeffect"]
   },
   {
     "name": "Minimap-related items",
@@ -405,7 +405,7 @@
     "name": "Items that have special effects on certain bosses",
     "items": [653, 631, 209, 291, 33],
     "difficulty": 3,
-    "tags": []
+    "tags": ["specialeffect"]
   },
   {
     "name": "Items that can negate damage",
@@ -1169,7 +1169,7 @@
     "name": "Items that can't be charged with batteries",
     "items": [585, 638, 704, 147],
     "difficulty": 2,
-    "tags": []
+    "tags": ["charge"]
   },
   {
     "name": "Items that can directly destroy shopkeepers",
@@ -1191,8 +1191,7 @@
   },
   {
     "name": "Items whose sprite is in multiple parts",
-    "items": [      -1,
-9, 10, 19, 22, 25, 24, 57, 122, 128, 129, 151, 190, 211, 217, 259, 261, 266, 288, 295, 310, 326, 347, 364, 368, 377, 391, 411, 440, 432, 453, 474, 529, 532, 540, 549, 563, 576, 575, 570, 606, 618, 611, 622, 657, 664, 682, 706, 693, 700, 694, 724, 729, 726, 641, 714, 721, 704, 702, 692, 652, 494, 647, 234],
+    "items": [-1, 9, 10, 19, 22, 25, 24, 57, 122, 128, 129, 151, 190, 211, 217, 259, 261, 266, 288, 295, 310, 326, 347, 364, 368, 377, 391, 411, 440, 432, 453, 474, 529, 532, 540, 549, 563, 576, 575, 570, 606, 618, 611, 622, 657, 664, 682, 706, 693, 700, 694, 724, 729, 726, 641, 714, 721, 704, 702, 692, 652, 494, 647, 234],
     "difficulty": 3,
     "tags": ["sprite"]
   },
@@ -1212,7 +1211,7 @@
     "name": "Passive items with a charge bar",
     "items": [118, 114, 678, 643, 399, 680, 597, 316, 229, 275, 679, 384, 471, 537, 395, 519],
     "difficulty": 2,
-    "tags": []
+    "tags": ["charge"]
   },
   {
     "name": "Candles",
@@ -1224,12 +1223,12 @@
     "name": "Items that create special locusts with Abyss",
     "items": [559, 494, 7, 118, 103, 305, 13, 4, 257, 10, 374, 2, 149, 153, 6, 3],
     "difficulty": 3,
-    "tags": []
+    "tags": ["specialeffect"]
   },
   {
     "name": "Familiars that can despawn",
     "items": [273, 178, 405, 436, 543, 539, 238, 239, 627, 626, 697, 272, 612, 645, 693, 519, 681, 81, 11, 667, 468],
     "difficulty": 3,
-    "tags": []
+    "tags": ["familiar"]
   }
 ]
