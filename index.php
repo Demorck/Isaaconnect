@@ -30,7 +30,7 @@
             $help = true;
             $settings = true;
             $logs = true;
-            $randomSettings = false;
+            $gamemode = true;
             include 'include/template/tooltips.php'; ?>
     </div>
 </body>

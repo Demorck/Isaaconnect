@@ -81,7 +81,7 @@
 .basement-theme .card-module--selected {
   background-color: #7e7e7e;
 }
-.basement-theme #cards-game {
+.basement-theme #cards-game, .basement-theme #options {
   background-color: #fff;
 }
 .basement-theme .button--submit {
@@ -102,6 +102,16 @@
 .basement-theme .checkbox-wrapper {
   border: 3px solid #C08560;
   background: #42291A;
+}
+.basement-theme input[type=range] {
+  background: #C08560;
+}
+.basement-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #42291A;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .basement-theme .tgl-theme {
   border: 1px solid #C08560;
@@ -148,7 +158,7 @@
 .mausoleum-theme .card-module--selected {
   background-color: #9b7db2;
 }
-.mausoleum-theme #cards-game {
+.mausoleum-theme #cards-game, .mausoleum-theme #options {
   background-color: #fff;
 }
 .mausoleum-theme .button--submit {
@@ -169,6 +179,16 @@
 .mausoleum-theme .checkbox-wrapper {
   border: 3px solid #9a6cb1;
   background: #2F1D2E;
+}
+.mausoleum-theme input[type=range] {
+  background: #9a6cb1;
+}
+.mausoleum-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #2F1D2E;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .mausoleum-theme .tgl-theme {
   border: 1px solid #9a6cb1;
@@ -215,7 +235,7 @@
 .flooded-caves-theme .card-module--selected {
   background-color: #73B1F5;
 }
-.flooded-caves-theme #cards-game {
+.flooded-caves-theme #cards-game, .flooded-caves-theme #options {
   background-color: #fff;
 }
 .flooded-caves-theme .button--submit {
@@ -236,6 +256,16 @@
 .flooded-caves-theme .checkbox-wrapper {
   border: 3px solid #73B1F5;
   background: #1D2A4F;
+}
+.flooded-caves-theme input[type=range] {
+  background: #73B1F5;
+}
+.flooded-caves-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #1D2A4F;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .flooded-caves-theme .tgl-theme {
   border: 1px solid #73B1F5;
@@ -282,7 +312,7 @@
 .green-theme .card-module--selected {
   background-color: #A6D60C;
 }
-.green-theme #cards-game {
+.green-theme #cards-game, .green-theme #options {
   background-color: #fff;
 }
 .green-theme .button--submit {
@@ -303,6 +333,16 @@
 .green-theme .checkbox-wrapper {
   border: 3px solid #A6D60C;
   background: #242A0C;
+}
+.green-theme input[type=range] {
+  background: #A6D60C;
+}
+.green-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #242A0C;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .green-theme .tgl-theme {
   border: 1px solid #A6D60C;
@@ -349,7 +389,7 @@
 .catacombs-theme .card-module--selected {
   background-color: #a8a19b;
 }
-.catacombs-theme #cards-game {
+.catacombs-theme #cards-game, .catacombs-theme #options {
   background-color: #fff;
 }
 .catacombs-theme .button--submit {
@@ -370,6 +410,16 @@
 .catacombs-theme .checkbox-wrapper {
   border: 3px solid #B78C69;
   background: #2D1E19;
+}
+.catacombs-theme input[type=range] {
+  background: #B78C69;
+}
+.catacombs-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #2D1E19;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .catacombs-theme .tgl-theme {
   border: 1px solid #B78C69;
@@ -416,7 +466,7 @@
 .ph-theme .card-module--selected {
   background-color: #a8a19b;
 }
-.ph-theme #cards-game {
+.ph-theme #cards-game, .ph-theme #options {
   background-color: #fff;
 }
 .ph-theme .button--submit {
@@ -437,6 +487,16 @@
 .ph-theme .checkbox-wrapper {
   border: 3px solid #FF7621;
   background: #DED4C8;
+}
+.ph-theme input[type=range] {
+  background: #FF7621;
+}
+.ph-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #DED4C8;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .ph-theme .tgl-theme {
   border: 1px solid #FF7621;
@@ -483,7 +543,7 @@
 .depths-theme .card-module--selected {
   background-color: #cacaca;
 }
-.depths-theme #cards-game {
+.depths-theme #cards-game, .depths-theme #options {
   background-color: #fff;
 }
 .depths-theme .button--submit {
@@ -504,6 +564,16 @@
 .depths-theme .checkbox-wrapper {
   border: 3px solid #AFABAB;
   background: #262626;
+}
+.depths-theme input[type=range] {
+  background: #AFABAB;
+}
+.depths-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #262626;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .depths-theme .tgl-theme {
   border: 1px solid #AFABAB;
@@ -550,7 +620,7 @@
 .dank-depths-theme .card-module--selected {
   background-color: #3c4061;
 }
-.dank-depths-theme #cards-game {
+.dank-depths-theme #cards-game, .dank-depths-theme #options {
   background-color: #959ABD;
 }
 .dank-depths-theme .button--submit {
@@ -571,6 +641,16 @@
 .dank-depths-theme .checkbox-wrapper {
   border: 3px solid #959ABD;
   background: #17171B;
+}
+.dank-depths-theme input[type=range] {
+  background: #959ABD;
+}
+.dank-depths-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #17171B;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .dank-depths-theme .tgl-theme {
   border: 1px solid #959ABD;
@@ -617,7 +697,7 @@
 .gehenna-theme .card-module--selected {
   background-color: #ef5555;
 }
-.gehenna-theme #cards-game {
+.gehenna-theme #cards-game, .gehenna-theme #options {
   background-color: #fff;
 }
 .gehenna-theme .button--submit {
@@ -638,6 +718,16 @@
 .gehenna-theme .checkbox-wrapper {
   border: 3px solid #EB2121;
   background: #280E0E;
+}
+.gehenna-theme input[type=range] {
+  background: #EB2121;
+}
+.gehenna-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #280E0E;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .gehenna-theme .tgl-theme {
   border: 1px solid #EB2121;
@@ -684,7 +774,7 @@
 .womb-theme .card-module--selected {
   background-color: #390000;
 }
-.womb-theme #cards-game {
+.womb-theme #cards-game, .womb-theme #options {
   background-color: #FA0000;
 }
 .womb-theme .button--submit {
@@ -705,6 +795,16 @@
 .womb-theme .checkbox-wrapper {
   border: 3px solid #EB2121;
   background: #540000;
+}
+.womb-theme input[type=range] {
+  background: #EB2121;
+}
+.womb-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #540000;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .womb-theme .tgl-theme {
   border: 1px solid #EB2121;
@@ -751,7 +851,7 @@
 .scarred-womb-theme .card-module--selected {
   background-color: #af9078;
 }
-.scarred-womb-theme #cards-game {
+.scarred-womb-theme #cards-game, .scarred-womb-theme #options {
   background-color: #fff;
 }
 .scarred-womb-theme .button--submit {
@@ -772,6 +872,16 @@
 .scarred-womb-theme .checkbox-wrapper {
   border: 3px solid #D20000;
   background: #A37F61;
+}
+.scarred-womb-theme input[type=range] {
+  background: #D20000;
+}
+.scarred-womb-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #A37F61;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .scarred-womb-theme .tgl-theme {
   border: 1px solid #D20000;
@@ -818,7 +928,7 @@
 .dave-theme .card-module--selected {
   background-color: #080b0f;
 }
-.dave-theme #cards-game {
+.dave-theme #cards-game, .dave-theme #options {
   background-color: #2A3A54;
 }
 .dave-theme .button--submit {
@@ -839,6 +949,16 @@
 .dave-theme .checkbox-wrapper {
   border: 3px solid #FFC000;
   background: #5371A3;
+}
+.dave-theme input[type=range] {
+  background: #FFC000;
+}
+.dave-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #5371A3;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .dave-theme .tgl-theme {
   border: 1px solid #FFC000;
@@ -885,7 +1005,7 @@
 .corpse-theme .card-module--selected {
   background-color: #242a1f;
 }
-.corpse-theme #cards-game {
+.corpse-theme #cards-game, .corpse-theme #options {
   background-color: #5F6F51;
 }
 .corpse-theme .button--submit {
@@ -906,6 +1026,16 @@
 .corpse-theme .checkbox-wrapper {
   border: 3px solid #70835F;
   background: #323D2F;
+}
+.corpse-theme input[type=range] {
+  background: #70835F;
+}
+.corpse-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #323D2F;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .corpse-theme .tgl-theme {
   border: 1px solid #70835F;
@@ -952,7 +1082,7 @@
 .cathedral-theme .card-module--selected {
   background-color: #3c6681;
 }
-.cathedral-theme #cards-game {
+.cathedral-theme #cards-game, .cathedral-theme #options {
   background-color: #A9C5D7;
 }
 .cathedral-theme .button--submit {
@@ -973,6 +1103,16 @@
 .cathedral-theme .checkbox-wrapper {
   border: 3px solid #A9C5D7;
   background: #20475A;
+}
+.cathedral-theme input[type=range] {
+  background: #A9C5D7;
+}
+.cathedral-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #20475A;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .cathedral-theme .tgl-theme {
   border: 1px solid #A9C5D7;
@@ -1019,7 +1159,7 @@
 .sheol-theme .card-module--selected {
   background-color: black;
 }
-.sheol-theme #cards-game {
+.sheol-theme #cards-game, .sheol-theme #options {
   background-color: #2E2E2E;
 }
 .sheol-theme .button--submit {
@@ -1040,6 +1180,16 @@
 .sheol-theme .checkbox-wrapper {
   border: 3px solid #404040;
   background: #0D0D0D;
+}
+.sheol-theme input[type=range] {
+  background: #404040;
+}
+.sheol-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #0D0D0D;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .sheol-theme .tgl-theme {
   border: 1px solid #404040;
@@ -1086,7 +1236,7 @@
 .chest-theme .card-module--selected {
   background-color: #ffcb28;
 }
-.chest-theme #cards-game {
+.chest-theme #cards-game, .chest-theme #options {
   background-color: #AC6414;
 }
 .chest-theme .button--submit {
@@ -1107,6 +1257,16 @@
 .chest-theme .checkbox-wrapper {
   border: 3px solid #AC6414;
   background: #3B2819;
+}
+.chest-theme input[type=range] {
+  background: #AC6414;
+}
+.chest-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #3B2819;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .chest-theme .tgl-theme {
   border: 1px solid #AC6414;
@@ -1153,7 +1313,7 @@
 .dark-room-theme .card-module--selected {
   background-color: black;
 }
-.dark-room-theme #cards-game {
+.dark-room-theme #cards-game, .dark-room-theme #options {
   background-color: #000000;
 }
 .dark-room-theme .button--submit {
@@ -1174,6 +1334,16 @@
 .dark-room-theme .checkbox-wrapper {
   border: 3px solid #665272;
   background: #261036;
+}
+.dark-room-theme input[type=range] {
+  background: #665272;
+}
+.dark-room-theme input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  background: #261036;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 }
 .dark-room-theme .tgl-theme {
   border: 1px solid #665272;

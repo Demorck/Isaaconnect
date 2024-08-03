@@ -107,12 +107,9 @@ export class MainGameView implements Observer {
         if (health < 0 || health == undefined) return;
         this.healthContainer.innerHTML = '';
         let container = this.healthContainer;
-        if (health >= 6)
-        {
             let div = document.createElement('div');
             div.classList.add('flex', 'flex-row', 'justify-center', 'items-center');
             container = this.healthContainer.appendChild(div);
-        }
         
         for (let i = 1; i <= health; i++){
             container.innerHTML += `<img src="/assets/gfx/heart.png" alt="heart" data-type="health">`;
@@ -400,6 +397,9 @@ export class MainGameView implements Observer {
 
         buttons = document.getElementById('buttons-finished')!;
         buttons.classList.add("hidden");
+
+        let modal = document.querySelector<HTMLElement>('#modal-wrapper')!;
+        modal.classList.add('hidden');
         
 
         this.itemsContainer.innerHTML = '';

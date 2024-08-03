@@ -29,8 +29,8 @@ export class Loader {
         
         const { items, groups } = await DataFetcher.fetchData();
 
-        items.forEach((item: { id: number; alias: string; }) => {
-            Constants.ITEMS.push(new Item(item.id, item.alias));
+        items.forEach((item: { id: number; alias: string; img: string }) => {
+            Constants.ITEMS.push(new Item(item.id, item.alias, item.img));
         });
 
         StorageManager.initDefaultLocalStorage();

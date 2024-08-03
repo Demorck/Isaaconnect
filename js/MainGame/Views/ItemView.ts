@@ -46,7 +46,7 @@ export class ItemView implements Observer {
         inputElement.className = 'visually-hidden';
 
         const imgElement = document.createElement('img');
-        imgElement.src = `/assets/gfx/items/collectibles/${Utils.numberWithLeadingZeros(item.getId())}.png`;
+        imgElement.src = item.getImage();
         imgElement.alt = item.getAlias();
 
         const spanElement = document.createElement('span');

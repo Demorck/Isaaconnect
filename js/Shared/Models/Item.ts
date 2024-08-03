@@ -7,13 +7,15 @@ export class Item extends Observable {
     private alias_en: string;
     private alias_fr: string;
     private blinded: boolean = false;
+    private imagePath: string;
 
 
-    constructor(id: number, alias: string) {
+    constructor(id: number, alias: string, image: string) {
         super();
         this.id = id;
         this.alias_en = alias;
-        this.alias_fr = alias;        
+        this.alias_fr = alias;
+        this.imagePath = image;        
     }
 
     public getId(): number {
@@ -22,6 +24,10 @@ export class Item extends Observable {
 
     public getAlias(): string {
         return this.alias_en;
+    }
+
+    public getImage(): string {
+        return this.imagePath;
     }
 
     public getData(): ItemData {

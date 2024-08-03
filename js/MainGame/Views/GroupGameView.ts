@@ -38,7 +38,7 @@ export class GroupGameView implements Observer {
 
         data.items.forEach((item, index) => {
             content += `${this.getRedirectLinkHTML(item.getAlias())}${item.getAlias()}</a>`;
-            if (index != 3) content += `, `;
+            if (index != Constants.OPTIONS.NUMBER_OF_ITEMS - 1) content += `, `;
         });
 
         content += `</p></div>`;

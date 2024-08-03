@@ -1,0 +1,29 @@
+<div class="rounded-2xl tooltip shadow-theme" data-id="settings">
+    <div class="tooltip-content px-4 py-2">
+        <div class="flex flex-col gap-4">
+            <h1 class="text-2xl font-bold">Gamemodes</h1>            
+            <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                <div class="flex flex-col text-left">
+                    <p class="text-sm">The initial 4x4 grid that's reset every midnight</p>
+                </div>
+                <div class="rounded-3xl h-fit">
+                    <button type="button" data-id="daily" id="daily" onclick="location.href = '/';" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                        Daily
+                    </button>
+                    <label class="tgl-btn" for="daily">
+                </div>
+            </div>
+            <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                <div class="flex flex-col text-left">
+                    <p class="text-sm">Generate a grid with custom options.</p>
+                </div>
+                <div class="rounded-3xl h-fit">
+                    <button type="button" data-id="daily" id="daily" onclick="location.href = '/settings';" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                        Random
+                    </button>
+                    <label class="tgl-btn" for="daily">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

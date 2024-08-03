@@ -1,5 +1,8 @@
 @use "sass:color";
 
+// TODO:  Dank Depths, Womb, Dave (color), Corpse ?, Cathedral, Sheol (color), Chest, Dark room x2
+
+
 $background: #fff;
 
 $default-background-card: #F3E7E1;
@@ -386,13 +389,13 @@ $white-submit: (
 
         @if (map-get($map: $theme-map, $key: card-background))
         {
-            #cards-game {
-            background-color: map-get($map: $theme-map, $key: card-background);
+            #cards-game, #options {
+                background-color: map-get($map: $theme-map, $key: card-background);
             }
         }
         @else
         {
-            #cards-game {
+            #cards-game, #options {
                 background-color: $background;
             }
         }
@@ -425,6 +428,18 @@ $white-submit: (
         .checkbox-wrapper {
             border: 3px solid map-get($map: $theme-map, $key: toggle);
             background: map-get($map: $theme-map, $key: primary);
+        }
+
+        input[type=range] {
+            background: map-get($map: $theme-map, $key: toggle);
+
+           &::-webkit-slider-thumb {
+                appearance: none;
+                background: map-get($map: $theme-map, $key: primary);
+                border-radius: 50%;
+                width: 15px;
+                height: 15px;
+            }
         }
     
         .tgl-theme {

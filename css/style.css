@@ -310,6 +310,10 @@ ol, ul {
 
 .page    { display: none; padding: 0 0.5em; }
 
+/***** Random Settings *********/
+
+
+
 /***** Group Creator *********/
 
 .infos {
@@ -494,11 +498,11 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
         left: 38%;
     }
 
-    #tooltip-wrapper[data-id="logs"]::after {
+    #tooltip-wrapper[data-id="gamemode"]::after {
         left: 59%;
     }
 
-    #tooltip-wrapper[data-id="debug"]::after {
+    #tooltip-wrapper[data-id="logs"]::after {
         left: 74%;
     }
  }

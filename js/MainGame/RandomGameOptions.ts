@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         maxValueSpan.innerText = rangeBlind.max;
         let currentValueSpan = document.getElementById('range-blind-current-value')!;
         currentValueSpan.innerText = rangeBlind.value;
-
+        
         rangeBlind.addEventListener('input', () => {
             modifyRangeBlind(rangeBlind);
         });
@@ -82,9 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (play) {
         play.addEventListener('click', () => {
-            let json = JSON.stringify(StorageManager.randomSettings);
-            let options = encodeBase64(json);
-            window.location.href = `/random?options=${options}`;
+            window.location.href = `/random`;
         });
     }
 
@@ -100,7 +98,9 @@ function modifyRangeBlind(rangeBlind: HTMLInputElement): void {
     let currentValueSpan = document.getElementById('range-blind-current-value')!;
     currentValueSpan.innerText = rangeBlind.value;
 
-    if (rangeBlind.value > rangeBlind.max) {
+    let value = Number(rangeBlind.value);
+    let max = Number(rangeBlind.max);
+    if (value > max || value < 0) {        
         StorageManager.numberOfBlindItems = Number(rangeBlind.value);
         rangeBlind.value = rangeBlind.max;
     }

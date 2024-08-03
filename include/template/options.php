@@ -3,10 +3,10 @@
 
         <?php include 'include/template/title.php'; ?>
 
-        <div class="flex flex-col jutify-center bg-blue-100" style="width:800px">
+        <div class="flex flex-col jutify-center p-4 rounded-3xl self-center md:w-2/5" id="options">
             <div class="flex flex-col gap-4">
-                <h1 class="text-2xl font-bold">Random settings</h1>    
-                <p>With certain settings, the game may be very complicated or repetitive.</p>
+                <h1 class="text-2xl font-bold self-center">Random settings</h1>    
+                <p class="self-center">With certain settings, the game may be very complicated or repetitive.</p>
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
                     <div class="flex flex-col text-left flex-1">
                         <h1 class="text-xl font-bold">Number of groups</h1>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                    <div class="flex flex-col text-left flex-1">
+                    <div class="flex flex-row text-left flex-1 items-end gap-4">
                         <h1 class="text-xl font-bold">Curse of the blind items: </h1>
                         <p id="range-blind-current-value">0</p>
                     </div>
@@ -96,17 +96,7 @@
                         <label class="tgl-btn" for="tags">
                     </div>
                 </div>
-                <div class="flex flex-row-reverse gap-4 items-center">
-                    <div class="flex flex-col text-left">
-                        <h1 class="text-xl">Test</h1>
-                        <p class="text-sm">Play</p>
-                    </div>
-                    <div class="checkbox-wrapper rounded-3xl h-fit">
-                        <input class="tgl tgl-theme" id="test" type="checkbox"/>
-                        <label class="tgl-btn" for="test">
-                    </div>
-                </div>
-                <div class="flex flex-row-reverse gap-4 items-center">
+                <!-- <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="flex flex-col text-left">
                         <h1 class="text-xl">Permalink</h1>
                     </div>
@@ -114,7 +104,7 @@
                         <input class="w-full tgl tgl-theme" id="permalink" type="input"/>
                         <label class="tgl-btn" for="permalink">
                     </div>
-                </div>
+                </div> -->
 
                 <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="w-full rounded-3xl h-fit">

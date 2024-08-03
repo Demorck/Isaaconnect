@@ -131,6 +131,10 @@ export class MainGameController {
             let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
             buttonPlay.classList.remove('button--disabled', 'hidden');
             buttonPlay.addEventListener('click', () => this.resetGame());
+
+            let buttonChangeSettings = document.querySelector('button[data-id="change-settings"]')!;
+            buttonChangeSettings.classList.remove('button--disabled', 'hidden');
+            buttonChangeSettings.addEventListener('click', () => location.href = '/settings');
         }
     }
 
@@ -200,6 +204,7 @@ export class MainGameController {
 
         this.removeButtons();
         document.getElementById('cards-module')?.classList.add('hidden');
+        document.getElementById('cards-win')?.classList.add('flex-1');
         document.querySelector('.health')?.classList.add('hidden');
     }
 
@@ -218,6 +223,14 @@ export class MainGameController {
 
         buttons = document.getElementById('buttons-finished')!;
         buttons.classList.remove("hidden");
+
+        if (!Constants.OPTIONS.SEEDED) {
+            let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
+            buttonPlay.classList.remove('hidden');
+
+            let buttonChangeSettings = document.querySelector('button[data-id="change-settings"]')!;
+            buttonChangeSettings.classList.remove('hidden');
+        }   
     }
 
     /**

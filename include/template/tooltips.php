@@ -31,9 +31,9 @@
         </span> 
         <?php } ?>
 
-        <?php if ($randomSettings) { ?>
-        <span class="material-symbols-rounded md:text-4xl tooltip-inactive"  data-id="random-settings">
-            build
+        <?php if ($gamemode) { ?>
+        <span class="material-symbols-rounded md:text-4xl tooltip-inactive"  data-id="gamemode">
+        sports_esports
         </span> 
         <?php } ?>
 
