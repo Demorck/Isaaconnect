@@ -25,9 +25,6 @@ tsc --watch
 
 ## Roadmap
 
-### Next update:
-* Customizable random game
-
 #### TODO
 * [ ] Modify all files to properly use Constants.OPTIONS
 * [x] UI & UX improvement to finish the customizable random game
