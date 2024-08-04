@@ -292,7 +292,8 @@ export class MainGame extends Observable {
             HEALTH: this.seeded ? Constants.MAX_HEALTH : StorageManager.randomHealth,
             NUMBER_OF_BLIND_ITEMS: this.seeded ? 0 : StorageManager.numberOfBlindItems,
             TAGS_BANNED: this.seeded ? true : StorageManager.bannedTags,
-            CUSTOM_DIFFICULTY: this.seeded ? Constants.DEFAULT_DIFFICULTY : StorageManager.customDifficulty
+            CUSTOM_DIFFICULTY: this.seeded ? Constants.DEFAULT_DIFFICULTY : StorageManager.customDifficulty,
+            CHECK_GRID: this.seeded ? true : StorageManager.checkGrid,
         };
 
         return options;

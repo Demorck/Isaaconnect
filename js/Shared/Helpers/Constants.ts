@@ -1,7 +1,7 @@
-import { GameOptions } from "../../MainGame/Models/GameOptions";
-import { Difficulties } from "../Models/Enums/Difficulties";
-import { Group } from "../Models/Group";
-import { Item } from "../Models/Item";
+import { GameOptions } from "../../MainGame/Models/GameOptions.js";
+import { Difficulties } from "../Models/Enums/Difficulties.js";
+import { Group } from "../Models/Group.js";
+import { Item } from "../Models/Item.js";
 
 export class Constants {
     static items: Item[] = [];
