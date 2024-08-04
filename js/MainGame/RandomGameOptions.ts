@@ -1,4 +1,5 @@
 import { Loader } from "../Loader";
+import { Constants } from "../Shared/Helpers/Constants";
 import { StorageManager } from "../Shared/Helpers/Data/StorageManager";
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -7,10 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rangeGroups = document.querySelector<HTMLInputElement>('#range-group');
     const rangeItems = document.querySelector<HTMLInputElement>('#range-items');
     const rangeBlind = document.querySelector<HTMLInputElement>('#range-blind');
-    const tagsButton = document.querySelector<HTMLInputElement>('#tags');
     const rangeHealth = document.querySelector<HTMLInputElement>('#range-health');
     const rangeDifficulty = document.querySelector<HTMLInputElement>('#range-difficulty');
-    const test = document.querySelector<HTMLInputElement>('#test');
+    const tagsButton = document.querySelector<HTMLInputElement>('#tags');
+    const checkGrid = document.querySelector<HTMLInputElement>('#check-grid');
+    const reset = document.querySelector<HTMLInputElement>('#reset');
     const play = document.querySelector<HTMLInputElement>('#play');
 
     if (rangeGroups) {
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (tagsButton) {
-        tagsButton.checked = StorageManager.bannedTags;
+        tagsButton.checked = StorageManager.bannedTags;        
         if (tagsButton.checked) {
             tagsButton.parentElement?.classList.add('tgl-checked');
         }
@@ -53,6 +55,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 tagsButton.parentElement?.classList.add('tgl-checked');
             } else {
                 tagsButton.parentElement?.classList.remove('tgl-checked');
+            }
+        });
+    }
+
+    if (checkGrid) {
+        checkGrid.checked = StorageManager.checkGrid;
+        if (checkGrid.checked) {
+            checkGrid.parentElement?.classList.add('tgl-checked');
+        }
+        checkGrid.addEventListener('click', () => {
+            StorageManager.checkGrid = checkGrid.checked;
+            if (checkGrid.checked) {
+                checkGrid.parentElement?.classList.add('tgl-checked');
+            } else {
+                checkGrid.parentElement?.classList.remove('tgl-checked');
             }
         });
     }
@@ -71,18 +88,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    if (test) {
-        test.addEventListener('click', () => {
-            let json = JSON.stringify(StorageManager.randomSettings);
-            let options = encodeBase64(json);
-            let a = document.querySelector<HTMLInputElement>('#permalink')!;
-            a.value = options;
-        });
-    }
-
     if (play) {
         play.addEventListener('click', () => {
             window.location.href = `/random`;
+        });
+    }
+
+    if (reset) {
+        reset.addEventListener('click', () => {
+            StorageManager.randomSettings = Constants.DEFAULT_DATA.randomSettings;
+            window.location.reload();
         });
     }
 

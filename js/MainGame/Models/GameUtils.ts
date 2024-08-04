@@ -31,7 +31,7 @@ export class GameUtils {
      * @param {Group[]} [alreadyBanned=[]] Groups that are already banned
      * @returns {GroupGame[]} The selected groups
      */
-    public whileSelection(daysBefore = 0, alreadyBanned: Group[] = []): GroupGame[] {
+    public whileSelection(daysBefore: number = 0, alreadyBanned: Group[] = []): GroupGame[] {
         let bannedGroup: Group[] = alreadyBanned;
         let bannedItem: Item[] = [];
         let bannedTags: string[] = [];
@@ -69,14 +69,16 @@ export class GameUtils {
             selectedGroups.push(currentGroup);
             bannedGroup.push(currentGroup);
 
-            let result = this.checkGrid(selectedGroups, selectedItems, this.options.NUMBER_OF_ITEMS);
-            if (result.impossible) {
-                selectedGroups.pop();
-                for (let i = 0; i < this.options.NUMBER_OF_ITEMS; i++) {
-                    selectedItems.pop();
+            if (this.options.CHECK_GRID) {
+                let result = this.checkGrid(selectedGroups, selectedItems, this.options.NUMBER_OF_ITEMS);
+                if (result.impossible) {
+                    selectedGroups.pop();
+                    for (let i = 0; i < this.options.NUMBER_OF_ITEMS; i++) {
+                        selectedItems.pop();
+                    }
+                    counterGroup++;
+                    continue;
                 }
-                counterGroup++;
-                continue;
             }
 
             currentGroup.setIndex(selectedGroups.length - 1);
@@ -94,6 +96,7 @@ export class GameUtils {
         if (selectedGroups.length < this.options.NUMBER_OF_GROUPS)
         {
             let groupCounter = 0;
+            difficultyFound = false;
             while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && groupCounter < 1000) {
                 bannedItem = [];
                 bannedGroup = [];

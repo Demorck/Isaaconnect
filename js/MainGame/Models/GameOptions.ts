@@ -37,8 +37,16 @@ export interface GameOptions {
      */
     TAGS_BANNED: boolean;
 
+    
+    /**
+     * Check the grid if it's impossible
+     */
+    CHECK_GRID: boolean;
+
     /**
      * The custom difficulty
      */
     CUSTOM_DIFFICULTY: Difficulties;
+
+    
 }

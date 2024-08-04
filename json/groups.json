@@ -517,7 +517,7 @@
   },
   {
     "name": "Items with multiple sprites",
-    "items": [711, 685, 720, 489, 483, 479, 523, 640],
+    "items": [711, 685, 720, 489, 483, 479, 523, 640, 290],
     "difficulty": 3,
     "tags": ["sprite"]
   },

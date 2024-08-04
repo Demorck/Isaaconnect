@@ -2,26 +2,24 @@
     <div class="tooltip-content px-4 py-2">
         <div class="flex flex-col gap-4">
             <h1 class="text-2xl font-bold">Gamemodes</h1>            
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                <div class="flex flex-col text-left">
-                    <p class="text-sm">The initial 4x4 grid that's reset every midnight</p>
+            <div class="flex flex-row-reverse gap-4 mb-5 items-end">
+                <div class="flex flex-col flex-1 text-left">
+                    <p class="text-sm">The initial 4x4 grid that's reset every midnight UTC.</p>
                 </div>
-                <div class="rounded-3xl h-fit">
-                    <button type="button" data-id="daily" id="daily" onclick="location.href = '/';" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                <div class="rounded-3xl flex flex-1 h-fit">
+                    <a id="daily" href="/" target="_blank" class="flex-1 shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--default">
                         Daily
-                    </button>
-                    <label class="tgl-btn" for="daily">
+                    </a>
                 </div>
             </div>
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                <div class="flex flex-col text-left">
+            <div class="flex flex-row-reverse gap-4 mb-5 items-end">
+                <div class="flex flex-col flex-1 text-left">
                     <p class="text-sm">Generate a grid with custom options.</p>
                 </div>
-                <div class="rounded-3xl h-fit">
-                    <button type="button" data-id="daily" id="daily" onclick="location.href = '/settings';" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit">
+                <div class="rounded-3xl flex flex-1 h-fit">
+                    <a id="daily" href="/settings" target="_blank" class="flex-1 shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--default">
                         Random
-                    </button>
-                    <label class="tgl-btn" for="daily">
+                    </a>
                 </div>
             </div>
         </div>

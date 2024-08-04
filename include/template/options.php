@@ -3,7 +3,7 @@
 
         <?php include 'include/template/title.php'; ?>
 
-        <div class="flex flex-col jutify-center p-4 rounded-3xl self-center md:w-2/5" id="options">
+        <div class="flex mb-10 flex-col jutify-center p-4 rounded-3xl self-center md:w-2/5 shadow-theme" id="options">
             <div class="flex flex-col gap-4">
                 <h1 class="text-2xl font-bold self-center">Random settings</h1>    
                 <p class="self-center">With certain settings, the game may be very complicated or repetitive.</p>
@@ -89,13 +89,24 @@
                 <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="flex flex-col text-left">
                         <h1 class="text-xl">Not same tags in grid</h1>
-                        <p class="text-sm">Groups has tags to prevent the same type of groups appears multiple time in the grid. Enable this activate this property.</p>
+                        <p class="text-sm">Groups has tags to prevent the same type of groups appears multiple time in the grid. Enable this activate this property. <b>Check if you are unsure.</b></p>
                     </div>
                     <div class="checkbox-wrapper rounded-3xl h-fit">
                         <input class="tgl tgl-theme" id="tags" type="checkbox"/>
                         <label class="tgl-btn" for="tags">
                     </div>
                 </div>
+                <div class="flex flex-row-reverse gap-4 items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl">Check grid before generate</h1>
+                        <p class="text-sm">Test if the generated grid has no item conflicts. For example, if there are 4 items per group, check that there aren't 5 items that would be suitable for a given group. It can't work if your options are to specific. <b>Check if you are unsure.</b></p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="check-grid" type="checkbox"/>
+                        <label class="tgl-btn" for="check-grid">
+                    </div>
+                </div>
+
                 <!-- <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="flex flex-col text-left">
                         <h1 class="text-xl">Permalink</h1>
@@ -106,11 +117,9 @@
                     </div>
                 </div> -->
 
-                <div class="flex flex-row-reverse gap-4 items-center">
-                    <div class="w-full rounded-3xl h-fit">
-                        <button class="w-full tgl tgl-theme" id="play" type="input">Play </button>
-                        <label class="tgl-btn" for="play">
-                    </div>
+                <div class="flex flex-row-reverse gap-4 items-center justify-evenly">
+                    <button class="w-1/4 tgl default py-1 rounded-3xl" id="reset" type="button">Reset to default</button>
+                    <button class="w-1/4 tgl default py-1 rounded-3xl" id="play" type="button">Play</button>
                 </div>
             </div>
         </div>

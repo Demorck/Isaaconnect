@@ -7,7 +7,7 @@ import { addEventLogs } from './Logs.js';
 import { Utils } from '../Shared/Helpers/Utils.js';
 
 
-export async function displayTooltip(element: HTMLElement): Promise<void> {
+export async function displayTooltip(element: HTMLElement, index: number): Promise<void> {
     const wrapper = document.querySelector('#tooltip-wrapper') as HTMLElement;
     const type = element.getAttribute('data-id');
     if (!type) return;
@@ -51,6 +51,7 @@ export async function displayTooltip(element: HTMLElement): Promise<void> {
     wrapper.innerHTML = html;
     wrapper.style.display = 'block';
     wrapper.setAttribute('data-id', type);
+    wrapper.setAttribute('data-index', index.toString());
 
     switch (type) {
         case 'settings':
@@ -91,9 +92,9 @@ function hideTooltip(): void {
 export function initializeTooltipListener(): void {
     if (document.readyState === 'complete') {
         const elements = document.querySelectorAll('#tooltip-icons [data-id]');
-        elements.forEach(element => {
+        elements.forEach((element, index) => {
             element.addEventListener('click', () => {
-                displayTooltip(element as HTMLElement);
+                displayTooltip(element as HTMLElement, index);
                 let el = element as HTMLElement;
             });
         });

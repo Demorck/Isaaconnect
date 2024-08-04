@@ -84,6 +84,14 @@
 .basement-theme #cards-game, .basement-theme #options {
   background-color: #fff;
 }
+.basement-theme button.default, .basement-theme .button--default {
+  background-color: #C08560;
+  border: 2px solid #71472D;
+}
+.basement-theme button.default:hover, .basement-theme .button--default:hover {
+  background-color: #aa6b43;
+  cursor: pointer;
+}
 .basement-theme .button--submit {
   background-color: #FFC000;
 }
@@ -160,6 +168,14 @@
 }
 .mausoleum-theme #cards-game, .mausoleum-theme #options {
   background-color: #fff;
+}
+.mausoleum-theme button.default, .mausoleum-theme .button--default {
+  background-color: #9a6cb1;
+  border: 2px solid #5F3B5D;
+}
+.mausoleum-theme button.default:hover, .mausoleum-theme .button--default:hover {
+  background-color: #815199;
+  cursor: pointer;
 }
 .mausoleum-theme .button--submit {
   background-color: #C301FF;
@@ -238,6 +254,14 @@
 .flooded-caves-theme #cards-game, .flooded-caves-theme #options {
   background-color: #fff;
 }
+.flooded-caves-theme button.default, .flooded-caves-theme .button--default {
+  background-color: #73B1F5;
+  border: 2px solid #385094;
+}
+.flooded-caves-theme button.default:hover, .flooded-caves-theme .button--default:hover {
+  background-color: #4396f2;
+  cursor: pointer;
+}
 .flooded-caves-theme .button--submit {
   background-color: #73B1F5;
 }
@@ -314,6 +338,14 @@
 }
 .green-theme #cards-game, .green-theme #options {
   background-color: #fff;
+}
+.green-theme button.default, .green-theme .button--default {
+  background-color: #A6D60C;
+  border: 2px solid #465117;
+}
+.green-theme button.default:hover, .green-theme .button--default:hover {
+  background-color: #81a609;
+  cursor: pointer;
 }
 .green-theme .button--submit {
   background-color: #A6D60C;
@@ -392,6 +424,14 @@
 .catacombs-theme #cards-game, .catacombs-theme #options {
   background-color: #fff;
 }
+.catacombs-theme button.default, .catacombs-theme .button--default {
+  background-color: #B78C69;
+  border: 2px solid #5B3D33;
+}
+.catacombs-theme button.default:hover, .catacombs-theme .button--default:hover {
+  background-color: #a0724d;
+  cursor: pointer;
+}
 .catacombs-theme .button--submit {
   background-color: #B78C69;
 }
@@ -468,6 +508,14 @@
 }
 .ph-theme #cards-game, .ph-theme #options {
   background-color: #fff;
+}
+.ph-theme button.default, .ph-theme .button--default {
+  background-color: #FF7621;
+  border: 2px solid #000000;
+}
+.ph-theme button.default:hover, .ph-theme .button--default:hover {
+  background-color: #ed5b00;
+  cursor: pointer;
 }
 .ph-theme .button--submit {
   background-color: #FF7621;
@@ -546,6 +594,14 @@
 .depths-theme #cards-game, .depths-theme #options {
   background-color: #fff;
 }
+.depths-theme button.default, .depths-theme .button--default {
+  background-color: #AFABAB;
+  border: 2px solid #595959;
+}
+.depths-theme button.default:hover, .depths-theme .button--default:hover {
+  background-color: #969191;
+  cursor: pointer;
+}
 .depths-theme .button--submit {
   background-color: #AFABAB;
 }
@@ -623,6 +679,14 @@
 .dank-depths-theme #cards-game, .dank-depths-theme #options {
   background-color: #959ABD;
 }
+.dank-depths-theme button.default, .dank-depths-theme .button--default {
+  background-color: #c0c6f3;
+  border: 2px solid #363640;
+}
+.dank-depths-theme button.default:hover, .dank-depths-theme .button--default:hover {
+  background-color: #959feb;
+  cursor: pointer;
+}
 .dank-depths-theme .button--submit {
   background-color: #959ABD;
 }
@@ -639,11 +703,11 @@
   background-color: #17171B;
 }
 .dank-depths-theme .checkbox-wrapper {
-  border: 3px solid #959ABD;
+  border: 3px solid #c0c6f3;
   background: #17171B;
 }
 .dank-depths-theme input[type=range] {
-  background: #959ABD;
+  background: #c0c6f3;
 }
 .dank-depths-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -653,10 +717,10 @@
   height: 15px;
 }
 .dank-depths-theme .tgl-theme {
-  border: 1px solid #959ABD;
+  border: 1px solid #c0c6f3;
 }
 .dank-depths-theme .tgl-theme + .tgl-btn:after {
-  background: #959ABD;
+  background: #c0c6f3;
 }
 @media (min-width: 768px) {
   .dank-depths-theme #tooltip-wrapper::after {
@@ -699,6 +763,14 @@
 }
 .gehenna-theme #cards-game, .gehenna-theme #options {
   background-color: #fff;
+}
+.gehenna-theme button.default, .gehenna-theme .button--default {
+  background-color: #EB2121;
+  border: 2px solid #873535;
+}
+.gehenna-theme button.default:hover, .gehenna-theme .button--default:hover {
+  background-color: #c71212;
+  cursor: pointer;
 }
 .gehenna-theme .button--submit {
   background-color: #EB2121;
@@ -777,6 +849,14 @@
 .womb-theme #cards-game, .womb-theme #options {
   background-color: #FA0000;
 }
+.womb-theme button.default, .womb-theme .button--default {
+  background-color: #971515;
+  border: 2px solid #A40000;
+}
+.womb-theme button.default:hover, .womb-theme .button--default:hover {
+  background-color: #6a0f0f;
+  cursor: pointer;
+}
 .womb-theme .button--submit {
   background-color: #FA0000;
 }
@@ -793,11 +873,11 @@
   background-color: #540000;
 }
 .womb-theme .checkbox-wrapper {
-  border: 3px solid #EB2121;
+  border: 3px solid #971515;
   background: #540000;
 }
 .womb-theme input[type=range] {
-  background: #EB2121;
+  background: #971515;
 }
 .womb-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -807,10 +887,10 @@
   height: 15px;
 }
 .womb-theme .tgl-theme {
-  border: 1px solid #EB2121;
+  border: 1px solid #971515;
 }
 .womb-theme .tgl-theme + .tgl-btn:after {
-  background: #EB2121;
+  background: #971515;
 }
 @media (min-width: 768px) {
   .womb-theme #tooltip-wrapper::after {
@@ -853,6 +933,14 @@
 }
 .scarred-womb-theme #cards-game, .scarred-womb-theme #options {
   background-color: #fff;
+}
+.scarred-womb-theme button.default, .scarred-womb-theme .button--default {
+  background-color: #D20000;
+  border: 2px solid #873535;
+}
+.scarred-womb-theme button.default:hover, .scarred-womb-theme .button--default:hover {
+  background-color: #9f0000;
+  cursor: pointer;
 }
 .scarred-womb-theme .button--submit {
   background-color: #D20000;
@@ -931,6 +1019,14 @@
 .dave-theme #cards-game, .dave-theme #options {
   background-color: #2A3A54;
 }
+.dave-theme button.default, .dave-theme .button--default {
+  background-color: #FFC000;
+  border: 2px solid #2A3A54;
+}
+.dave-theme button.default:hover, .dave-theme .button--default:hover {
+  background-color: #cc9a00;
+  cursor: pointer;
+}
 .dave-theme .button--submit {
   background-color: #2A3A54;
 }
@@ -1008,11 +1104,19 @@
 .corpse-theme #cards-game, .corpse-theme #options {
   background-color: #5F6F51;
 }
+.corpse-theme button.default, .corpse-theme .button--default {
+  background-color: #9ab483;
+  border: 2px solid #556F51;
+}
+.corpse-theme button.default:hover, .corpse-theme .button--default:hover {
+  background-color: #80a163;
+  cursor: pointer;
+}
 .corpse-theme .button--submit {
-  background-color: #FFFFFF;
+  background-color: #556F51;
 }
 .corpse-theme .button--submit:hover {
-  background-color: #b3b3b3;
+  background-color: #111710;
 }
 .corpse-theme .tooltip {
   background-color: #556F51;
@@ -1024,11 +1128,11 @@
   background-color: #323D2F;
 }
 .corpse-theme .checkbox-wrapper {
-  border: 3px solid #70835F;
+  border: 3px solid #9ab483;
   background: #323D2F;
 }
 .corpse-theme input[type=range] {
-  background: #70835F;
+  background: #9ab483;
 }
 .corpse-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -1038,10 +1142,10 @@
   height: 15px;
 }
 .corpse-theme .tgl-theme {
-  border: 1px solid #70835F;
+  border: 1px solid #9ab483;
 }
 .corpse-theme .tgl-theme + .tgl-btn:after {
-  background: #70835F;
+  background: #9ab483;
 }
 @media (min-width: 768px) {
   .corpse-theme #tooltip-wrapper::after {
@@ -1085,6 +1189,14 @@
 .cathedral-theme #cards-game, .cathedral-theme #options {
   background-color: #A9C5D7;
 }
+.cathedral-theme button.default, .cathedral-theme .button--default {
+  background-color: #7192a7;
+  border: 2px solid #4A7FA0;
+}
+.cathedral-theme button.default:hover, .cathedral-theme .button--default:hover {
+  background-color: #58788d;
+  cursor: pointer;
+}
 .cathedral-theme .button--submit {
   background-color: #FF8C2D;
 }
@@ -1101,11 +1213,11 @@
   background-color: #20475A;
 }
 .cathedral-theme .checkbox-wrapper {
-  border: 3px solid #A9C5D7;
+  border: 3px solid #7192a7;
   background: #20475A;
 }
 .cathedral-theme input[type=range] {
-  background: #A9C5D7;
+  background: #7192a7;
 }
 .cathedral-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -1115,10 +1227,10 @@
   height: 15px;
 }
 .cathedral-theme .tgl-theme {
-  border: 1px solid #A9C5D7;
+  border: 1px solid #7192a7;
 }
 .cathedral-theme .tgl-theme + .tgl-btn:after {
-  background: #A9C5D7;
+  background: #7192a7;
 }
 @media (min-width: 768px) {
   .cathedral-theme #tooltip-wrapper::after {
@@ -1161,6 +1273,14 @@
 }
 .sheol-theme #cards-game, .sheol-theme #options {
   background-color: #2E2E2E;
+}
+.sheol-theme button.default, .sheol-theme .button--default {
+  background-color: #404040;
+  border: 2px solid #262626;
+}
+.sheol-theme button.default:hover, .sheol-theme .button--default:hover {
+  background-color: #272727;
+  cursor: pointer;
 }
 .sheol-theme .button--submit {
   background-color: #262626;
@@ -1239,6 +1359,14 @@
 .chest-theme #cards-game, .chest-theme #options {
   background-color: #AC6414;
 }
+.chest-theme button.default, .chest-theme .button--default {
+  background-color: #FFC000;
+  border: 2px solid #805738;
+}
+.chest-theme button.default:hover, .chest-theme .button--default:hover {
+  background-color: #cc9a00;
+  cursor: pointer;
+}
 .chest-theme .button--submit {
   background-color: #FFC000;
 }
@@ -1255,11 +1383,11 @@
   background-color: #3B2819;
 }
 .chest-theme .checkbox-wrapper {
-  border: 3px solid #AC6414;
+  border: 3px solid #FFC000;
   background: #3B2819;
 }
 .chest-theme input[type=range] {
-  background: #AC6414;
+  background: #FFC000;
 }
 .chest-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -1269,10 +1397,10 @@
   height: 15px;
 }
 .chest-theme .tgl-theme {
-  border: 1px solid #AC6414;
+  border: 1px solid #FFC000;
 }
 .chest-theme .tgl-theme + .tgl-btn:after {
-  background: #AC6414;
+  background: #FFC000;
 }
 @media (min-width: 768px) {
   .chest-theme #tooltip-wrapper::after {
@@ -1316,6 +1444,14 @@
 .dark-room-theme #cards-game, .dark-room-theme #options {
   background-color: #000000;
 }
+.dark-room-theme button.default, .dark-room-theme .button--default {
+  background-color: #816791;
+  border: 2px solid #402C5A;
+}
+.dark-room-theme button.default:hover, .dark-room-theme .button--default:hover {
+  background-color: #665273;
+  cursor: pointer;
+}
 .dark-room-theme .button--submit {
   background-color: #665272;
 }
@@ -1332,11 +1468,11 @@
   background-color: #261036;
 }
 .dark-room-theme .checkbox-wrapper {
-  border: 3px solid #665272;
+  border: 3px solid #816791;
   background: #261036;
 }
 .dark-room-theme input[type=range] {
-  background: #665272;
+  background: #816791;
 }
 .dark-room-theme input[type=range]::-webkit-slider-thumb {
   appearance: none;
@@ -1346,10 +1482,10 @@
   height: 15px;
 }
 .dark-room-theme .tgl-theme {
-  border: 1px solid #665272;
+  border: 1px solid #816791;
 }
 .dark-room-theme .tgl-theme + .tgl-btn:after {
-  background: #665272;
+  background: #816791;
 }
 @media (min-width: 768px) {
   .dark-room-theme #tooltip-wrapper::after {
@@ -1392,6 +1528,26 @@
   color: #fff;
 }
 .sheol-theme .button--shuffle {
+  color: #fff;
+}
+
+.scarred-womb-theme #options {
+  color: #fff;
+}
+
+.dave-theme #options {
+  color: #fff;
+}
+
+.corpse-theme #options {
+  color: #fff;
+}
+
+.sheol-theme #options {
+  color: #fff;
+}
+
+.dark-room-theme #options {
   color: #fff;
 }
 

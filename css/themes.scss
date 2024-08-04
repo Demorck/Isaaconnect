@@ -1,7 +1,5 @@
 @use "sass:color";
 
-// TODO:  Dank Depths, Womb, Dave (color), Corpse ?, Cathedral, Sheol (color), Chest, Dark room x2
-
 
 $background: #fff;
 
@@ -105,7 +103,7 @@ $dank-depths-theme: (
     title: #959ABD,
     shadows: #121216,
     submit: #959ABD,
-    toggle: #959ABD,
+    toggle: #c0c6f3,
     card: #8489B2,
     card-background: #959ABD,
 );
@@ -128,7 +126,7 @@ $womb-theme: (
     shadows: #430000,
     title: #FA0000,
     submit: #FA0000,
-    toggle: #EB2121,
+    toggle: #971515,
     card: #D20000,
     card-background: #FA0000,
 );
@@ -162,8 +160,8 @@ $corpse-theme: (
     secondary-hover: #71936B,
     shadows: #283126,
     title: #70835F,
-    submit: #FFFFFF,
-    toggle: #70835F,
+    submit: #556F51,
+    toggle: #9ab483,
     card: #70835F,
     card-background: #5F6F51,
 );
@@ -175,7 +173,7 @@ $cathedral-theme: (
     shadows: #1A3948,
     title: #A9C5D7,
     submit: #FF8C2D,
-    toggle: #A9C5D7,
+    toggle: #7192a7,
     card: #8CB2CA,
     card-background: #A9C5D7,
 );
@@ -199,7 +197,7 @@ $chest-theme: (
     shadows: #2F2014,
     title: #FFC000,
     submit: #FFC000,
-    toggle: #AC6414,
+    toggle: #FFC000,
     card: #FFF0C1,
     card-background: #AC6414,
 );
@@ -211,7 +209,7 @@ $dark-room-theme: (
     shadows: #261036,
     title: #665272,
     submit: #665272,
-    toggle: #665272,
+    toggle: #816791,
     card: #4B4B4B,
     card-background: #000000,
 );
@@ -245,7 +243,15 @@ $lights: (
 $white-submit: (
     scarred-womb-theme,
     dave-theme,
-    sheol-theme
+    sheol-theme,
+);
+
+$white-options: (
+    scarred-womb-theme,
+    dave-theme,
+    corpse-theme,
+    sheol-theme,
+    dark-room-theme
 );
 
 /*************************/
@@ -400,6 +406,22 @@ $white-submit: (
             }
         }
 
+        button.default, .button--default {
+            background-color: map-get($map: $theme-map, $key: toggle);
+            border: 2px solid map-get($map: $theme-map, $key: secondary);
+
+            &:hover {
+                @if (map-get($map: $theme-map, $key: toggle-hover)) {
+                    background-color: map-get($map: $theme-map, $key: toggle-hover);
+                }
+                @else {
+                    background-color: color.adjust(map-get($map: $theme-map, $key: toggle), $lightness: -10%);
+                }
+
+                cursor: pointer;
+            }
+        }
+
         .button--submit {
             background-color: map-get($map: $theme-map, $key: submit);
 
@@ -479,6 +501,14 @@ $white-submit: (
     }
 }
 
+@mixin applyWhiteOptions($theme) {
+    .#{$theme} {
+        #options {
+            color: #fff;
+        }
+    }
+}
+
 @mixin applyLightThemes($theme) {
     .#{$theme} {
         #title h1 {
@@ -505,4 +535,8 @@ $white-submit: (
 
 @each $theme in $white-submit {
     @include applyWhiteSubmit($theme);
+}
+
+@each $theme in $white-options {
+    @include applyWhiteOptions($theme);
 }

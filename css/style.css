@@ -478,32 +478,36 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
         bottom: unset;
     }
 
-    #tooltip-wrapper[data-id="stats"]::after {
-        left: 9%;
+    #tooltip-wrapper[data-index="0"]::after {
+        left: 7%;
     }
 
-    #tooltip-wrapper[data-id="schedule"]::after {
-        left: 17%;
+    #tooltip-wrapper[data-index="1"]::after {
+        left: 15%;
     }
 
-    #tooltip-wrapper[data-id="promo"]::after {
+    #tooltip-wrapper[data-index="2"]::after {
         left: 20%;
     }
 
-    #tooltip-wrapper[data-id="help"]::after {
+    #tooltip-wrapper[data-index="3"]::after {
         left: 29.5%;
     }
 
-    #tooltip-wrapper[data-id="settings"]::after {
+    #tooltip-wrapper[data-index="4"]::after {
         left: 38%;
     }
 
-    #tooltip-wrapper[data-id="gamemode"]::after {
-        left: 59%;
+    #tooltip-wrapper[data-index="5"]::after {
+        left: 51%;
     }
 
-    #tooltip-wrapper[data-id="logs"]::after {
-        left: 74%;
+    #tooltip-wrapper[data-index="6"]::after {
+        left: 70%;
+    }
+
+    #tooltip-wrapper[data-index="7"]::after {
+        left: 80%;
     }
  }
 

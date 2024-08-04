@@ -10,8 +10,6 @@ import { Utils } from '../Shared/Helpers/Utils.js';
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
 
-    Utils.checkIfNewVersion()
-
     let tutorial = StorageManager.lastIsaaconnect === 0;
     let game = new MainGame();
     let gameView = new MainGameView('#cards-game');

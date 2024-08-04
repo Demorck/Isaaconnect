@@ -30,17 +30,17 @@ tsc --watch
 
 #### TODO
 * [ ] Modify all files to properly use Constants.OPTIONS
-* [ ] UI & UX improvement to finish the customizable random game
+* [x] UI & UX improvement to finish the customizable random game
 
 #### Present plan
 * [ ]  Documentation
 * [ ]  Refactor CSS into SASS
 * [ ]  Add/Remove/Change some groups
-* [ ]  Make a menu (to find the random game)
+* [x]  Make a menu (to find the random game)
 
 
 #### Future plan
-* [ ]  Fully customizable random game
+* [x]  Fully customizable random game
 * [ ]  Unit tests
 * [ ]  Seeded game to share them
 * [ ]  Localization
