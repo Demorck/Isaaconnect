@@ -727,8 +727,7 @@
   },
   {
     "name": "Items unavailable in the Death Certificate area",
-    "items": [      -1,
-668, 714, 715, 628],
+    "items": [-1, 668, 714, 715, 628],
     "difficulty": 3,
     "tags": ["unavailable"]
   },
