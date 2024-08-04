@@ -6,7 +6,7 @@
         <div class="flex mb-10 flex-col jutify-center p-4 rounded-3xl self-center md:w-2/5 shadow-theme" id="options">
             <div class="flex flex-col gap-4">
                 <h1 class="text-2xl font-bold self-center">Random settings</h1>    
-                <p class="self-center">With certain settings, the game may be very complicated or repetitive.</p>
+                <p class="self-center">Some configurations may make the game difficult or repetitive.</p>
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
                     <div class="flex flex-col text-left flex-1">
                         <h1 class="text-xl font-bold">Number of groups</h1>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
                     <div class="flex flex-row text-left flex-1 items-end gap-4">
-                        <h1 class="text-xl font-bold">Curse of the blind items: </h1>
+                        <h1 class="text-xl font-bold">Curse of the Blind items: </h1>
                         <p id="range-blind-current-value">0</p>
                     </div>
                     <div class="flex flex-col space-y-2 p-2 flex-1">
@@ -75,7 +75,7 @@
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
                     <div class="flex flex-col text-left flex-1">
                         <h1 class="text-xl font-bold">Difficulty</h1>                    
-                        <p class="text-sm">Groups has difficulty assigned from 0 to 3. Super easy means that groups with difficulty 3 won't appear and maximum of 1 group with difficulty 2. Ultra hard means that groups with difficulty 0 and 1 are rerolled.</p>
+                        <p class="text-sm">Groups are assigned a difficulty from 0 to 3. Super easy means that Difficulty 3 groups won't appear and only 1 group can be Difficulty 2. Ultra hard means that Difficulty 0-1 groups are rerolled.</p>
                     </div>
                     <div class="flex flex-col space-y-2 p-2 flex-1">
                         <input type="range" id="range-difficulty" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="0" max="4" step="1"/>
@@ -88,8 +88,8 @@
                 </div>
                 <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="flex flex-col text-left">
-                        <h1 class="text-xl">Not same tags in grid</h1>
-                        <p class="text-sm">Groups has tags to prevent the same type of groups appears multiple time in the grid. Enable this activate this property. <b>Check if you are unsure.</b></p>
+                        <h1 class="text-xl">Prevent similar group themes</h1>
+                        <p class="text-sm">Groups have tags depending on their theme. Enable this option to prevent grids from having multiple groups with the same theme. <b>Enable if you are unsure.</b></p>
                     </div>
                     <div class="checkbox-wrapper rounded-3xl h-fit">
                         <input class="tgl tgl-theme" id="tags" type="checkbox"/>
@@ -99,7 +99,7 @@
                 <div class="flex flex-row-reverse gap-4 items-center">
                     <div class="flex flex-col text-left">
                         <h1 class="text-xl">Check grid before generate</h1>
-                        <p class="text-sm">Test if the generated grid has no item conflicts. For example, if there are 4 items per group, check that there aren't 5 items that would be suitable for a given group. It can't work if your options are to specific. <b>Check if you are unsure.</b></p>
+                        <p class="text-sm">Tests the grid for item conflicts, to prevent items from a category on the grid from also fitting in another. Might not be possible with certain configurations. <b>Enable if you are unsure.</b></p>
                     </div>
                     <div class="checkbox-wrapper rounded-3xl h-fit">
                         <input class="tgl tgl-theme" id="check-grid" type="checkbox"/>
@@ -119,7 +119,7 @@
 
                 <div class="flex flex-row-reverse gap-4 items-center justify-evenly">
                     <button class="w-1/4 tgl default py-1 rounded-3xl" id="reset" type="button">Reset to default</button>
-                    <button class="w-1/4 tgl default py-1 rounded-3xl" id="play" type="button">Play</button>
+                    <button class="w-1/4 tgl default py-1 rounded-3xl" id="play" type="button">Play !</button>
                 </div>
             </div>
         </div>
