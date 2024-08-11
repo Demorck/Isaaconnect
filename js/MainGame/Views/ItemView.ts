@@ -58,6 +58,7 @@ export class ItemView implements Observer {
         if (item.isBlind()) {
             imgElement.src = '/assets/gfx/items/collectibles/questionmark.png';
             spanElement.textContent = 'Question Mark';
+            imgElement.alt = 'Question Mark';
         }
 
         itemElement.appendChild(inputElement);

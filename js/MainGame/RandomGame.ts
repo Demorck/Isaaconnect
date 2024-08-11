@@ -11,11 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let tutorial = StorageManager.lastIsaaconnect === 0;
     const query = new URLSearchParams(window.location.search);
-
-    let options = JSON.parse(window.atob(query.get('options') || '') || '{}');  
-    console.log(options);
-      
-    
     
     let game = new MainGame(false);
     let gameView = new MainGameView('#cards-game');

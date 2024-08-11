@@ -214,9 +214,19 @@ ol, ul {
     .card-module span {
         font-size: 0.5rem;
         font-weight: 800;
+        word-break: break-all;
+        height: -webkit-fill-available;
     }
+
+    label.card-module {
+        height: -webkit-fill-available;
+        aspect-ratio: auto; 
+        display: flex;
+        align-items: center;   
+    }
+
     .easy img {
-        width: 3.5em;
+        width: 2em;
         font-size: 0.80rem;
     }
 }

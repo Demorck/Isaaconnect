@@ -83,7 +83,7 @@ export class Stats {
             NUMBER_OF_BLIND_ITEMS: 0,
             TAGS_BANNED: false,
             CUSTOM_DIFFICULTY: Difficulties.NORMAL,
-            CHECK_GRID: true,
+            CHECK_GRID: false,
         }
     }
 }

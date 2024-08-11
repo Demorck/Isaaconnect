@@ -247,7 +247,6 @@ $white-submit: (
 );
 
 $white-options: (
-    scarred-womb-theme,
     dave-theme,
     corpse-theme,
     sheol-theme,
@@ -520,6 +519,10 @@ $white-options: (
         }
 
         #tooltip-icons {
+            color: #000;
+        }
+
+        #options {
             color: #000;
         }
     }

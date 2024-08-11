@@ -228,10 +228,10 @@ export class GameUtils {
      * @static
      * @param {GroupGame[]} groups The selected groups
      * @param {Item[]} allSelectedItems All the selected items
-     * @param {number} [numberOfItems=Constants.NUMBER_OF_ITEMS] The number of items to check
+     * @param {number} [numberOfItems=Constants.OPTIONS.NUMBER_OF_ITEMS] The number of items to check
      * @returns {{ impossible: boolean, itemsNotInGroup: Item[] }} The result of the check. If the grid is impossible, the items that are not in the group are returned
      */
-    public checkGrid(groups: GroupGame[], allSelectedItems: Item[], numberOfItems: number = Constants.NUMBER_OF_ITEMS): { impossible: boolean, itemsNotInGroup: Item[] } {
+    public checkGrid(groups: GroupGame[], allSelectedItems: Item[], numberOfItems: number = Constants.OPTIONS.NUMBER_OF_ITEMS): { impossible: boolean, itemsNotInGroup: Item[] } {
         if (allSelectedItems.length < numberOfItems) return { impossible: false, itemsNotInGroup: [] };
         let impossible = false;
         let itemsNotInGroup: Item[] = [];

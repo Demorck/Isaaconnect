@@ -1509,6 +1509,9 @@
 .ph-theme #tooltip-icons {
   color: #000;
 }
+.ph-theme #options {
+  color: #000;
+}
 
 .scarred-womb-theme .button--submit {
   color: #fff;
@@ -1528,10 +1531,6 @@
   color: #fff;
 }
 .sheol-theme .button--shuffle {
-  color: #fff;
-}
-
-.scarred-womb-theme #options {
   color: #fff;
 }
 

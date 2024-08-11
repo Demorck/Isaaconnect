@@ -46,9 +46,9 @@ export class MainGameMechanics {
                 attempts.push(currentGroup);
                 historyItems.push(currentItem);
             }
-        });
+        });        
 
-        if (numberOfItemsCorrect === options.NUMBER_OF_ITEMS - 1)
+        if (numberOfItemsCorrect === Constants.OPTIONS.NUMBER_OF_ITEMS - 1)
             return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
         return { win, attempts, historyItems, isMessage: false, message: ''};

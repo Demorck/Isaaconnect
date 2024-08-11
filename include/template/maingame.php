@@ -12,7 +12,7 @@
                 <div id="modal-wrapper" class="z-10 hidden">
                 </div>
             </div>
-            <div class="message flex absolute px-4 py-2 rounded-2xl hidden">
+            <div class="message flex fixed top-1/2 px-4 py-2 rounded-2xl hidden">
                 JUST MONIKA
             </div>
         </div>

@@ -42,17 +42,22 @@ export class MainGameView implements Observer {
             this.toggleSubmitButton(data.disabled);
 
         if (data.animate)
-        {
+        {            
             let group: GroupGame = data.group;
             let itemsID: number[] = group.getSelectedItems().map(item => item.getId());
             let selected = document.querySelectorAll<HTMLElement>('.card-module--selected');
-            if (selected.length != Constants.OPTIONS.NUMBER_OF_ITEMS)
-            {
-                itemsID.forEach((id, index) => {
-                    let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`);
-                    item?.classList.add('card-module--selected');
-                });
-            }
+            let deselect = false;
+            selected.forEach((el: HTMLElement) => {
+                let id = Number(el.dataset.id);
+                if (!itemsID.includes(id)) deselect = true;
+            })
+
+            if (deselect) selected.forEach(el => {el.classList.remove('card-module--selected'); el.classList.add('card-module--disabled')});
+
+            itemsID.forEach((id, index) => {
+                let item = document.querySelector<HTMLElement>(`[data-id="${id}"]`);
+                item?.classList.add('card-module--selected');
+            });
 
             this.animate().then(async () => {
                 await this.controller.toggleGroupSolved(data.group);

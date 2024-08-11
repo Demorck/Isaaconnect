@@ -93,14 +93,17 @@ class Tutorial {
         submitButton.disabled = false;
         submitButton.addEventListener('click', () => {
             if (this.skipTutorial) return;
-            let solved = StorageManager.groupsSolved;
             this.tutorial.classList.remove('bottom-0');
             this.tutorial.classList.remove('bottom-4');
-            if (solved.length >= 1) {
-                this.shiftingSteps();
-            } else {
-                this.shiftingSteps(2);
-            }
+            Utils.sleep(1500).then(() => {
+                let solved = StorageManager.groupsSolved;
+            
+                if (solved.length >= 1) {
+                    this.shiftingSteps();
+                } else {
+                    this.shiftingSteps(2);
+                }
+            });
         });
 
         buttons.classList.remove('-z-10');

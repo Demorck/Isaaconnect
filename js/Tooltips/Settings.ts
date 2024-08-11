@@ -1,5 +1,6 @@
 import { Utils } from "../Shared/Helpers/Utils.js";
 import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
+import { Constants } from "../Shared/Helpers/Constants.js";
 
 /**
  * @description Display the settings tooltip.
@@ -151,14 +152,18 @@ function changeDifficulty(element: HTMLInputElement): void {
     if (difficulty === 'easy') {
         StorageManager.difficulty = 'normal';
         checkbox.parentElement?.classList.remove('tgl-checked');
-        cards.forEach(card => {
+        cards.forEach(card => {            
             card.classList.remove('easy');
+            card.style.width = '';      
         });
     } else {
         StorageManager.difficulty = 'easy';
         checkbox.parentElement?.classList.add('tgl-checked');
         cards.forEach(card => {
             card.classList.add('easy');
+            if (window.innerWidth > 768)
+                card.style.width = '112px';  
+
         });
     }
 }
