@@ -775,7 +775,7 @@
   },
   {
     "name": "Items that cause fear",
-    "items": [41, 93, 230, 259, 228, 433, 400, 513, 554],
+    "items": [41, 93, 230, 259, 228, 400, 513, 554],
     "difficulty": 1,
     "tags": ["status"]
   },
