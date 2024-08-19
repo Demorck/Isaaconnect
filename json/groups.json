@@ -1243,6 +1243,12 @@
     "tags": ["unlocks"]
   },
   {
+    "name": "Mom's Heart unlocks",
+    "items": [101, 221, 20, 32, 149, 240, 74, 52, 479, 541],
+    "difficulty": 2,
+    "tags": ["unlocks"]
+  },
+  {
     "name": "Items with Magic in the name",
     "items": [12, 194, 253, 295, 642],
     "difficulty": 1,
