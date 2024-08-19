@@ -1249,7 +1249,7 @@
     "tags": ["name"]
   },
   {
-    "name": "Requires multiple marks to unlock",
+    "name": "Require multiple marks to unlock",
     "items": [331, 441, 625, 628],
     "difficulty": 3,
     "tags": ["unlocks"]
