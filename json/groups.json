@@ -403,7 +403,7 @@
   },
   {
     "name": "Items that can negate damage",
-    "items": [677, 313, 457, 690, 242, 535, 633, 543, 449, 375, 651],
+    "items": [677, 313, 457, 690, 242, 535, 633, 543, 449, 375, 651, 91],
     "difficulty": 1,
     "tags": ["invincible"]
   },
