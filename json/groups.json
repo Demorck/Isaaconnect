@@ -1046,7 +1046,7 @@
   },
   {
     "name": "Items that grant spectral tears",
-    "items": [573, 185, 159, 115, 336, 233, 358, 379, 369, 677, 573],
+    "items": [573, 185, 159, 115, 336, 233, 358, 379, 369, 677],
     "difficulty": 1,
     "tags": ["tears"]
   },
@@ -1058,7 +1058,7 @@
   },
   {
     "name": "Items that grant piercing tears",
-    "items": [118, 48, 336, 237, 306, 68, 462, 533, 678],
+    "items": [48, 336, 237, 306, 462, 533],
     "difficulty": 1,
     "tags": ["tears"]
   },
