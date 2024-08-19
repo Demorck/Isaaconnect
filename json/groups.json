@@ -691,13 +691,13 @@
   },
   {
     "name": "Items that can poison enemies",
-    "items": [13, 42, 103, 111, 140, 149, 180, 305, 317, 350, 351, 446, 466, 553, 594, 273, 404, 491],
+    "items": [13, 42, 103, 111, 140, 149, 180, 305, 317, 350, 351, 446, 466, 553, 594, 273, 404, 491, 570, 418, 191],
     "difficulty": 0,
     "tags": ["status"]
   },
   {
     "name": "Items that can slow down enemies",
-    "items": [66, 89, 171, 232, 337, 387, 231, 99, 266, 425, 502, 461, 652, 575, 596],
+    "items": [66, 89, 171, 232, 337, 387, 231, 99, 266, 425, 502, 461, 652, 575, 596, 418, 191, 570],
     "difficulty": 1,
     "tags": ["status"]
   },
@@ -769,25 +769,31 @@
   },
   {
     "name": "Items that can petrify enemies",
-    "items": [39, 338, 351, 178, 202, 110, 372, 546, 450, 608],
+    "items": [39, 338, 351, 178, 202, 110, 372, 546, 450, 608, 570, 418, 191],
     "difficulty": 2,
     "tags": ["status"]
   },
   {
-    "name": "Items that cause fear",
-    "items": [41, 93, 230, 259, 228, 400, 513, 554],
+    "name": "Items that can cause fear",
+    "items": [41, 93, 230, 259, 228, 400, 513, 554, 570, 418, 191],
     "difficulty": 1,
     "tags": ["status"]
   },
   {
-    "name": "Items that cause confusion",
-    "items": [209, 201, 497, 449, 637, 460],
+    "name": "Items that can cause confusion",
+    "items": [209, 201, 497, 449, 637, 460, 418],
     "difficulty": 2,
     "tags": ["status"]
   },
   {
     "name": "Items that can charm enemies",
-    "items": [421, 207, 200, 280, 404, 432, 513, 591],
+    "items": [421, 207, 200, 280, 404, 432, 513, 591, 570, 418, 191],
+    "difficulty": 2,
+    "tags": ["status"]
+  },
+  {
+    "name": "Items that can grant explosive tears",
+    "items": [570, 418, 191, 401, 257, 149],
     "difficulty": 2,
     "tags": ["status"]
   },
