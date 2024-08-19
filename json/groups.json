@@ -1052,7 +1052,7 @@
   },
   {
     "name": "Items that grant homing tears",
-    "items": [192, 331, 182, 3, 543, 678, 651],
+    "items": [192, 331, 182, 3, 543, 651],
     "difficulty": 1,
     "tags": ["tears"]
   },
@@ -1148,7 +1148,7 @@
   },
   {
     "name": "Items that indicate or open secrets room",
-    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580],
+    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589],
     "difficulty": 2,
     "tags": []
   },
@@ -1247,5 +1247,11 @@
     "items": [12, 194, 253, 295, 642],
     "difficulty": 1,
     "tags": ["name"]
+  },
+  {
+    "name": "Requires multiple marks to unlock",
+    "items": [331, 441, 625, 628],
+    "difficulty": 3,
+    "tags": ["unlocks"]
   }
 ]
