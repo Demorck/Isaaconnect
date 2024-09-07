@@ -655,7 +655,7 @@
   },
   {
     "name": "Items that grant AOE auras",
-    "items": [651, 574, 387, 417, 522, 446, 543, 331],
+    "items": [651, 574, 387, 417, 522, 446, 543, 546, 331],
     "difficulty": 2,
     "tags": ["circle"]
   },
@@ -673,7 +673,7 @@
   },
   {
     "name": "Items with fire in their sprite",
-    "items": [223, 256, 257, 182, 567, 164, 289],
+    "items": [223, 256, 257, 182, 567, 164, 289, 260],
     "difficulty": 1,
     "tags": ["sprite"]
   },
@@ -854,7 +854,7 @@
   },
   {
     "name": "Items that can make other items disappear",
-    "items": [706, 477, 485, 523, 609, 489],
+    "items": [706, 477, 485, 523, 609, 489, 723],
     "difficulty": 2,
     "tags": []
   },
@@ -1148,7 +1148,7 @@
   },
   {
     "name": "Items that indicate or open secrets room",
-    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589],
+    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589, 483],
     "difficulty": 2,
     "tags": []
   },
@@ -1190,7 +1190,7 @@
   },
   {
     "name": "Items that are useless without pickups",
-    "items": [144, 278, 388, 385, 109, 623, 710, 166, 476, 290, 295, 555, 177, 286, 263, 348, 479, 53],
+    "items": [144, 278, 388, 385, 109, 623, 710, 166, 476, 290, 295, 555, 177, 286, 263, 348, 53],
     "difficulty": 2,
     "tags": []
   },
