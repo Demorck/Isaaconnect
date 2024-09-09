@@ -673,7 +673,7 @@
   },
   {
     "name": "Items with fire in their sprite",
-    "items": [223, 256, 257, 182, 567, 164, 289, 260],
+    "items": [223, 256, 257, 182, 567, 164, 289, 260, 581, 702, 365],
     "difficulty": 1,
     "tags": ["sprite"]
   },
