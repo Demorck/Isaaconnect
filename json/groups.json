@@ -577,7 +577,7 @@
   },
   {
     "name": "Items that affect devil/angel chances",
-    "items": [51, 669, 260, 78, 34, 215, 499, 584],
+    "items": [51, 669, 260, 78, 34, 215, 499, 584, 601, 238, 239],
     "difficulty": 2,
     "tags": []
   },
