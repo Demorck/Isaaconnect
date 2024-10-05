@@ -529,7 +529,7 @@
   },
   {
     "name": "Items that grant Luck",
-    "items": [5, 46, 253, 343, 355, 439, 492, 632, 669, 730],
+    "items": [46, 253, 343, 355, 439, 492, 632, 669, 730],
     "difficulty": 1,
     "tags": ["stats"]
   },
@@ -721,7 +721,8 @@
   },
   {
     "name": "Items unavailable in the Death Certificate area",
-    "items": [-1, 668, 714, 715, 628],
+    "items": [      -1,
+668, 714, 715, 628],
     "difficulty": 3,
     "tags": ["unavailable"]
   },
@@ -1265,5 +1266,120 @@
     "items": [1, 3, 4, 5, 21, 32, 38, 44, 46, 47, 48, 49, 51, 63, 66, 68, 77, 85, 89, 90, 91, 93, 95, 102, 105, 116, 136, 137, 147, 152, 153, 166, 189, 194, 196, 208, 212, 227, 232, 244, 251, 255, 263, 267, 283, 284, 285, 337, 338, 352, 357, 362, 370, 382, 383, 386, 395, 397, 403, 406, 419, 422, 425, 427, 437, 438, 439, 444, 451, 465, 476, 478, 488, 494, 505, 515, 516, 518, 524, 527, 538, 599, 604, 609, 617, 624, 629, 638, 644, 649, 655, 687, 709, 720, 723, 730],
     "difficulty": 3,
     "tags": ["pool"]
+  },
+  {
+    "name": "Zodiac Signs",
+    "items": [299, 300, 301, 303, 302, 309, 308, 307, 304, 306, 318, 305],
+    "difficulty": 0,
+    "tags": []
+  },
+  {
+    "name": "Items that affect on pickups spawns",
+    "items": [405, 134, 424, 464, 241, 250, 203, 416, 514],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Luck based items",
+    "items": [461, 443, 150, 618, 259, 606, 110, 200, 228, 55, 230, 231, 616, 103, 496, 410, 257, 495, 374, 201, 637, 503, 617, 87, 217, 89, 408, 514, 162, 225, 515, 219, 303, 576],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items with a currency symbol",
+    "items": [429, 18, 109, 450, 501],
+    "difficulty": 0,
+    "tags": []
+  },
+  {
+    "name": "Items that deal mass room damage",
+    "items": [35, 265, 295, 507, 350],
+    "difficulty": 1,
+    "tags": []
+  },
+  {
+    "name": "Item with \"Magic\" in the name",
+    "items": [642, 295, 194, 253, 12],
+    "difficulty": 0,
+    "tags": []
+  },
+  {
+    "name": "Items that trigger on enemy death",
+    "items": [234, 408, 466, 684, 411, 657],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items that drop from obstacles",
+    "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items that can generate poops 💩",
+    "items": [36, 725, 720, 543, 236, 291, 576, 513, 386],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Starting items  in challenges",
+    "items": [6, 236, 209, 291, 233, 330, 90, 201, 51, 117, 122, 259, 126, 172, 242, 129, 314, 45, 57, 128, 10, 20, 149, 106, 5, 187, 145, 134, 52, 137, 246, 54, 21, 16, 168, 87, 156, 116, 180, 111, 190, 251, 85, 63, 48, 169, 3, 68, 152, 222, 315, 211, 151, 247, 8, 268, 67, 175, 40, 223, 338, 239, 238, 60, 114, 243, 273, 109, 94, 62, 191, 174, 34, 69, 184, 276, 281, 400, 382, 200, 221, 36, 9, 576, 119, 569, 214, 640, 534, 133, 604, 579, 245, 439, 538, 139, 580, 721],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Costs two red hearts if encounter in Devil Deal",
+    "items": [292, 172, 230, 118, 237, 311, 82, 114, 80, 159, 360, 399, 462, 572, 606, 698, 411, 216, 81, 275, 417],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Passive objects that don't change Isaac's appearance or aren't familiars",
+    "items": [691, 619, 689, 668],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Items not in any item pool",
+    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714,       -1
+],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Items that give stats up that can be lost\n                                ",
+    "items": [621, 664, 567, 407, 436, 415, 368, 373, 594, 597, 589, 157, 695, 411, 493],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items that feature in Challenges before they are unlocked",
+    "items": [90, 721, 579, 576],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Throwable active items",
+    "items": [638, 338, 729, 382, 42, 512],
+    "difficulty": 1,
+    "tags": []
+  },
+  {
+    "name": "Items that are rerolled into quality 4 by Spindown Dice",
+    "items": [5, 13, 53, 106, 109, 115, 119, 169, 170, 183, 224, 233, 246, 293, 314, 333, 361, 396, 416, 442, 478, 490, 532, 551, 552, 553, 582, 626, 629, 637, 644, 665, 679, 690, 692, 699, 707, 712, 724],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Familiars that drop pickups",
+    "items": [271, 94, 500, 131, 96, 565],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items that make you completely immune to 1 type of damage",
+    "items": [223, 375, 256, 91, 594, 632, 300, 140],
+    "difficulty": 1,
+    "tags": []
   }
 ]
