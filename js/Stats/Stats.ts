@@ -86,9 +86,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     table.appendChild(tbody);
     wrapper.appendChild(table);
 
-    let moyenne = numberCalled * 4 / Constants.GROUPS.length;
+    console.log("Options: ", Constants.OPTIONS);
+    
+    let moyenne = numberCalled * Constants.OPTIONS.NUMBER_OF_GROUPS / Constants.GROUPS.length;
     let ecartType = dev(Array.from(bigMap.values()));
     let meanfound = meanf(Array.from(bigMap.values()));    
+    console.log("Nombre de groupes totaux", bigMap.size);
+    
     console.log("Temps : " + delta + " ms");
     
     console.log("Nombre de générations : " + numberOfGeneration);
@@ -98,6 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("Nombre de fois : " + times);
     console.log("Nombre de groupes : " + Constants.GROUPS.length);
     console.log("Moyenne cherchée: " + moyenne);
+    console.log("Moyenne trouvée: " + meanfound);
     console.log("Écart type : " + ecartType);
     console.log("Coefficiant de variation : " + 100 * ecartType / moyenne);
     

@@ -3,6 +3,7 @@ import { GameUtils } from "../../MainGame/Models/GameUtils.js";
 import { GameOptions } from "../../MainGame/Models/GameOptions.js";
 import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
 import { Constants } from "../../Shared/Helpers/Constants.js";
+import { GroupGame } from "../../MainGame/Models/GroupGame.js";
 
 export class Stats {
     private _occurenceGroup: Map<string, number>;
@@ -25,8 +26,16 @@ export class Stats {
     }
 
     public generateOccurenceGroup(): void {
+        // let bannedGroups: GroupGame[] = [];
+        // for (let i = 1; i <= Constants.NUMBER_OF_DAYS_BEFORE; i++) {
+        //     const selectedGroups = this._gameUtils.whileSelection(i);
+        //     selectedGroups.forEach(group => bannedGroups.indexOf(group) === -1 ? bannedGroups.push(group) : null);
+        // }
+
+
         for (let i = 0; i < this._numberOfGeneration; i++) {
-            let groups = this._gameUtils.whileSelection(0, []);  
+            let banned: GroupGame[] = [];
+            let groups = this._gameUtils.whileSelection(0, banned);  
             let items: Item[] = [];
             groups.forEach(group => {
                 items.push(...group.getSelectedItems());
@@ -79,11 +88,11 @@ export class Stats {
             NUMBER_OF_GROUPS: 4,
             NUMBER_OF_ITEMS: 4,
             SEEDED: false,
-            HEALTH: 3,
+            HEALTH: 4,
             NUMBER_OF_BLIND_ITEMS: 0,
-            TAGS_BANNED: false,
+            TAGS_BANNED: true,
             CUSTOM_DIFFICULTY: Difficulties.NORMAL,
-            CHECK_GRID: false,
+            CHECK_GRID: true,
         }
     }
 }

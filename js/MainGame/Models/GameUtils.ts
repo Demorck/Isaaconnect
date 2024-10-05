@@ -39,21 +39,21 @@ export class GameUtils {
         let selectedItems: Item[] = [];
         let selectedGroups: GroupGame[] = [];
         let difficultyFound = false;
-        let breakLoop = false;
-
 
         let counterGroup = 0;
-        while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && counterGroup < 1000 && !breakLoop) {
-            let currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, counterGroup, bannedTags, this.options.SEEDED);
+        while (selectedGroups.length < Constants.OPTIONS.NUMBER_OF_GROUPS && counterGroup < 5 * Constants.NUMBER_OF_GROUPS) {
+            
+            let currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, counterGroup, bannedTags);
             difficultyFound = this.checkDifficultyFound(currentGroup, difficultyFound);
 
             let counterItem = 0;
             let items: Item[] = [];
-            while (items.length < this.options.NUMBER_OF_ITEMS && counterItem < 1000) {
+            while (items.length < Constants.OPTIONS.NUMBER_OF_ITEMS && counterItem < 5 * Constants.NUMBER_OF_GROUPS) {
                 let result = currentGroup.getRandomItems(bannedItem, daysBefore, this.options);
                 if (result === null) {
                     bannedGroup.push(currentGroup);
-                    currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, counterItem, bannedTags, this.options.SEEDED);
+                    currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, counterItem, bannedTags);
+                    counterGroup++;
                     difficultyFound = this.checkDifficultyFound(currentGroup, difficultyFound);
                 } else {
                     items = result;
@@ -70,7 +70,7 @@ export class GameUtils {
             bannedGroup.push(currentGroup);
 
             if (this.options.CHECK_GRID) {
-                let result = this.checkGrid(selectedGroups, selectedItems, this.options.NUMBER_OF_ITEMS);
+                let result = this.checkGrid(selectedGroups, selectedItems);
                 if (result.impossible) {
                     selectedGroups.pop();
                     for (let i = 0; i < this.options.NUMBER_OF_ITEMS; i++) {
@@ -90,19 +90,19 @@ export class GameUtils {
                     bannedItem.push(item);
                 }
             });
-
+            
         }
-
+        
         if (selectedGroups.length < this.options.NUMBER_OF_GROUPS)
         {
             let groupCounter = 0;
             difficultyFound = false;
-            while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && groupCounter < 1000) {
+            while (selectedGroups.length < this.options.NUMBER_OF_GROUPS && groupCounter < 5 * Constants.NUMBER_OF_GROUPS) {
                 bannedItem = [];
                 bannedGroup = [];
                 bannedItem.push(...selectedItems);
                 bannedGroup.push(...selectedGroups);
-                let currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, groupCounter, [], this.options.SEEDED);
+                let currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, groupCounter, []);
                 let items: Item[] | null = null;
 
                 let itemCounter = 0;
@@ -110,7 +110,7 @@ export class GameUtils {
                     items = currentGroup.getRandomItems(bannedItem, daysBefore, this.options);
                     if (items === null) {
                         bannedGroup.push(currentGroup); 
-                        currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, undefined, groupCounter + itemCounter, [], this.options.SEEDED);
+                        currentGroup = this.getRandomGroup(bannedGroup, daysBefore, difficultyFound, groupCounter + itemCounter, []);
                     }
                     itemCounter++;                 
                 }
@@ -177,15 +177,15 @@ export class GameUtils {
      * @param {boolean} seeded If the selection should be seeded
      * @returns {GroupGame}
      */
-    private getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, difficulty: number = 1, modifier: number = 0, bannedTags: string[] = [], seeded: boolean): GroupGame {
+    private getRandomGroup(bannedGroup: Group[], daysBefore: number = 0, filterDifficulty: boolean = false, modifier: number = 0, bannedTags: string[] = []): GroupGame {
         let index: number, group: Group, i = 0;
         let groups = Constants.GROUPS;
-        let numberOfItems = seeded ? Constants.NUMBER_OF_ITEMS : StorageManager.numberOfItems;
+        let numberOfItems = Constants.OPTIONS.NUMBER_OF_ITEMS;
 
         groups = this.filterGroupsByDifficulty(groups, filterDifficulty);
 
         do {
-            if (seeded)
+            if (Constants.OPTIONS.SEEDED)
                 index = Math.floor(Utils.getSeed(i++ + modifier, daysBefore) * groups.length);
             else
                 index = Math.floor(Math.random() * groups.length);
@@ -213,6 +213,8 @@ export class GameUtils {
             case Difficulties.ULTRA_HARD:
                 groups = groups.filter((group: Group) => group.getDifficulty() != 0 && group.getDifficulty() != 1);
                 break;
+            case Difficulties.MAYEM:
+                break;
             case Difficulties.NORMAL:
             default:
                 if (filterDifficulty) groups = groups.filter((group: Group) => group.getDifficulty() !== 3);
@@ -231,14 +233,14 @@ export class GameUtils {
      * @param {number} [numberOfItems=Constants.OPTIONS.NUMBER_OF_ITEMS] The number of items to check
      * @returns {{ impossible: boolean, itemsNotInGroup: Item[] }} The result of the check. If the grid is impossible, the items that are not in the group are returned
      */
-    public checkGrid(groups: GroupGame[], allSelectedItems: Item[], numberOfItems: number = Constants.OPTIONS.NUMBER_OF_ITEMS): { impossible: boolean, itemsNotInGroup: Item[] } {
-        if (allSelectedItems.length < numberOfItems) return { impossible: false, itemsNotInGroup: [] };
+    public checkGrid(groups: GroupGame[], allSelectedItems: Item[]): { impossible: boolean, itemsNotInGroup: Item[] } {
+        if (allSelectedItems.length < Constants.OPTIONS.NUMBER_OF_ITEMS) return { impossible: false, itemsNotInGroup: [] };
         let impossible = false;
         let itemsNotInGroup: Item[] = [];
         groups.forEach(group => {
             let allItemsInGroup = group.getItems();
             let selectedItems = allSelectedItems.filter(item => allItemsInGroup.includes(item));
-            if (selectedItems.length > numberOfItems)
+            if (selectedItems.length > Constants.OPTIONS.NUMBER_OF_ITEMS)
             {
                 let selectedInGroup = group.getSelectedItems();
                 itemsNotInGroup = selectedItems.filter(item => !selectedInGroup.includes(item));

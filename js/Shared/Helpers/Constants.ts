@@ -31,7 +31,7 @@ export class Constants {
     }
 
     static get WIKI(): string {
-        return 'https://bindingofisaacrebirth.fandom.com/wiki/';
+        return 'https://bindingofisaacrebirth.wiki.gg/wiki/';
     }
 
     static get MAX_HEALTH(): number {
