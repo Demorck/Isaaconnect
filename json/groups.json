@@ -367,7 +367,7 @@
   },
   {
     "name": "Items that grant a damage multiplier",
-    "items": [573, 561, 12, 4, 310, 245, 417, 182, 330, 169, 415, 373, 531, 543, 651, 406],
+    "items": [573, 561, 12, 4, 310, 245, 417, 182, 330, 169, 415, 489, 373, 531, 543, 651, 406],
     "difficulty": 3,
     "tags": ["stats"]
   },
@@ -1271,7 +1271,7 @@
     "name": "Zodiac Signs",
     "items": [299, 300, 301, 303, 302, 309, 308, 307, 304, 306, 318, 305],
     "difficulty": 0,
-    "tags": []
+    "tags": ["type"]
   },
   {
     "name": "Items that affect on pickups spawns",
@@ -1283,13 +1283,13 @@
     "name": "Luck based items",
     "items": [461, 443, 150, 618, 259, 606, 110, 200, 228, 55, 230, 231, 616, 103, 496, 410, 257, 495, 374, 201, 637, 503, 617, 87, 217, 89, 408, 514, 162, 225, 515, 219, 303, 576],
     "difficulty": 2,
-    "tags": []
+    "tags": ["stats"]
   },
   {
     "name": "Items with a currency symbol",
     "items": [429, 18, 109, 450, 501],
     "difficulty": 0,
-    "tags": []
+    "tags": ["sprite"]
   },
   {
     "name": "Items that deal mass room damage",
@@ -1301,7 +1301,7 @@
     "name": "Item with \"Magic\" in the name",
     "items": [642, 295, 194, 253, 12],
     "difficulty": 0,
-    "tags": []
+    "tags": ["name"]
   },
   {
     "name": "Items that trigger on enemy death",
@@ -1313,7 +1313,7 @@
     "name": "Items that drop from obstacles",
     "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270],
     "difficulty": 2,
-    "tags": []
+    "tags": ["pool"]
   },
   {
     "name": "Items that can generate poops 💩",
@@ -1322,7 +1322,7 @@
     "tags": []
   },
   {
-    "name": "Starting items  in challenges",
+    "name": "Starting items in challenges",
     "items": [6, 236, 209, 291, 233, 330, 90, 201, 51, 117, 122, 259, 126, 172, 242, 129, 314, 45, 57, 128, 10, 20, 149, 106, 5, 187, 145, 134, 52, 137, 246, 54, 21, 16, 168, 87, 156, 116, 180, 111, 190, 251, 85, 63, 48, 169, 3, 68, 152, 222, 315, 211, 151, 247, 8, 268, 67, 175, 40, 223, 338, 239, 238, 60, 114, 243, 273, 109, 94, 62, 191, 174, 34, 69, 184, 276, 281, 400, 382, 200, 221, 36, 9, 576, 119, 569, 214, 640, 534, 133, 604, 579, 245, 439, 538, 139, 580, 721],
     "difficulty": 3,
     "tags": []
@@ -1334,20 +1334,19 @@
     "tags": []
   },
   {
-    "name": "Passive objects that don't change Isaac's appearance or aren't familiars",
+    "name": "Passive items that don't change Isaac's appearance or aren't familiars",
     "items": [691, 619, 689, 668],
     "difficulty": 3,
     "tags": []
   },
   {
     "name": "Items not in any item pool",
-    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714,       -1
-],
+    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714, -1],
     "difficulty": 3,
-    "tags": []
+    "tags": ["pool"]
   },
   {
-    "name": "Items that give stats up that can be lost\n                                ",
+    "name": "Items that give stats up that can be lost",
     "items": [621, 664, 567, 407, 436, 415, 368, 373, 594, 597, 589, 157, 695, 411, 493],
     "difficulty": 2,
     "tags": []
