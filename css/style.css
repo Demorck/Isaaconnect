@@ -610,6 +610,11 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     color: #000;
 }
 
+.group-list ul {
+    list-style-type: disc;
+    padding: 0;
+}
+
 @keyframes loader {
     0% {
         background-image: url("/assets/loading-1.png");

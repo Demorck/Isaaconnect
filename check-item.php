@@ -50,17 +50,11 @@
             
 
             <div class="flex flex-col items-center gap-8">
-                <div class="flex flex-row gap-8">
-                    <div class="dropdown">
-                        <input type="text" id="input-groups" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter Groups">
-                        <div id="dropdown-groups" class="dropdown-content"></div>
-                    </div>
-
+                <div class="flex flex-col gap-8">
                     <div class="dropdown">
                     <input type="text" id="input-items" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
                         <div id="dropdown-items" class="dropdown-content"></div>
                     </div>
-                </div>
                 
                     <button id="check-in" type="button" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--default button--disabled" disabled>Already in ?</button>
                     <p id="display-if-in" class=""></p>
@@ -79,6 +73,6 @@
             include 'include/template/tooltips.php'; ?>
     </div>
 
-    <script type="module" src="/dist/CheckGroup/Check.js"></script>
+    <script type="module" src="/dist/CheckItem/Check.js"></script>
 </body>
 </html>

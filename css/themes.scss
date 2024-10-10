@@ -333,6 +333,10 @@ $white-options: (
     border-color: #fff !important;
 }
 
+.group-list {
+    color: #fff;
+}
+
 
 @mixin applyTheme($theme) {
     $theme-map: map-get($themes, $theme);
@@ -437,7 +441,7 @@ $white-options: (
         .tooltip {
             background-color: map-get($map: $theme-map, $key: secondary);
         }
-
+        
         .tooltip-active::after {
             border-color: map-get($map: $theme-map, $key: secondary) transparent transparent transparent;
         }
@@ -523,6 +527,10 @@ $white-options: (
         }
 
         #options {
+            color: #000;
+        }
+
+        .group-list {
             color: #000;
         }
     }

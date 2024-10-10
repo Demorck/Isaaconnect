@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log("Nombre de fois : " + times);
     console.log("Nombre de groupes : " + Constants.GROUPS.length);
+    console.log("Nombre de groupes trouvées : " + bigMap.size);
     console.log("Moyenne cherchée: " + moyenne);
     console.log("Moyenne trouvée: " + meanfound);
     console.log("Écart type : " + ecartType);
