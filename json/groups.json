@@ -409,7 +409,7 @@
   },
   {
     "name": "Items with invincibility effects",
-    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303],
+    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303, 625],
     "difficulty": 2,
     "tags": ["invincible"]
   },
@@ -601,7 +601,7 @@
   },
   {
     "name": "Items that can summon beams of light",
-    "items": [160, 326, 374, 181],
+    "items": [160, 326, 374, 181, 696],
     "difficulty": 2,
     "tags": []
   },
@@ -1161,7 +1161,7 @@
   },
   {
     "name": "Items with crossed eyes",
-    "items": [38, 4, 67, 81, 95, 117, 125, 140, 136, 145, 179, 188, 293, 320, 322, 336, 361, 618, 635],
+    "items": [38, 4, 67, 81, 95, 117, 125, 140, 136, 145, 179, 188, 293, 320, 322, 336, 361, 618, 635, 113],
     "difficulty": 0,
     "tags": ["sprite"]
   },
@@ -1275,7 +1275,7 @@
   },
   {
     "name": "Items that affect on pickups spawns",
-    "items": [405, 134, 424, 464, 241, 250, 203, 416, 514],
+    "items": [134, 424, 464, 241, 250, 203, 416, 514],
     "difficulty": 3,
     "tags": []
   },
