@@ -409,7 +409,7 @@
   },
   {
     "name": "Items with invincibility effects",
-    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303, 625],
+    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303],
     "difficulty": 2,
     "tags": ["invincible"]
   },
@@ -459,7 +459,7 @@
     "name": "Items unavailable in challenges",
     "items": [482, 636, 161, 311, 332],
     "difficulty": 3,
-    "tags": ["unavailable"]
+    "tags": ["unavailable", "challenge"]
   },
   {
     "name": "Spider items",
@@ -601,7 +601,7 @@
   },
   {
     "name": "Items that can summon beams of light",
-    "items": [160, 326, 374, 181, 696],
+    "items": [160, 326, 374, 181],
     "difficulty": 2,
     "tags": []
   },
@@ -699,7 +699,7 @@
     "name": "Items that decrease Isaac's damage stat",
     "items": [245, 120, 330, 561],
     "difficulty": 2,
-    "tags": ["stat"]
+    "tags": ["stats"]
   },
   {
     "name": "Items with variable charge bars",
@@ -863,7 +863,7 @@
     "name": "Items unlocked by challenges",
     "items": [189, 267, 237, 244, 168, 406, 440, 501, 576, 579, 634],
     "difficulty": 2,
-    "tags": ["unlocks"]
+    "tags": ["unlocks", "challenge"]
   },
   {
     "name": "Balance items",
@@ -1013,19 +1013,19 @@
     "name": "Range down items",
     "items": [6, 149, 224, 336, 531],
     "difficulty": 1,
-    "tags": ["stat"]
+    "tags": ["stats"]
   },
   {
     "name": "Items that randomize stats",
     "items": [240, 258, 406, 481, 489],
     "difficulty": 1,
-    "tags": ["stat"]
+    "tags": ["stats"]
   },
   {
     "name": "Shot speed down items",
     "items": [149, 182, 213, 310, 331, 336, 342, 572, 415],
     "difficulty": 1,
-    "tags": ["stat"]
+    "tags": ["stats"]
   },
   {
     "name": "Items that grant empty heart containers",
@@ -1073,7 +1073,7 @@
     "name": "Tears Up items",
     "items": [1, 6, 32, 72, 80, 90, 101, 115, 120, 183, 189, 196, 206, 222, 224, 228, 255, 307, 309, 330, 341, 342, 368, 370, 381, 394, 397, 407, 436, 438, 442, 443, 465, 547, 549, 560, 561, 564, 567, 582, 589, 598, 600, 601, 669, 695],
     "difficulty": 1,
-    "tags": ["stat"]
+    "tags": ["stats"]
   },
   {
     "name": "Items that replace Isaac's tears",
@@ -1148,7 +1148,7 @@
     "tags": []
   },
   {
-    "name": "Items that indicate or open secrets room",
+    "name": "Items that indicate or open Secret Rooms",
     "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589, 483],
     "difficulty": 2,
     "tags": []
@@ -1160,8 +1160,8 @@
     "tags": []
   },
   {
-    "name": "Items with crossed eyes",
-    "items": [38, 4, 67, 81, 95, 117, 125, 140, 136, 145, 179, 188, 293, 320, 322, 336, 361, 618, 635, 113],
+    "name": "Items with X eyes",
+    "items": [38, 4, 67, 81, 95, 117, 125, 140, 136, 145, 179, 188, 293, 320, 322, 336, 361, 618, 635],
     "difficulty": 0,
     "tags": ["sprite"]
   },
@@ -1178,13 +1178,13 @@
     "tags": []
   },
   {
-    "name": "Item names containing 4+ words",
+    "name": "Items with names containing 4+ words",
     "items": [7, 102, 518, 545, 132, 34, 62, 159, 564, 572, 371, 82, 84, 399, 583, 672, 429, 97],
     "difficulty": 3,
     "tags": ["name"]
   },
   {
-    "name": "Items that can trigger by taking damage",
+    "name": "Items that can trigger on taking damage",
     "items": [162, 180, 262, 352, 448, 436, 452, 502, 513, 525, 538, 539, 327, 328, 560, 567, 610, 575, 577, 677, 675, 695, 724],
     "difficulty": 1,
     "tags": []
@@ -1250,13 +1250,13 @@
     "tags": ["unlocks"]
   },
   {
-    "name": "Items with Magic in the name",
+    "name": "Items with Magic in their name",
     "items": [12, 194, 253, 295, 642],
     "difficulty": 1,
     "tags": ["name"]
   },
   {
-    "name": "Require multiple marks to unlock",
+    "name": "Items that require multiple marks to unlock",
     "items": [331, 441, 625, 628],
     "difficulty": 3,
     "tags": ["unlocks"]
@@ -1274,7 +1274,7 @@
     "tags": ["type"]
   },
   {
-    "name": "Items that affect on pickups spawns",
+    "name": "Items that affect pickup generation",
     "items": [134, 424, 464, 241, 250, 203, 416, 514],
     "difficulty": 3,
     "tags": []
@@ -1298,19 +1298,13 @@
     "tags": []
   },
   {
-    "name": "Item with \"Magic\" in the name",
-    "items": [642, 295, 194, 253, 12],
-    "difficulty": 0,
-    "tags": ["name"]
-  },
-  {
     "name": "Items that trigger on enemy death",
     "items": [234, 408, 466, 684, 411, 657],
     "difficulty": 2,
     "tags": []
   },
   {
-    "name": "Items that drop from obstacles",
+    "name": "Items that can drop from destroyed obstacles\n                                ",
     "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270],
     "difficulty": 2,
     "tags": ["pool"]
@@ -1325,23 +1319,18 @@
     "name": "Starting items in challenges",
     "items": [6, 236, 209, 291, 233, 330, 90, 201, 51, 117, 122, 259, 126, 172, 242, 129, 314, 45, 57, 128, 10, 20, 149, 106, 5, 187, 145, 134, 52, 137, 246, 54, 21, 16, 168, 87, 156, 116, 180, 111, 190, 251, 85, 63, 48, 169, 3, 68, 152, 222, 315, 211, 151, 247, 8, 268, 67, 175, 40, 223, 338, 239, 238, 60, 114, 243, 273, 109, 94, 62, 191, 174, 34, 69, 184, 276, 281, 400, 382, 200, 221, 36, 9, 576, 119, 569, 214, 640, 534, 133, 604, 579, 245, 439, 538, 139, 580, 721],
     "difficulty": 3,
-    "tags": []
+    "tags": ["challenge"]
   },
   {
-    "name": "Costs two red hearts if encounter in Devil Deal",
+    "name": "Two-heart devil deal items",
     "items": [292, 172, 230, 118, 237, 311, 82, 114, 80, 159, 360, 399, 462, 572, 606, 698, 411, 216, 81, 275, 417],
     "difficulty": 2,
-    "tags": []
-  },
-  {
-    "name": "Passive items that don't change Isaac's appearance or aren't familiars",
-    "items": [691, 619, 689, 668],
-    "difficulty": 3,
-    "tags": []
+    "tags": ["pool"]
   },
   {
     "name": "Items not in any item pool",
-    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714, -1],
+    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714,       -1
+],
     "difficulty": 3,
     "tags": ["pool"]
   },
@@ -1349,19 +1338,19 @@
     "name": "Items that give stats up that can be lost",
     "items": [621, 664, 567, 407, 436, 415, 368, 373, 594, 589, 157, 695, 411, 493],
     "difficulty": 2,
-    "tags": []
+    "tags": ["stats"]
   },
   {
-    "name": "Items that feature in Challenges before they are unlocked",
+    "name": "Items featured in Challenges before they are unlocked",
     "items": [90, 721, 579, 576],
     "difficulty": 3,
-    "tags": []
+    "tags": ["challenge"]
   },
   {
     "name": "Throwable active items",
     "items": [638, 338, 729, 382, 42, 512],
     "difficulty": 1,
-    "tags": []
+    "tags": ["type"]
   },
   {
     "name": "Items that are rerolled into quality 4 by Spindown Dice",
@@ -1373,12 +1362,78 @@
     "name": "Familiars that drop pickups",
     "items": [271, 94, 500, 131, 96, 565],
     "difficulty": 2,
-    "tags": []
+    "tags": ["familiar"]
   },
   {
-    "name": "Items that make you completely immune to 1 type of damage",
+    "name": "Items that make Isaac immune to a certain type of damage",
     "items": [223, 375, 256, 91, 594, 632, 300, 140],
     "difficulty": 1,
     "tags": []
+  },
+  {
+    "name": "Items with a holy glow",
+    "items": [490, 543, 533, 673, 651, 415, 374, 313],
+    "difficulty": 0,
+    "tags": ["sprite"]
+  },
+  {
+    "name": "Chance-based items not affected by Luck",
+    "items": [204, 265, 151, 337, 242, 459, 460, 502, 609, 244, 212, 177],
+    "difficulty": 3,
+    "tags": ["stats"]
+  },
+  {
+    "name": "Crown items",
+    "items": [415, 442, 689, 141],
+    "difficulty": 0,
+    "tags": ["type"]
+  },
+  {
+    "name": "Items with \"Blood\" in their name",
+    "items": [7, 119, 157, 186, 254, 411, 695, 614, 569, 565, 509],
+    "difficulty": 1,
+    "tags": ["name"]
+  },
+  {
+    "name": "Items dropped by the Sins",
+    "items": [49, 15, 37, 64, 13, 65, 42],
+    "difficulty": 1,
+    "tags": ["pool"]
+  },
+  {
+    "name": "Items dropped by the Super Sins",
+    "items": [128, 81, 129, 45, 106, 74, 140],
+    "difficulty": 1,
+    "tags": ["pool"]
+  },
+  {
+    "name": "Items with no special Book of Virtues wisp",
+    "items": [636, 439, 628, 625],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Items with \"Mega\" in their name",
+    "items": [106, 351, 441, 483, 625],
+    "difficulty": 0,
+    "tags": ["name"]
+  },
+  {
+    "name": "Items that grant one stat up and nothing else",
+    "items": [1, 27, 28, 50],
+    "difficulty": 2,
+    "tags": ["stats"]
+  },
+  {
+    "name": "Items that are drawn in the game's menus",
+    "items": [145, 55, 33, 446, 391, 32, 281],
+    "difficulty": 3,
+    "tags": []
+  },
+  {
+    "name": "Ring items",
+    "items": [732, 588, 546, 423, 399, 101, 7, 355],
+    "difficulty": 0,
+    "tags": ["sprite", "type"]
   }
 ]
