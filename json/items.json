@@ -1452,7 +1452,7 @@
     {
         "alias": "Butter Bean",
         "id": 294,
-        "img": "https://isaacguru.com/core/data/isaac/collectibles/collectibles_294_butterbean.webp"
+        "img": "/assets/gfx/items/collectibles/294.png"
     },
     {
         "alias": "Magic Fingers",
@@ -2402,7 +2402,7 @@
     {
         "alias": "Wait What?",
         "id": 484,
-        "img": "https://isaacguru.com/core/data/isaac/collectibles/collectibles_484_waitwhat.webp"
+        "img": "/assets/gfx/items/collectibles/484.png"
     },
     {
         "alias": "Crooked Penny",

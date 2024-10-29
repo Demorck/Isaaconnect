@@ -75,6 +75,8 @@ export class MainGameView implements Observer {
         
         if (data.isFinished && data.autocomplete || data.isFinished && data.win) {
             Utils.sleep(1000).then(() => {
+                console.log(data);
+                
                 data.streak = StorageManager.winStreak;
                 data.losses = StorageManager.losses;                
                 this.controller?.toggleFinishedState();
@@ -91,9 +93,15 @@ export class MainGameView implements Observer {
             let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!; 
             modalContainer.innerHTML = html;
             modalContainer.classList.remove('hidden');
+
+            let buttons = document.getElementById('buttons-finished')!;
+            buttons.classList.add("-z-10");
+
             // TODO: A mettre dans le controller
             document.querySelector('.close-button')!.addEventListener('click', () => {
                 modalContainer.classList.add('hidden');
+                let buttons = document.getElementById('buttons-finished')!;
+                buttons.classList.remove("-z-10");
             });
             document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix(data.attempts);
             let copyButton = document.getElementById('copy')!;
@@ -260,12 +268,13 @@ export class MainGameView implements Observer {
 
     private convertAttemptToSquareMatrix(attempt: GroupData[][]): string {
         let content = `<div data-id="results" class="flex flex-col">`;
+        let mobileSquare = window.screen.width < 768 ? "w-7 h-7" : "w-10 h-10";
         attempt.forEach((group, index_attempt) => {
             content += `<div data-id="results-attempt-${index_attempt}" class="flex justify-center items-center">`;
             group.forEach((currentGroup, index_group) => {
                 let index = currentGroup.index;
                 let rounded = index_group % Constants.OPTIONS.NUMBER_OF_ITEMS == 0 ? "rounded-l-lg" : index_group % Constants.OPTIONS.NUMBER_OF_ITEMS == Constants.OPTIONS.NUMBER_OF_ITEMS - 1 ? "rounded-r-lg" : "";
-                content += `<span data-id="results-attempt-${index_attempt}-item-${index_group}-group-${index}" class="bg-${Constants.COLORS[index]} ${rounded} w-10 h-10"></span>`;
+                content += `<span data-id="results-attempt-${index_attempt}-item-${index_group}-group-${index}" class="bg-${Constants.COLORS[index]} ${rounded} ${mobileSquare}"></span>`;
             });
             content += `</div>`;
         });
@@ -291,7 +300,7 @@ export class MainGameView implements Observer {
                 return;
             }
 
-            let groupFound = data.groupFound;
+            let groupFound = data.groupFound;            
             
             textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.NUMBER_OF_GROUPS} ❤️: ${health}/${Constants.OPTIONS.HEALTH}\n`;
 
@@ -351,6 +360,9 @@ export class MainGameView implements Observer {
     public displayModal() {
         let modalContainer = document.querySelector<HTMLElement>('#modal-wrapper')!;
         modalContainer.classList.remove('hidden');
+
+        let buttons = document.getElementById('buttons-finished')!;
+        buttons.classList.add("-z-10");
     }
 
     public async animate(): Promise<void> {

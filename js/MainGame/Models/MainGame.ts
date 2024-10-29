@@ -151,7 +151,7 @@ export class MainGame extends Observable {
                 finished = true;
             } else if (groupsSolved.length == Constants.OPTIONS.NUMBER_OF_GROUPS) finished = true;
 
-            if (finished) {
+            if (finished && !autocomplete) {
                 this.notifyObservers(this.getNotifyData(win));
             }
         }
@@ -170,7 +170,9 @@ export class MainGame extends Observable {
     private getNotifyData(win: boolean, autocomplete: boolean = false): any {
         if (win) {
             let mistakes = Constants.OPTIONS.HEALTH - this.health;
-            let title = Constants.WIN_MESSAGES[Math.floor(mistakes / Constants.WIN_MESSAGES.length)];
+            if (!Constants.OPTIONS.SEEDED) mistakes = Math.floor(mistakes / Constants.WIN_MESSAGES.length); 
+            let title = Constants.WIN_MESSAGES[Math.floor(mistakes)];            
+            
             return {
                 autocomplete: autocomplete,
                 isFinished: true,

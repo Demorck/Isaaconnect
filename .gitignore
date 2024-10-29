@@ -14,3 +14,10 @@ out/
 
 # IDE
 .vscode/
+
+# Just for wikis
+gg.php
+ggen.php
+
+
+/assets/gfx/items

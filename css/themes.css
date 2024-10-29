@@ -58,6 +58,10 @@
   border-color: #fff !important;
 }
 
+.group-list {
+  color: #fff;
+}
+
 .basement-theme {
   background-color: #42291A;
 }
@@ -130,6 +134,11 @@
 @media (min-width: 768px) {
   .basement-theme #tooltip-wrapper::after {
     border-color: transparent transparent #71472D transparent;
+  }
+}
+@media (max-width: 768px) {
+  .basement-theme #tooltips.active {
+    background-color: #71472D;
   }
 }
 .basement-theme .button--language {
@@ -217,6 +226,11 @@
     border-color: transparent transparent #5F3B5D transparent;
   }
 }
+@media (max-width: 768px) {
+  .mausoleum-theme #tooltips.active {
+    background-color: #5F3B5D;
+  }
+}
 .mausoleum-theme .button--language {
   border: 2px solid #5F3B5D;
 }
@@ -300,6 +314,11 @@
 @media (min-width: 768px) {
   .flooded-caves-theme #tooltip-wrapper::after {
     border-color: transparent transparent #385094 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .flooded-caves-theme #tooltips.active {
+    background-color: #385094;
   }
 }
 .flooded-caves-theme .button--language {
@@ -387,6 +406,11 @@
     border-color: transparent transparent #465117 transparent;
   }
 }
+@media (max-width: 768px) {
+  .green-theme #tooltips.active {
+    background-color: #465117;
+  }
+}
 .green-theme .button--language {
   border: 2px solid #465117;
 }
@@ -470,6 +494,11 @@
 @media (min-width: 768px) {
   .catacombs-theme #tooltip-wrapper::after {
     border-color: transparent transparent #5B3D33 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .catacombs-theme #tooltips.active {
+    background-color: #5B3D33;
   }
 }
 .catacombs-theme .button--language {
@@ -557,6 +586,11 @@
     border-color: transparent transparent #000000 transparent;
   }
 }
+@media (max-width: 768px) {
+  .ph-theme #tooltips.active {
+    background-color: #000000;
+  }
+}
 .ph-theme .button--language {
   border: 2px solid #000000;
 }
@@ -640,6 +674,11 @@
 @media (min-width: 768px) {
   .depths-theme #tooltip-wrapper::after {
     border-color: transparent transparent #595959 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .depths-theme #tooltips.active {
+    background-color: #595959;
   }
 }
 .depths-theme .button--language {
@@ -727,6 +766,11 @@
     border-color: transparent transparent #363640 transparent;
   }
 }
+@media (max-width: 768px) {
+  .dank-depths-theme #tooltips.active {
+    background-color: #363640;
+  }
+}
 .dank-depths-theme .button--language {
   border: 2px solid #363640;
 }
@@ -810,6 +854,11 @@
 @media (min-width: 768px) {
   .gehenna-theme #tooltip-wrapper::after {
     border-color: transparent transparent #873535 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .gehenna-theme #tooltips.active {
+    background-color: #873535;
   }
 }
 .gehenna-theme .button--language {
@@ -897,6 +946,11 @@
     border-color: transparent transparent #A40000 transparent;
   }
 }
+@media (max-width: 768px) {
+  .womb-theme #tooltips.active {
+    background-color: #A40000;
+  }
+}
 .womb-theme .button--language {
   border: 2px solid #A40000;
 }
@@ -980,6 +1034,11 @@
 @media (min-width: 768px) {
   .scarred-womb-theme #tooltip-wrapper::after {
     border-color: transparent transparent #873535 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .scarred-womb-theme #tooltips.active {
+    background-color: #873535;
   }
 }
 .scarred-womb-theme .button--language {
@@ -1067,6 +1126,11 @@
     border-color: transparent transparent #2A3A54 transparent;
   }
 }
+@media (max-width: 768px) {
+  .dave-theme #tooltips.active {
+    background-color: #2A3A54;
+  }
+}
 .dave-theme .button--language {
   border: 2px solid #2A3A54;
 }
@@ -1150,6 +1214,11 @@
 @media (min-width: 768px) {
   .corpse-theme #tooltip-wrapper::after {
     border-color: transparent transparent #556F51 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .corpse-theme #tooltips.active {
+    background-color: #556F51;
   }
 }
 .corpse-theme .button--language {
@@ -1237,6 +1306,11 @@
     border-color: transparent transparent #4A7FA0 transparent;
   }
 }
+@media (max-width: 768px) {
+  .cathedral-theme #tooltips.active {
+    background-color: #4A7FA0;
+  }
+}
 .cathedral-theme .button--language {
   border: 2px solid #4A7FA0;
 }
@@ -1320,6 +1394,11 @@
 @media (min-width: 768px) {
   .sheol-theme #tooltip-wrapper::after {
     border-color: transparent transparent #262626 transparent;
+  }
+}
+@media (max-width: 768px) {
+  .sheol-theme #tooltips.active {
+    background-color: #262626;
   }
 }
 .sheol-theme .button--language {
@@ -1407,6 +1486,11 @@
     border-color: transparent transparent #805738 transparent;
   }
 }
+@media (max-width: 768px) {
+  .chest-theme #tooltips.active {
+    background-color: #805738;
+  }
+}
 .chest-theme .button--language {
   border: 2px solid #805738;
 }
@@ -1492,6 +1576,11 @@
     border-color: transparent transparent #402C5A transparent;
   }
 }
+@media (max-width: 768px) {
+  .dark-room-theme #tooltips.active {
+    background-color: #402C5A;
+  }
+}
 .dark-room-theme .button--language {
   border: 2px solid #402C5A;
 }
@@ -1510,6 +1599,9 @@
   color: #000;
 }
 .ph-theme #options {
+  color: #000;
+}
+.ph-theme .group-list {
   color: #000;
 }
 

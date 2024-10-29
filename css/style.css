@@ -440,6 +440,41 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    #tooltips {
+        width: 100%;
+        bottom: 0;
+        z-index: 99;
+    }
+    
+    #tooltip-icons {
+        display: none;
+    }
+
+    #tooltip-mobile {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -20px; 
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent #fff transparent;
+    }
+
+    #tooltips.active {
+        padding: 5px;
+    }
+
+    #tooltips.active #tooltip-mobile {
+        content: "";
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #fff transparent transparent  transparent;
+    }
+}
+
 .tooltip {
     position: relative;
     text-align: center;

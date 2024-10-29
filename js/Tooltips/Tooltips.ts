@@ -95,8 +95,27 @@ export function initializeTooltipListener(): void {
         elements.forEach((element, index) => {
             element.addEventListener('click', () => {
                 displayTooltip(element as HTMLElement, index);
-                let el = element as HTMLElement;
             });
         });
+        
+        if (window.screen.width < 768) {
+            let before = document.querySelector('#tooltip-mobile');
+            let tooltips = document.querySelector("#tooltips");
+            if (before && tooltips) {
+                before.addEventListener('click', () => {
+                    let icons = document.querySelector('#tooltip-icons') as HTMLElement;
+                    if (icons) {
+                        if (icons.style.display === 'flex') {
+                            icons.style.display = 'none';
+                            tooltips.classList.remove('active');
+                            hideTooltip();
+                        } else {
+                            icons.style.display = 'flex';
+                            tooltips.classList.add('active');
+                        }
+                    }
+                });
+            }
+        }
     }
 }

@@ -113,6 +113,31 @@ export class MainGameController {
             button.addEventListener('click', this.shuffleCard);
         });
 
+        if (typeof window.DeviceMotionEvent != 'undefined') {
+            let sensitivity = 20;
+        
+            let x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
+        
+            window.addEventListener('devicemotion', function (e) {
+                if (e.accelerationIncludingGravity == null) return;
+                x1 = e.accelerationIncludingGravity.x!;
+                y1 = e.accelerationIncludingGravity.y!;
+                z1 = e.accelerationIncludingGravity.z!;
+            }, false);
+        
+            setInterval(() => {
+                let change = Math.abs(x1-x2 + y1-y2 + z1-z2);
+        
+                if (change > sensitivity) {
+                    this.shuffleCard();
+                }
+        
+                x2 = x1;
+                y2 = y1;
+                z2 = z1;
+            }, 300);
+        }
+
         let submitButton = document.querySelectorAll('[data-id="submit"]');
         submitButton.forEach(button => {
             button.addEventListener('click', e => {

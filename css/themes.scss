@@ -480,6 +480,12 @@ $white-options: (
                 border-color: transparent transparent map-get($map: $theme-map, $key: secondary) transparent;
             }
         }
+        
+        @media (max-width: 768px) {
+            #tooltips.active {
+                background-color: map-get($map: $theme-map, $key: secondary);
+            }
+        }
 
         .button--language {
             border: 2px solid map-get($map: $theme-map, $key: secondary);
