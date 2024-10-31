@@ -1305,7 +1305,7 @@
   },
   {
     "name": "Items that can drop from destroyed obstacles",
-    "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270],
+    "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270, 36],
     "difficulty": 2,
     "tags": ["pool"]
   },
