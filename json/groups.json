@@ -1304,7 +1304,7 @@
     "tags": []
   },
   {
-    "name": "Items that can drop from destroyed obstacles\n                                ",
+    "name": "Items that can drop from destroyed obstacles",
     "items": [90, 74, 12, 71, 582, 265, 163, 254, 218, 268, 26, 270],
     "difficulty": 2,
     "tags": ["pool"]
@@ -1329,8 +1329,7 @@
   },
   {
     "name": "Items not in any item pool",
-    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714,       -1
-],
+    "items": [18, 181, 130, 158, 238, 239, 293, 328, 327, 429, 474, 552, 550, 551, 626, 627, 633, 668, 673, 715, 714, -1],
     "difficulty": 3,
     "tags": ["pool"]
   },
