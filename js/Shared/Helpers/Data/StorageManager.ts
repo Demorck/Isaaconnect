@@ -128,6 +128,15 @@ export class StorageManager {
         this.game = { ...game, finished };
     }
 
+    static get timer(): number {
+        return this.game.timer;
+    }
+
+    static set timer(timer: number) {
+        const game = this.game;
+        this.game = { ...game, timer };
+    }
+
     static get stats(): any {
         return this.getItem('stats');
     }

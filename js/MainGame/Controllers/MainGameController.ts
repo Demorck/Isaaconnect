@@ -45,6 +45,9 @@ export class MainGameController {
         if (finished) {
             this.incrementStats(win);
             this.toggleFinishedState();
+            // this.gameView.displayTimer();
+        } else {
+            this.game.initializeTimer();
         }
         
         this.game.setupFinished();
@@ -152,6 +155,9 @@ export class MainGameController {
         buttonResults.classList.remove('button--disabled');
         buttonResults.addEventListener('click', () => this.gameView.displayModal());
 
+        let buttonDeselect = document.querySelector('button[data-id="deselect"]');
+        if (buttonDeselect) buttonDeselect.addEventListener('click', () => this.gameView.deselectCards());
+
         if (!Constants.OPTIONS.SEEDED) {
             let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
             buttonPlay.classList.remove('button--disabled', 'hidden');
@@ -240,7 +246,7 @@ export class MainGameController {
      * @returns {void}
      */
     private removeButtons(): void {
-        let shuffleButton = document.querySelector('.shuffle-mobile');
+        let shuffleButton = document.querySelector('[data-id="shuffle"]')!;
         shuffleButton?.classList.add("hidden");
 
         let buttons = document.getElementById('buttons-ingame')!;

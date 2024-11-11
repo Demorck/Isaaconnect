@@ -23,6 +23,9 @@ export class MainGame extends Observable {
     private history: Item[][];
     private groupFound: number;
     private currentAttempt: number;
+    
+    private timer: number;
+    private startTime: number;
 
     // TODO: Modifier le seeded pour que ça prenne depuis la constante qu'ici
     private seeded: boolean;
@@ -47,7 +50,14 @@ export class MainGame extends Observable {
         this.mechanics = new MainGameMechanics();
         this.utils = new GameUtils(Constants.OPTIONS);
         this.health = Constants.OPTIONS.HEALTH;
-        
+
+        if (Constants.OPTIONS.SEEDED && StorageManager.lastIsaaconnect == Utils.getDaysSince()) {
+            this.timer = StorageManager.timer;
+        } else {
+            this.timer = 0;
+        }
+        this.startTime = Date.now() - this.timer;
+
         this.setupGame();
     }
 
@@ -72,6 +82,25 @@ export class MainGame extends Observable {
         } else {
             this.groups = this.utils.whileSelection(0, bannedGroups);
         }
+    }
+
+    /**
+     * Initializes the game timer.
+     * @private
+     * @memberof MainGame
+     */
+    public initializeTimer() {
+        let interval = setInterval(() => {
+            if (this.health <= 0) clearInterval(interval);
+            if (this.groupFound === Constants.OPTIONS.NUMBER_OF_GROUPS) clearInterval(interval);
+            
+            this.timer = Date.now() - this.startTime;
+
+            if (Constants.OPTIONS.SEEDED)
+                StorageManager.timer = this.timer;
+
+            this.notifyObservers({ timer: this.timer });
+        }, 1);
     }
 
     /**
@@ -351,6 +380,9 @@ export class MainGame extends Observable {
         
         const localGroupFound = StorageManager.groupFound;
         if (localGroupFound !== null) this.groupFound = localGroupFound;
+
+        const localTimer = StorageManager.timer;
+        if (localTimer !== null) this.timer = localTimer;
     }
 
     /**

@@ -89,7 +89,8 @@ export class Constants {
             mapItemAndGroup: new Map(),
             finished: false,
             history: [],
-            groupFound: 0
+            groupFound: 0,
+            timer: 0
         },
         stats: {
             winStreak: 0,

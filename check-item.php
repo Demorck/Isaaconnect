@@ -58,6 +58,7 @@
                 
                     <button id="check-in" type="button" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--default button--disabled" disabled>Already in ?</button>
                     <p id="display-if-in" class=""></p>
+                </div>
             </div>
 
         </div>

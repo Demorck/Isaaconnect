@@ -25,6 +25,8 @@ export function addEvent(container: HTMLElement): void {
 
     if (resetButton) {
         resetButton.addEventListener('click', () => {
+            StorageManager.game = Constants.DEFAULT_DATA.game;
+            StorageManager.lastIsaaconnect = 0;
             location.reload();
         });
     }

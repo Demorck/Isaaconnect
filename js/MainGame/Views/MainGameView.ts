@@ -7,6 +7,7 @@ import { MainGameController } from "../Controllers/MainGameController.js";
 import { GroupGame } from "../Models/GroupGame.js";
 import { GroupData } from "../../Shared/Helpers/Data/GroupData.js";
 import { GameOptions } from "../Models/GameOptions.js";
+import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
 
 /**
  * @description MainGameView class that displays the main game (the big container).
@@ -75,8 +76,6 @@ export class MainGameView implements Observer {
         
         if (data.isFinished && data.autocomplete || data.isFinished && data.win) {
             Utils.sleep(1000).then(() => {
-                console.log(data);
-                
                 data.streak = StorageManager.winStreak;
                 data.losses = StorageManager.losses;                
                 this.controller?.toggleFinishedState();
@@ -84,7 +83,12 @@ export class MainGameView implements Observer {
             });
         }
 
-        this.renderHealth(data.health);
+        if (data.health)
+            this.renderHealth(data.health);
+        
+        if (data.timer)
+            this.updateTimer(data.timer);
+
         this.applyBorderRadius();        
     }
 
@@ -108,6 +112,15 @@ export class MainGameView implements Observer {
             copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
     
         });
+    }
+
+    public updateTimer(timer: number): void {
+        let minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timer % (1000 * 60)) / 1000);
+        let milliseconds = Math.floor(timer % 1000);
+
+        let timerElement = document.querySelector('[data-id="timer"]')!;
+        timerElement.innerHTML = minutes + ":" + seconds + ":" + milliseconds;
     }
     
     /**
@@ -234,7 +247,7 @@ export class MainGameView implements Observer {
         }, timeout);
     }
 
-    private deselectCards(): void {
+    public deselectCards(): void {        
         let selectedCards = document.querySelectorAll('.card-module');
         selectedCards.forEach(card => {
             card.classList.remove('card-module--selected', 'card-module--disabled');
@@ -341,6 +354,14 @@ export class MainGameView implements Observer {
                 });
                 textToCopy += "\n";
             });
+
+            if (!Constants.OPTIONS.SEEDED)
+            {
+                let difficulty = Difficulties[Constants.OPTIONS.CUSTOM_DIFFICULTY];
+                difficulty.toLowerCase();
+                difficulty = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+                textToCopy += "Difficulty: " + difficulty + "\n";
+            }
 
             if (StorageManager.link)
             {

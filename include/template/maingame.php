@@ -18,9 +18,12 @@
         </div>
         <!--  -->
         <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
-            <div class="buttons items-center gap-4 flex justify-evenly" id="buttons-ingame">
+            <div class="buttons items-center gap-4 flex md:flex-row flex-col-reverse justify-evenly" id="buttons-ingame">
                 <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle block md:hidden">
                     Shuffle
+                </button>
+                <button type="button" data-id="deselect" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle">
+                    Deselect
                 </button>
                 <button type="button" data-id="submit" class="shadow-theme text-dark font-bold py-2 px-4 rounded-xl button--submit button--disabled" disabled>
                     Submit
@@ -44,11 +47,17 @@
         </section>
     </div>
 
-    <div class="shuffle-mobile flex-col gap-4 items-center md:flex">
+    <div class="shuffle-mobile flex-col gap-4 items-start md:flex">
         <button type="button" data-id="shuffle" class="shadow-theme themed text-white font-bold p-3 rounded-full">
             <span class="material-symbols-outlined align-bottom">
                 shuffle
-                </span>
+            </span>
         </button>
+        <div class="text-white w-1">
+            Timer: <br>
+            <span data-id="timer">
+
+            </span>
+        </div>
     </div>
 </div>
