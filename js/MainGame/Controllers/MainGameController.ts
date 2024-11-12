@@ -45,7 +45,7 @@ export class MainGameController {
         if (finished) {
             this.incrementStats(win);
             this.toggleFinishedState();
-            if (Constants.OPTIONS.SEEDED) this.gameView.displayTimer();
+            if (Constants.OPTIONS.SEEDED) this.gameView.updateTimer(StorageManager.timer);
         } else {
             this.game.initializeTimer();
         }

@@ -117,8 +117,10 @@ export class MainGameView implements Observer {
     public updateTimer(timer: number): void {
         let timer_str = Utils.generateStringTimer(timer);
 
-        let timerElement = document.querySelector('[data-id="timer"]')!;
-        timerElement.innerHTML = timer_str;
+        let timerElement = document.querySelectorAll('[data-id="timer"]')!;
+        timerElement.forEach(element => {
+            element.innerHTML = timer_str;
+        });
     }
     
     /**
@@ -275,13 +277,6 @@ export class MainGameView implements Observer {
         
         html = Utils.replacePlaceholders(html, data);
         return html;
-    }
-
-    public displayTimer() {
-        let timerElement = document.querySelector<HTMLElement>('[data-id="timer"]')!;
-
-        let timer = StorageManager.timer;
-        this.updateTimer(timer);
     }
 
     private convertAttemptToSquareMatrix(attempt: GroupData[][]): string {

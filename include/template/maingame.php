@@ -18,6 +18,9 @@
         </div>
         <!--  -->
         <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
+            <div class="justify-center flex flex-1 items-center md:hidden timer">
+                <p class="text-white gap-4 flex  ">Timer: <span data-id="timer"></span></p>
+            </div>
             <div class="buttons items-center gap-4 flex md:flex-row flex-col-reverse justify-evenly" id="buttons-ingame">
                 <button type="button" data-id="shuffle" class="shadow-theme text-dark font-bold py-2 px-4 themed rounded-xl button--shuffle block md:hidden">
                     Shuffle
