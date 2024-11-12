@@ -159,4 +159,16 @@ export class Utils {
         }
         return link;
     }
+
+    static generateStringTimer(timer: number): string {
+        let minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timer % (1000 * 60)) / 1000);
+        let milliseconds = Math.floor(timer % 1000);
+
+        let min_str = Utils.numberWithLeadingZeros(minutes, 2);
+        let sec_str = Utils.numberWithLeadingZeros(seconds, 2);
+        let mill_str = Utils.numberWithLeadingZeros(milliseconds, 3);
+        
+        return `${min_str}:${sec_str}.${mill_str}`;
+    }
 }

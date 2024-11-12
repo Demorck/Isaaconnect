@@ -115,12 +115,10 @@ export class MainGameView implements Observer {
     }
 
     public updateTimer(timer: number): void {
-        let minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((timer % (1000 * 60)) / 1000);
-        let milliseconds = Math.floor(timer % 1000);
+        let timer_str = Utils.generateStringTimer(timer);
 
         let timerElement = document.querySelector('[data-id="timer"]')!;
-        timerElement.innerHTML = minutes + ":" + seconds + ":" + milliseconds;
+        timerElement.innerHTML = timer_str;
     }
     
     /**
@@ -277,6 +275,13 @@ export class MainGameView implements Observer {
         
         html = Utils.replacePlaceholders(html, data);
         return html;
+    }
+
+    public displayTimer() {
+        let timerElement = document.querySelector<HTMLElement>('[data-id="timer"]')!;
+
+        let timer = StorageManager.timer;
+        this.updateTimer(timer);
     }
 
     private convertAttemptToSquareMatrix(attempt: GroupData[][]): string {
