@@ -8,7 +8,7 @@ export class Constants {
     static groups: Group[] = [];
     static options: GameOptions;
     
-    static VERSION: string = '1.2.1';
+    static VERSION: string = '1.2.2';
 
     static get ITEMS() {
         return this.items;

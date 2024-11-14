@@ -22,33 +22,32 @@ export class MainGameMechanics {
     public handleSubmit = (selectedIDs: number[], groups: GroupGame[], history: Item[][], options: GameOptions) => {        
         let alreadyGuessed = this.checkIfAlreadyGuessed(history, selectedIDs, options);
         
+        
         if (alreadyGuessed) {
             return { isMessage: true, message: Constants.ALREADY_GUESSED };
         }
 
-        let firstGroup: GroupGame, 
-            currentGroup: GroupGame, 
-            win = true,
-            numberOfItemsCorrect = 0,
+        let currentGroup: GroupGame,
             attempts: Group[] = [],
             historyItems: Item[] = [];
+            let occurrences = new Map<GroupGame, number>();
 
         selectedIDs.forEach(id => {
             let currentItem = GameUtils.findItemById(id);
             currentGroup = GameUtils.findGroupByItem(currentItem, groups);
 
-            if (currentItem !== undefined) {                
-                if (!firstGroup) firstGroup = currentGroup;
-                else if (firstGroup !== currentGroup) win = false;
-
-                if (firstGroup === currentGroup) numberOfItemsCorrect++;
+            if (currentItem !== undefined) {
+                occurrences.set(currentGroup, (occurrences.get(currentGroup) || 0) + 1);
 
                 attempts.push(currentGroup);
                 historyItems.push(currentItem);
             }
-        });        
+        });    
 
-        if (numberOfItemsCorrect === Constants.OPTIONS.NUMBER_OF_ITEMS - 1)
+        let win = occurrences.size == 1;
+        let almost = this.isAlmost(occurrences);
+
+        if (almost)
             return { win, attempts, historyItems, isMessage: true, message: Constants.ALMOST};
 
         return { win, attempts, historyItems, isMessage: false, message: ''};
@@ -65,6 +64,7 @@ export class MainGameMechanics {
     private checkIfAlreadyGuessed(history: Item[][], selectedIDs: number[], options: GameOptions): boolean {        
         let j = 0;
         let currentAttempt = history.length;
+
         history.forEach(attempt => {
             let k = 0;            
             for (let i = 0; i < options.NUMBER_OF_ITEMS; i++) {
@@ -79,5 +79,17 @@ export class MainGameMechanics {
         const alreadyGuessed = j > 0 && currentAttempt !== 0;
            
         return alreadyGuessed;
+    }
+
+    private isAlmost(occurrences: Map<GroupGame, number>): boolean {
+        let almost = false;
+        occurrences.forEach((value, key) => {
+            if (value == Constants.OPTIONS.NUMBER_OF_ITEMS - 1) {
+                almost = true;
+                return;
+            }
+        });
+
+        return almost;
     }
 }

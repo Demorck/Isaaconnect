@@ -214,8 +214,7 @@ ol, ul {
     .card-module span {
         font-size: 0.5rem;
         font-weight: 800;
-        word-break: break-all;
-        height: -webkit-fill-available;
+        word-break: break-word;
     }
 
     label.card-module {
@@ -226,7 +225,7 @@ ol, ul {
     }
 
     .easy img {
-        width: 2em;
+        width: 3em;
         font-size: 0.80rem;
     }
 }

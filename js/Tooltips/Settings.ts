@@ -161,8 +161,8 @@ function changeDifficulty(element: HTMLInputElement): void {
         checkbox.parentElement?.classList.add('tgl-checked');
         cards.forEach(card => {
             card.classList.add('easy');
-            if (window.innerWidth > 768)
-                card.style.width = '112px';  
+            // if (window.innerWidth > 768)
+            //     card.style.width = '112px';  
 
         });
     }

@@ -7,7 +7,7 @@
             <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 h-min aspect-square" id="cards-game">
                 <div id="cards-win" class="flex flex-col gap-2 justify-evenly hidden w-full">
                 </div>
-                <div id="cards-module" class="h-max md:h-max w-full h-full cards-module grid grid-cols-4 gap-1 md:flex md:flex-wrap flex-1 items-center justify-between w-fit">
+                <div id="cards-module" class="h-max md:h-max w-full h-full cards-module grid grid-cols-4 gap-1  md:flex-wrap flex-1 items-center justify-between w-fit">
                 </div>
                 <div id="modal-wrapper" class="z-10 hidden">
                 </div>
