@@ -709,7 +709,7 @@
   },
   {
     "name": "Items with 12 charges",
-    "items": [441, 510, 490, 585, 720, 685, 611, 625],
+    "items": [441, 510, 490, 585, 720, 611, 625],
     "difficulty": 1,
     "tags": ["charge"]
   },
