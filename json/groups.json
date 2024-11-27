@@ -1213,12 +1213,6 @@
     "tags": ["type"]
   },
   {
-    "name": "Items that create special locusts with Abyss",
-    "items": [559, 494, 7, 118, 103, 305, 13, 4, 257, 10, 374, 2, 149, 153, 6, 3],
-    "difficulty": 3,
-    "tags": ["specialeffect"]
-  },
-  {
     "name": "Familiars that can despawn",
     "items": [273, 178, 405, 436, 543, 539, 238, 239, 627, 626, 697, 272, 612, 645, 693, 519, 681, 81, 11, 667, 468],
     "difficulty": 3,
