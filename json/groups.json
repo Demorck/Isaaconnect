@@ -696,6 +696,12 @@
     "tags": ["status"]
   },
   {
+    "name": "Tears that deal knockback",
+    "items": [592, 309, 359, 637],
+    "difficulty": 1,
+    "tags": ["status"]
+  },
+  {
     "name": "Items that decrease Isaac's damage stat",
     "items": [245, 120, 330, 561],
     "difficulty": 2,
