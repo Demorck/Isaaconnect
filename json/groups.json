@@ -1034,7 +1034,7 @@
   },
   {
     "name": "Items that grant empty heart containers",
-    "items": [501, 219, 594, 676],
+    "items": [501, 219, 676],
     "difficulty": 2,
     "tags": ["hp"]
   },
