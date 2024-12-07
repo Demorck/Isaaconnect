@@ -878,7 +878,7 @@
   },
   {
     "name": "Items that can be used when not fully charged",
-    "items": [611, 720, 147, 655],
+    "items": [611, 720, 147, 655, 722, 427],
     "difficulty": 1,
     "tags": ["charge"]
   },
