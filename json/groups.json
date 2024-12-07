@@ -373,7 +373,7 @@
   },
   {
     "name": "Revive items",
-    "items": [688, 332, 212, 11, 161, 81, 311],
+    "items": [688, 332, 212, 11, 161, 81, 311, 619],
     "difficulty": 1,
     "tags": []
   },
@@ -1088,7 +1088,7 @@
   },
   {
     "name": "Items that affect item generation or pools",
-    "items": [691, 721, 642, 72, 402],
+    "items": [691, 721, 642, 72, 402, 619],
     "difficulty": 3,
     "tags": ["pool"]
   },
