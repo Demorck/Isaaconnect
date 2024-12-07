@@ -63,7 +63,9 @@ export class Loader {
         }
 
         initializeTooltipListener();
+    }
 
+    static async loadComplete(): Promise<void> {
         /**
          * @param elementOrSelector The element or selector to set visible
          * @param visible True if the element should be visible, false otherwise

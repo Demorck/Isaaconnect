@@ -184,6 +184,11 @@ export class StorageManager {
         this.stats = { ...stats, losses };
     }
 
+
+    /*******************************************/
+    /***************** Settings ****************/
+    /*******************************************/
+
     static get settings(): any {
         return this.getItem('settings');
     }
@@ -265,6 +270,19 @@ export class StorageManager {
         this.settings = { ...settings, link };
     }
 
+    static get enableTimer(): boolean {
+        return this.settings.enableTimer;
+    }
+
+    static set enableTimer(enableTimer: boolean) {
+        const settings = this.settings;
+        this.settings = { ...settings, enableTimer };
+    }
+
+    /*******************************************/
+    /************* Random Settings *************/
+    /*******************************************/
+
     static get randomSettings(): any {
         return this.getItem('randomSettings');
     }
@@ -338,6 +356,10 @@ export class StorageManager {
         const randomSettings = this.randomSettings;
         this.randomSettings = { ...randomSettings, customDifficulty };
     }
+
+    /*******************************************/
+    /***************** Others ******************/
+    /*******************************************/
     
     static get lastIsaaconnect(): number {
         return this.getItem('lastIsaaconnect') ?? Constants.DEFAULT_DATA.lastIsaaconnect;

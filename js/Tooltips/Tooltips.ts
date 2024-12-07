@@ -1,5 +1,5 @@
 import { statsLogic } from './Stats.js';
-import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic, redirectWikiLogic } from './Settings.js';
+import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic, redirectWikiLogic, enableTimerLogic } from './Settings.js';
 import { scheduleLogic } from './Schedule.js';
 import { addEvent } from './Debug.js';
 import { addEventLogs } from './Logs.js';
@@ -60,6 +60,7 @@ export async function displayTooltip(element: HTMLElement, index: number): Promi
             difficultyLogic(wrapper);
             linkCopyLogic(wrapper);
             redirectWikiLogic(wrapper);
+            enableTimerLogic(wrapper);
             break;
         case 'schedule':
             scheduleLogic();

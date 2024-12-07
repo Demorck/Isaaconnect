@@ -101,6 +101,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+
+
+    await Loader.loadComplete();
 });
 
 function modifyRangeBlind(rangeBlind: HTMLInputElement): void {

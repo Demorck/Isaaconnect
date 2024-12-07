@@ -27,44 +27,56 @@
                     </select>
                 </label>
             </div>
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                <div class="flex flex-col text-left">
-                    <h1 class="text-xl font-bold">Auto-solve the last group</h1>
-                    <p class="text-sm">Automatically groups the last items together and displays the ending screen when you find the penultimate group.</p>
+            <div class="flex items-start flex-col">
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl font-bold">Auto-solve the last group</h1>
+                        <p class="text-sm">Automatically groups the last items together and displays the ending screen when you find the penultimate group.</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
+                        <label class="tgl-btn" for="autocomplete">
+                    </div>
                 </div>
-                <div class="checkbox-wrapper rounded-3xl h-fit">
-                    <input class="tgl tgl-theme" id="autocomplete" type="checkbox"/>
-                    <label class="tgl-btn" for="autocomplete">
+                <div class="flex flex-row-reverse gap-4 justify-center items-center" data-id="difficulty">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl font-bold">Easy mode</h1>
+                        <p class="text-sm">Displays the name of the items underneath their icons</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="difficulty" type="checkbox"/>
+                        <label class="tgl-btn" for="difficulty">
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-row-reverse gap-4 justify-center items-center" data-id="difficulty">
-                <div class="flex flex-col text-left">
-                    <h1 class="text-xl font-bold">Easy mode</h1>
-                    <p class="text-sm">Displays the name of the items underneath their icons</p>
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl font-bold">Redirect to wiki</h1>
+                        <p class="text-sm">Clicking on the sprite or name of an item opens its wiki page.</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="redirectWiki" type="checkbox"/>
+                        <label class="tgl-btn" for="redirectWiki">
+                    </div>
                 </div>
-                <div class="checkbox-wrapper rounded-3xl h-fit">
-                    <input class="tgl tgl-theme" id="difficulty" type="checkbox"/>
-                    <label class="tgl-btn" for="difficulty">
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl font-bold">Add Isaaconnect link to results</h1>
+                        <p class="text-sm">Adds a link to the game to your shareable score.</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="linkWhenCopy" type="checkbox"/>
+                        <label class="tgl-btn" for="linkWhenCopy">
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                <div class="flex flex-col text-left">
-                    <h1 class="text-xl font-bold">Redirect to wiki</h1>
-                    <p class="text-sm">Clicking on the sprite or name of an item opens its wiki page.</p>
-                </div>
-                <div class="checkbox-wrapper rounded-3xl h-fit">
-                    <input class="tgl tgl-theme" id="redirectWiki" type="checkbox"/>
-                    <label class="tgl-btn" for="redirectWiki">
-                </div>
-            </div>
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                <div class="flex flex-col text-left">
-                    <h1 class="text-xl font-bold">Add Isaaconnect link to results</h1>
-                    <p class="text-sm">Adds a link to the game to your shareable score.</p>
-                </div>
-                <div class="checkbox-wrapper rounded-3xl h-fit">
-                    <input class="tgl tgl-theme" id="linkWhenCopy" type="checkbox"/>
-                    <label class="tgl-btn" for="linkWhenCopy">
+                <div class="flex flex-row-reverse gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl font-bold">Enable timer</h1>
+                        <p class="text-sm">Adds a timer.</p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="enableTimer" type="checkbox"/>
+                        <label class="tgl-btn" for="enableTimer">
+                    </div>
                 </div>
             </div>
         </div>

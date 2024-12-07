@@ -213,6 +213,8 @@ export class MainGameController {
         elements.forEach(element => {
             selectedItemsID.push(Number(element.dataset.id));
         });
+
+        this.gameView.revealBlindItems();
         
         this.game.handleSubmit(selectedItemsID);
         let { finished, win } = this.game.checkFinished();

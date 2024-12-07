@@ -18,7 +18,7 @@
         </div>
         <!--  -->
         <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
-            <div class="justify-center flex flex-1 items-center md:hidden timer">
+            <div class="justify-center flex flex-1 items-center md:!hidden timer" data-id="wrapper-timer">
                 <p class="text-white gap-4 flex  ">Timer: <span data-id="timer"></span></p>
             </div>
             <div class="buttons items-center gap-4 flex md:flex-row flex-col-reverse justify-evenly" id="buttons-ingame">
@@ -56,7 +56,7 @@
                 shuffle
             </span>
         </button>
-        <div class="text-white w-1">
+        <div class="text-white w-1" data-id="wrapper-timer">
             Timer: <br>
             <span data-id="timer">
 

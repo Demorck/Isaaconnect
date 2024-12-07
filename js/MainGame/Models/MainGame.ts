@@ -108,6 +108,7 @@ export class MainGame extends Observable {
      * @memberof MainGame
      */
     public setupFinished() {        
+        this.initializeTimer();
         this.notifyObservers({ health: this.health });
     }
 
@@ -213,6 +214,7 @@ export class MainGame extends Observable {
                 seeded: this.seeded,
                 attempts: this.attempts,
                 groupFound: this.groupFound,
+                timer: this.timer,
             };
         } else {
             let solved = this.groupFound;
@@ -226,6 +228,7 @@ export class MainGame extends Observable {
                 seeded: this.seeded,
                 attempts: this.attempts,
                 groupFound: this.groupFound,
+                timer: this.timer,
             };
         }
     }
@@ -414,7 +417,9 @@ export class MainGame extends Observable {
         this.mechanics = new MainGameMechanics();
         this.utils = new GameUtils(Constants.OPTIONS);
         this.health = Constants.OPTIONS.HEALTH;
-        
+        this.timer = 0;
+        this.startTime = Date.now() - this.timer;
+
         this.setupGame();        
     }
 }

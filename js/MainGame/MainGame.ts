@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let game = new MainGame();
     let gameView = new MainGameView('#cards-game');
     let gameController = new MainGameController(game, gameView);
+    
+    await Loader.loadComplete();
 
     if (tutorial) {
         let tutorialView = new Tutorial();

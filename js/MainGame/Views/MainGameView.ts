@@ -87,9 +87,9 @@ export class MainGameView implements Observer {
             this.renderHealth(data.health);
         
         if (data.timer)
-            this.updateTimer(data.timer);
-
-        this.applyBorderRadius();        
+            this.updateTimer(data.timer);   
+        
+        this.applyBorderRadius(); 
     }
 
     private toggleFinishedState(data: any): void {
@@ -358,10 +358,20 @@ export class MainGameView implements Observer {
             if (!Constants.OPTIONS.SEEDED)
             {
                 let difficulty = Difficulties[Constants.OPTIONS.CUSTOM_DIFFICULTY];
-                difficulty.toLowerCase();
+                difficulty = difficulty.toLowerCase();
                 difficulty = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+                difficulty = difficulty.replace("_", " ");
                 textToCopy += "Difficulty: " + difficulty + "\n";
             }
+
+            if (StorageManager.enableTimer)
+            {
+                textToCopy += "Time: ";
+                let timer = document.querySelector('[data-id="timer"]')!.innerHTML;
+                
+                textToCopy += `${timer}\n`;
+            }
+            
 
             if (StorageManager.link)
             {
@@ -443,6 +453,23 @@ export class MainGameView implements Observer {
         this.itemsContainer.innerHTML = '';
         this.healthContainer.innerHTML = '';
         this.groupsContainer.innerHTML = '';
+    }
+
+    public revealBlindItems(): void {
+        let blindsItems = document.querySelectorAll('.card-module--blind');
+        let normalItems = document.querySelectorAll('.card-module--blind-img');
+
+        blindsItems.forEach((blind, index) => {
+            blind.classList.add('hidden');
+            normalItems[index].classList.remove('hidden');
+        });
+
+        Utils.sleep(2500).then(() => {
+            blindsItems.forEach((blind, index) => {
+                blind.classList.remove('hidden');
+            normalItems[index].classList.add('hidden');
+            });
+        });
     }
 
 }

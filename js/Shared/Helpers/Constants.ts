@@ -8,7 +8,7 @@ export class Constants {
     static groups: Group[] = [];
     static options: GameOptions;
     
-    static VERSION: string = '1.2.2';
+    static VERSION: string = '1.3.0';
 
     static get ITEMS() {
         return this.items;
@@ -71,6 +71,7 @@ export class Constants {
             tts: false,
             link: true,
             redirect: false,
+            enableTimer: true,
         },
         randomSettings: {
             bannedTags: true,

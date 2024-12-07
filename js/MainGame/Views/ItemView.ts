@@ -56,9 +56,15 @@ export class ItemView implements Observer {
         
         
         if (item.isBlind()) {
-            imgElement.src = '/assets/gfx/items/collectibles/questionmark.png';
+            const imgBlind = document.createElement('img');
+            imgBlind.src = '/assets/gfx/items/collectibles/questionmark.png';
             spanElement.textContent = 'Question Mark';
-            imgElement.alt = 'Question Mark';
+            imgBlind.alt = 'Question Mark';
+
+            imgBlind.className = 'card-module--blind';
+            imgElement.className = 'card-module--blind-img';
+            imgElement.classList.add('hidden');
+            itemElement.appendChild(imgBlind);
         }
 
         itemElement.appendChild(inputElement);

@@ -110,6 +110,24 @@ export function linkCopyLogic(container: HTMLElement): void {
     });
 }
 
+/**
+ * @description Handles the logic for the timer button.
+ * @param {HTMLElement} container - The container to apply the logic to.
+ */
+export function enableTimerLogic(container: HTMLElement): void {
+    const timer = StorageManager.enableTimer;
+    const checkbox = container.querySelector('#enableTimer') as HTMLInputElement;
+
+    if (timer) {
+        checkbox.checked = true;
+        checkbox.parentElement?.classList.add('tgl-checked');
+    }
+
+    checkbox.addEventListener('click', () => {
+        changeEnableTimer(checkbox);
+    });
+}
+
 function changeBackground(element: HTMLSelectElement): void {
     const body = document.querySelector('body') as HTMLBodyElement;
     const regex = /(.*-theme)/g;
@@ -185,6 +203,24 @@ function changeRedirectWiki(checkbox: HTMLInputElement): void {
             alias ??= '';
             el.href = Utils.generateWikiLink(alias);
             el.target = '_blank';
+        });
+        checkbox.parentElement?.classList.add('tgl-checked');
+    }
+}
+
+function changeEnableTimer(checkbox: HTMLInputElement): void {
+    const redirect = StorageManager.enableTimer;
+    let wrapper = document.querySelectorAll<HTMLLinkElement>('[data-id="wrapper-timer"]');
+    if (redirect) {
+        StorageManager.enableTimer = false;
+        wrapper.forEach((el) => {
+            el.style.display = 'none';
+        });
+        checkbox.parentElement?.classList.remove('tgl-checked');
+    } else {
+        StorageManager.enableTimer = true;
+        wrapper.forEach((el) => {
+            el.style.display = 'flex';
         });
         checkbox.parentElement?.classList.add('tgl-checked');
     }
