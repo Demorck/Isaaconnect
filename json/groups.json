@@ -1418,7 +1418,7 @@
   },
   {
     "name": "Items that grant one stat up and nothing else",
-    "items": [1, 27, 28, 50],
+    "items": [1, 27, 28, 50, 32],
     "difficulty": 2,
     "tags": ["stats"]
   },
