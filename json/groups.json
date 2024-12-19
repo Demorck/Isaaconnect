@@ -18,7 +18,7 @@
     "tags": ["pool"]
   },
   {
-    "name": "Spawn familiars that fly like the DVD logo",
+    "name": "Familiars that bounce around the room",
     "items": [470, 272, 155, 605, 417],
     "difficulty": 2,
     "tags": ["familiar"]
@@ -1433,5 +1433,48 @@
     "items": [732, 588, 546, 423, 399, 101, 7, 355],
     "difficulty": 0,
     "tags": ["sprite", "type"]
+  },
+  {
+    "name": "Items that contribute to 2 transformations",
+    "items": [9, 33, 248, 12, 461],
+    "difficulty": 3,
+    "tags": ["transformation"]
+  },
+  {
+    "name": "Items unlocked via the donation machine",
+    "items": [289, 260, 164, 246, 249, 232],
+    "difficulty": 2,
+    "tags": ["unlocks"]
+  },
+  {
+    "name": "Controllable familiars",
+    "items": [320, 267, 635, 667],
+    "difficulty": 1,
+    "tags": ["familiar"]
+  },
+  {
+    "name": "Items that spawn wisps",
+    "items": [584, 702, 685, 712],
+    "difficulty": 1,
+    "tags": []
+  },
+  {
+    "name": "Items with a dark counterpart",
+    "items": [33, 584, 327, 181, 499, 413, 415, 686, 101, 112, 292, 97, 328, 130, 215, 412, 442, 671, 7, 113],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items with a holy counterpart",
+    "items": [33, 584, 327, 181, 499, 413, 415, 686, 101, 112, 292, 97, 328, 130, 215, 412, 442, 671, 7, 113],
+    "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items that remove curses",
+    "items": [260, 622, 588, 425],
+    "difficulty": 2,
+    "tags": []
   }
+]
 ]
