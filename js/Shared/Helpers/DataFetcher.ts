@@ -1,3 +1,5 @@
+import { Constants } from "./Constants.js";
+
 export class DataFetcher {
     static async fetchData(): Promise<{ items: any[], groups: any[] }> {
         const items = await DataFetcher.fetchItems();
@@ -11,7 +13,7 @@ export class DataFetcher {
 
     static async fetchItems(): Promise<any[]> {
         try {
-            const response = await fetch('/json/items.json');
+            const response = await fetch(Constants.ITEMS_PATH);
             const items = await response.json();
 
             return items;
@@ -23,7 +25,7 @@ export class DataFetcher {
 
     static async fetchGroups(): Promise<any[]> {
         try {
-            const response = await fetch('/json/groups.json');
+            const response = await fetch(Constants.GROUPS_PATH);
             const groups = await response.json();
             
             return groups;

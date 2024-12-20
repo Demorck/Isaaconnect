@@ -9,8 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/themes.css">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="f491a6ad-f839-4b65-935a-9576ac1400f2"></script>
-
 </head>
 <body class="theme">
     <div class="loader flex justify-center items-center">

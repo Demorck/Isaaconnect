@@ -74,6 +74,7 @@ export class Utils {
      * @returns {Promise<string>} The HTML content of the file.
      */
     static async loadHTML(file: string): Promise<string> {
+        file = file  + "?v=" + Constants.VERSION;
         const response = await fetch(file);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

@@ -90,6 +90,9 @@ export class MainGame extends Observable {
      * @memberof MainGame
      */
     public initializeTimer() {
+        if (this.health <= 0) return;
+        if (this.groupFound === Constants.OPTIONS.NUMBER_OF_GROUPS) return;
+        
         let interval = setInterval(() => {
             if (this.health <= 0) clearInterval(interval);
             if (this.groupFound === Constants.OPTIONS.NUMBER_OF_GROUPS) clearInterval(interval);

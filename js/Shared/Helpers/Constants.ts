@@ -8,7 +8,11 @@ export class Constants {
     static groups: Group[] = [];
     static options: GameOptions;
     
-    static VERSION: string = '1.3.0';
+    static VERSION: string = '1.3.1';
+    static GROUPS_VERSION: string = '1.0.0';
+
+    static ITEMS_PATH: string = '/json/items.json' + '?v=' + Constants.GROUPS_VERSION;
+    static GROUPS_PATH: string = '/json/groups.json' + '?v=' + Constants.GROUPS_VERSION;
 
     static get ITEMS() {
         return this.items;
