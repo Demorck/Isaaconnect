@@ -1,12 +1,19 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "es6",
-        "outDir": "dist",
-        "strict": true,
-        "lib": ["ES2023", "DOM"]
+      "target": "ES6",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["js/*"]
+      },
+      "outDir": "./dist",
+      "sourceMap": true
     },
-    "exclude": [
-        "node_modules"
-    ]
-}
+    "include": ["js/**/*"],
+    "exclude": ["node_modules"]
+  }

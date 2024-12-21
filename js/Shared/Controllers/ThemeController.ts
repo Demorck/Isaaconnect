@@ -1,6 +1,6 @@
-import { Constants } from "../Helpers/Constants.js";
-import { Observable } from "../Models/Observable.js";
-import { ThemeView } from "../Views/ThemeView.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Observable } from "@/Shared/Models/Observable";
+import { ThemeView } from "@/Shared/Views/ThemeView";
 
 export class ThemeController extends Observable {
     private themeStored: string;

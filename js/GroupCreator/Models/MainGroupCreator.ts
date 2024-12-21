@@ -1,6 +1,6 @@
-import { Observable } from "../../Shared/Models/Observable.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { GroupJSONData } from "../../Shared/Helpers/Data/GroupData.js";
+import { Observable } from "@/Shared/Models/Observable";
+import { Group } from "@/Shared/Models/Group";
+import { GroupJSONData } from "@/Shared/Helpers/Data/GroupData";
 
 export class MainGroupCreator extends Observable {
     private groups: Group[];
@@ -25,14 +25,16 @@ export class MainGroupCreator extends Observable {
     public generate(): void {
         let groups: GroupJSONData[] = [];
         let canGenerate = true;
-        let groupError: string = '';
+        let groupError: string[] = [];
         this.groups.forEach(group => {
             let items: number[] = [];
-            if (group.getItems().length < 4 || !canGenerate) {
+            if (group.getItems().length < 4) {
                 canGenerate = false;
-                groupError = group.getName();
-                return;
+                groupError.push(group.getName());
             }
+
+            if (!canGenerate) return;
+
             for (const item of group)
                 items.push(item.getId());
 
@@ -45,7 +47,7 @@ export class MainGroupCreator extends Observable {
         });
 
         if (!canGenerate) {
-            this.notifyObservers({error: 'Not enough items in group: ' + groupError});
+            this.notifyObservers({error: 'Not enough items in group: ' + groupError.join(', ')});
             return;
         }
 

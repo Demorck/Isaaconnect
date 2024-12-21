@@ -1,10 +1,18 @@
-import { statsLogic } from './Stats.js';
-import { settingsLogic, themeLogic, autocompleteLogic, difficultyLogic, linkCopyLogic, redirectWikiLogic, enableTimerLogic } from './Settings.js';
-import { scheduleLogic } from './Schedule.js';
-import { addEvent } from './Debug.js';
-import { addEventLogs } from './Logs.js';
-// import { TTSLogic } from './Accessibility.js';
-import { Utils } from '../Shared/Helpers/Utils.js';
+import { statsLogic } from "@/Tooltips/Stats";
+import { 
+    settingsLogic, 
+    themeLogic, 
+    autocompleteLogic, 
+    difficultyLogic, 
+    linkCopyLogic, 
+    redirectWikiLogic, 
+    enableTimerLogic 
+} from "@/Tooltips/Settings";
+import { scheduleLogic } from "@/Tooltips/Schedule";
+import { addEvent } from "@/Tooltips/Debug";
+import { addEventLogs } from "@/Tooltips/Logs";
+// import { TTSLogic } from "@/Tooltips/Accessibility";
+import { Utils } from "@/Shared/Helpers/Utils";
 
 
 export async function displayTooltip(element: HTMLElement, index: number): Promise<void> {

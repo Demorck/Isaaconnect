@@ -1,4 +1,4 @@
-import { Utils } from "./Utils.js";
+import { Utils } from "@/Shared/Helpers/Utils";
 
 interface TimeRemaining {
     total: number;

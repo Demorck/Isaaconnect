@@ -1,4 +1,4 @@
-import { ItemData } from "./ItemData.js";
+import { ItemData } from "@/Shared/Helpers/Data/ItemData";
 
 export interface GroupData {
     name: string;

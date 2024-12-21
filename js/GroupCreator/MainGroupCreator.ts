@@ -1,8 +1,7 @@
-import { ThemeController } from "../Shared/Controllers/ThemeController.js";
-import { Loader } from "../Loader.js";
-import { MainGroupCreator } from "./Models/MainGroupCreator.js";
-import { MainGroupCreatorView } from "./Views/MainGroupCreatorView.js";
-import { MainGroupCreatorController } from "./Controllers/MainGroupCreatorController.js";
+import { Loader } from "@/Loader";
+import { MainGroupCreator } from "@/GroupCreator/Models/MainGroupCreator";
+import { MainGroupCreatorView } from "@/GroupCreator/Views/MainGroupCreatorView";
+import { MainGroupCreatorController } from "@/GroupCreator/Controllers/MainGroupCreatorController";
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();

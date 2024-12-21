@@ -1,4 +1,4 @@
-import { initializeCountdown } from "../Shared/Helpers/Countdown.js";
+import { initializeCountdown } from "@/Shared/Helpers/Countdown";
 
 /**
  * @description Display the settings tooltip.

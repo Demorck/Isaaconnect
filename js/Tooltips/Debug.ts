@@ -1,5 +1,5 @@
-import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "../Shared/Helpers/Constants.js";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import { Constants } from "@/Shared/Helpers/Constants";
 
 /**
  * @description Display the settings tooltip.

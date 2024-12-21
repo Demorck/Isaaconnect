@@ -1,4 +1,4 @@
-import { Observer } from "../../Shared/Views/Observer.js";
+import { Observer } from "@/Shared/Views/Observer";
 
 export class ItemCreatorView implements Observer {
     private element: HTMLElement;

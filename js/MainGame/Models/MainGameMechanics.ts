@@ -1,10 +1,9 @@
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { GameUtils } from "./GameUtils.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { GroupGame } from "./GroupGame.js";
-import { GameOptions } from "./GameOptions.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { GameUtils } from "@/MainGame/Models/GameUtils";
+import { Item } from "@/Shared/Models/Item";
+import { Group } from "@/Shared/Models/Group";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
 
 export class MainGameMechanics {
     constructor() {}

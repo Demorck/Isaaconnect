@@ -1,4 +1,4 @@
-import { Difficulties } from "../../Models/Enums/Difficulties";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
 export interface RandomSettingsData {
     bannedTags: boolean;

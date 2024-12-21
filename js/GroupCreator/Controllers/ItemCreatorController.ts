@@ -1,6 +1,6 @@
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { ItemCreatorView } from "../Views/ItemCreatorView.js";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Item } from "@/Shared/Models/Item";
+import { ItemCreatorView } from "@/GroupCreator/Views/ItemCreatorView";
 
 export class ItemCreatorController {
     private item: Item;

@@ -1,9 +1,9 @@
-import { Loader } from '../Loader.js';
-import { MainGame } from './Models/MainGame.js';
-import { MainGameController } from './Controllers/MainGameController.js';
-import { MainGameView } from './Views/MainGameView.js';
-import { StorageManager } from '../Shared/Helpers/Data/StorageManager.js';
-import Tutorial from './Views/Tutorial.js';
+import { Loader } from "@/Loader";
+import { MainGame } from "@/MainGame/Models/MainGame";
+import { MainGameController } from "@/MainGame/Controllers/MainGameController";
+import { MainGameView } from "@/MainGame/Views/MainGameView";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import Tutorial from "@/MainGame/Views/Tutorial";
 
 
 document.addEventListener('DOMContentLoaded', async () => {

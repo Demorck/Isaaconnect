@@ -1,7 +1,6 @@
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Observer } from "../../Shared/Views/Observer.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
+import { Observer } from "@/Shared/Views/Observer";
+import { Item } from "@/Shared/Models/Item";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 
 
 /**

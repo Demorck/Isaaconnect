@@ -1,13 +1,13 @@
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Observable } from "../../Shared/Models/Observable.js";
-import { GroupGame } from "./GroupGame.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { GameUtils } from "./GameUtils.js";
-import { MainGameMechanics } from "./MainGameMechanics.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { GameOptions } from "./GameOptions.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Observable } from "@/Shared/Models/Observable";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { Group } from "@/Shared/Models/Group";
+import { GameUtils } from "@/MainGame/Models/GameUtils";
+import { MainGameMechanics } from "@/MainGame/Models/MainGameMechanics";
+import { Item } from "@/Shared/Models/Item";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
 
 /**
  * Represents the main game logic and state.

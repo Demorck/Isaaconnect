@@ -1,6 +1,5 @@
-import { Utils } from "../Shared/Helpers/Utils.js";
-import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "../Shared/Helpers/Constants.js";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 
 /**
  * @description Display the settings tooltip.
@@ -211,6 +210,7 @@ function changeRedirectWiki(checkbox: HTMLInputElement): void {
 function changeEnableTimer(checkbox: HTMLInputElement): void {
     const redirect = StorageManager.enableTimer;
     let wrapper = document.querySelectorAll<HTMLLinkElement>('[data-id="wrapper-timer"]');
+    
     if (redirect) {
         StorageManager.enableTimer = false;
         wrapper.forEach((el) => {

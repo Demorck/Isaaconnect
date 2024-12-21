@@ -1,12 +1,12 @@
-import { MainGame } from "../Models/MainGame.js";
-import { MainGameView } from "../Views/MainGameView.js";
-import { GroupGameController } from "./GroupGameController.js";
-import { GroupGameView } from "../Views/GroupGameView.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { GroupGame } from "../Models/GroupGame.js";
-import { GameOptions } from "../Models/GameOptions.js";
+import { MainGame } from "@/MainGame/Models/MainGame";
+import { MainGameView } from "@/MainGame/Views/MainGameView";
+import { GroupGameController } from "@/MainGame/Controllers/GroupGameController";
+import { GroupGameView } from "@/MainGame/Views/GroupGameView";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
 
 /**
  * MainGameController class that controls the main game (Isaaconnect).

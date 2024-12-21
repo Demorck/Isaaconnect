@@ -1,6 +1,6 @@
-import { GroupData } from "../Helpers/Data/GroupData.js";
-import { Item } from "./Item.js";
-import { Observable } from "./Observable.js";
+import { GroupData } from "@/Shared/Helpers/Data/GroupData";
+import { Item } from "@/Shared/Models/Item";
+import { Observable } from "@/Shared/Models/Observable";
 
 export class Group extends Observable implements Iterable<Item> {
     private name: string;

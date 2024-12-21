@@ -1,6 +1,6 @@
-import { Constants } from "../Helpers/Constants.js";
-import { ItemData } from "../Helpers/Data/ItemData.js";
-import { Observable } from "./Observable.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { ItemData } from "@/Shared/Helpers/Data/ItemData";
+import { Observable } from "@/Shared/Models/Observable";
 
 export class Item extends Observable {
     private id: number;

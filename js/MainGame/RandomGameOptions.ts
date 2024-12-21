@@ -1,6 +1,6 @@
-import { Loader } from "../Loader.js";
-import { Constants } from "../Shared/Helpers/Constants.js";
-import { StorageManager } from "../Shared/Helpers/Data/StorageManager.js";
+import { Loader } from "@/Loader";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();

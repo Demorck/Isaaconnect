@@ -1,8 +1,8 @@
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { Observer } from "../../Shared/Views/Observer.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Item } from "@/Shared/Models/Item";
+import { Observer } from "@/Shared/Views/Observer";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 
 export class GroupGameView implements Observer {
     private container: HTMLElement;

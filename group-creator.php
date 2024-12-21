@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guess 4 groups of 4 items in Isaac. Changes everyday !">
-    <link rel="icon" href="/assets/isaaconnect.ico" type="image/x-icon">
-    <title>Isaaconnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/themes.css">
-</head>
+<?php
+    include 'include/template/header.php';
+    include 'include/Helper.php';
+?>
 <body class="theme main-theme">
     <div class="absolute infos px-2 py-4 z-50 hidden">
 
@@ -104,7 +96,7 @@
             </span> -->
         </div>
     </div>
-    <script type="module" src="/dist/GroupCreator/MainGroupCreator.js"></script>
+    <script type="module" src="<?= getAssetPath("groupCreator.js"); ?>"></script>
     <script>
         document.getElementById('open-menu-right').addEventListener('click', function() {
             var menu = document.getElementById('menu-right');

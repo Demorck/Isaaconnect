@@ -1,7 +1,7 @@
-import { Constants } from '../Shared/Helpers/Constants.js';
-import { Loader } from '../Loader.js';
-import { Stats } from './Models/Stats.js';
-import { Difficulties } from '../Shared/Models/Enums/Difficulties.js';
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Loader } from "@/Loader";
+import { Stats } from "@/Stats/Models/Stats";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();

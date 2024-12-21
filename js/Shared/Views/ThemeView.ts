@@ -1,4 +1,4 @@
-import { Observer } from "./Observer";
+import { Observer } from "@/Shared/Views/Observer";
 
 
 /**

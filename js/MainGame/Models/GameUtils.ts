@@ -1,11 +1,10 @@
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { GroupGame } from "./GroupGame.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { GameOptions } from "./GameOptions.js";
-import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Group } from "@/Shared/Models/Group";
+import { Item } from "@/Shared/Models/Item";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
 
 /**

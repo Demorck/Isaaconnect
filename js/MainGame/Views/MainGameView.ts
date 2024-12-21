@@ -1,13 +1,13 @@
-import { Observer } from "../../Shared/Views/Observer.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { swapUI } from "../Controllers/Animation.js";
-import { MainGameController } from "../Controllers/MainGameController.js";
-import { GroupGame } from "../Models/GroupGame.js";
-import { GroupData } from "../../Shared/Helpers/Data/GroupData.js";
-import { GameOptions } from "../Models/GameOptions.js";
-import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
+import { Observer } from "@/Shared/Views/Observer";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { swapUI } from "@/MainGame/Controllers/Animation";
+import { MainGameController } from "@/MainGame/Controllers/MainGameController";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { GroupData } from "@/Shared/Helpers/Data/GroupData";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
 /**
  * @description MainGameView class that displays the main game (the big container).

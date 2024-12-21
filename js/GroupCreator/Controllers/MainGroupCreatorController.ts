@@ -1,10 +1,10 @@
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { MainGroupCreator } from "../Models/MainGroupCreator.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { MainGroupCreatorView } from "../Views/MainGroupCreatorView.js";
-import { GroupCreatorController } from "./GroupCreatorController.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Group } from "@/Shared/Models/Group";
+import { MainGroupCreator } from "@/GroupCreator/Models/MainGroupCreator";
+import { Item } from "@/Shared/Models/Item";
+import { MainGroupCreatorView } from "@/GroupCreator/Views/MainGroupCreatorView";
+import { GroupCreatorController } from "@/GroupCreator/Controllers/GroupCreatorController";
 
 export class MainGroupCreatorController {
     private mainGroupCreator: MainGroupCreator;

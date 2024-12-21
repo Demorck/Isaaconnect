@@ -1,9 +1,8 @@
-import { GroupGame } from "../Models/GroupGame.js";
-import { ItemController } from "./ItemController.js";
-import { GroupGameView } from "../Views/GroupGameView.js";
-import { ItemView } from "../Views/ItemView.js";
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { GameOptions } from "../Models/GameOptions.js";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { ItemController } from "@/MainGame/Controllers/ItemController";
+import { GroupGameView } from "@/MainGame/Views/GroupGameView";
+import { ItemView } from "@/MainGame/Views/ItemView";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
 
 
 /**

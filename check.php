@@ -1,40 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guess 4 groups of 4 items in Isaac. Changes everyday !">
-    <link rel="icon" href="/assets/isaaconnect.ico" type="image/x-icon">
-    <title>Isaaconnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/themes.css">
-    <style>
-        /* Style de base pour le dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content div {
-            padding: 8px 16px;
-            cursor: pointer;
-        }
-        .dropdown-content div:hover {
-            background-color: #ddd;
-        }
-        .show {
-            display: block;
-        }
-    </style>
-</head>
+<?php
+    include 'include/template/header.php';
+    include 'include/Helper.php';
+?>
+<style>
+    /* Style de base pour le dropdown */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content div {
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+    .dropdown-content div:hover {
+        background-color: #ddd;
+    }
+    .show {
+        display: block;
+    }
+</style>
 <body class="theme main-theme">
     <div class="absolute infos px-2 py-4 z-50 hidden">
 
@@ -79,6 +71,6 @@
             include 'include/template/tooltips.php'; ?>
     </div>
 
-    <script type="module" src="/dist/CheckGroup/Check.js"></script>
+    <script type="module" src="<?= getAssetPath('checkGroup.js'); ?>"></script>
 </body>
 </html>

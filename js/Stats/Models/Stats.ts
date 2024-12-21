@@ -1,9 +1,9 @@
-import { Item } from "../../Shared/Models/Item.js";
-import { GameUtils } from "../../MainGame/Models/GameUtils.js";
-import { GameOptions } from "../../MainGame/Models/GameOptions.js";
-import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { GroupGame } from "../../MainGame/Models/GroupGame.js";
+import { Item } from "@/Shared/Models/Item";
+import { GameUtils } from "@/MainGame/Models/GameUtils";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
 
 export class Stats {
     private _occurenceGroup: Map<string, number>;

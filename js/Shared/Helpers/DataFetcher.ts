@@ -1,4 +1,4 @@
-import { Constants } from "./Constants.js";
+import { Constants } from "@/Shared/Helpers/Constants";
 
 export class DataFetcher {
     static async fetchData(): Promise<{ items: any[], groups: any[] }> {

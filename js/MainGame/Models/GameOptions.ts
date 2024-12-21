@@ -1,4 +1,4 @@
-import { Difficulties } from "../../Shared/Models/Enums/Difficulties.js";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
 /**
  * Description placeholder

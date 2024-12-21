@@ -1,4 +1,4 @@
-import { ChangelogsView } from "../Shared/Views/ChangelogsView.js";
+import { ChangelogsView } from "@/Shared/Views/ChangelogsView";
 
 /**
  * @description Adds event listeners for displaying changelogs.

@@ -1,7 +1,7 @@
-import { Group } from "../../Shared/Models/Group.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { GroupCreatorView } from "../Views/GroupCreatorView.js";
-import { ItemCreatorController } from "./ItemCreatorController.js";
+import { Group } from "@/Shared/Models/Group";
+import { Item } from "@/Shared/Models/Item";
+import { GroupCreatorView } from "@/GroupCreator/Views/GroupCreatorView";
+import { ItemCreatorController } from "@/GroupCreator/Controllers/ItemCreatorController";
 
 export class GroupCreatorController {
     private group: Group;

@@ -1,14 +1,14 @@
-import { GameOptions } from "../../MainGame/Models/GameOptions.js";
-import { Difficulties } from "../Models/Enums/Difficulties.js";
-import { Group } from "../Models/Group.js";
-import { Item } from "../Models/Item.js";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
+import { Group } from "@/Shared/Models/Group";
+import { Item } from "@/Shared/Models/Item";
 
 export class Constants {
     static items: Item[] = [];
     static groups: Group[] = [];
     static options: GameOptions;
     
-    static VERSION: string = '1.3.1';
+    static VERSION: string = '1.3.2';
     static GROUPS_VERSION: string = '1.0.0';
 
     static ITEMS_PATH: string = '/json/items.json' + '?v=' + Constants.GROUPS_VERSION;

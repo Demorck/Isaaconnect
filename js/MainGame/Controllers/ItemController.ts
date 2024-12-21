@@ -1,6 +1,6 @@
-import { Item } from "../../Shared/Models/Item.js";
-import { GameOptions } from "../Models/GameOptions.js";
-import { ItemView } from "../Views/ItemView.js";
+import { Item } from "@/Shared/Models/Item";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
+import { ItemView } from "@/MainGame/Views/ItemView";
 
 /**
  * Controller class for handling interactions between an Item model and its view.

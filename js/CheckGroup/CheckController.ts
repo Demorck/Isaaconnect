@@ -1,6 +1,6 @@
-import { Constants } from "../Shared/Helpers/Constants.js";
-import { Group } from "../Shared/Models/Group.js";
-import { Item } from "../Shared/Models/Item.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Group } from "@/Shared/Models/Group";
+import { Item } from "@/Shared/Models/Item";
 
 export class CheckController {
     private inputGroup: HTMLInputElement;

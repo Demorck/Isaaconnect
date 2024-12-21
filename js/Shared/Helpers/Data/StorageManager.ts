@@ -1,16 +1,16 @@
-import { Constants } from '../Constants.js';
-import { Utils } from '../Utils.js';
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Item } from "@/Shared/Models/Item";
+import { Group } from "@/Shared/Models/Group";
+import { Difficulties } from "@/Shared/Models/Enums/Difficulties";
 
-import { GameData } from './GameData.js';
-import { StatsData } from './StatsData.js';
-import { SettingsData } from './SettingsData.js';
-import { GroupData } from './GroupData.js';
-import { GroupGame } from '../../../MainGame/Models/GroupGame.js';
-import { ItemData } from './ItemData.js';
-import { Item } from '../../Models/Item.js';
-import { Group } from '../../Models/Group.js';
-import { RandomSettingsData } from './RandomSettingsData.js';
-import { Difficulties } from '../../Models/Enums/Difficulties.js';
+import { GameData } from "@/Shared/Helpers/Data/GameData";
+import { StatsData } from "@/Shared/Helpers/Data/StatsData";
+import { SettingsData } from "@/Shared/Helpers/Data/SettingsData";
+import { GroupData } from "@/Shared/Helpers/Data/GroupData";
+import { GroupGame } from "@/MainGame/Models/GroupGame";
+import { ItemData } from "@/Shared/Helpers/Data/ItemData";
+import { RandomSettingsData } from "@/Shared/Helpers/Data/RandomSettingsData";
 
 
 /**

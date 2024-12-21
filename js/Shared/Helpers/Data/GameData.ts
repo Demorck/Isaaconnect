@@ -1,5 +1,5 @@
-import { GroupData } from "./GroupData.js";
-import { ItemData } from "./ItemData.js";
+import { GroupData } from "@/Shared/Helpers/Data/GroupData";
+import { ItemData } from "@/Shared/Helpers/Data/ItemData";
 
 export interface GameData {
     health: number;

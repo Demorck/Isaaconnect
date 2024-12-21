@@ -1,5 +1,5 @@
-import { Constants } from "../Helpers/Constants.js";
-import { Utils } from "../Helpers/Utils.js";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
 
 export class ChangelogsView {
     private _bigmodal: HTMLElement;

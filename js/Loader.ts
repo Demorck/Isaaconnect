@@ -1,11 +1,11 @@
-import { StorageManager } from "./Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "./Shared/Helpers/Constants.js";
-import { Utils } from "./Shared/Helpers/Utils.js";
-import { DataFetcher } from "./Shared/Helpers/DataFetcher.js";
-import { Item } from "./Shared/Models/Item.js";
-import { Group } from "./Shared/Models/Group.js";
-import { initializeTooltipListener } from "./Tooltips/Tooltips.js";
-import { ThemeController } from "./Shared/Controllers/ThemeController.js";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { DataFetcher } from "@/Shared/Helpers/DataFetcher";
+import { Item } from "@/Shared/Models/Item";
+import { Group } from "@/Shared/Models/Group";
+import { initializeTooltipListener } from "@/Tooltips/Tooltips";
+import { ThemeController } from "@/Shared/Controllers/ThemeController";
 
 /**
  * @description Loader class that loads the page

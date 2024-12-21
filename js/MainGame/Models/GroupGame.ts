@@ -1,10 +1,8 @@
-import { GroupData } from "../../Shared/Helpers/Data/GroupData.js";
-import { Utils } from "../../Shared/Helpers/Utils.js";
-import { Group } from "../../Shared/Models/Group.js";
-import { Item } from "../../Shared/Models/Item.js";
-import { StorageManager } from "../../Shared/Helpers/Data/StorageManager.js";
-import { Constants } from "../../Shared/Helpers/Constants.js";
-import { GameOptions } from "./GameOptions.js";
+import { GroupData } from "@/Shared/Helpers/Data/GroupData";
+import { Utils } from "@/Shared/Helpers/Utils";
+import { Group } from "@/Shared/Models/Group";
+import { Item } from "@/Shared/Models/Item";
+import { GameOptions } from "@/MainGame/Models/GameOptions";
 
 /**
  * Represents a group game with selected items and various game-related methods.

@@ -1,6 +1,6 @@
-import { ChangelogsView } from "../Views/ChangelogsView.js";
-import { Constants } from "./Constants.js";
-import { StorageManager } from "./Data/StorageManager.js";
+import { ChangelogsView } from "@/Shared/Views/ChangelogsView";
+import { Constants } from "@/Shared/Helpers/Constants";
+import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 
 declare class alea {
     constructor(seed?: any);

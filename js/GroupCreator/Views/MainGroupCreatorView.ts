@@ -1,5 +1,5 @@
-import { Group } from "../../Shared/Models/Group.js";
-import { Observer } from "../../Shared/Views/Observer.js";
+import { Group } from "@/Shared/Models/Group";
+import { Observer } from "@/Shared/Views/Observer";
 
 export class MainGroupCreatorView implements Observer {
     
