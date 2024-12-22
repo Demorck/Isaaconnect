@@ -366,6 +366,8 @@ export class MainGameView implements Observer {
 
             if (StorageManager.enableTimer)
             {
+                console.log("Timer enabled");
+                
                 textToCopy += "Time: ";
                 let timer = document.querySelector('[data-id="timer"]')!.innerHTML;
                 

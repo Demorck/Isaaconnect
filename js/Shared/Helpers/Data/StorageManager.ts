@@ -30,7 +30,18 @@ export class StorageManager {
     static initDefaultLocalStorage(): void {
         for (const [key, value] of (Object as any).entries(Constants.DEFAULT_DATA)) {
             if (this.getItem(key) === null) {
-                this.setItem(key, value);                
+                this.setItem(key, value);
+            }
+            
+            if (value instanceof Object) {
+                let json = this.getItem(key) as any;
+                for (const [k, v] of (Object as any).entries(value)) {
+                    if (json[k] === undefined) {
+                        json[k] = v;     
+                    }
+                }
+                
+                this.setItem(key, json);
             }
         }
         document.body.classList.add(this.settings.theme);
@@ -375,9 +386,5 @@ export class StorageManager {
 
     static set version(version: string) {
         this.setItem('version', version);
-    }
-    
-    static clear(): void {
-        localStorage.clear();
     }
 }
