@@ -481,7 +481,7 @@
   },
   {
     "name": "Paper items",
-    "items": [64, 654, 668, 628, 619, 601, 327, 80, 262, 241, 54, 75, 203, 246, 341, 250, 328],
+    "items": [64, 654, 668, 628, 619, 601, 327, 80, 262, 241, 54, 75, 203, 246, 341, 250, 328, 18],
     "difficulty": 1,
     "tags": ["type"]
   },
@@ -1340,7 +1340,7 @@
   },
   {
     "name": "Items featured in Challenges before they are unlocked",
-    "items": [90, 721, 579, 576],
+    "items": [90, 721, 579, 576, 276],
     "difficulty": 3,
     "tags": ["challenge"]
   },
