@@ -409,7 +409,7 @@
   },
   {
     "name": "Items with invincibility effects",
-    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303, 593],
+    "items": [162, 409, 210, 77, 299, 93, 327, 58, 663, 298, 303, 593, 625],
     "difficulty": 2,
     "tags": ["invincible"]
   },
