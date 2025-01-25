@@ -87,9 +87,10 @@ export class MainGameView implements Observer {
             this.renderHealth(data.health);
         
         if (data.timer)
-            this.updateTimer(data.timer);   
+            this.updateTimer(data.timer);
         
-        this.applyBorderRadius(); 
+        if (!data.timer)
+            this.applyBorderRadius(); 
     }
 
     private toggleFinishedState(data: any): void {
@@ -309,7 +310,7 @@ export class MainGameView implements Observer {
             
             if (typeof health != "number")
             {
-                this.showMessage("Impossible to copy the results");
+                this.showMessage("Impossible to copy the results, health not a number");
                 return;
             }
 
@@ -379,14 +380,14 @@ export class MainGameView implements Observer {
             {
                 textToCopy += Constants.URL;
             }
-
+            
             navigator.clipboard.writeText(textToCopy);
             copyButton.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Copied!`;
             this.showMessage("Results copied to clipboard");
         }
         catch (error)
         {
-            this.showMessage("Impossible to copy the results");
+            this.showMessage("Impossible to copy the results" + error);
         }
     }
 
@@ -458,8 +459,17 @@ export class MainGameView implements Observer {
     }
 
     public revealBlindItems(): void {
-        let blindsItems = document.querySelectorAll('.card-module--blind');
-        let normalItems = document.querySelectorAll('.card-module--blind-img');
+        let blindsItems : NodeListOf<HTMLElement>;
+        let normalItems : NodeListOf<HTMLElement>;
+        if (StorageManager.revealSubmittedBlind)
+        {
+            blindsItems = document.querySelectorAll('.card-module--selected .card-module--blind');
+            normalItems = document.querySelectorAll('.card-module--selected .card-module--blind-img');
+        }
+        else {
+            blindsItems = document.querySelectorAll('.card-module--blind');
+            normalItems = document.querySelectorAll('.card-module--blind-img');
+        }
 
         blindsItems.forEach((blind, index) => {
             blind.classList.add('hidden');

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rangeItems = document.querySelector<HTMLInputElement>('#range-items');
     const rangeBlind = document.querySelector<HTMLInputElement>('#range-blind');
     const rangeHealth = document.querySelector<HTMLInputElement>('#range-health');
+    const revealBlind = document.querySelector<HTMLInputElement>('#only-submit-blind');
     const rangeDifficulty = document.querySelector<HTMLInputElement>('#range-difficulty');
     const tagsButton = document.querySelector<HTMLInputElement>('#tags');
     const checkGrid = document.querySelector<HTMLInputElement>('#check-grid');
@@ -41,6 +42,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         rangeBlind.addEventListener('input', () => {
             modifyRangeBlind(rangeBlind);
+        });
+    }
+
+    if (revealBlind) {
+        revealBlind.checked = StorageManager.revealSubmittedBlind;        
+        if (revealBlind.checked) {
+            revealBlind.parentElement?.classList.add('tgl-checked');
+        }
+        revealBlind.addEventListener('click', () => {
+            StorageManager.revealSubmittedBlind = revealBlind.checked;
+            if (revealBlind.checked) {
+                revealBlind.parentElement?.classList.add('tgl-checked');
+            } else {
+                revealBlind.parentElement?.classList.remove('tgl-checked');
+            }
         });
     }
 

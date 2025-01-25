@@ -261,7 +261,7 @@ export class MainGame extends Observable {
     /**
      * Handles a correct answer submission.
      * @private
-     * @param {GroupGame} group - The group that was correctly solved.
+     * @param {GroupGame} group - The group that was correctly solved. 
      * @param {boolean} [animate=true] - Whether to animate the solution.
      * @memberof MainGame
      */
@@ -274,7 +274,7 @@ export class MainGame extends Observable {
             StorageManager.groupsSolved = this.getGroupSolved();
         }
 
-        this.notifyObservers({ deselect: true, animate: animate, group: group, disabled: true });
+        this.notifyObservers({ deselect: true, animate: animate, group: group, disabled: true});
     }
 
     /**

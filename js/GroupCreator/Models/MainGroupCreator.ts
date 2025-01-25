@@ -28,7 +28,7 @@ export class MainGroupCreator extends Observable {
         let groupError: string[] = [];
         this.groups.forEach(group => {
             let items: number[] = [];
-            if (group.getItems().length < 4) {
+            if (group.getItems().length < 2) {
                 canGenerate = false;
                 groupError.push(group.getName());
             }

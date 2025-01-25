@@ -368,6 +368,15 @@ export class StorageManager {
         this.randomSettings = { ...randomSettings, customDifficulty };
     }
 
+    static get revealSubmittedBlind(): boolean {
+        return this.randomSettings.revealSubmittedBlind;
+    }
+
+    static set revealSubmittedBlind(revealSubmittedBlind: boolean) {
+        const randomSettings = this.randomSettings;
+        this.randomSettings = { ...randomSettings, revealSubmittedBlind };
+    }
+
     /*******************************************/
     /***************** Others ******************/
     /*******************************************/

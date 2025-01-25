@@ -192,6 +192,7 @@ export class GameUtils {
         } while (bannedGroup.includes(group) || bannedTags.some(tag => group.getTags().includes(tag)) || group.getItems().length < numberOfItems);
 
         let selectedGroup = new GroupGame(group.getName(), group.getItems(), group.getDifficulty(), group.getTags());
+
         return selectedGroup;
     }
 
@@ -246,6 +247,22 @@ export class GameUtils {
                 impossible = true;
             }
         });
+
+        // let allGroups = Constants.GROUPS;
+        // let names = groups.map(group => group.getName());
+        // allGroups = allGroups.filter(group => !names.includes(group.getName()));
+        
+        // allGroups.forEach(group => {
+        //     if (impossible) return;
+        //     let items = allSelectedItems.filter(item => group.getItems().includes(item));
+            
+        //     if (items.length == Constants.OPTIONS.NUMBER_OF_ITEMS)
+        //     {
+        //         impossible = true;
+        //         itemsNotInGroup = items;
+
+        //     }
+        // })
         
         return { impossible, itemsNotInGroup };
     }

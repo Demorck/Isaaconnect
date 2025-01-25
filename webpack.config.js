@@ -12,6 +12,8 @@ module.exports = {
     checkItem        : './js/CheckItem/Check.ts',
     checkGroup       : './js/CheckGroup/Check.ts',
     groupCreator     : './js/GroupCreator/MainGroupCreator.ts',
+    stats            : './js/Stats/Stats.ts',
+    statsMod         : './js/StatsMod.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

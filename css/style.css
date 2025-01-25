@@ -219,7 +219,7 @@ ol, ul {
 
     label.card-module {
         height: -webkit-fill-available;
-        aspect-ratio: auto; 
+        /* aspect-ratio: auto;  */
         display: flex;
         align-items: center;   
     }

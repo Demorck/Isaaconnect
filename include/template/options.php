@@ -54,6 +54,16 @@
                         </ul>
                     </div>
                 </div>
+                <div class="flex flex-row-reverse gap-4 justify-end">
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-xl">Reveal only submitted blind items</h1>
+                        <p class="text-sm">If checked, only the submitted blind items are revealed. lorem</b></p>
+                    </div>
+                    <div class="checkbox-wrapper rounded-3xl h-fit">
+                        <input class="tgl tgl-theme" id="only-submit-blind" type="checkbox"/>
+                        <label class="tgl-btn" for="only-submit-blind">
+                    </div>
+                </div>
                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
                     <div class="flex flex-col text-left flex-1">
                         <h1 class="text-xl font-bold">Health</h1>

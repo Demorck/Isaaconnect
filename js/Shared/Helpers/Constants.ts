@@ -8,8 +8,8 @@ export class Constants {
     static groups: Group[] = [];
     static options: GameOptions;
     
-    static VERSION: string = '1.3.1';
-    static GROUPS_VERSION: string = '1.0.0';
+    static VERSION: string = '1.3.2';
+    static GROUPS_VERSION: string = '1.1.0';
 
     static ITEMS_PATH: string = '/json/items.json' + '?v=' + Constants.GROUPS_VERSION;
     static GROUPS_PATH: string = '/json/groups.json' + '?v=' + Constants.GROUPS_VERSION;
@@ -62,7 +62,7 @@ export class Constants {
     public static readonly DEFAULT_DIFFICULTY: Difficulties = Difficulties.NORMAL;
     static NUMBER_OF_DAYS_BEFORE: number = 3;
 
-    static BASE_DATE: number = new Date(Date.UTC(2024, 6, 10, 0, 0, 0, 0)).getTime();
+    static BASE_DATE: number = new Date(Date.UTC(2024, 6, 11, 0, 0, 0, 0)).getTime();
 
     static COLORS: string[] = ["red-300", "blue-300", "green-300", "yellow-300", "purple-300", "orange-300", "yellow-900", "neutral-500"];
 
@@ -85,6 +85,7 @@ export class Constants {
             numberOfBlindItems: 0,
             customDifficulty: Constants.DEFAULT_DIFFICULTY,
             randomHealth: Constants.MAX_HEALTH,
+            revealSubmittedBlind: true
         },
         game: {
             health: Constants.MAX_HEALTH,
