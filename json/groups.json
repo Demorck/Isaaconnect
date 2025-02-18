@@ -571,7 +571,7 @@
   },
   {
     "name": "Items that can directly damage Isaac",
-    "items": [713, 326, 40, 186, 126, 135, 205],
+    "items": [326, 40, 186, 126, 135, 205],
     "difficulty": 2,
     "tags": []
   },
