@@ -1460,13 +1460,13 @@
   },
   {
     "name": "Items with a dark counterpart",
-    "items": [33, 584, 327, 181, 499, 413, 415, 686, 101, 112],
+    "items": [33, 584, 327, 181, 499, 413, 415, 686, 112],
     "difficulty": 2,
     "tags": ["counterpart"]
   },
   {
     "name": "Items with a holy counterpart",
-    "items": [292, 97, 328, 130, 215, 412, 442, 671, 7, 113],
+    "items": [292, 97, 328, 130, 215, 412, 442, 671, 113],
     "difficulty": 2,
     "tags": ["counterpart"]
   },
