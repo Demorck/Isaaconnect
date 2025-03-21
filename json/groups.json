@@ -1459,18 +1459,6 @@
     "tags": []
   },
   {
-    "name": "Items with a dark counterpart",
-    "items": [33, 584, 327, 181, 499, 413, 415, 686, 112, 78],
-    "difficulty": 2,
-    "tags": ["counterpart"]
-  },
-  {
-    "name": "Items with a holy counterpart",
-    "items": [292, 712, 328, 130, 215, 412, 442, 671, 113, 34],
-    "difficulty": 2,
-    "tags": ["counterpart"]
-  },
-  {
     "name": "Items that can remove curses",
     "items": [260, 622, 588, 425],
     "difficulty": 2,
