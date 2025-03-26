@@ -367,7 +367,7 @@
   },
   {
     "name": "Items that can grant a damage multiplier",
-    "items": [573, 561, 12, 4, 310, 245, 417, 182, 330, 169, 415, 489, 373, 531, 543, 651, 406, 191],
+    "items": [573, 561, 12, 4, 310, 245, 417, 182, 330, 169, 415, 489, 373, 531, 543, 651, 406, 191, 625],
     "difficulty": 3,
     "tags": ["stats"]
   },
@@ -812,7 +812,7 @@
   },
   {
     "name": "Items with a size adjective in their name",
-    "items": [90, 279, 473, 503, 502, 233, 645, 658, 71],
+    "items": [90, 279, 473, 503, 502, 233, 645, 658, 71, 77, 88, 96, 99, 100, 252],
     "difficulty": 3,
     "tags": ["name"]
   },
@@ -1462,6 +1462,24 @@
     "name": "Items that can remove curses",
     "items": [260, 622, 588, 425],
     "difficulty": 2,
+    "tags": []
+  },
+  {
+    "name": "Items with \"Broken\" in their name",
+    "items": [337, 474, 514, 550, 551],
+    "difficulty": 0,
+    "tags": ["name"]
+  },
+  {
+    "name": "Items with \"Soul\" in their name",
+    "items": [335, 490, 612, 640, 684, 686],
+    "difficulty": 0,
+    "tags": ["name"]
+  },
+  {
+    "name": "Items that have no item tags",
+    "items": [298, 474, 486, 674, 688],
+    "difficulty": 3,
     "tags": []
   }
 ]
