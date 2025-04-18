@@ -105,7 +105,8 @@ export class Constants {
             losses: 0,
         },
         lastIsaaconnect: 0,
-        version: Constants.VERSION
+        version: Constants.VERSION,
+        modal: false
     };
 
     static get THEMES(): string[] {

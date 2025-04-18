@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await Loader.loadComplete();
 
     if (tutorial) {
-        let tutorialView = new Tutorial();
+        let tutorialView = new Tutorial(gameController);
     }
 
 });

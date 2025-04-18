@@ -1,16 +1,22 @@
 import { Constants } from "@/Shared/Helpers/Constants";
 import { Utils } from "@/Shared/Helpers/Utils";
+import {MainGameController} from "@/MainGame/Controllers/MainGameController";
 
 export class ChangelogsView {
     private _bigmodal: HTMLElement;
     private _bigmodalbackground: HTMLElement;
-    private _currentVersion: string;
+    private readonly _currentVersion: string;
+    private _currentController: MainGameController | undefined;
 
     constructor(version: string = Constants.VERSION) {
         this._bigmodal = document.getElementById('bigmodal-wrapper') as HTMLElement;
         this._bigmodal.classList.add('left-1/2', 'transform', '-translate-x-1/2');
         this._bigmodalbackground = document.getElementById('bigmodal-background') as HTMLElement;
         this._currentVersion = version;
+    }
+
+    public setCurrentController(controller: MainGameController): void {
+        this._currentController = controller;
     }
 
     public showNewChangelogs(): void {
@@ -76,5 +82,9 @@ export class ChangelogsView {
         this._bigmodalbackground.classList.add('hidden');
         this._bigmodal.classList.add('hidden');
         this._bigmodal.innerHTML = '';
+        if (this._currentController)
+        {
+            this._currentController.resetTimer();
+        }
     }
 }

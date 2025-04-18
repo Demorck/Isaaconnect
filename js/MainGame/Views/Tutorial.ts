@@ -1,5 +1,7 @@
 import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
 import { Utils } from "@/Shared/Helpers/Utils";
+import {MainGame} from "@/MainGame/Models/MainGame";
+import {MainGameController} from "@/MainGame/Controllers/MainGameController";
 
 class Tutorial {
     private tutorialBackground: HTMLElement;
@@ -11,8 +13,10 @@ class Tutorial {
     private tutorialsSteps!: Array<() => void>;
     private mobile!: boolean;
     private skipTutorial: boolean;
+    private game_: MainGameController;
 
-    constructor() {
+    constructor(game_: MainGameController) {
+        this.game_ = game_;
         this.skipTutorial = false;
         this.tutorialBackground = document.getElementById('bigmodal-background')!;
         this.game = document.getElementById('cards-game')!;
@@ -167,6 +171,8 @@ class Tutorial {
         this.tutorialBackground.classList.add('hidden');
         this.tutorial.classList.add('hidden');
         this.skipTutorial = true;
+        StorageManager.modal = false;
+        this.game_.resetTimer();
 
         let elements = document.querySelectorAll('.-z-10');
         elements.forEach(element => {

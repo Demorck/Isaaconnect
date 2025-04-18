@@ -396,4 +396,14 @@ export class StorageManager {
     static set version(version: string) {
         this.setItem('version', version);
     }
+
+
+    static set modal(modal: boolean) {
+        this.setItem('modal', modal);
+    }
+
+    static get modal(): boolean {
+        return this.getItem('modal') ?? Constants.DEFAULT_DATA.modal;
+    }
+
 }

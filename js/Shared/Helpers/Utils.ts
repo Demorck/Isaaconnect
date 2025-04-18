@@ -129,15 +129,13 @@ export class Utils {
             StorageManager.game = Constants.DEFAULT_DATA.game;
     }
 
-    static checkIfNewVersion() {
+    static checkIfNewVersion() : boolean {
         let currentVersion = Constants.VERSION;
         let versionUser = StorageManager.version;
         
-        if (versionUser !== currentVersion) {
-            StorageManager.version = currentVersion;        
-            let changelog = new ChangelogsView();
-            changelog.showNewChangelogs();
-        }
+        return versionUser !== currentVersion;
+
+
     }
 
     static sleep(ms: number): Promise<void> {

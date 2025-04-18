@@ -54,6 +54,11 @@ export class MainGameController {
         this.modifyWithOptions();
     }
 
+    public resetTimer(): void
+    {
+        this.game.resetTimer();
+    }
+
     /**
      * Shuffles the cards.
      * @public
@@ -81,6 +86,11 @@ export class MainGameController {
         });
         
         this.shuffleCard();
+    }
+
+    public toggleTimer(): void
+    {
+        this.game.initializeTimer();
     }
 
     /**

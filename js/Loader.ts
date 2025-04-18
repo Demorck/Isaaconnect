@@ -83,8 +83,5 @@ export class Loader {
 
         setVisible('.page', true);
         setVisible('.loader', false);
-
-        
-        Utils.checkIfNewVersion()
     }
 }

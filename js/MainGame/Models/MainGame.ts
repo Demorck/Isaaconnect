@@ -36,9 +36,8 @@ export class MainGame extends Observable {
     /**
      * Creates an instance of MainGame.
      * @param {boolean} [seeded=true] - Whether the game uses seeded randomization.
-     * @param {boolean} [blind=false] - Whether the game is in blind mode.
      */
-    constructor(seeded = true) {
+    constructor(seeded: boolean = true) {
         super();
         this.seeded = seeded;
         Constants.OPTIONS = this.generateOptions();
@@ -106,11 +105,16 @@ export class MainGame extends Observable {
         }, 1);
     }
 
+    public resetTimer(): void
+    {
+        this.startTime = Date.now();
+    }
+
     /**
      * Notifies observers that setup is finished.
      * @memberof MainGame
      */
-    public setupFinished() {        
+    public setupFinished() {
         this.initializeTimer();
         this.notifyObservers({ health: this.health });
     }
