@@ -9,11 +9,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/themes.css">
-    <?php if ($_SERVER['REQUEST_URI'] === '/testads') : ?>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1253194165826998"
-        crossorigin="anonymous"></script>
-        <title>dadaz</title>
-    <?php else : ?>
+    <?php 
+        $r = random_int(0, 1);
+        if ($r == 0) : ?>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1253194165826998"
+            crossorigin="anonymous"></script>
+        <?php endif; ?>
         <title>Isaaconnect</title>
-    <?php endif; ?>
 </head>

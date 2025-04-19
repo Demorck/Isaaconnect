@@ -1,7 +1,6 @@
 import { Loader } from "@/Loader";
 import { Constants } from "@/Shared/Helpers/Constants";
 import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
-import {BinaryString} from "@/Shared/Helpers/BinaryString";
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
@@ -121,8 +120,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (convert) {
         convert.addEventListener('click', () => {
-            let binary = new BinaryString(StorageManager.randomSettings);
-            console.log(binary.encode())
         })
     }
 

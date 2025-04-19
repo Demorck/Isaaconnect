@@ -9,7 +9,7 @@ export class Constants {
     static options: GameOptions;
     
     static VERSION: string = '1.3.2';
-    static GROUPS_VERSION: string = '1.1.0';
+    static GROUPS_VERSION: string = '1.2.0';
 
     static ITEMS_PATH: string = '/json/items.json' + '?v=' + Constants.GROUPS_VERSION;
     static GROUPS_PATH: string = '/json/groups.json' + '?v=' + Constants.GROUPS_VERSION;

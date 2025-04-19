@@ -30,6 +30,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    fallback: {
+      "buffer": require.resolve("buffer")
+    },
     alias: {
       '@': path.resolve(__dirname, 'js/')
     }

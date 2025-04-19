@@ -49,7 +49,7 @@
             </section>
         </section>
 
-        <?php if ($_SERVER['REQUEST_URI'] === '/testads') : ?>
+        <?php global $r; if ($r == 0) : ?>
         <div class="flex w-full justify-center items-center ">
                 <style>
                     .below_game { width: 320px; height: 100px; }
