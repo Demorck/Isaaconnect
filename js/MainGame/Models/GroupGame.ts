@@ -71,6 +71,10 @@ export class GroupGame extends Group implements Iterable<Item> {
         return itemsPicked;
     }
 
+    public pushSelectedItems(items: Item): void {
+        this.selectedItems.push(items);
+    }
+
     /**
      * Gets a random item that is not banned.
      * @param {Item[]} bannedItem - The items to be excluded.

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         enabled_blind: StorageManager.revealSubmittedBlind,
         numer_blind: StorageManager.numberOfBlindItems,
         count_names: StorageManager.numberOfGroups,
-        count_ids: StorageManager.numberOfItems * StorageManager.numberOfGroups,
+        count_ids: StorageManager.numberOfItems,
         names: [],
         ids: []
     }

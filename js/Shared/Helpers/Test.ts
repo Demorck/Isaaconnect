@@ -5,7 +5,7 @@ export type Options = {
     count_names: number; // 8 bits
     count_ids: number; // 8 bits
     names: string[]; // length = count_names
-    ids: number[]; // length = count_ids * count_names, 16 bits each because there are more than 256 items.
+    ids: number[]; // length = count_ids , 16 bits each because there are more than 256 items.
 };
 
 function encodeOptions(opt: Options): Uint8Array {
@@ -69,7 +69,7 @@ function decodeOptions(data: Uint8Array): Options {
     }
 
     const ids: number[] = [];
-    for (let j = 0; j < count_ids; j++) {
+    for (let j = 0; j < count_ids * count_names; j++) {
         const high = data[i++];
         const low = data[i++];
         ids.push((high << 8) | low);

@@ -3,7 +3,7 @@
 
         <?php include 'include/template/title.php'; ?>
 
-        <div class="flex flex-row justify-center">
+        <div class="flex flex-row justify-center"  data-custom="true">
             <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 h-min aspect-square" id="cards-game">
                 <div id="cards-win" class="flex flex-col gap-2 justify-evenly hidden w-full">
                 </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <!--  -->
-        <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4">
+        <section class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly gap-4 mt-4"  data-custom="true">
             <div class="justify-center flex flex-1 items-center md:!hidden timer" data-id="wrapper-timer">
                 <p class="text-white gap-4 flex  ">Timer: <span data-id="timer"></span></p>
             </div>
@@ -78,7 +78,7 @@
         <?php endif; ?>
     </div>
 
-    <div class="shuffle-mobile flex-col gap-4 items-start md:flex">
+    <div class="shuffle-mobile flex-col gap-4 items-start md:flex" data-custom="true">
         <button type="button" data-id="shuffle" class="shadow-theme themed text-white font-bold p-3 rounded-full">
             <span class="material-symbols-outlined align-bottom">
                 shuffle
