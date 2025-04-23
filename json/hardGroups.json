@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Items whose ID is 3 identical numbers",
+        "items": [111, 222, 333, 444, 555],
+        "difficulty": 3,
+        "tags": []
+    },
+    {
+        "name": "Items that have no item tags",
+        "items": [298, 474, 486, 674, 688],
+        "difficulty": 3,
+        "tags": []
+    }
+]
