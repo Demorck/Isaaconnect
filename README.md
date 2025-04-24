@@ -13,14 +13,13 @@ git clone https://github.com/Demorck/Isaaconnect.git
 ```
 
 ### Build
-The project is made in Typescript. Refer to [this link](https://www.typescriptlang.org/download/)  to understand how to install it.
+The project uses node and typescript. Be aware that i push directly dev changes into the main branch.
 When you are ready:
 ```bash
-tsc
+npm install
 ```
-or if you want to build when a file is saved:
 ```bash
-tsc --watch
+npm run build
 ```
 
 ## Roadmap
