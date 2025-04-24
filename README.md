@@ -25,23 +25,15 @@ tsc --watch
 
 ## Roadmap
 
-#### TODO
-* [ ] Modify all files to properly use Constants.OPTIONS
-* [x] UI & UX improvement to finish the customizable random game
-
 #### Present plan
-* [ ]  Documentation
-* [ ]  Refactor CSS into SASS
-* [ ]  Add/Remove/Change some groups
-* [x]  Make a menu (to find the random game)
+* [ ]  Custom game have a permalink and we can share them to load the game
+* [ ]  Editor mode
 
 
 #### Future plan
 * [x]  Fully customizable random game
 * [ ]  Unit tests
-* [ ]  Seeded game to share them
 * [ ]  Localization
-* [ ]  Editor mode
 * [ ]  Backend
     * [ ]  User account (to have stats, retrieve the editor mode, etc)
 
