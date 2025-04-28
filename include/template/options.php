@@ -129,7 +129,6 @@
 
                 <div class="flex flex-row-reverse gap-4 items-center justify-evenly">
                     <button class="w-1/4 tgl default py-1 rounded-3xl" id="reset" type="button">Reset to default</button>
-                    <button class="w-1/4 tgl default py-1 rounded-3xl" id="convert" type="button">Convert</button>
                     <button class="w-1/4 tgl default py-1 rounded-3xl" id="play" type="button">Play !</button>
                 </div>
             </div>
