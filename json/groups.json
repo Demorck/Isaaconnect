@@ -889,12 +889,6 @@
     "tags": ["charge"]
   },
   {
-    "name": "Items whose ID is 3 identical numbers",
-    "items": [111, 222, 333, 444, 555],
-    "difficulty": 3,
-    "tags": []
-  },
-  {
     "name": "Items whose names start with a number",
     "items": [11, 116, 191, 245, 359, 526, 554, 559, 647],
     "difficulty": 1,
@@ -1469,11 +1463,5 @@
     "items": [335, 490, 612, 640, 684, 686],
     "difficulty": 0,
     "tags": ["name"]
-  },
-  {
-    "name": "Items that have no item tags",
-    "items": [298, 474, 486, 674, 688],
-    "difficulty": 3,
-    "tags": []
   }
 ]

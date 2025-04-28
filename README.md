@@ -13,35 +13,26 @@ git clone https://github.com/Demorck/Isaaconnect.git
 ```
 
 ### Build
-The project is made in Typescript. Refer to [this link](https://www.typescriptlang.org/download/)  to understand how to install it.
+The project uses node and typescript. Be aware that i push directly dev changes into the main branch.
 When you are ready:
 ```bash
-tsc
+npm install
 ```
-or if you want to build when a file is saved:
 ```bash
-tsc --watch
+npm run build
 ```
 
 ## Roadmap
 
-#### TODO
-* [ ] Modify all files to properly use Constants.OPTIONS
-* [x] UI & UX improvement to finish the customizable random game
-
 #### Present plan
-* [ ]  Documentation
-* [ ]  Refactor CSS into SASS
-* [ ]  Add/Remove/Change some groups
-* [x]  Make a menu (to find the random game)
+* [ ]  Custom game have a permalink and we can share them to load the game
+* [ ]  Editor mode
 
 
 #### Future plan
 * [x]  Fully customizable random game
 * [ ]  Unit tests
-* [ ]  Seeded game to share them
 * [ ]  Localization
-* [ ]  Editor mode
 * [ ]  Backend
     * [ ]  User account (to have stats, retrieve the editor mode, etc)
 
