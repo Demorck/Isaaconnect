@@ -8,6 +8,7 @@ import { GameUtils } from "@/MainGame/Models/GameUtils";
 import { MainGameMechanics } from "@/MainGame/Models/MainGameMechanics";
 import { Item } from "@/Shared/Models/Item";
 import { GameOptions } from "@/MainGame/Models/GameOptions";
+import {encodeOptions, Options, toBase64url} from "@/Shared/Helpers/Permalink";
 
 /**
  * Represents the main game logic and state.
@@ -29,6 +30,7 @@ export class MainGame extends Observable {
 
     // TODO: Modifier le seeded pour que ça prenne depuis la constante qu'ici
     private seeded: boolean;
+    private permalink: string;
 
     private mechanics: MainGameMechanics;
     private utils: GameUtils;
@@ -61,6 +63,9 @@ export class MainGame extends Observable {
         if (groups.length == 0) {
             this.setupGame();
         }
+
+        this.permalink = this.generate_permalink();
+        console.log(this.permalink);
     }
 
     /**
@@ -224,6 +229,7 @@ export class MainGame extends Observable {
                 attempts: this.attempts,
                 groupFound: this.groupFound,
                 timer: this.timer,
+                permalink: this.permalink
             };
         } else {
             let solved = this.groupFound;
@@ -238,6 +244,7 @@ export class MainGame extends Observable {
                 attempts: this.attempts,
                 groupFound: this.groupFound,
                 timer: this.timer,
+                permalink: this.permalink
             };
         }
     }
@@ -334,6 +341,7 @@ export class MainGame extends Observable {
             SEEDED: this.seeded,
             HEALTH: this.seeded ? Constants.MAX_HEALTH : StorageManager.randomHealth,
             NUMBER_OF_BLIND_ITEMS: this.seeded ? 0 : StorageManager.numberOfBlindItems,
+            REVEAL_BLIND_SUBMITTED: this.seeded ? false : StorageManager.revealSubmittedBlind,
             TAGS_BANNED: this.seeded ? true : StorageManager.bannedTags,
             CUSTOM_DIFFICULTY: this.seeded ? Constants.DEFAULT_DIFFICULTY : StorageManager.customDifficulty,
             CHECK_GRID: this.seeded ? true : StorageManager.checkGrid,
@@ -430,5 +438,26 @@ export class MainGame extends Observable {
         this.startTime = Date.now() - this.timer;
 
         this.setupGame();
+    }
+
+    private generate_permalink(): string {
+        let options : Options = {
+            health: Constants.OPTIONS.HEALTH,
+            enabled_blind: Constants.OPTIONS.REVEAL_BLIND_SUBMITTED,
+            numer_blind: Constants.OPTIONS.NUMBER_OF_BLIND_ITEMS,
+            count_names: Constants.OPTIONS.NUMBER_OF_GROUPS,
+            count_ids: Constants.OPTIONS.NUMBER_OF_ITEMS,
+            names: [],
+            ids: []
+        }
+
+        this.groups.forEach((group) => {
+            let name = group.getName();
+            let items = group.getSelectedItemsIds();
+            options.names.push(name);
+            options.ids.push(...items);
+        });
+
+        return toBase64url(encodeOptions(options));
     }
 }

@@ -7,25 +7,31 @@ import Tutorial from "@/MainGame/Views/Tutorial";
 import {ChangelogsView} from "@/Shared/Views/ChangelogsView";
 import {Utils} from "@/Shared/Helpers/Utils";
 import {Constants} from "@/Shared/Helpers/Constants";
-import {decodeOptions, fromBase64url} from "@/Shared/Helpers/Test";
+import {decodeOptions, fromBase64url} from "@/Shared/Helpers/Permalink";
 import {GroupGame} from "@/MainGame/Models/GroupGame";
 
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
 
-    let elements = document.querySelectorAll('[data-custom="true"]');
-    elements.forEach((el) => el.classList.add('hidden'));
+    let elements = document.querySelectorAll('[data-custom="true"]') as NodeListOf<HTMLElement>;
+    elements.forEach((el) => {
+        el.classList.add('hidden');
+    });
+
+    let element_custom = document.querySelectorAll('[data-custom="false"]');
 
 
     await Loader.loadComplete();
 
     let play_button = document.querySelector('#play')!;
     let textarea = document.querySelector('#textarea')! as HTMLTextAreaElement;
+    let errors = document.getElementsByClassName('errors')[0] as HTMLUListElement;
 
     play_button.addEventListener('click', (e) => {
         let value = textarea.value;
         if (!value) {
-            alert("No value");
+            let el = get_error_li("Please enter a value");
+            errors.appendChild(el);
             return;
         }
 
@@ -39,19 +45,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 let group_found = Constants.GROUPS.find(group => group.getName() == name);
                 if (!group_found) {
-                    alert(`Group ${name} not found`);
+                    let el = get_error_li(`Group ${name} not found`);
+                    errors.appendChild(el);
                     return;
                 }
 
                 let group = new GroupGame(name, group_found.getItems(), group_found.getDifficulty(), group_found.getTags());
-
+                group.setIndex(i);
 
                 for (let j = 0; j < options.count_ids; j++) {
-                    console.log(`ID: ${options.ids[j + i * options.count_ids]}, ${j + i * options.count_ids}`);
                     let id = options.ids[j + i * options.count_ids];
                     let item_found = Constants.ITEMS.find(group => group.getId() == id);
                     if (!item_found) {
-                        alert(`Item ${id} not found`);
+                        let el = get_error_li(`Item ${id} not found`);
+                        errors.appendChild(el);
                         return;
                     }
 
@@ -60,11 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 groups_game.push(group);
             }
-
-
-            
-            
-            
             
             let mainGame = new MainGame(false, groups_game);
             Constants.OPTIONS.HEALTH = options.health;
@@ -75,8 +77,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
             elements.forEach((el) => el.classList.remove('hidden'));
+            element_custom.forEach((element) => element.classList.add('hidden'));
             
-        } catch (error) { alert(error); }
+        } catch (error) {
+            let el = get_error_li("Failed to parse the string, please past it in the #bug-section in discord if you think it's anormal");
+            errors.appendChild(el);
+        }
     })
 
 });
+
+
+function get_error_li(message: string): HTMLLIElement
+{
+    let el = document.createElement("li");
+    el.textContent = message;
+    return el;
+}

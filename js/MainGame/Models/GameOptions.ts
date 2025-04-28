@@ -33,6 +33,11 @@ export interface GameOptions {
     NUMBER_OF_BLIND_ITEMS: number;
 
     /**
+     * If the game reveal blind
+     */
+    REVEAL_BLIND_SUBMITTED: boolean;
+
+    /**
      * If the game should have banned tags
      */
     TAGS_BANNED: boolean;

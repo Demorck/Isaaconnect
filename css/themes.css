@@ -5,7 +5,7 @@
 .modal-content {
   background-color: #fff;
   border-color: #404040;
-  box-shadow: 0 0 50px 35px white;
+  box-shadow: 0 0 50px 35px rgb(255, 255, 255);
 }
 
 .modal-content button {
@@ -93,7 +93,7 @@
   border: 2px solid #71472D;
 }
 .basement-theme button.default:hover, .basement-theme .button--default:hover {
-  background-color: #aa6b43;
+  background-color: rgb(169.7432432432, 106.7567567568, 67.2567567568);
   cursor: pointer;
 }
 .basement-theme .button--submit {
@@ -114,6 +114,12 @@
 .basement-theme .checkbox-wrapper {
   border: 3px solid #C08560;
   background: #42291A;
+}
+.basement-theme textarea {
+  border: 3px solid #42291A;
+}
+.basement-theme textarea:focus {
+  border: 3px solid #71472D;
 }
 .basement-theme input[type=range] {
   background: #C08560;
@@ -173,7 +179,7 @@
   background-color: #E5DDEB;
 }
 .mausoleum-theme .card-module--selected {
-  background-color: #9b7db2;
+  background-color: rgb(155.3333333333, 124.6666666667, 178.3333333333);
 }
 .mausoleum-theme #cards-game, .mausoleum-theme #options {
   background-color: #fff;
@@ -183,7 +189,7 @@
   border: 2px solid #5F3B5D;
 }
 .mausoleum-theme button.default:hover, .mausoleum-theme .button--default:hover {
-  background-color: #815199;
+  background-color: rgb(128.96, 81.12, 152.88);
   cursor: pointer;
 }
 .mausoleum-theme .button--submit {
@@ -204,6 +210,12 @@
 .mausoleum-theme .checkbox-wrapper {
   border: 3px solid #9a6cb1;
   background: #2F1D2E;
+}
+.mausoleum-theme textarea {
+  border: 3px solid #2F1D2E;
+}
+.mausoleum-theme textarea:focus {
+  border: 3px solid #5F3B5D;
 }
 .mausoleum-theme input[type=range] {
   background: #9a6cb1;
@@ -273,7 +285,7 @@
   border: 2px solid #385094;
 }
 .flooded-caves-theme button.default:hover, .flooded-caves-theme .button--default:hover {
-  background-color: #4396f2;
+  background-color: rgb(67.4, 150.48, 241.6);
   cursor: pointer;
 }
 .flooded-caves-theme .button--submit {
@@ -294,6 +306,12 @@
 .flooded-caves-theme .checkbox-wrapper {
   border: 3px solid #73B1F5;
   background: #1D2A4F;
+}
+.flooded-caves-theme textarea {
+  border: 3px solid #1D2A4F;
+}
+.flooded-caves-theme textarea:focus {
+  border: 3px solid #385094;
 }
 .flooded-caves-theme input[type=range] {
   background: #73B1F5;
@@ -363,7 +381,7 @@
   border: 2px solid #465117;
 }
 .green-theme button.default:hover, .green-theme .button--default:hover {
-  background-color: #81a609;
+  background-color: rgb(128.5398230088, 165.7079646018, 9.2920353982);
   cursor: pointer;
 }
 .green-theme .button--submit {
@@ -384,6 +402,12 @@
 .green-theme .checkbox-wrapper {
   border: 3px solid #A6D60C;
   background: #242A0C;
+}
+.green-theme textarea {
+  border: 3px solid #242A0C;
+}
+.green-theme textarea:focus {
+  border: 3px solid #465117;
 }
 .green-theme input[type=range] {
   background: #A6D60C;
@@ -453,7 +477,7 @@
   border: 2px solid #5B3D33;
 }
 .catacombs-theme button.default:hover, .catacombs-theme .button--default:hover {
-  background-color: #a0724d;
+  background-color: rgb(160.1351351351, 114.2297297297, 76.8648648649);
   cursor: pointer;
 }
 .catacombs-theme .button--submit {
@@ -474,6 +498,12 @@
 .catacombs-theme .checkbox-wrapper {
   border: 3px solid #B78C69;
   background: #2D1E19;
+}
+.catacombs-theme textarea {
+  border: 3px solid #2D1E19;
+}
+.catacombs-theme textarea:focus {
+  border: 3px solid #5B3D33;
 }
 .catacombs-theme input[type=range] {
   background: #B78C69;
@@ -543,7 +573,7 @@
   border: 2px solid #000000;
 }
 .ph-theme button.default:hover, .ph-theme .button--default:hover {
-  background-color: #ed5b00;
+  background-color: rgb(237, 90.7432432432, 0);
   cursor: pointer;
 }
 .ph-theme .button--submit {
@@ -564,6 +594,12 @@
 .ph-theme .checkbox-wrapper {
   border: 3px solid #FF7621;
   background: #DED4C8;
+}
+.ph-theme textarea {
+  border: 3px solid #DED4C8;
+}
+.ph-theme textarea:focus {
+  border: 3px solid #000000;
 }
 .ph-theme input[type=range] {
   background: #FF7621;
@@ -633,7 +669,7 @@
   border: 2px solid #595959;
 }
 .depths-theme button.default:hover, .depths-theme .button--default:hover {
-  background-color: #969191;
+  background-color: rgb(150.1219512195, 144.8780487805, 144.8780487805);
   cursor: pointer;
 }
 .depths-theme .button--submit {
@@ -654,6 +690,12 @@
 .depths-theme .checkbox-wrapper {
   border: 3px solid #AFABAB;
   background: #262626;
+}
+.depths-theme textarea {
+  border: 3px solid #262626;
+}
+.depths-theme textarea:focus {
+  border: 3px solid #595959;
 }
 .depths-theme input[type=range] {
   background: #AFABAB;
@@ -713,7 +755,7 @@
   background-color: #8489B2;
 }
 .dank-depths-theme .card-module--selected {
-  background-color: #3c4061;
+  background-color: rgb(60.445, 64.37, 96.555);
 }
 .dank-depths-theme #cards-game, .dank-depths-theme #options {
   background-color: #959ABD;
@@ -723,14 +765,14 @@
   border: 2px solid #363640;
 }
 .dank-depths-theme button.default:hover, .dank-depths-theme .button--default:hover {
-  background-color: #959feb;
+  background-color: rgb(149.16, 159.24, 234.84);
   cursor: pointer;
 }
 .dank-depths-theme .button--submit {
   background-color: #959ABD;
 }
 .dank-depths-theme .button--submit:hover {
-  background-color: #474c72;
+  background-color: rgb(70.988372093, 76.3662790698, 114.011627907);
 }
 .dank-depths-theme .tooltip {
   background-color: #363640;
@@ -744,6 +786,12 @@
 .dank-depths-theme .checkbox-wrapper {
   border: 3px solid #c0c6f3;
   background: #17171B;
+}
+.dank-depths-theme textarea {
+  border: 3px solid #17171B;
+}
+.dank-depths-theme textarea:focus {
+  border: 3px solid #363640;
 }
 .dank-depths-theme input[type=range] {
   background: #c0c6f3;
@@ -803,7 +851,7 @@
   background-color: #FCE0E0;
 }
 .gehenna-theme .card-module--selected {
-  background-color: #ef5555;
+  background-color: rgb(238.5, 84.5, 84.5);
 }
 .gehenna-theme #cards-game, .gehenna-theme #options {
   background-color: #fff;
@@ -813,14 +861,14 @@
   border: 2px solid #873535;
 }
 .gehenna-theme button.default:hover, .gehenna-theme .button--default:hover {
-  background-color: #c71212;
+  background-color: rgb(199.0661157025, 17.9338842975, 17.9338842975);
   cursor: pointer;
 }
 .gehenna-theme .button--submit {
   background-color: #EB2121;
 }
 .gehenna-theme .button--submit:hover {
-  background-color: #690a0a;
+  background-color: rgb(105.4958677686, 9.5041322314, 9.5041322314);
 }
 .gehenna-theme .tooltip {
   background-color: #873535;
@@ -834,6 +882,12 @@
 .gehenna-theme .checkbox-wrapper {
   border: 3px solid #EB2121;
   background: #280E0E;
+}
+.gehenna-theme textarea {
+  border: 3px solid #280E0E;
+}
+.gehenna-theme textarea:focus {
+  border: 3px solid #873535;
 }
 .gehenna-theme input[type=range] {
   background: #EB2121;
@@ -903,7 +957,7 @@
   border: 2px solid #A40000;
 }
 .womb-theme button.default:hover, .womb-theme .button--default:hover {
-  background-color: #6a0f0f;
+  background-color: rgb(106.226744186, 14.773255814, 14.773255814);
   cursor: pointer;
 }
 .womb-theme .button--submit {
@@ -924,6 +978,12 @@
 .womb-theme .checkbox-wrapper {
   border: 3px solid #971515;
   background: #540000;
+}
+.womb-theme textarea {
+  border: 3px solid #540000;
+}
+.womb-theme textarea:focus {
+  border: 3px solid #A40000;
 }
 .womb-theme input[type=range] {
   background: #971515;
@@ -983,7 +1043,7 @@
   background-color: #E8DFD8;
 }
 .scarred-womb-theme .card-module--selected {
-  background-color: #af9078;
+  background-color: rgb(175.2419354839, 144.0322580645, 119.7580645161);
 }
 .scarred-womb-theme #cards-game, .scarred-womb-theme #options {
   background-color: #fff;
@@ -1014,6 +1074,12 @@
 .scarred-womb-theme .checkbox-wrapper {
   border: 3px solid #D20000;
   background: #A37F61;
+}
+.scarred-womb-theme textarea {
+  border: 3px solid #A37F61;
+}
+.scarred-womb-theme textarea:focus {
+  border: 3px solid #873535;
 }
 .scarred-womb-theme input[type=range] {
   background: #D20000;
@@ -1073,7 +1139,7 @@
   background-color: #3B5175;
 }
 .dave-theme .card-module--selected {
-  background-color: #080b0f;
+  background-color: rgb(7.7102272727, 10.5852272727, 15.2897727273);
 }
 .dave-theme #cards-game, .dave-theme #options {
   background-color: #2A3A54;
@@ -1083,14 +1149,14 @@
   border: 2px solid #2A3A54;
 }
 .dave-theme button.default:hover, .dave-theme .button--default:hover {
-  background-color: #cc9a00;
+  background-color: rgb(204, 153.6, 0);
   cursor: pointer;
 }
 .dave-theme .button--submit {
   background-color: #2A3A54;
 }
 .dave-theme .button--submit:hover {
-  background-color: black;
+  background-color: hsl(217.1428571429, 33.3333333333%, -5.2941176471%);
 }
 .dave-theme .tooltip {
   background-color: #2A3A54;
@@ -1104,6 +1170,12 @@
 .dave-theme .checkbox-wrapper {
   border: 3px solid #FFC000;
   background: #5371A3;
+}
+.dave-theme textarea {
+  border: 3px solid #5371A3;
+}
+.dave-theme textarea:focus {
+  border: 3px solid #2A3A54;
 }
 .dave-theme input[type=range] {
   background: #FFC000;
@@ -1163,7 +1235,7 @@
   background-color: #70835F;
 }
 .corpse-theme .card-module--selected {
-  background-color: #242a1f;
+  background-color: rgb(36.1769911504, 42.314159292, 30.685840708);
 }
 .corpse-theme #cards-game, .corpse-theme #options {
   background-color: #5F6F51;
@@ -1173,14 +1245,14 @@
   border: 2px solid #556F51;
 }
 .corpse-theme button.default:hover, .corpse-theme .button--default:hover {
-  background-color: #80a163;
+  background-color: rgb(128.1155778894, 160.7788944724, 99.2211055276);
   cursor: pointer;
 }
 .corpse-theme .button--submit {
   background-color: #556F51;
 }
 .corpse-theme .button--submit:hover {
-  background-color: #111710;
+  background-color: rgb(17.265625, 22.546875, 16.453125);
 }
 .corpse-theme .tooltip {
   background-color: #556F51;
@@ -1194,6 +1266,12 @@
 .corpse-theme .checkbox-wrapper {
   border: 3px solid #9ab483;
   background: #323D2F;
+}
+.corpse-theme textarea {
+  border: 3px solid #323D2F;
+}
+.corpse-theme textarea:focus {
+  border: 3px solid #556F51;
 }
 .corpse-theme input[type=range] {
   background: #9ab483;
@@ -1253,7 +1331,7 @@
   background-color: #8CB2CA;
 }
 .cathedral-theme .card-module--selected {
-  background-color: #3c6681;
+  background-color: rgb(59.625, 102.375, 129.375);
 }
 .cathedral-theme #cards-game, .cathedral-theme #options {
   background-color: #A9C5D7;
@@ -1263,14 +1341,14 @@
   border: 2px solid #4A7FA0;
 }
 .cathedral-theme button.default:hover, .cathedral-theme .button--default:hover {
-  background-color: #58788d;
+  background-color: rgb(87.6173913043, 120.4739130435, 141.3826086957);
   cursor: pointer;
 }
 .cathedral-theme .button--submit {
   background-color: #FF8C2D;
 }
 .cathedral-theme .button--submit:hover {
-  background-color: #934300;
+  background-color: rgb(147, 66.5, 0);
 }
 .cathedral-theme .tooltip {
   background-color: #4A7FA0;
@@ -1284,6 +1362,12 @@
 .cathedral-theme .checkbox-wrapper {
   border: 3px solid #7192a7;
   background: #20475A;
+}
+.cathedral-theme textarea {
+  border: 3px solid #20475A;
+}
+.cathedral-theme textarea:focus {
+  border: 3px solid #4A7FA0;
 }
 .cathedral-theme input[type=range] {
   background: #7192a7;
@@ -1343,7 +1427,7 @@
   background-color: #4B4B4B;
 }
 .sheol-theme .card-module--selected {
-  background-color: black;
+  background-color: hsl(0, 0%, -0.5882352941%);
 }
 .sheol-theme #cards-game, .sheol-theme #options {
   background-color: #2E2E2E;
@@ -1353,14 +1437,14 @@
   border: 2px solid #262626;
 }
 .sheol-theme button.default:hover, .sheol-theme .button--default:hover {
-  background-color: #272727;
+  background-color: rgb(38.5, 38.5, 38.5);
   cursor: pointer;
 }
 .sheol-theme .button--submit {
   background-color: #262626;
 }
 .sheol-theme .button--submit:hover {
-  background-color: black;
+  background-color: hsl(0, 0%, -15.0980392157%);
 }
 .sheol-theme .tooltip {
   background-color: #262626;
@@ -1374,6 +1458,12 @@
 .sheol-theme .checkbox-wrapper {
   border: 3px solid #404040;
   background: #0D0D0D;
+}
+.sheol-theme textarea {
+  border: 3px solid #0D0D0D;
+}
+.sheol-theme textarea:focus {
+  border: 3px solid #262626;
 }
 .sheol-theme input[type=range] {
   background: #404040;
@@ -1433,7 +1523,7 @@
   background-color: #FFF0C1;
 }
 .chest-theme .card-module--selected {
-  background-color: #ffcb28;
+  background-color: rgb(255, 202.9838709677, 40);
 }
 .chest-theme #cards-game, .chest-theme #options {
   background-color: #AC6414;
@@ -1443,14 +1533,14 @@
   border: 2px solid #805738;
 }
 .chest-theme button.default:hover, .chest-theme .button--default:hover {
-  background-color: #cc9a00;
+  background-color: rgb(204, 153.6, 0);
   cursor: pointer;
 }
 .chest-theme .button--submit {
   background-color: #FFC000;
 }
 .chest-theme .button--submit:hover {
-  background-color: #664d00;
+  background-color: rgb(102, 76.8, 0);
 }
 .chest-theme .tooltip {
   background-color: #805738;
@@ -1464,6 +1554,12 @@
 .chest-theme .checkbox-wrapper {
   border: 3px solid #FFC000;
   background: #3B2819;
+}
+.chest-theme textarea {
+  border: 3px solid #3B2819;
+}
+.chest-theme textarea:focus {
+  border: 3px solid #805738;
 }
 .chest-theme input[type=range] {
   background: #FFC000;
@@ -1523,7 +1619,7 @@
   background-color: #4B4B4B;
 }
 .dark-room-theme .card-module--selected {
-  background-color: black;
+  background-color: hsl(0, 0%, -0.5882352941%);
 }
 .dark-room-theme #cards-game, .dark-room-theme #options {
   background-color: #000000;
@@ -1533,14 +1629,14 @@
   border: 2px solid #402C5A;
 }
 .dark-room-theme button.default:hover, .dark-room-theme .button--default:hover {
-  background-color: #665273;
+  background-color: rgb(102.4717741935, 81.8185483871, 115.1814516129);
   cursor: pointer;
 }
 .dark-room-theme .button--submit {
   background-color: #665272;
 }
 .dark-room-theme .button--submit:hover {
-  background-color: #161219;
+  background-color: rgb(22.3775510204, 17.9897959184, 25.0102040816);
 }
 .dark-room-theme .tooltip {
   background-color: #402C5A;
@@ -1554,6 +1650,12 @@
 .dark-room-theme .checkbox-wrapper {
   border: 3px solid #816791;
   background: #261036;
+}
+.dark-room-theme textarea {
+  border: 3px solid #261036;
+}
+.dark-room-theme textarea:focus {
+  border: 3px solid #402C5A;
 }
 .dark-room-theme input[type=range] {
   background: #816791;
@@ -1602,6 +1704,9 @@
   color: #000;
 }
 .ph-theme .group-list {
+  color: #000;
+}
+.ph-theme .timer {
   color: #000;
 }
 

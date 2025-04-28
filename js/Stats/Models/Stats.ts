@@ -87,6 +87,7 @@ export class Stats {
         return {
             NUMBER_OF_GROUPS: 4,
             NUMBER_OF_ITEMS: 4,
+            REVEAL_BLIND_SUBMITTED: false,
             SEEDED: false,
             HEALTH: 4,
             NUMBER_OF_BLIND_ITEMS: 0,

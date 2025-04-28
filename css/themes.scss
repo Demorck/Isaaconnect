@@ -455,6 +455,14 @@ $white-options: (
             background: map-get($map: $theme-map, $key: primary);
         }
 
+        textarea {
+            border: 3px solid map-get($map: $theme-map, $key: primary);
+        }
+
+        textarea:focus {
+            border: 3px solid map-get($map: $theme-map, $key: secondary);
+        }
+
         input[type=range] {
             background: map-get($map: $theme-map, $key: toggle);
 

@@ -111,6 +111,9 @@ export class MainGameView implements Observer {
             document.querySelector('[data-id="results-wrapper"]')!.innerHTML = this.convertAttemptToSquareMatrix(data.attempts);
             let copyButton = document.getElementById('copy')!;
             copyButton.addEventListener('click', () => this.copyResults(copyButton, data));
+
+            let copy_permalink = document.getElementById('permalink')!;
+            copy_permalink.addEventListener('click', () => this.copy_permalink(copy_permalink, data));
     
         });
     }
@@ -319,6 +322,7 @@ export class MainGameView implements Observer {
             textToCopy += `✅: ${groupFound}/${Constants.OPTIONS.NUMBER_OF_GROUPS} ❤️: ${health}/${Constants.OPTIONS.HEALTH}\n`;
 
             let attempts: GroupData[][] = data.attempts;
+
             attempts.forEach((attempt, _index) => {
                 attempt.forEach((group: {index: number}, index_group: number) => {
                     let index = group.index;
@@ -484,4 +488,22 @@ export class MainGameView implements Observer {
         });
     }
 
+    private copy_permalink(copyButton: HTMLElement, data: any) {
+        if (!data.permalink) {
+            this.showMessage("Can't copy the permalink")
+            return;
+        }
+
+        try {
+            let text_to_copy: string = data.permalink;
+
+            navigator.clipboard.writeText(text_to_copy);
+            copyButton.innerHTML = `<span class="material-symbols-outlined align-bottom">check</span>Permalink copied!`;
+            this.showMessage("Permalink copied to clipboard");
+        } catch (e)
+        {
+            this.showMessage("Error when copying permalink");
+            console.log(e);
+        }
+    }
 }
