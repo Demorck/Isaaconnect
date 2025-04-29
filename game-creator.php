@@ -56,22 +56,6 @@
             <div class="flex flex-row justify-center"  data-custom="true">
                 <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 h-min aspect-square" id="cards-game">
                     <div id="cards-module" class="w-full cards-module md:flex-wrap flex-col gap-4">
-                        <section class="flex flex-1 flex-row solved-group py-3 rounded-xl bg-red-400" data-group-index="1">
-                            <div class="flex flex-1 flex-col text-left">
-                                <div class="flex flex-row">
-                                    <h3 class="solved-group--title font-bold text-xs md:text-xl mb-2">GROUPE PLACEHOLDER</h3>
-                                    <div class="bg-blue-500" data-id="1" data-action="delete-group">
-                                        Delete Group
-                                    </div>
-                                </div>
-                                <div class="flex flex-row flex-nowrap">
-                                    <label class="card-module flex-col aspect-square" data-id="90"><input id="card-90" type="checkbox" class="visually-hidden"><img src="https://isaacguru.com/core/data/isaac/collectibles/collectibles_090_smallrock.webp" alt="The Small Rock"><span class="card-module--content text-xs sm:text-sm text-wrap">The Small Rock</span></label>
-                                    <label class="card-module flex-col aspect-square" data-id="90"><input id="card-90" type="checkbox" class="visually-hidden"><img src="https://isaacguru.com/core/data/isaac/collectibles/collectibles_090_smallrock.webp" alt="The Small Rock"><span class="card-module--content text-xs sm:text-sm text-wrap">The Small Rock</span></label>
-                                    <label class="card-module flex-col aspect-square" data-id="90"><input id="card-90" type="checkbox" class="visually-hidden"><img src="https://isaacguru.com/core/data/isaac/collectibles/collectibles_090_smallrock.webp" alt="The Small Rock"><span class="card-module--content text-xs sm:text-sm text-wrap">The Small Rock</span></label>
-                                    <label class="card-module flex-col aspect-square" data-id="90"><input id="card-90" type="checkbox" class="visually-hidden"><img src="https://isaacguru.com/core/data/isaac/collectibles/collectibles_090_smallrock.webp" alt="The Small Rock"><span class="card-module--content text-xs sm:text-sm text-wrap">The Small Rock</span></label>
-                                </div>
-                            </div>
-                        </section>
 
                     </div>
                     <div class="flex flex-row gap-4">
