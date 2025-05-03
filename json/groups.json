@@ -709,13 +709,13 @@
   },
   {
     "name": "Items with variable charge bars",
-    "items": [263, 489, 348, 286, 510],
+    "items": [263, 489, 348, 286],
     "difficulty": 1,
     "tags": ["charge"]
   },
   {
     "name": "Items with 12 charges",
-    "items": [441, 490, 585, 720, 611, 625],
+    "items": [441, 490, 585, 720, 611, 625, 510, 685],
     "difficulty": 1,
     "tags": ["charge"]
   },
@@ -1148,7 +1148,7 @@
   },
   {
     "name": "Items that indicate or open Secret Rooms",
-    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589, 483, 351, 158, 175, 593],
+    "items": [287, 246, 675, 76, 492, 445, 91, 333, 580, 589, 483, 351, 158, 175],
     "difficulty": 2,
     "tags": []
   },
