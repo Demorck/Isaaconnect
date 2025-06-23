@@ -611,6 +611,18 @@ select#quality option[value="Quality 3"] { background-image:url(/assets/gfx/Qual
     text-align: left;
 }
 
+/********** GAME CREATOR *************/
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+
+}
+
 /********** LOADER *************/
 .loader {
     position: fixed;

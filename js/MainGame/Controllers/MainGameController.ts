@@ -297,7 +297,7 @@ export class MainGameController {
     private modifyWithOptions(): void {
         let itemsContainer = this.gameView.getItemsContainer();
         itemsContainer.classList.remove('grid-cols-4');
-        itemsContainer.classList.add(`grid-cols-${this.gameOptions.NUMBER_OF_ITEMS}`);
+        itemsContainer.classList.add(`grid-cols-${Constants.OPTIONS.NUMBER_OF_ITEMS}`);
         
         if (window.innerWidth > 768) {
             let container = this.gameView.getMainContainer();

@@ -9,7 +9,7 @@ import {Utils} from "@/Shared/Helpers/Utils";
 import {Constants} from "@/Shared/Helpers/Constants";
 import {decodeOptions, fromBase64url} from "@/Shared/Helpers/Permalink";
 import {GroupGame} from "@/MainGame/Models/GroupGame";
-
+// BAAAAgQmSXRlbXMgdGhhdCBvbmx5IHRyaWdnZXIgb24gZW5lbXkgZGVhdGgRUGxhbmV0YXJpdW0gaXRlbXMBmwKsAOoB0gJSAk4CVQJM
 document.addEventListener('DOMContentLoaded', async () => {
     await Loader.load();
 
@@ -43,14 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             for (let i = 0; i < options.count_names; i++) {
                 let name = options.names[i];
 
-                let group_found = Constants.GROUPS.find(group => group.getName() == name);
-                if (!group_found) {
-                    let el = get_error_li(`Group ${name} not found`);
-                    errors.appendChild(el);
-                    return;
-                }
-
-                let group = new GroupGame(name, group_found.getItems(), group_found.getDifficulty(), group_found.getTags());
+                let group = new GroupGame(name, [], 0, []);
                 group.setIndex(i);
 
                 for (let j = 0; j < options.count_ids; j++) {
@@ -71,6 +64,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             let mainGame = new MainGame(false, groups_game);
             Constants.OPTIONS.HEALTH = options.health;
             Constants.OPTIONS.NUMBER_OF_BLIND_ITEMS = options.numer_blind;
+            Constants.OPTIONS.NUMBER_OF_ITEMS = options.count_ids;
+            Constants.OPTIONS.NUMBER_OF_GROUPS = options.count_names;
 
             let gameView = new MainGameView('#cards-game');
             let gameController = new MainGameController(mainGame, gameView);

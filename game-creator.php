@@ -3,12 +3,31 @@
     include 'include/Helper.php';
 ?>
 <body class="theme">
+    <div class="absolute infos px-2 py-4 z-50 hidden">
+
+    </div>
     <div class="loader flex justify-center items-center">
         <div id="tboi-loader"></div>
     </div>
 
     <div id="bigmodal-background" class="hidden"></div>
     <div id="bigmodal-wrapper" class="tooltip rounded-3xl absolute hidden z-50 w-4/5 sm:w-auto "></div>
+
+
+    <div id="modal-items" class="rounded-3xl absolute z-50 w-full h-full flex justify-center items-center hidden">
+        <div class="flex flex-col w-3/5 h-4/5 overflow-y-scroll bg-red-500 p-8 bg-white rounded-3xl">
+            <div class="bg-blue-500" id="hide-modal">
+                Close
+            </div>
+            <div>
+                <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
+                <label for="toggle-regex"><input type="checkbox" id="toggle-regex"> Regex ?</label>
+            </div>
+            <div class="flex flex-wrap justify-evenly" id="items">
+
+            </div>
+        </div>
+    </div>
 
     <div class="flex flex-col h-full page  sm:items-stretch" style="display: none;">
 
@@ -17,42 +36,6 @@
 
             <?php include 'include/template/title.php'; ?>
 
-            <div class="hidden">
-            <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                     <div class="flex flex-col text-left flex-1">
-                         <h1 class="text-xl font-bold">Number of groups</h1>
-                     </div>
-                     <div class="flex flex-col space-y-2 p-2 flex-1">
-                         <input type="range" id="range-group" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="2" max="8" step="1"/>
-                         <ul class="flex justify-between w-full px-[10px]">
-                             <li class="flex justify-center relative"><span class="absolute">2</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">3</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">4</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">5</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">6</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">7</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">8</span></li>
-                         </ul>
-                     </div>
-                 </div>
-                 <div class="flex flex-row-reverse gap-4 justify-center items-center">
-                     <div class="flex flex-col text-left flex-1">
-                         <h1 class="text-xl font-bold">Number of items per group</h1>
-                     </div>
-                     <div class="flex flex-col space-y-2 p-2 flex-1">
-                         <input type="range" id="range-items" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="2" max="8" step="1"/>
-                         <ul class="flex justify-between w-full px-[10px]">
-                             <li class="flex justify-center relative"><span class="absolute">2</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">3</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">4</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">5</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">6</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">7</span></li>
-                             <li class="flex justify-center relative"><span class="absolute">8</span></li>
-                         </ul>
-                     </div>
-                 </div>
-            </div>
             <div class="flex flex-row justify-center"  data-custom="true">
                 <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 h-min aspect-square" id="cards-game">
                     <div id="cards-module" class="w-full cards-module md:flex-wrap flex-col gap-4">
@@ -64,6 +47,14 @@
                         </div>
                         <div class="w-full bg-red-500 px-4 py-2" id="add_item">
                             Add a new item
+                        </div>
+
+                        <div class="w-full bg-red-500 px-4 py-2" id="delete_item">
+                            Delete the last item
+                        </div>
+
+                        <div class="w-full bg-red-500 px-4 py-2" id="generate_permalink">
+                            Generate permalink
                         </div>
                     </div>
                 </div>
