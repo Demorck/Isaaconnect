@@ -13,13 +13,11 @@ type Group = {
 
 export class GameCreatorModel {
     private _number_of_group: number;
-    private _number_of_items: number;
 
-    private groups: Group[];
+    private readonly groups: Group[];
 
     constructor() {
         this._number_of_group = 2;
-        this._number_of_items = 4;
         this.groups = [];
     }
 
@@ -30,14 +28,6 @@ export class GameCreatorModel {
 
     set number_of_group(value: number) {
         this._number_of_group = value;
-    }
-
-    get number_of_items(): number {
-        return this._number_of_items;
-    }
-
-    set number_of_items(value: number) {
-        this._number_of_items = value;
     }
 
     public add_group(name: string, id: number) {
@@ -128,13 +118,63 @@ export class GameCreatorModel {
         return this.groups.indexOf(group_found);
     }
 
+    public is_groups_has_same_number_of_items(): boolean {
+        let first_group = this.groups[0];
+        let length = first_group.items.length;
+        for (let group of this.groups) {
+            if (group.items.length !== length) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public has_minimum_two_groups(): boolean {
+        return this.groups.length >= 2;
+    }
+
+    public has_minimum_two_items(): boolean {
+        if (this.groups.length === 0) {
+            return false;
+        }
+
+        for (let group of this.groups) {
+            if (group.items.length < 2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public group_max_items(): number {
+        if (this.groups.length === 0) {
+            return 0;
+        }
+
+        let max_items = this.groups[0].items.length;
+        for (let group of this.groups) {
+            if (group.items.length > max_items) {
+                max_items = group.items.length;
+            }
+        }
+
+        return max_items;
+    }
+// BAAABAU-SXRlbXMgd2hlcmUgdGhlIGlkIGNvbnNpc3RzIG9mIGEgc2luZ2xlIGRpZ2l0IHJlcGVhdGVkIDMgdGltZXMRU3ByaXRlIHdpdGggYSBmbHkcU3ByaXRlIHdpdGggY2VudHJhbCBzeW1tZXRyeQtTQVVDSVNTRVMgIQBvAN4BTQG8AisAFgAYAIECOgK1AhABeAGIAYoATwKdAp0CnQKdAp0
     public generate_permalink(): string {
+        if (!this.is_groups_has_same_number_of_items()) {
+            console.error("Groups do not have the same number of items.");
+            return "";
+        }
+
         let options : Options = {
             health: 4,
             enabled_blind: false,
             numer_blind: 0,
             count_names: this.number_of_group,
-            count_ids: this.number_of_items,
+            count_ids: this.groups[0].items.length,
             names: [],
             ids: []
         }
@@ -147,5 +187,49 @@ export class GameCreatorModel {
         });
 
         return toBase64url(encodeOptions(options));
+    }
+
+    public number_items_of_group(group_id: number) {
+        let idx = this.find_group_index_by_id(group_id);
+        if (idx != undefined) {
+            return this.groups[idx].items.length;
+        } else {
+            console.error("Group not found in number_items_of_group: \n" +
+                            "\tgroup_id: " + group_id +
+                            "\n\tgroups: ");
+            console.log(this.groups);
+            return 0;
+        }
+
+    }
+
+    private get_random_id()
+    {
+        let id = -2, item;
+        while (id == -2)
+        {
+            let rng = Math.floor(Math.random() * Constants.ITEMS.length);
+            item = Constants.ITEMS[rng];
+            if (item)
+                id = rng;
+        }
+
+        return id;
+    }
+
+    public remove_item_from_group(group: number, id: number) {
+        let idx = this.find_group_index_by_id(group);
+        if (idx != undefined) {
+            let items = this.groups[idx].items;
+            let itemIndex = items.findIndex(item => item.id === id);
+            if (itemIndex !== -1) {
+                items.splice(itemIndex, 1);
+            } else {
+                console.error(`Item with id ${id} not found in group ${group}`);
+            }
+        } else {
+            console.error(`Group with id ${group} not found`);
+        }
+
     }
 }

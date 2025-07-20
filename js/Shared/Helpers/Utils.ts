@@ -170,4 +170,9 @@ export class Utils {
         
         return `${min_str}:${sec_str}.${mill_str}`;
     }
+
+    static get_accent_color(color: string) {
+        let color_split = color.slice(0, -4);
+        return color_split + "-500";
+    }
 }

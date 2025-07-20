@@ -15,14 +15,14 @@
 
 
     <div id="modal-items" class="rounded-3xl absolute z-50 w-full h-full flex justify-center items-center hidden">
-        <div class="flex flex-col w-3/5 h-4/5 overflow-y-scroll bg-red-500 p-8 bg-white rounded-3xl">
-            <div class="bg-blue-500" id="hide-modal">
-                Close
+        <div class="flex flex-col w-3/5 h-4/5 overflow-y-scroll bg-red-500 p-8 bg-white rounded-3xl relative">
+            <div class="bg-red-400 sticky top-0 left-full w-12 h-12 aspect-square cursor-pointer text-center pt-[12px] rounded-full" id="hide-modal">
+                ✖
             </div>
-            <div>
-                <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
-                <label for="toggle-regex"><input type="checkbox" id="toggle-regex"> Regex ?</label>
-            </div>
+             <!--<div>
+                 <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
+                 <label for="toggle-regex"><input type="checkbox" id="toggle-regex"> Regex ?</label>
+             </div>-->
             <div class="flex flex-wrap justify-evenly" id="items">
 
             </div>
@@ -31,30 +31,22 @@
 
     <div class="flex flex-col h-full page  sm:items-stretch" style="display: none;">
 
-    <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1" data-custom="true">
+    <div class="flex flex-row justify-center items-center margin-0 mx-auto flex-wrap md:flex-nowrap flex-1" data-custom="true" id="game-creator">
         <div class="flex flex-col gap-6">
 
             <?php include 'include/template/title.php'; ?>
 
-            <div class="flex flex-row justify-center"  data-custom="true">
+            <div class="flex flex-row justify-center aspect-square"  data-custom="true">
                 <div class="shadow-theme flex flex-col justify-start items-center p-4 m-4 mb-0 text-center bg-paper gap-1 h-min aspect-square" id="cards-game">
-                    <div id="cards-module" class="w-full cards-module md:flex-wrap flex-col gap-4">
+                    <div id="cards-module" class="w-full flex cards-module md:flex-wrap flex-col gap-4">
 
                     </div>
-                    <div class="flex flex-row gap-4">
-                        <div class="w-full bg-red-500 px-4 py-2" id="add_group">
-                            Add a new group
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-2xl font-bold rounded-3xl cursor-pointer" id="add_group">
+                            + New group
                         </div>
-                        <div class="w-full bg-red-500 px-4 py-2" id="add_item">
-                            Add a new item
-                        </div>
-
-                        <div class="w-full bg-red-500 px-4 py-2" id="delete_item">
-                            Delete the last item
-                        </div>
-
-                        <div class="w-full bg-red-500 px-4 py-2" id="generate_permalink">
-                            Generate permalink
+                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-2xl font-bold rounded-3xl cursor-pointer" id="generate_permalink">
+                            Copy permalink
                         </div>
                     </div>
                 </div>
