@@ -301,10 +301,16 @@ export class MainGameView implements Observer {
 
     private copyResults(copyButton: HTMLElement, data: any): void {
         let title: string;
-        if (data.seeded)
+        if (data.seeded) {
             title = "Isaaconnect #" + StorageManager.lastIsaaconnect;
-        else
-            title = "I finished a random Isaaconnect!"
+        }
+        else {
+            if (data.custom) {
+                title = "I finished a custom Isaaconnect!"
+            } else {
+                title = "I finished a random Isaaconnect!";
+            }
+        }
         try
         {
             let textToCopy = "";

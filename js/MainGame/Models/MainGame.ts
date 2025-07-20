@@ -34,6 +34,7 @@ export class MainGame extends Observable {
 
     private mechanics: MainGameMechanics;
     private utils: GameUtils;
+    private isCustom: boolean;
 
     /**
      * Creates an instance of MainGame.
@@ -43,6 +44,7 @@ export class MainGame extends Observable {
     constructor(seeded: boolean = true, groups: GroupGame[] = []) {
         super();
         this.seeded = seeded;
+        this.isCustom = false;
         Constants.OPTIONS = this.generateOptions();
         this.attempts = [];
         this.history = [];
@@ -226,6 +228,7 @@ export class MainGame extends Observable {
                 mistakes: mistakes,
                 streak: StorageManager.winStreak,
                 seeded: this.seeded,
+                custom: this.isCustom,
                 attempts: this.attempts,
                 groupFound: this.groupFound,
                 timer: this.timer,
@@ -421,6 +424,14 @@ export class MainGame extends Observable {
      */
     public getHealth(): number {
         return this.health;
+    }
+
+    public custom(): void {
+        this.isCustom = true;
+    }
+
+    public is_custom(): boolean {
+        return this.isCustom;
     }
 
     public resetGame(): void {

@@ -168,7 +168,7 @@ export class MainGameController {
         let buttonDeselect = document.querySelector('button[data-id="deselect"]');
         if (buttonDeselect) buttonDeselect.addEventListener('click', () => this.gameView.deselectCards());
 
-        if (!Constants.OPTIONS.SEEDED) {
+        if (!Constants.OPTIONS.SEEDED && !this.game.is_custom()) {
             let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
             buttonPlay.classList.remove('button--disabled', 'hidden');
             buttonPlay.addEventListener('click', () => this.resetGame());
@@ -267,7 +267,7 @@ export class MainGameController {
         buttons = document.getElementById('buttons-finished')!;
         buttons.classList.remove("hidden");
 
-        if (!Constants.OPTIONS.SEEDED) {
+        if (!Constants.OPTIONS.SEEDED && !this.game.is_custom()) {
             let buttonPlay = document.querySelector('button[data-id="play-again"]')!;
             buttonPlay.classList.remove('hidden');
 

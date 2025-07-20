@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             let groups_game: GroupGame[] = [];
 
             for (let i = 0; i < options.count_names; i++) {
-                let name = options.names[i];
+                let name = escapeHtml(options.names[i]);
 
                 let group = new GroupGame(name, [], 0, []);
                 group.setIndex(i);
@@ -62,12 +62,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             
             let mainGame = new MainGame(false, groups_game);
+            mainGame.custom();
             Constants.OPTIONS.HEALTH = options.health;
             Constants.OPTIONS.NUMBER_OF_BLIND_ITEMS = options.numer_blind;
             Constants.OPTIONS.NUMBER_OF_ITEMS = options.count_ids;
             Constants.OPTIONS.NUMBER_OF_GROUPS = options.count_names;
 
             let gameView = new MainGameView('#cards-game');
+
             let gameController = new MainGameController(mainGame, gameView);
 
 
@@ -81,6 +83,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
 });
+
+function escapeHtml(unsafe: string): string{
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 
 function get_error_li(message: string): HTMLLIElement
