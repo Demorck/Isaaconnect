@@ -15,10 +15,20 @@ export class GameCreatorModel {
     private _number_of_group: number;
 
     private readonly groups: Group[];
+    private _options: Options;
 
     constructor() {
         this._number_of_group = 2;
         this.groups = [];
+        this._options = {
+            health: 4,
+            enabled_blind: false,
+            numer_blind: 0,
+            count_names: this._number_of_group,
+            count_ids: 4,
+            names: [],
+            ids: []
+        };
     }
 
 
@@ -107,6 +117,14 @@ export class GameCreatorModel {
         }
     }
 
+    public set_health(health: number) {
+        if (health < 1 || health > 8) {
+            console.error("Health must be between 1 and 8.");
+            return;
+        }
+        this._options.health = health;
+    }
+
     private find_group_index_by_id(id: number)
     {
         let groups = this.groups.filter(group => group.internal_id === id);
@@ -116,6 +134,40 @@ export class GameCreatorModel {
         let group_found = groups[0];
 
         return this.groups.indexOf(group_found);
+    }
+
+    public all_id_is_unique(): boolean {
+        let all_ids: number[] = [];
+        for (let group of this.groups) {
+            for (let item of group.items) {
+                if (all_ids.includes(item.id)) {
+                    return false;
+                }
+                all_ids.push(item.id);
+            }
+        }
+
+        return true;
+    }
+
+    public all_group_name_is_different(): boolean {
+        if (this.groups.length === 0) {
+            return true;
+        }
+
+        let group_names = this.groups.map(group => group.name);
+        let unique_names = new Set(group_names);
+
+        return unique_names.size == group_names.length;
+    }
+
+    public is_one_group_name_empty(): boolean {
+        for (let group of this.groups) {
+            if (group.name.trim() === "") {
+                return true;
+            }
+        }
+        return false;
     }
 
     public is_groups_has_same_number_of_items(): boolean {
@@ -169,24 +221,21 @@ export class GameCreatorModel {
             return "";
         }
 
-        let options : Options = {
-            health: 4,
-            enabled_blind: false,
-            numer_blind: 0,
-            count_names: this.number_of_group,
-            count_ids: this.groups[0].items.length,
-            names: [],
-            ids: []
-        }
+        this._options.count_ids = this.group_max_items();
+        this._options.count_names = this.groups.length;
+        this._options.enabled_blind = false; // Currently not used, but can be set later
+        this._options.numer_blind = 0; // Currently not used, but can be set later
+        this._options.ids = [];
+        this._options.names = [];
 
         this.groups.forEach((group) => {
             let name = group.name;
             let items = group.items.map((item) => item.id)
-            options.names.push(name);
-            options.ids.push(...items);
+            this._options.names.push(name);
+            this._options.ids.push(...items);
         });
 
-        return toBase64url(encodeOptions(options));
+        return toBase64url(encodeOptions(this._options));
     }
 
     public number_items_of_group(group_id: number) {
@@ -201,20 +250,6 @@ export class GameCreatorModel {
             return 0;
         }
 
-    }
-
-    private get_random_id()
-    {
-        let id = -2, item;
-        while (id == -2)
-        {
-            let rng = Math.floor(Math.random() * Constants.ITEMS.length);
-            item = Constants.ITEMS[rng];
-            if (item)
-                id = rng;
-        }
-
-        return id;
     }
 
     public remove_item_from_group(group: number, id: number) {

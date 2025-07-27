@@ -1,11 +1,7 @@
-import { Loader } from "@/Loader";
-import { MainGame } from "@/MainGame/Models/MainGame";
-import { MainGameController } from "@/MainGame/Controllers/MainGameController";
-import { MainGameView } from "@/MainGame/Views/MainGameView";
-import { StorageManager } from "@/Shared/Helpers/Data/StorageManager";
-import Tutorial from "@/MainGame/Views/Tutorial";
-import {ChangelogsView} from "@/Shared/Views/ChangelogsView";
-import {Utils} from "@/Shared/Helpers/Utils";
+import {Loader} from "@/Loader";
+import {MainGame} from "@/MainGame/Models/MainGame";
+import {MainGameController} from "@/MainGame/Controllers/MainGameController";
+import {MainGameView} from "@/MainGame/Views/MainGameView";
 import {Constants} from "@/Shared/Helpers/Constants";
 import {decodeOptions, fromBase64url} from "@/Shared/Helpers/Permalink";
 import {GroupGame} from "@/MainGame/Models/GroupGame";
@@ -27,10 +23,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     let textarea = document.querySelector('#textarea')! as HTMLTextAreaElement;
     let errors = document.getElementsByClassName('errors')[0] as HTMLUListElement;
 
+
+    textarea.value = extractPayload(window.location.href);
     play_button.addEventListener('click', (e) => {
         let value = textarea.value;
         if (!value) {
-            let el = get_error_li("Please enter a value");
+            let el = get_error_li("Please paste a valid string", new Error("Empty input"));
             errors.appendChild(el);
             return;
         }
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     let id = options.ids[j + i * options.count_ids];
                     let item_found = Constants.ITEMS.find(group => group.getId() == id);
                     if (!item_found) {
-                        let el = get_error_li(`Item ${id} not found`);
+                        let el = get_error_li(`Failed to parse the string`, new Error(`Item with id ${id} not found.`));
                         errors.appendChild(el);
                         return;
                     }
@@ -60,14 +58,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 groups_game.push(group);
             }
-            
+
             let mainGame = new MainGame(false, groups_game);
-            mainGame.custom();
             Constants.OPTIONS.HEALTH = options.health;
             Constants.OPTIONS.NUMBER_OF_BLIND_ITEMS = options.numer_blind;
             Constants.OPTIONS.NUMBER_OF_ITEMS = options.count_ids;
             Constants.OPTIONS.NUMBER_OF_GROUPS = options.count_names;
-
+            mainGame.custom();
+            console.log(mainGame.getHealth())
             let gameView = new MainGameView('#cards-game');
 
             let gameController = new MainGameController(mainGame, gameView);
@@ -77,7 +75,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             element_custom.forEach((element) => element.classList.add('hidden'));
             
         } catch (error) {
-            let el = get_error_li("Failed to parse the string, please past it in the #bug-section in discord if you think it's anormal");
+            let el = get_error_li("Failed to parse the string, please past it in the #bug-section in discord if you think it's anormal", error as Error);
+            errors.innerHTML = "";
             errors.appendChild(el);
         }
     })
@@ -93,10 +92,14 @@ function escapeHtml(unsafe: string): string{
         .replace(/'/g, "&#039;");
 }
 
-
-function get_error_li(message: string): HTMLLIElement
+function get_error_li(message: string, error: Error): HTMLLIElement
 {
     let el = document.createElement("li");
-    el.textContent = message;
+    el.innerHTML = message + "<br>" + error.message;
     return el;
+}
+
+function extractPayload(url: string): string {
+    const parts = url.split('/');
+    return parts[parts.length - 1];
 }

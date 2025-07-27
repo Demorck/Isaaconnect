@@ -8,6 +8,10 @@ export type Options = {
     ids: number[]; // length = count_ids , 16 bits each because there are more than 256 items.
 };
 
+function computeChecksum(data: number[]): number {
+    return data.reduce((sum, byte) => (sum + byte) & 0xFF, 0);
+}
+
 function encodeOptions(opt: Options): Uint8Array {
     const bytes: number[] = [];
 
@@ -27,9 +31,13 @@ function encodeOptions(opt: Options): Uint8Array {
 
 
     for (const id of opt.ids) {
-        bytes.push((id >> 8) & 0xFF);
-        bytes.push(id & 0xFF);
+        const value = id < 0 ? (id + 0x10000) : id; // Complément à 2 si négatif
+        bytes.push((value >> 8) & 0xFF);
+        bytes.push(value & 0xFF);
     }
+
+    let checksum = computeChecksum(bytes);
+    bytes.push(checksum);
 
     return new Uint8Array(bytes);
 }
@@ -52,6 +60,17 @@ function fromBase64url(b64: string): Uint8Array {
 
 
 function decodeOptions(data: Uint8Array): Options {
+    if (data.length < 6) throw new Error("Data too short");
+
+    const checksum_received = data[data.length - 1];
+    const data_without_checksum = data.slice(0, -1);
+    const checksum_computed = computeChecksum(Array.from(data_without_checksum));
+
+    if (checksum_received !== checksum_computed) {
+        throw new Error("Checksum mismatch");
+    }
+
+
     let i = 0;
 
     const health = data[i++];
@@ -72,7 +91,9 @@ function decodeOptions(data: Uint8Array): Options {
     for (let j = 0; j < count_ids * count_names; j++) {
         const high = data[i++];
         const low = data[i++];
-        ids.push((high << 8) | low);
+        const value = (high << 8) | low;
+
+        ids.push(value >= 0x8000 ? value - 0x10000 : value); // Complément à 2 pour les nombres négatifs
     }
 
     return {
@@ -85,5 +106,14 @@ function decodeOptions(data: Uint8Array): Options {
         ids
     };
 }
+
+function addChecksumToPermalink(permalinkWithoutChecksum: string): string {
+    const data = fromBase64url(permalinkWithoutChecksum);
+    const checksum = computeChecksum(Array.from(data));
+    const withChecksum = new Uint8Array([...data, checksum]);
+    return toBase64url(withChecksum);
+}
+
+console.log(addChecksumToPermalink("BAAABAQRKzEuNSBkYW1hZ2UgaXRlbXMMWm9kaWFjIGl0ZW1zF1dyYXRoIG9mIHRoZSBMYW1iIGl0ZW1zDFB1cnBsZSBpdGVtcwAFAHoA7QFnASwBKwEzATAAwQDAALYArwIpAigBhQFx"))
 
 export { encodeOptions, toBase64url, fromBase64url, decodeOptions };

@@ -28,6 +28,38 @@
             </div>
         </div>
     </div>
+    <div id="modal-options" class="rounded-3xl absolute z-50 w-full h-full flex justify-center items-center hidden bg-black/50">
+        <div class="flex flex-col w-1/5 py-16 bg-red-500 p-8 bg-white rounded-3xl relative">
+            <div class="bg-red-400 absolute top-4 right-4 w-12 h-12 aspect-square cursor-pointer text-center pt-[12px] rounded-full" id="hide-modal-options">
+                ✖
+            </div>
+             <!--<div>
+                 <input type="text" id="filter-items-input" class="p-2 border border-gray-300 rounded-md text-black" placeholder="Filter items">
+                 <label for="toggle-regex"><input type="checkbox" id="toggle-regex"> Regex ?</label>
+             </div>-->
+            <div class="flex flex-col gap-4" id="options">
+
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <div class="flex flex-col text-left flex-1">
+                        <h1 class="text-xl font-bold">Health</h1>
+                    </div>
+                    <div class="flex flex-col space-y-2 p-2 w-full">
+                        <input type="range" id="range-health" class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer" min="1" max="8" step="1"/>
+                        <ul class="flex justify-between w-full px-[10px]">
+                            <li class="flex justify-center relative"><span class="absolute">1</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">2</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">3</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">4</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">5</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">6</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">7</span></li>
+                            <li class="flex justify-center relative"><span class="absolute">8</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="flex flex-col h-full page  sm:items-stretch" style="display: none;">
 
@@ -42,11 +74,16 @@
 
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-2xl font-bold rounded-3xl cursor-pointer" id="add_group">
+                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-xl font-bold rounded-3xl flex-1 cursor-pointer flex items-center justify-center" id="add_group">
                             + New group
                         </div>
-                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-2xl font-bold rounded-3xl cursor-pointer" id="generate_permalink">
+                        <div class="w-40 sm:w-80 bg-zinc-200 px-4 py-8 sm:text-xl font-bold rounded-3xl flex-1 cursor-pointer flex items-center justify-center" id="generate_permalink">
                             Copy permalink
+                        </div>
+                        <div class="bg-zinc-200 px-4 py-8 sm:text-xl font-bold rounded-3xl cursor-pointer flex items-center justify-center" id="options_custom">
+                            <span class="material-symbols-rounded md:text-4xl" data-id="settings">
+                                settings
+                            </span>
                         </div>
                     </div>
                 </div>

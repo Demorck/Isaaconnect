@@ -2,14 +2,18 @@ import {GameCreatorModel} from "@/GameCreator/Models/GameCreatorModel";
 import {Constants} from "@/Shared/Helpers/Constants";
 import {Item} from "@/Shared/Models/Item";
 import {Utils} from "@/Shared/Helpers/Utils";
+import {StorageManager} from "@/Shared/Helpers/Data/StorageManager";
 
 export class MainGameCreatorController {
     private add_group_button: HTMLDivElement;
     private delete_group_button: NodeListOf<HTMLDivElement>;
     private generate_permalink_button: HTMLDivElement;
+    private settings_button: HTMLDivElement;
 
     private modal_items: HTMLDivElement;
+    private modal_options: HTMLDivElement
 
+    private range_health: HTMLInputElement;
 
     private model: GameCreatorModel;
 
@@ -27,7 +31,7 @@ export class MainGameCreatorController {
             if (this.generate_permalink_button.classList.contains("disabled")) {
                 return;
             }
-            let text = "I created a custom game in Isaaconnect, try it out here https://isaaconnect.com/custom \n"
+            let text = "I created a custom game in Isaaconnect, try it out here https://isaaconnect.com/custom/"
             let a = text + this.model.generate_permalink();
             console.log(a);
             navigator.clipboard.writeText(a).then(r => {
@@ -37,6 +41,35 @@ export class MainGameCreatorController {
                 }, 2000);
             });
         })
+
+        this.settings_button = document.getElementById("options_custom") as HTMLDivElement;
+        this.settings_button.addEventListener("click", (e) => {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            let options = document.querySelector('#modal-options')!;
+            if (options.classList.contains('hidden')) {
+                options.classList.remove('hidden');
+            } else {
+                options.classList.add('hidden');
+            }
+        })
+
+        this.modal_options = document.getElementById("modal-options") as HTMLDivElement;
+        let hide_options = document.getElementById("hide-modal-options")!;
+        hide_options.addEventListener("click", () => {
+            if (this.modal_options.classList.contains("hidden")) {
+                this.modal_options.classList.remove("hidden");
+            } else {
+                this.modal_options.classList.add("hidden");
+            }
+        })
+
+        this.range_health = document.querySelector("#range-health") as HTMLInputElement;
+        this.range_health.addEventListener('input', () => {
+            let value = parseInt(this.range_health.value);
+            this.model.set_health(value);
+        });
 
         this.modal_items = document.getElementById("modal-items") as HTMLDivElement;
         let hide = document.getElementById("hide-modal")!;
@@ -137,6 +170,7 @@ export class MainGameCreatorController {
                 let el = e.target as HTMLInputElement;
                 let value = el.value;
                 this.model.modify_name(index_group_to_add, value);
+                this.update_generate_link_button();
             })
 
             let items_element = temp.querySelector('[data-action="group-items"]')! as HTMLDivElement;
@@ -217,6 +251,7 @@ export class MainGameCreatorController {
             this.modal_items.dataset.groupId = group.toString();
             this.modal_items.dataset.itemId = id.toString();
             this.modal_items.classList.remove("hidden");
+            this.update_generate_link_button();
         })
 
         let delete_button = element.querySelector('[data-action="delete-item"]') as HTMLDivElement;
@@ -288,6 +323,7 @@ export class MainGameCreatorController {
                 let new_element = this.get_element_item(item.getId(), parseInt(group_id));
                 items_query.replaceWith(new_element);
                 this.modal_items.classList.add("hidden");
+                this.update_generate_link_button()
             });
             itemsWrapper.appendChild(element);
         });
@@ -329,6 +365,18 @@ export class MainGameCreatorController {
 
         if (!this.model.has_minimum_two_items()) {
             string += "You must have at least two items in each group.\n";
+        }
+
+        if (!this.model.all_group_name_is_different()) {
+            string += "All groups must have different names.\n";
+        }
+
+        if (this.model.is_one_group_name_empty()) {
+            string += "All groups must have a name.\n";
+        }
+
+        if (!this.model.all_id_is_unique()) {
+            string += "All items must have a unique ID.\n";
         }
 
         this.generate_permalink_button.innerText =  string ? string : "Generate permalink";

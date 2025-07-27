@@ -428,6 +428,7 @@ export class MainGame extends Observable {
 
     public custom(): void {
         this.isCustom = true;
+        this.health = Constants.OPTIONS.HEALTH;
     }
 
     public is_custom(): boolean {
