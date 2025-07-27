@@ -114,6 +114,5 @@ function addChecksumToPermalink(permalinkWithoutChecksum: string): string {
     return toBase64url(withChecksum);
 }
 
-console.log(addChecksumToPermalink("BAAABAQRKzEuNSBkYW1hZ2UgaXRlbXMMWm9kaWFjIGl0ZW1zF1dyYXRoIG9mIHRoZSBMYW1iIGl0ZW1zDFB1cnBsZSBpdGVtcwAFAHoA7QFnASwBKwEzATAAwQDAALYArwIpAigBhQFx"))
 
 export { encodeOptions, toBase64url, fromBase64url, decodeOptions };
