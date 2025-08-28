@@ -902,7 +902,7 @@
   },
   {
     "name": "Passive items that allow Isaac to deal contact damage",
-    "items": [663, 30, 202, 300, 468, 503],
+    "items": [663, 30, 202, 300, 468, 503, 276],
     "difficulty": 2,
     "tags": []
   },
@@ -1304,7 +1304,7 @@
   },
   {
     "name": "Items that can generate poops 💩",
-    "items": [36, 725, 720, 543, 236, 291, 576, 513, 386, 285, 418],
+    "items": [36, 725, 720, 543, 236, 291, 576, 513, 386, 285, 418, 283],
     "difficulty": 2,
     "tags": []
   },
